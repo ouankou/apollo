@@ -35,8 +35,10 @@
 #define APOLLO_EXEC_H
 
 #include "apollo/Config.h"
+#include "apollo/Env.h"
 #include "apollo/Region.h"
 #include "apollo/Trace.h"
+#include "apollo/Util.h"
 
 namespace Apollo
 {
@@ -45,51 +47,60 @@ class Exec
 {
     public:
        ~Exec();
-        // disallow copy constructor
+        // Disallow copy constructor
         Exec(const Exec&) = delete;
         Exec& operator=(const Exec&) = delete;
 
+        // Return a pointer to the singleton instance of Apollo
         static Exec* instance(void) noexcept {
             static Exec the_instance;
             return &the_instance;
         }
 
+        // Apollo runtime core components
         Apollo::Config config;
         Apollo::Env    env;
         Apollo::Trace  trace;
+        Apollo::Util   util;
+
+        // Call step() at the bottom of each major simulation loop, after the
+        // application's work is done, and potentially overlapping with an I/O
+        // phase. This is another place where Apollo can trigger model training
+        // for regions with new timing data, perform MPI collectives, export
+        // models to the filesystem, or do other assorted heavy lifting.
+        // NOTE: Async is not guaranteed to be supported, but is included here as
+        //       an optional parameter for the purpose of interface stability.
+        //       If Async is true, Apollo may spawn or re-use a thread.
+
+        void step(size_t application_step=0, bool run_async=false);
+
+        // ---
 
         //
-        //TODO(cdw): This is serving as an override that is defined by an
-        //           environment variable.  Apollo::Region's are able to
-        //           have different policy counts, so a global setting here
-        //           should indicate that it is an override, or find
-        //           a better place to live.  Leaving it for now, as a low-
-        //           priority task.
-        int  num_policies;
+        // TODO(chad): This is serving as an override that is defined by an
+        //             environment variable.  Apollo::Region's are able to
+        //             have different policy counts, so a global setting here
+        //             should indicate that it is an override, or find
+        //             a better place to live.  Leaving it for now, as a low-
+        //             priority task.
+        int num_policies;
 
         // TODO(chad): Get rid of this usage, it's bad form.
         int numThreads;  // <-- how many to use / are in use
 
-        // NOTE(chad): We default to walk_distance of 2 so we can
-        //             step out of this method, then step out of
-        //             some portable policy template, and get to the
-        //             module name and offset where that template
-        //             has been instantiated in the application code.
-        std::string getCallpathOffset(int walk_distance=2);
-        void *callpath_ptr;
 
-        void flushAllRegionMeasurements(int step);
 
     private:
-        Apollo();
-        //
-        TraceVector_t trace_data;
-        //
+        Exec();
+
+
+        // TODO(chad): Revisit this for generality:
         void packMeasurements(char *buf, int size, void *_reg);
-        void gatherReduceCollectiveTrainingData(int step);
+        void gatherReduceCollectiveTrainingData(size_t application_step);
+
         // Key: region name, value: region raw pointer
-        std::map<std::string, Apollo::Region *> regions;
         // Key: region name, value: map key: num_elements, value: policy_index, time_avg
+        std::map<std::string, Apollo::Region *> regions;
         std::map< std::vector< float >, std::pair< int, double > > best_policies_global;
 
 } //end: Exec (class)

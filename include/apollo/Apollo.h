@@ -34,15 +34,18 @@
 #ifndef APOLLO_APOLLO_H
 #define APOLLO_APOLLO_H
 
-#include <fstream>
-#include <string>
-#include <map>
-#include <vector>
-
-#include <omp.h>
-
-#include "apollo/Env.h"
-#include "apollo/Config.h"
 #include "apollo/Exec.h"
 
+// So application codes can simply use:   Apollo_t *apollo = Apollo::instance();
+typedef Apollo::Exec Apollo_t;
+
+namespace Apollo
+{
+
+    // Return a pointer to the singleton instance of Apollo
+    inline Apollo::Exec* instance(void) noexcept {
+        return Apollo::Exec::instance();
+    }
+
+} //end: Apollo (namespace)
 #endif

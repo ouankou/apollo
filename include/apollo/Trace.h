@@ -51,7 +51,7 @@ class Trace
     bool          outputIsActualFile;
     std::string   outputFileName;
     std::ofstream outputFileHandle;
-    //
+
     typedef std::tuple<
         double,
         std::string,
@@ -64,16 +64,14 @@ class Trace
         std::string
         > TraceLine_t;
     typedef std::vector<TraceLine_t> TraceVector_t;
-    //
+    TraceVector_t trace_data;
+
     void storeLine(TraceLine_t &t);
-    //
     void writeHeaderImpl(std::ostream &sink);
     void writeHeader(void);
     void writeLineImpl(TraceLine_t &t, std::ostream &sink);
     void writeLine(TraceLine_t &t);
     void writeVector(void);
-    //
-    //////////
 
 }; //end: Trace (class)
 }; //end: Apollo (namespace)
