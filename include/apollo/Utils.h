@@ -31,22 +31,24 @@
 // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 // DEALINGS IN THE SOFTWARE.
 
-#ifndef APOLLO_TIMING_MODEL_H
-#define APOLLO_TIMING_MODEL_H
+namespace Apollo
+{
+namespace Utils
+{
 
-#include <string>
-#include <vector>
+    inline std::string strToUpper(std::string s);
 
-// Abstract
-class TimingModel {
-    public:
-        TimingModel(std::string name) : name(name) {};
-        virtual ~TimingModel() {}
-        virtual double getTimePrediction(std::vector<float> &features) = 0;
-        virtual void store(const std::string &filename) = 0;
+    inline void strReplaceAll(std::string& input, const std::string& from, const std::string& to);
 
-        std::string      name           = "";
-}; //end: TimingModel (abstract class)
+    inline const char* safeGetEnv(
+        const char *var_name,
+        const char *use_this_if_not_found,
+        bool        silent=false);
+
+    bool strOptionIsEnabled(std::string so);
+
+} //end: Utils (namespace)
+
+} //end: Apollo (namespace)
 
 
-#endif

@@ -31,22 +31,54 @@
 // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 // DEALINGS IN THE SOFTWARE.
 
-#ifndef APOLLO_TIMING_MODEL_H
-#define APOLLO_TIMING_MODEL_H
+#ifndef APOLLO_ENV_H
+#define APOLLO_ENV_H
 
-#include <string>
-#include <vector>
+#include "apollo/Apollo.h"
+#include "apollo/Exec.h"
 
-// Abstract
-class TimingModel {
+namespace Apollo
+{
+class Env
+{
     public:
-        TimingModel(std::string name) : name(name) {};
-        virtual ~TimingModel() {}
-        virtual double getTimePrediction(std::vector<float> &features) = 0;
-        virtual void store(const std::string &filename) = 0;
+        Env();
+        ~Env();
 
-        std::string      name           = "";
-}; //end: TimingModel (abstract class)
+        enum class Name {
+            UNKNOWN, LSF, SLURM
+        };
+
+        void    clear(void);
+        Name    detect(void);
+        void    load(Name from_env);
+        bool    validate(void);
+        bool    refresh(void);
+
+        // ---
+
+        bool loaded;
+        Name name;
+
+        int numNodes;
+        int numCPUsOnNode;
+        int numGPUsOnNode;
+
+        int numProcs;
+        int numProcsPerNode;
+
+        int numThreadsPerCPUCap;
+
+        omp_sched_t ompDefaultSchedule;
+        int         ompDefaultNumThreads;
+        int         ompDefaultChunkSize;
+        //
+        int mpiSize;   // 1 if no MPI
+        int mpiRank;   // 0 if no MPI
+
+} //end: Env (class)
+
+} //end: Apollo (namespace)
 
 
 #endif

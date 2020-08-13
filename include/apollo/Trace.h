@@ -31,22 +31,51 @@
 // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 // DEALINGS IN THE SOFTWARE.
 
-#ifndef APOLLO_TIMING_MODEL_H
-#define APOLLO_TIMING_MODEL_H
+#ifndef APOLLO_TRACE_H
+#define APOLLO_TRACE_H
 
-#include <string>
-#include <vector>
+namespace Apollo
+{
 
-// Abstract
-class TimingModel {
+class Trace
+{
     public:
-        TimingModel(std::string name) : name(name) {};
-        virtual ~TimingModel() {}
-        virtual double getTimePrediction(std::vector<float> &features) = 0;
-        virtual void store(const std::string &filename) = 0;
+        ~Trace();
+        //disallow copy constructor
+        Trace(const Trace&) = delete;
+        Trace& operator=(const Trace&) = delete;
 
-        std::string      name           = "";
-}; //end: TimingModel (abstract class)
+    bool          enabled;
+    bool          emitOnline;
+    bool          emitAllFeatures;
+    bool          outputIsActualFile;
+    std::string   outputFileName;
+    std::ofstream outputFileHandle;
+    //
+    typedef std::tuple<
+        double,
+        std::string,
+        int,
+        std::string,
+        int,
+        int,
+        int,
+        double,
+        std::string
+        > TraceLine_t;
+    typedef std::vector<TraceLine_t> TraceVector_t;
+    //
+    void storeLine(TraceLine_t &t);
+    //
+    void writeHeaderImpl(std::ostream &sink);
+    void writeHeader(void);
+    void writeLineImpl(TraceLine_t &t, std::ostream &sink);
+    void writeLine(TraceLine_t &t);
+    void writeVector(void);
+    //
+    //////////
 
+}; //end: Trace (class)
+}; //end: Apollo (namespace)
 
 #endif

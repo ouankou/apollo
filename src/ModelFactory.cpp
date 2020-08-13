@@ -6,6 +6,9 @@
 #include "apollo/models/DecisionTree.h"
 #include "apollo/models/RegressionTree.h"
 
+namespace Apollo
+{
+
 std::unique_ptr<PolicyModel> ModelFactory::createStatic(int num_policies, int policy_choice) {
     return std::make_unique<Static>( num_policies, policy_choice );
 }
@@ -36,3 +39,4 @@ std::unique_ptr<TimingModel> ModelFactory::createRegressionTree(
     return std::make_unique<RegressionTree>( features, responses );
 }
 
+} //end: Apollo (namespace)

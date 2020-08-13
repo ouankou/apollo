@@ -52,18 +52,23 @@ include_directories(
 set(APOLLO_HEADERS
     ../include/apollo/Apollo.h
     ../include/apollo/Config.h
+    ../include/apollo/Exec.h
     ../include/apollo/Logging.h
-    ../include/apollo/Region.h
-    ../include/apollo/PolicyModel.h
-    ../include/apollo/TimingModel.h
+    ../include/apollo/Macros.h
     ../include/apollo/ModelFactory.h
+    ../include/apollo/PolicyModel.h
+    ../include/apollo/Region.h
+    ../include/apollo/Trace.h
+    ../include/apollo/TimingModel.h
+    ../include/apollo/Utils.h
     )
 
 set(APOLLO_SOURCES
     Apollo.cpp
+    Config.cpp
+    Exec.cpp
     Region.cpp
     ModelFactory.cpp
-    Config.cpp
     models/Random.cpp
     models/Sequential.cpp
     models/Static.cpp

@@ -50,6 +50,9 @@
 #include <mpi.h>
 #endif //ENABLE_MPI
 
+namespace Apollo
+{
+
 int
 Apollo::Region::getPolicyIndex(void)
 {
@@ -460,3 +463,5 @@ Apollo::Region::setFeature(float value)
     current_elem_count = value;
     return;
 }
+
+} //end: Apollo (namespace)
