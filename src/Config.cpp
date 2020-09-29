@@ -34,21 +34,97 @@
 #include <string>
 
 #include "apollo/Config.h"
+#include "apollo/Exec.h"
+#include "apollo/Util.h"
 
-int Config::APOLLO_COLLECTIVE_TRAINING;
-int Config::APOLLO_LOCAL_TRAINING;
-int Config::APOLLO_SINGLE_MODEL;
-int Config::APOLLO_REGION_MODEL;
-int Config::APOLLO_TRACE_MEASURES;
-int Config::APOLLO_NUM_POLICIES;
-int Config::APOLLO_TRACE_POLICY;
-int Config::APOLLO_RETRAIN_ENABLE;
-float Config::APOLLO_RETRAIN_TIME_THRESHOLD;
-float Config::APOLLO_RETRAIN_REGION_THRESHOLD;
-int Config::APOLLO_STORE_MODELS;
-int Config::APOLLO_TRACE_RETRAIN;
-int Config::APOLLO_TRACE_ALLGATHER;
-int Config::APOLLO_TRACE_BEST_POLICIES;
-std::string Config::APOLLO_INIT_MODEL;
-std::string Config::APOLLO_LOAD_MODEL;
+namespace Apollo
+{
+
+Config::Config()
+{
+    loadSettings();
+    return;
+}
+
+Config::~Config()
+{
+    return;
+}
+
+
+void
+Config::loadSettings(void)
+{
+    Apollo::Exec *apollo = Apollo::Exec::instance();
+    using safeEnv = apollo->util.safeGetEnv;
+
+    // Initialize config with defaults
+    APOLLO_INIT_MODEL          = safeEnv( "APOLLO_INIT_MODEL", "Static,0" );
+    APOLLO_COLLECTIVE_TRAINING = std::stoi( safeEnv( "APOLLO_COLLECTIVE_TRAINING", "1" ) );
+    APOLLO_LOCAL_TRAINING      = std::stoi( safeEnv( "APOLLO_LOCAL_TRAINING", "0" ) );
+    APOLLO_SINGLE_MODEL        = std::stoi( safeEnv( "APOLLO_SINGLE_MODEL", "0" ) );
+    APOLLO_REGION_MODEL        = std::stoi( safeEnv( "APOLLO_REGION_MODEL", "1" ) );
+    APOLLO_TRACE_MEASURES      = std::stoi( safeEnv( "APOLLO_TRACE_MEASURES", "0" ) );
+    APOLLO_NUM_POLICIES        = std::stoi( safeEnv( "APOLLO_NUM_POLICIES", "0" ) );
+    APOLLO_TRACE_POLICY        = std::stoi( safeEnv( "APOLLO_TRACE_POLICY", "0" ) );
+    APOLLO_STORE_MODELS        = std::stoi( safeEnv( "APOLLO_STORE_MODELS", "0" ) );
+    APOLLO_TRACE_RETRAIN       = std::stoi( safeEnv( "APOLLO_TRACE_RETRAIN", "0" ) );
+    APOLLO_TRACE_ALLGATHER     = std::stoi( safeEnv( "APOLLO_TRACE_ALLGATHER", "0" ) );
+    APOLLO_TRACE_BEST_POLICIES = std::stoi( safeEnv( "APOLLO_TRACE_BEST_POLICIES", "0" ) );
+    APOLLO_RETRAIN_ENABLE      = std::stoi( safeEnv( "APOLLO_RETRAIN_ENABLE", "1" ) );
+    APOLLO_RETRAIN_TIME_THRESHOLD   = std::stof( safeEnv( "APOLLO_RETRAIN_TIME_THRESHOLD", "2.0" ) );
+    APOLLO_RETRAIN_REGION_THRESHOLD = std::stof( safeEnv( "APOLLO_RETRAIN_REGION_THRESHOLD", "0.5" ) );
+
+    return;
+}
+
+bool
+Config::sanityCheck(bool abort_on_fail=true)
+{
+
+#ifndef ENABLE_MPI
+    // MPI is disabled...
+    if ( Config::APOLLO_COLLECTIVE_TRAINING ) {
+        std::cerr << "Collective training requires MPI support to be enabled" << std::endl;
+        abort();
+    }
+    //TODO[chad]: Deepen this sanity check when additional collectives/training
+    //            backends are added to the code.
+#endif //ENABLE_MPI
+
+    if( Config::APOLLO_COLLECTIVE_TRAINING && Config::APOLLO_LOCAL_TRAINING ) {
+        std::cerr << "Both collective and local training cannot be enabled" << std::endl;
+        abort();
+    }
+
+    if( ! ( Config::APOLLO_COLLECTIVE_TRAINING || Config::APOLLO_LOCAL_TRAINING ) ) {
+        std::cerr << "Either collective or local training must be enabled" << std::endl;
+        abort();
+    }
+
+    if( Config::APOLLO_SINGLE_MODEL && Config::APOLLO_REGION_MODEL ) {
+        std::cerr << "Both global and region modeling cannot be enabled" << std::endl;
+        abort();
+    }
+
+
+    if( ! ( Config::APOLLO_SINGLE_MODEL || Config::APOLLO_REGION_MODEL ) ) {
+        std::cerr << "Either global or region modeling must be enabled" << std::endl;
+        abort();
+    }
+
+
+    return true;
+}
+
+void
+Config::print(void)
+{
+    //TODO[cdw]: Show all the currently known settings on STDOUT
+    return;
+}
+
+
+} //end: Apollo (namespace)
+
 

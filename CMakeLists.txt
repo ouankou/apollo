@@ -47,9 +47,10 @@ set(CMAKE_CXX_STANDARD 14)
 #
 option(ENABLE_MPI "Require and enabled MPI for collective training?" ON)
 #
-set(APOLLO_ENABLE_TESTS    ON  CACHE STRING "")
-set(APOLLO_RPATH_OVERRIDES ON  CACHE STRING "")
-set(APOLLO_REQUIRES_PYTHON OFF CACHE STRING "")
+set(APOLLO_ENABLE_CUDA_ASYNC  ON  CACHE STRING "")
+set(APOLLO_ENABLE_TESTS       ON  CACHE STRING "")
+set(APOLLO_RPATH_OVERRIDES    ON  CACHE STRING "")
+set(APOLLO_REQUIRES_PYTHON    OFF CACHE STRING "")
 #
 #####
 
@@ -184,6 +185,7 @@ endif()
 #else()
 #    message(STATUS "---- SOS:  ** ERROR ** Could not locate SOS installation.")
 #endif(SOS_FOUND)
+
 
 find_package(OpenMP)
 if (OPENMP_FOUND)

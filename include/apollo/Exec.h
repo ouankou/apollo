@@ -58,10 +58,10 @@ class Exec
         }
 
         // Apollo runtime core components
-        Apollo::Config config;
-        Apollo::Env    env;
-        Apollo::Trace  trace;
         Apollo::Util   util;
+        Apollo::Env    env;
+        Apollo::Config config;
+        Apollo::Trace  trace;
 
         // Call step() at the bottom of each major simulation loop, after the
         // application's work is done, and potentially overlapping with an I/O

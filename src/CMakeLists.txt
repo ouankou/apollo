@@ -56,17 +56,19 @@ set(APOLLO_HEADERS
     ../include/apollo/Logging.h
     ../include/apollo/Macros.h
     ../include/apollo/ModelFactory.h
+    ../include/apollo/TimingModel.h
     ../include/apollo/PolicyModel.h
     ../include/apollo/Region.h
     ../include/apollo/Trace.h
-    ../include/apollo/TimingModel.h
-    ../include/apollo/Utils.h
+    ../include/apollo/Util.h
     )
 
 set(APOLLO_SOURCES
     Apollo.cpp
     Config.cpp
     Exec.cpp
+    Trace.cpp
+    Util.cpp
     Region.cpp
     ModelFactory.cpp
     models/Random.cpp
@@ -95,3 +97,9 @@ install(TARGETS apollo
     EXPORT apollo
     ARCHIVE DESTINATION lib
     LIBRARY DESTINATION lib)
+
+if(APOLLO_ENABLE_CUDA_ASYNC)
+    add_subdirectory(cuda)
+endif(APOLLO_ENABLE_CUDA_ASYNC)
+
+

@@ -63,7 +63,7 @@ namespace Apollo {
 
 
 std::string
-Apollo::getCallpathOffset(int walk_distance)
+Exec::getCallpathOffset(int walk_distance)
 {
     //NOTE(cdw): Param 'walk_distance' is optional, defaults to 2
     //           so we walk out of this method, and then walk out
@@ -84,114 +84,12 @@ Apollo::getCallpathOffset(int walk_distance)
     return offsetstr;
 }
 
-Apollo::Apollo()
+Exec::Exec()
 {
     callpath_ptr = new CallpathRuntime;
 
-
-
-    using safeEnv = Apollo::Utils::safeGetEnv;
-
-    // Initialize config with defaults
-    Config::APOLLO_INIT_MODEL          = safeEnv( "APOLLO_INIT_MODEL", "Static,0" );
-    Config::APOLLO_COLLECTIVE_TRAINING = std::stoi( safeEnv( "APOLLO_COLLECTIVE_TRAINING", "1" ) );
-    Config::APOLLO_LOCAL_TRAINING      = std::stoi( safeEnv( "APOLLO_LOCAL_TRAINING", "0" ) );
-    Config::APOLLO_SINGLE_MODEL        = std::stoi( safeEnv( "APOLLO_SINGLE_MODEL", "0" ) );
-    Config::APOLLO_REGION_MODEL        = std::stoi( safeEnv( "APOLLO_REGION_MODEL", "1" ) );
-    Config::APOLLO_TRACE_MEASURES      = std::stoi( safeEnv( "APOLLO_TRACE_MEASURES", "0" ) );
-    Config::APOLLO_NUM_POLICIES        = std::stoi( safeEnv( "APOLLO_NUM_POLICIES", "0" ) );
-    Config::APOLLO_TRACE_POLICY        = std::stoi( safeEnv( "APOLLO_TRACE_POLICY", "0" ) );
-    Config::APOLLO_STORE_MODELS        = std::stoi( safeEnv( "APOLLO_STORE_MODELS", "0" ) );
-    Config::APOLLO_TRACE_RETRAIN       = std::stoi( safeEnv( "APOLLO_TRACE_RETRAIN", "0" ) );
-    Config::APOLLO_TRACE_ALLGATHER     = std::stoi( safeEnv( "APOLLO_TRACE_ALLGATHER", "0" ) );
-    Config::APOLLO_TRACE_BEST_POLICIES = std::stoi( safeEnv( "APOLLO_TRACE_BEST_POLICIES", "0" ) );
-    Config::APOLLO_RETRAIN_ENABLE      = std::stoi( safeEnv( "APOLLO_RETRAIN_ENABLE", "1" ) );
-    Config::APOLLO_RETRAIN_TIME_THRESHOLD   = std::stof( safeEnv( "APOLLO_RETRAIN_TIME_THRESHOLD", "2.0" ) );
-    Config::APOLLO_RETRAIN_REGION_THRESHOLD = std::stof( safeEnv( "APOLLO_RETRAIN_REGION_THRESHOLD", "0.5" ) );
-
-    //TODO[chad]: if( Config::APOLLO_VERBOSE > 0) {
-    //               ...or otherwise log('status', '...)
-    //std::cout << "init model " << Config::APOLLO_INIT_MODEL << std::endl;
-    //std::cout << "collective " << Config::APOLLO_COLLECTIVE_TRAINING << std::endl;
-    //std::cout << "local "      << Config::APOLLO_LOCAL_TRAINING << std::endl;
-    //std::cout << "global "     << Config::APOLLO_SINGLE_MODEL << std::endl;
-    //std::cout << "region "     << Config::APOLLO_REGION_MODEL << std::endl;
-
-#ifndef ENABLE_MPI
-    // MPI is disabled...
-    if ( Config::APOLLO_COLLECTIVE_TRAINING ) {
-        std::cerr << "Collective training requires MPI support to be enabled" << std::endl;
-        abort();
-    }
-    //TODO[chad]: Deepen this sanity check when additional collectives/training
-    //            backends are added to the code.
-#endif //ENABLE_MPI
-
-    if( Config::APOLLO_COLLECTIVE_TRAINING && Config::APOLLO_LOCAL_TRAINING ) {
-        std::cerr << "Both collective and local training cannot be enabled" << std::endl;
-        abort();
-    }
-
-    if( ! ( Config::APOLLO_COLLECTIVE_TRAINING || Config::APOLLO_LOCAL_TRAINING ) ) {
-        std::cerr << "Either collective or local training must be enabled" << std::endl;
-        abort();
-    }
-
-    if( Config::APOLLO_SINGLE_MODEL && Config::APOLLO_REGION_MODEL ) {
-        std::cerr << "Both global and region modeling cannot be enabled" << std::endl;
-        abort();
-    }
-
-
-    if( ! ( Config::APOLLO_SINGLE_MODEL || Config::APOLLO_REGION_MODEL ) ) {
-        std::cerr << "Either global or region modeling must be enabled" << std::endl;
-        abort();
-    }
-
-    //////////
-    //
-    // TODO(cdw): Move these implementation details into a dedicated 'Trace' class.
-    //
-    // Trace output settings:
-    //
-    std::string trace_enabled \
-        = apolloUtils::safeGetEnv("APOLLO_TRACE_ENABLED", "false", true);
-    std::string trace_emit_online \
-        = apolloUtils::safeGetEnv("APOLLO_TRACE_EMIT_ONLINE", "false", true);
-    std::string trace_emit_all_features \
-        = apolloUtils::safeGetEnv("APOLLO_TRACE_EMIT_ALL_FEATURES", "false", true);
-    std::string trace_output_file \
-        = apolloUtils::safeGetEnv("APOLLO_TRACE_OUTPUT_FILE", "stdout", true);
-    //
-    traceEnabled          = ::apolloUtils::strOptionIsEnabled(trace_enabled);
-    traceEmitOnline       = ::apolloUtils::strOptionIsEnabled(trace_emit_online);
-    traceEmitAllFeatures  = ::apolloUtils::strOptionIsEnabled(trace_emit_all_features);
-    //
-    traceOutputFileName   = trace_output_file;
-    if (traceEnabled) {
-        if (traceOutputFileName.compare("stdout") == 0) {
-            traceOutputIsActualFile = false;
-        } else {
-            traceOutputFileName += ".";
-            traceOutputFileName += std::to_string(mpiRank);
-            traceOutputFileName += ".csv";
-            try {
-                traceOutputFileHandle.open(traceOutputFileName, std::fstream::out);
-                traceOutputIsActualFile = true;
-            } catch (...) {
-                std::cerr << "== APOLLO: ** ERROR ** Unable to open the filename specified in" \
-                    << "APOLLO_TRACE_OUTPUT_FILE environment variable:" << std::endl;
-                std::cerr << "== APOLLO: ** ERROR **    \"" << traceOutputFileName << "\"" << std::endl;
-                std::cerr << "== APOLLO: ** ERROR ** Defaulting to std::cout ..." << std::endl;
-                traceOutputIsActualFile = false;
-            }
-            if (traceEmitOnline) {
-                writeTraceHeader();
-            }
-        }
-    }
-    //
-    //////////
+    config.loadSettings();
+    config.sanityCheck();
 
 #ifdef ENABLE_MPI
     MPI_Comm_dup(MPI_COMM_WORLD, &apollo_mpi_comm);
@@ -207,103 +105,13 @@ Apollo::Apollo()
     return;
 }
 
-Apollo::~Apollo()
+Exec::~Exec()
 {
-    // TODO(cdw): Move this into dedicated 'Trace' class in refactor.
-    if (traceEnabled and (not traceEmitOnline)) {
-        // We've been storing up our trace data to emit now.
-        writeTraceHeader();
-        writeTraceVector();
-        if (traceOutputIsActualFile) {
-            traceOutputFileHandle.close();
-        }
-    }
 
     delete (CallpathRuntime *)callpath_ptr;
 }
 
 
-//////////
-//
-// TODO(cdw): Move this into 'Trace' class during code refactor.
-// TODO(cdw): Generalize the fields slightly for CUDA also...
-//
-void
-Apollo::writeTraceHeader(void) {
-    if (not traceEnabled) { return; }
-
-    if (traceOutputIsActualFile) {
-        writeTraceHeaderImpl(traceOutputFileHandle);
-    } else {
-        writeTraceHeaderImpl(std::cout);
-    }
-}
-//
-void
-Apollo::writeTraceHeaderImpl(std::ostream &sink) {
-    if (not traceEnabled) { return; }
-
-    std::string optional_column_label;
-    if (traceEmitAllFeatures) {
-        optional_column_label = ",all_features_json\n";
-    } else {
-        optional_column_label = "\n";
-    }
-    sink.precision(11);
-    sink \
-        << "type," \
-        << "time_wall," \
-        << "node_id," \
-        << "step," \
-        << "region_name," \
-        << "policy_index," \
-        << "num_threads," \
-        << "num_elements," \
-        << "time_exec" \
-        << optional_column_label;
-}
-//
-void Apollo::storeTraceLine(TraceLine_t &t) {
-    if (not traceEnabled) { return; }
-
-    trace_data.push_back(t);
-}
-//
-void
-Apollo::writeTraceLine(TraceLine_t &t) {
-    if (not traceEnabled) { return; }
-    if (traceOutputIsActualFile) {
-        writeTraceLineImpl(t, traceOutputFileHandle);
-    } else {
-        writeTraceLineImpl(t, std::cout);
-    }
-}
-//
-void
-Apollo::writeTraceLineImpl(TraceLine_t &t, std::ostream &sink) {
-    if (not traceEnabled) { return; }
-    sink \
-       << "TRACE," << std::fixed \
-       << std::get<0>(t) /* exec_time_end */ << "," \
-       << std::get<1>(t) /* node_id */       << "," \
-       << std::get<2>(t) /* comm_rank */     << "," \
-       << std::get<3>(t) /* region_name */   << "," \
-       << std::get<4>(t) /* policy_index */  << "," \
-       << std::get<5>(t) /* num_threads */   << "," \
-       << std::get<6>(t) /* num_elements */  << "," \
-       << std::fixed << std::get<7>(t) /* (exec_time_end - exec_time_begin) */ \
-       << std::get<8>(t) /* (", " + all features, optionally) */ \
-       << "\n";
-}
-//
-void
-Apollo::writeTraceVector(void) {
-    if (not traceEnabled) { return; }
-    for (auto &t : trace_data) {
-        writeTraceLine(t);
-    }
-}
-//
 //////////
 
 #ifdef ENABLE_MPI
@@ -334,7 +142,7 @@ get_mpi_pack_measure_size(int num_features, MPI_Comm comm)
 }
 
 void
-Apollo::packMeasurements(char *buf, int size, void *_reg) {
+Exec::packMeasurements(char *buf, int size, void *_reg) {
     int pos = 0;
 
     Apollo::Region *reg = (Apollo::Region *) _reg;
@@ -375,7 +183,7 @@ Apollo::packMeasurements(char *buf, int size, void *_reg) {
 
 
 void
-Apollo::gatherReduceCollectiveTrainingData(int step)
+Exec::gatherReduceCollectiveTrainingData(int step)
 {
 #ifndef ENABLE_MPI
     // MPI is disabled, skip everything in this method.
@@ -516,7 +324,7 @@ Apollo::gatherReduceCollectiveTrainingData(int step)
 
 
 void
-Apollo::flushAllRegionMeasurements(int step)
+Exec::flushAllRegionMeasurements(int step)
 {
     int rank = mpiRank;  //Automatically 0 if not an MPI environment.
 

@@ -48,11 +48,19 @@
 namespace Apollo
 {
 
-namespace Utils
+Util::Util()
 {
+    return;
+}
+
+
+Util::~Util()
+{
+    return;
+}
 
 inline std::string
-strToUpper(std::string s) {
+Util::strToUpper(std::string s) {
     std::transform(s.begin(), s.end(), s.begin(),
         [](unsigned char c) {
             return std::toupper(c);
@@ -61,7 +69,7 @@ strToUpper(std::string s) {
 }
 
 inline void
-strReplaceAll(std::string& input, const std::string& from, const std::string& to) {
+Util::strReplaceAll(std::string& input, const std::string& from, const std::string& to) {
 	size_t pos = 0;
 	while ((pos = input.find(from, pos)) != std::string::npos) {
 		input.replace(pos, from.size(), to);
@@ -70,7 +78,7 @@ strReplaceAll(std::string& input, const std::string& from, const std::string& to
 }
 
 inline const char*
-safeGetEnv(
+Util::safeGetEnv(
         const char *var_name,
         const char *use_this_if_not_found,
         bool        silent=false)
@@ -88,8 +96,8 @@ safeGetEnv(
 }
 
 bool
-strOptionIsEnabled(std::string so) {
-    std::string sup = apolloUtils::strToUpper(so);
+Util::strOptionIsEnabled(std::string so) {
+    std::string sup = strToUpper(so);
     if ((sup.compare("1")           == 0) ||
         (sup.compare("TRUE")        == 0) ||
         (sup.compare("YES")         == 0) ||
@@ -103,5 +111,4 @@ strOptionIsEnabled(std::string so) {
 }
 
 
-} //end: Utils (namespace)
 } //end: Apollo (namespace)
