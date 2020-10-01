@@ -44,10 +44,12 @@
 #include <iomanip>
 
 #include "apollo/Apollo.h"
-#include "apollo/Utils.h"
+#include "apollo/Util.h"
 #include "apollo/Logging.h"
 #include "apollo/Region.h"
 #include "apollo/ModelFactory.h"
+
+#include "apollo/Exec.h"
 
 // External library for walking the stack and extracting code locations where
 // templates were instantiated.   (See: https://github.com/llnl/callpath)
@@ -65,6 +67,8 @@ namespace Apollo {
 std::string
 Exec::getCallpathOffset(int walk_distance)
 {
+    Apollo::Exec *apollo = Apollo::Exec::instance();
+
     //NOTE(cdw): Param 'walk_distance' is optional, defaults to 2
     //           so we walk out of this method, and then walk out
     //           of the wrapper code (i.e. a RAJA policy, or something
@@ -78,8 +82,8 @@ Exec::getCallpathOffset(int walk_distance)
     // Extract out the pointer to our module+offset string and clean it up:
     std::string offsetstr = ss_location.str();
     offsetstr = offsetstr.substr((offsetstr.rfind("/") + 1), (offsetstr.length() - 1));
-    apolloUtils::strReplaceAll(offsetstr, "(", "_");
-    apolloUtils::strReplaceAll(offsetstr, ")", "_");
+    apollo->util.strReplaceAll(offsetstr, "(", "_");
+    apollo->util.strReplaceAll(offsetstr, ")", "_");
 
     return offsetstr;
 }
@@ -93,11 +97,11 @@ Exec::Exec()
 
 #ifdef ENABLE_MPI
     MPI_Comm_dup(MPI_COMM_WORLD, &apollo_mpi_comm);
-    MPI_Comm_rank(apollo_mpi_comm, &mpiRank);
-    MPI_Comm_size(apollo_mpi_comm, &mpiSize);
+    MPI_Comm_rank(apollo_mpi_comm, &env.mpiRank);
+    MPI_Comm_size(apollo_mpi_comm, &env.mpiSize);
 #else
-    mpiSize = 1;
-    mpiRank = 0;
+    env.mpiSize = 1;
+    env.mpiRank = 0;
 #endif //ENABLE_MPI
 
     log("Initialized.");
@@ -145,6 +149,7 @@ void
 Exec::packMeasurements(char *buf, int size, void *_reg) {
     int pos = 0;
 
+    Apollo::Exec *apollo = Apollo::Exec::instance();
     Apollo::Region *reg = (Apollo::Region *) _reg;
 
     for( auto &it : reg->best_policies ) {
@@ -153,7 +158,7 @@ Exec::packMeasurements(char *buf, int size, void *_reg) {
         double time_avg = it.second.second;
 
         // rank
-        MPI_Pack( &mpiRank, 1, MPI_INT, buf, size, &pos, apollo_mpi_comm );
+        MPI_Pack( &apollo->env.mpiRank, 1, MPI_INT, buf, size, &pos, apollo_mpi_comm );
         //std::cout << "rank," << rank << " pos: " << pos << std::endl;
 
         // num features
@@ -171,7 +176,7 @@ Exec::packMeasurements(char *buf, int size, void *_reg) {
         //std::cout << "policy_index," << policy_index << " pos: " << pos << std::endl;
         // XXX: use 64 bytes fixed for region_name
         // region name
-        MPI_Pack( reg->name, 64, MPI_CHAR, buf, size, &pos, apollo_mpi_comm);
+        MPI_Pack( reg->name.c_str(), 64, MPI_CHAR, buf, size, &pos, apollo_mpi_comm);
         //std::cout << "region_name," << name << " pos: " << pos << std::endl;
         // average time
         MPI_Pack( &time_avg, 1, MPI_DOUBLE, buf, size, &pos, apollo_mpi_comm);
@@ -183,7 +188,7 @@ Exec::packMeasurements(char *buf, int size, void *_reg) {
 
 
 void
-Exec::gatherReduceCollectiveTrainingData(int step)
+Exec::gatherReduceCollectiveTrainingData(size_t step)
 {
 #ifndef ENABLE_MPI
     // MPI is disabled, skip everything in this method.
@@ -196,6 +201,9 @@ Exec::gatherReduceCollectiveTrainingData(int step)
     //             python SKL modeling, etc.)
 #else
     // MPI is enabled, proceed...
+
+    Apollo::Exec *apollo = Apollo::Exec::instance();
+
     int send_size = 0;
     for( auto &it: regions ) {
         Region *reg = it.second;
@@ -248,7 +256,7 @@ Exec::gatherReduceCollectiveTrainingData(int step)
     //std::cout << "BYTES TRANSFERRED: " << num_measures * measure_size << std::endl;
 
     std::stringstream trace_out;
-    if( Config::APOLLO_TRACE_ALLGATHER )
+    if( apollo->config.APOLLO_TRACE_ALLGATHER )
         trace_out << "rank, region_name, features, policy, time_avg" << std::endl;
     //std::cout << "Rank " << rank << " TOTAL_MEASURES: " << total_measures << std::endl;
 
@@ -280,7 +288,7 @@ Exec::gatherReduceCollectiveTrainingData(int step)
         MPI_Unpack(recvbuf, recv_size, &pos, region_name, 64, MPI_CHAR, apollo_mpi_comm);
         MPI_Unpack(recvbuf, recv_size, &pos, &time_avg, 1, MPI_DOUBLE, apollo_mpi_comm);
 
-        if( Config::APOLLO_TRACE_ALLGATHER ) {
+        if( apollo->config.APOLLO_TRACE_ALLGATHER ) {
             trace_out << rank << ", " << region_name << ", ";
             trace_out << "[ ";
             for(auto &f : feature_vector) {
@@ -308,10 +316,10 @@ Exec::gatherReduceCollectiveTrainingData(int step)
         }
     }
 
-    if( Config::APOLLO_TRACE_ALLGATHER ) {
+    if( apollo->config.APOLLO_TRACE_ALLGATHER ) {
         std::cout << trace_out.str() << std::endl;
         std::ofstream fout("step-" + std::to_string(step) + \
-                "-rank-" + std::to_string(mpiRank) + "-allgather.txt");
+                "-rank-" + std::to_string(apollo->env.mpiRank) + "-allgather.txt");
 
         fout << trace_out.str();
         fout.close();
@@ -324,9 +332,10 @@ Exec::gatherReduceCollectiveTrainingData(int step)
 
 
 void
-Exec::flushAllRegionMeasurements(int step)
+Exec::step(size_t step, bool run_async)
 {
-    int rank = mpiRank;  //Automatically 0 if not an MPI environment.
+    Apollo::Exec *apollo = Apollo::Exec::instance();
+    int rank = apollo->env.mpiRank;  //Automatically 0 if not an MPI environment.
 
     // Reduce local region measurements to best policies
     // NOTE[chad]: reg->reduceBestPolicies() will guard any MPI collectives
@@ -343,7 +352,7 @@ Exec::flushAllRegionMeasurements(int step)
         reg->measures.clear();
     }
 
-    if( Config::APOLLO_COLLECTIVE_TRAINING ) {
+    if( apollo->config.APOLLO_COLLECTIVE_TRAINING ) {
         //std::cout << "DO COLLECTIVE TRAINING" << std::endl; //ggout
         gatherReduceCollectiveTrainingData(step);
     }
@@ -358,7 +367,7 @@ Exec::flushAllRegionMeasurements(int step)
     std::vector< float > train_time_responses;
 
     // Create a single model and fill the training vectors
-    if( Config::APOLLO_SINGLE_MODEL ) {
+    if( apollo->config.APOLLO_SINGLE_MODEL ) {
         // Reduce best polices per region to global
         for( auto &it: regions ) {
             Region *reg = it.second;
@@ -399,7 +408,7 @@ Exec::flushAllRegionMeasurements(int step)
         Region *reg = it.second;
 
         if( reg->model->training && reg->best_policies.size() > 0 ) {
-            if( Config::APOLLO_REGION_MODEL ) {
+            if( apollo->config.APOLLO_REGION_MODEL ) {
                 //std::cout << "TRAIN MODEL PER REGION" << std::endl;
                 // Reset training vectors
                 train_features.clear();
@@ -422,7 +431,7 @@ Exec::flushAllRegionMeasurements(int step)
                 //std::cout << "ONE SINGLE MODEL" << std::endl;
             }
 
-            if( Config::APOLLO_TRACE_BEST_POLICIES ) {
+            if( apollo->config.APOLLO_TRACE_BEST_POLICIES ) {
                 std::stringstream trace_out;
                 trace_out << "=== Rank " << rank \
                     << " BEST POLICIES Region " << reg->name << " ===" << std::endl;
@@ -451,7 +460,7 @@ Exec::flushAllRegionMeasurements(int step)
                     train_time_features,
                     train_time_responses );
 
-            if( Config::APOLLO_STORE_MODELS ) {
+            if( apollo->config.APOLLO_STORE_MODELS ) {
                 reg->model->store( "dtree-step-" + std::to_string( step ) \
                         + "-rank-" + std::to_string( rank ) \
                         + "-" + reg->name + ".yaml" );
@@ -461,7 +470,7 @@ Exec::flushAllRegionMeasurements(int step)
             }
         }
         else {
-            if( Config::APOLLO_RETRAIN_ENABLE && reg->time_model ) {
+            if( apollo->config.APOLLO_RETRAIN_ENABLE && reg->time_model ) {
                 //std::cout << "=== BEST POLICIES TRAINED REGION " << reg->name << " ===" << std::endl;
                 //for( auto &b : reg->best_policies ) {
                 //    std::cout << "[ " << (int)b.first[0] << " ]: P:" \
@@ -479,9 +488,9 @@ Exec::flushAllRegionMeasurements(int step)
                     feature_vector.push_back( it2.second.first );
                     double time_pred = reg->time_model->getTimePrediction( feature_vector );
 
-                    if( time_avg > ( Config::APOLLO_RETRAIN_TIME_THRESHOLD * time_pred ) ) {
+                    if( time_avg > ( apollo->config.APOLLO_RETRAIN_TIME_THRESHOLD * time_pred ) ) {
                         drifting++;
-                        if( Config::APOLLO_TRACE_RETRAIN ) {
+                        if( apollo->config.APOLLO_TRACE_RETRAIN ) {
                             std::ios_base::fmtflags f( trace_out.flags() );
                             trace_out << std::setprecision(3) << std::scientific \
                                 << "step " << step \
@@ -504,8 +513,8 @@ Exec::flushAllRegionMeasurements(int step)
                 if( drifting > 0 &&
                         ( static_cast<float>(drifting) / reg->best_policies.size() )
                         >=
-                        Config::APOLLO_RETRAIN_REGION_THRESHOLD ) {
-                    if( Config::APOLLO_TRACE_RETRAIN ) {
+                        apollo->config.APOLLO_RETRAIN_REGION_THRESHOLD ) {
+                    if( apollo->config.APOLLO_TRACE_RETRAIN ) {
                         trace_out << "step " << step \
                             << " rank " << rank \
                             << " retrain " << reg->name \
@@ -517,7 +526,7 @@ Exec::flushAllRegionMeasurements(int step)
                     reg->model = ModelFactory::createRoundRobin( num_policies );
                 }
 
-                if( Config::APOLLO_TRACE_RETRAIN ) {
+                if( apollo->config.APOLLO_TRACE_RETRAIN ) {
                     std::cout << trace_out.str();
                     std::ofstream fout("step-" + std::to_string(step) \
                             + "-rank-" + std::to_string(rank) \

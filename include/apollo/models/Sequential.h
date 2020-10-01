@@ -5,6 +5,8 @@
 
 #include "apollo/PolicyModel.h"
 
+namespace Apollo {
+
 class Sequential : public PolicyModel {
     public:
         Sequential(int num_policies);
@@ -16,5 +18,6 @@ class Sequential : public PolicyModel {
 
 }; //end: Sequential (class)
 
+}; //end: Apollo (namespace)
 
 #endif

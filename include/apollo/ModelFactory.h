@@ -36,8 +36,12 @@
 
 #include <memory>
 #include <vector>
+
 #include "apollo/PolicyModel.h"
 #include "apollo/TimingModel.h"
+
+namespace Apollo
+{
 
 // Factory
 class ModelFactory {
@@ -55,7 +59,7 @@ class ModelFactory {
         static std::unique_ptr<TimingModel> createRegressionTree(
                 std::vector< std::vector<float> > &features,
                 std::vector<float> &responses );
-}; //end: ModelFactory
+}; //end: ModelFactory (class)
 
-
+}; //end: Apollo (namespace)
 #endif

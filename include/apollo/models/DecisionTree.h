@@ -10,6 +10,8 @@
 using namespace cv;
 using namespace cv::ml;
 
+namespace Apollo {
+
 class DecisionTree : public PolicyModel {
 
     public:
@@ -34,5 +36,6 @@ class DecisionTree : public PolicyModel {
         //Ptr<LogisticRegression> dtree;
 }; //end: DecisionTree (class)
 
+}; //end: Apollo (namespace)
 
 #endif

@@ -34,11 +34,11 @@
 #ifndef APOLLO_EXEC_H
 #define APOLLO_EXEC_H
 
-#include "apollo/Config.h"
 #include "apollo/Env.h"
-#include "apollo/Region.h"
-#include "apollo/Trace.h"
 #include "apollo/Util.h"
+#include "apollo/Config.h"
+#include "apollo/Trace.h"
+#include "apollo/Region.h"
 
 namespace Apollo
 {
@@ -88,23 +88,32 @@ class Exec
         // TODO(chad): Get rid of this usage, it's bad form.
         int numThreads;  // <-- how many to use / are in use
 
-
-
-    private:
-        Exec();
-
-
-        // TODO(chad): Revisit this for generality:
-        void packMeasurements(char *buf, int size, void *_reg);
-        void gatherReduceCollectiveTrainingData(size_t application_step);
-
         // Key: region name, value: region raw pointer
         // Key: region name, value: map key: num_elements, value: policy_index, time_avg
         std::map<std::string, Apollo::Region *> regions;
         std::map< std::vector< float >, std::pair< int, double > > best_policies_global;
 
-} //end: Exec (class)
+        // Extract the location in code where a template was instantiated,
+        // returning a string with both the module and the offset within.
+        // NOTE: We default to walk_distance of 2 so we can
+        //       step out of this method, then step out of
+        //       some portable policy template, and get to the
+        //       module name and offset where that template
+        //       has been instantiated in the application code.
+        //       For different embeddings, you can adjust the param.
+        std::string getCallpathOffset(int walk_distance=2);
+        void *callpath_ptr;
 
-} //end: Apollo (namespace)
+    private:
+        Exec();
+
+        // TODO(chad): Revisit this for generality:
+        void packMeasurements(char *buf, int size, void *_reg);
+        void gatherReduceCollectiveTrainingData(size_t application_step);
+
+
+}; //end: Exec (class)
+
+}; //end: Apollo (namespace)
 
 #endif

@@ -34,16 +34,15 @@
 #ifndef APOLLO_ENV_H
 #define APOLLO_ENV_H
 
-#include "apollo/Apollo.h"
-#include "apollo/Exec.h"
+
+#include "omp.h"
+
 
 namespace Apollo
 {
 class Env
 {
     public:
-        Env();
-        ~Env();
 
         enum class Name {
             UNKNOWN, LSF, SLURM
@@ -76,9 +75,9 @@ class Env
         int mpiSize;   // 1 if no MPI
         int mpiRank;   // 0 if no MPI
 
-} //end: Env (class)
+}; //end: Env (class)
 
-} //end: Apollo (namespace)
+}; //end: Apollo (namespace)
 
 
 #endif

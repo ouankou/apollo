@@ -43,6 +43,8 @@
 using namespace std;
 
 
+namespace Apollo {
+
 RegressionTree::RegressionTree(std::vector< std::vector<float> > &features, std::vector<float > &responses)
     : TimingModel( "RegressionTree" )
 {
@@ -137,7 +139,7 @@ RegressionTree::getTimePrediction(std::vector<float> &features)
     //double duration = std::chrono::duration<double>(t2 - t1).count();
     //std::cout << "predict duration: " <<  duration << " choice: " << choice << endl; //ggout
     //std::cout << "Features: [ ";
-    //for(auto &i: features) 
+    //for(auto &i: features)
     //    std::cout << i;
     //std::cout << " ] ->  " << choice << std::endl;
 
@@ -150,3 +152,7 @@ void RegressionTree::store(const std::string &filename)
 {
     dtree->save( filename );
 }
+
+}; //end: Apollo (namespace)
+
+

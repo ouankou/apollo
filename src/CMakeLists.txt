@@ -98,8 +98,8 @@ install(TARGETS apollo
     ARCHIVE DESTINATION lib
     LIBRARY DESTINATION lib)
 
-if(APOLLO_ENABLE_CUDA_ASYNC)
-    add_subdirectory(cuda)
-endif(APOLLO_ENABLE_CUDA_ASYNC)
+#if(APOLLO_ENABLE_CUDA_ASYNC)
+#    add_subdirectory(cuda)
+#endif(APOLLO_ENABLE_CUDA_ASYNC)
 
 

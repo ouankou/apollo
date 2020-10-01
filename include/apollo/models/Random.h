@@ -6,6 +6,8 @@
 
 #include "apollo/PolicyModel.h"
 
+namespace Apollo {
+
 class Random : public PolicyModel {
     public:
         Random(int num_policies);
@@ -21,5 +23,6 @@ class Random : public PolicyModel {
         std::uniform_int_distribution<> random_dist;
 }; //end: Apollo::Model::Random (class)
 
+}; //end: Apollo (namespace)
 
 #endif

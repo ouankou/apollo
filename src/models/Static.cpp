@@ -40,8 +40,14 @@
 #define modelName "static"
 #define modelFile __FILE__
 
+namespace Apollo {
+
 int
 Static::getIndex(std::vector<float> &features)
 {
     return policy_choice;
 }
+
+}; //end: Apollo (namespace)
+
+

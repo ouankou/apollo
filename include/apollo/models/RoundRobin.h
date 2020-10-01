@@ -7,6 +7,8 @@
 
 #include "apollo/PolicyModel.h"
 
+namespace Apollo {
+
 class RoundRobin : public PolicyModel {
     public:
         RoundRobin(int num_policies);
@@ -20,5 +22,5 @@ class RoundRobin : public PolicyModel {
 
 }; //end: RoundRobin (class)
 
-
+}; //end: Apollo (namespace)
 #endif

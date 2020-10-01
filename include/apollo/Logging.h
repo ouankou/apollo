@@ -48,6 +48,8 @@
 #define APOLLO_LOG_FIRST_RANK_ONLY 1
 #endif
 
+namespace Apollo {
+
 template <typename Arg, typename... Args>
 void log(Arg&& arg, Args&&... args)
 {
@@ -72,7 +74,7 @@ void log(Arg&& arg, Args&&... args)
     using expander = int[];
     (void)expander{0, (void(std::cout << std::forward<Args>(args)), 0)...};
     std::cout << std::endl;
-};
+}; //end: log (template)
 
-
+}; //end: Apollo (namespace)
 #endif

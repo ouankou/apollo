@@ -31,10 +31,18 @@
 // FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 // DEALINGS IN THE SOFTWARE.
 
+
+#include <string>
+#include <vector>
+
+#include "apollo/Exec.h"
+#include "apollo/Region.h"
+#include "apollo/Trace.h"
+
 namespace Apollo
 {
 
-Trace::Trace()
+Apollo::Trace::Trace()
 {
     Apollo::Exec *apollo = Apollo::Exec::instance();
 
@@ -53,7 +61,7 @@ Trace::Trace()
             outputIsActualFile = false;
         } else {
             outputFileName += ".";
-            outputFileName += std::to_string(mpiRank);
+            outputFileName += std::to_string(apollo->env.mpiRank);
             outputFileName += ".csv";
             try {
                 outputFileHandle.open(outputFileName, std::fstream::out);
@@ -66,7 +74,7 @@ Trace::Trace()
                 outputIsActualFile = false;
             }
             if (emitOnline) {
-                writeTraceHeader();
+                writeHeader();
             }
         }
     }
@@ -75,7 +83,7 @@ Trace::Trace()
 } //end: Trace  (constructor)
 
 
-Trace::~Trace()
+Apollo::Trace::~Trace()
 {
     if (enabled and (not emitOnline)) {
         // We've been storing up our trace data to emit now.
@@ -91,18 +99,18 @@ Trace::~Trace()
 
 // TODO(cdw): Generalize the fields slightly for CUDA also...
 void
-Trace::writeHeader(void) {
+Apollo::Trace::writeHeader(void) {
     if (not enabled) { return; }
 
     if (outputIsActualFile) {
-        writeTraceHeaderImpl(outputFileHandle);
+        writeHeaderImpl(outputFileHandle);
     } else {
-        writeTraceHeaderImpl(std::cout);
+        writeHeaderImpl(std::cout);
     }
 }
 //
 void
-Trace::writeHeaderImpl(std::ostream &sink) {
+Apollo::Trace::writeHeaderImpl(std::ostream &sink) {
     if (not enabled) { return; }
 
     std::string optional_column_label;
@@ -126,24 +134,24 @@ Trace::writeHeaderImpl(std::ostream &sink) {
 }
 //
 void
-Trace::storeLine(TraceLine_t &t) {
+Apollo::Trace::storeLine(TraceLine_t &t) {
     if (not enabled) { return; }
 
     trace_data.push_back(t);
 }
 //
 void
-Trace::writeLine(TraceLine_t &t) {
+Apollo::Trace::writeLine(TraceLine_t &t) {
     if (not enabled) { return; }
     if (outputIsActualFile) {
-        writeTraceLineImpl(t, outputFileHandle);
+        writeLineImpl(t, outputFileHandle);
     } else {
-        writeTraceLineImpl(t, std::cout);
+        writeLineImpl(t, std::cout);
     }
 }
 //
 void
-Trace::writeLineImpl(TraceLine_t &t, std::ostream &sink) {
+Apollo::Trace::writeLineImpl(TraceLine_t &t, std::ostream &sink) {
     if (not enabled) { return; }
     sink \
        << "TRACE," << std::fixed \
@@ -160,7 +168,7 @@ Trace::writeLineImpl(TraceLine_t &t, std::ostream &sink) {
 }
 //
 void
-Trace::writeVector(void) {
+Apollo::Trace::writeVector(void) {
     if (not enabled) { return; }
     for (auto &t : trace_data) {
         writeLine(t);

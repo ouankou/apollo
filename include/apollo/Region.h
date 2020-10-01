@@ -40,7 +40,6 @@
 #include <memory>
 #include <map>
 
-#include "apollo/Apollo.h"
 #include "apollo/PolicyModel.h"
 #include "apollo/TimingModel.h"
 
@@ -48,7 +47,9 @@
 #include <mpi.h>
 #endif //ENABLE_MPI
 
-class Apollo::Region {
+namespace Apollo {
+
+class Region {
     public:
         Region(
                 const int    num_features,
@@ -96,14 +97,14 @@ class Apollo::Region {
         std::unique_ptr<PolicyModel> model;
 
     private:
-        //
-        Apollo        *apollo;
         bool           currently_inside_region;
         //
         std::chrono::steady_clock::time_point current_exec_time_begin;
         std::chrono::steady_clock::time_point current_exec_time_end;
         std::vector<float>            features;
         //
-}; //end: Apollo::Region
+}; //end: Region (class)
+
+}; //end: Apollo (namespace)
 
 #endif

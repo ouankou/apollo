@@ -37,6 +37,9 @@
 #include <string>
 #include <vector>
 
+namespace Apollo
+{
+
 // Abstract
 class PolicyModel {
     public:
@@ -56,5 +59,6 @@ class PolicyModel {
         bool             training       = false;
 }; //end: PolicyModel (abstract class)
 
+}; //end: Apollo (namespace)
 
 #endif

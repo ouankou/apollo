@@ -38,6 +38,9 @@
 #include "apollo/Config.h"
 #include "apollo/models/RoundRobin.h"
 
+
+namespace Apollo {
+
 int
 RoundRobin::getIndex(std::vector<float> &features)
 {
@@ -90,3 +93,7 @@ RoundRobin::~RoundRobin()
 {
     return;
 }
+
+
+}; //end: Apollo (namespace)
+

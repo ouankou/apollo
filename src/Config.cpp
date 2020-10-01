@@ -33,9 +33,9 @@
 
 #include <string>
 
-#include "apollo/Config.h"
 #include "apollo/Exec.h"
 #include "apollo/Util.h"
+#include "apollo/Config.h"
 
 namespace Apollo
 {
@@ -56,30 +56,29 @@ void
 Config::loadSettings(void)
 {
     Apollo::Exec *apollo = Apollo::Exec::instance();
-    using safeEnv = apollo->util.safeGetEnv;
 
     // Initialize config with defaults
-    APOLLO_INIT_MODEL          = safeEnv( "APOLLO_INIT_MODEL", "Static,0" );
-    APOLLO_COLLECTIVE_TRAINING = std::stoi( safeEnv( "APOLLO_COLLECTIVE_TRAINING", "1" ) );
-    APOLLO_LOCAL_TRAINING      = std::stoi( safeEnv( "APOLLO_LOCAL_TRAINING", "0" ) );
-    APOLLO_SINGLE_MODEL        = std::stoi( safeEnv( "APOLLO_SINGLE_MODEL", "0" ) );
-    APOLLO_REGION_MODEL        = std::stoi( safeEnv( "APOLLO_REGION_MODEL", "1" ) );
-    APOLLO_TRACE_MEASURES      = std::stoi( safeEnv( "APOLLO_TRACE_MEASURES", "0" ) );
-    APOLLO_NUM_POLICIES        = std::stoi( safeEnv( "APOLLO_NUM_POLICIES", "0" ) );
-    APOLLO_TRACE_POLICY        = std::stoi( safeEnv( "APOLLO_TRACE_POLICY", "0" ) );
-    APOLLO_STORE_MODELS        = std::stoi( safeEnv( "APOLLO_STORE_MODELS", "0" ) );
-    APOLLO_TRACE_RETRAIN       = std::stoi( safeEnv( "APOLLO_TRACE_RETRAIN", "0" ) );
-    APOLLO_TRACE_ALLGATHER     = std::stoi( safeEnv( "APOLLO_TRACE_ALLGATHER", "0" ) );
-    APOLLO_TRACE_BEST_POLICIES = std::stoi( safeEnv( "APOLLO_TRACE_BEST_POLICIES", "0" ) );
-    APOLLO_RETRAIN_ENABLE      = std::stoi( safeEnv( "APOLLO_RETRAIN_ENABLE", "1" ) );
-    APOLLO_RETRAIN_TIME_THRESHOLD   = std::stof( safeEnv( "APOLLO_RETRAIN_TIME_THRESHOLD", "2.0" ) );
-    APOLLO_RETRAIN_REGION_THRESHOLD = std::stof( safeEnv( "APOLLO_RETRAIN_REGION_THRESHOLD", "0.5" ) );
+    APOLLO_INIT_MODEL          = apollo->util.safeGetEnv( "APOLLO_INIT_MODEL", "Static,0" );
+    APOLLO_COLLECTIVE_TRAINING = std::stoi( apollo->util.safeGetEnv( "APOLLO_COLLECTIVE_TRAINING", "1" ) );
+    APOLLO_LOCAL_TRAINING      = std::stoi( apollo->util.safeGetEnv( "APOLLO_LOCAL_TRAINING", "0" ) );
+    APOLLO_SINGLE_MODEL        = std::stoi( apollo->util.safeGetEnv( "APOLLO_SINGLE_MODEL", "0" ) );
+    APOLLO_REGION_MODEL        = std::stoi( apollo->util.safeGetEnv( "APOLLO_REGION_MODEL", "1" ) );
+    APOLLO_TRACE_MEASURES      = std::stoi( apollo->util.safeGetEnv( "APOLLO_TRACE_MEASURES", "0" ) );
+    APOLLO_NUM_POLICIES        = std::stoi( apollo->util.safeGetEnv( "APOLLO_NUM_POLICIES", "0" ) );
+    APOLLO_TRACE_POLICY        = std::stoi( apollo->util.safeGetEnv( "APOLLO_TRACE_POLICY", "0" ) );
+    APOLLO_STORE_MODELS        = std::stoi( apollo->util.safeGetEnv( "APOLLO_STORE_MODELS", "0" ) );
+    APOLLO_TRACE_RETRAIN       = std::stoi( apollo->util.safeGetEnv( "APOLLO_TRACE_RETRAIN", "0" ) );
+    APOLLO_TRACE_ALLGATHER     = std::stoi( apollo->util.safeGetEnv( "APOLLO_TRACE_ALLGATHER", "0" ) );
+    APOLLO_TRACE_BEST_POLICIES = std::stoi( apollo->util.safeGetEnv( "APOLLO_TRACE_BEST_POLICIES", "0" ) );
+    APOLLO_RETRAIN_ENABLE      = std::stoi( apollo->util.safeGetEnv( "APOLLO_RETRAIN_ENABLE", "1" ) );
+    APOLLO_RETRAIN_TIME_THRESHOLD   = std::stof( apollo->util.safeGetEnv( "APOLLO_RETRAIN_TIME_THRESHOLD", "2.0" ) );
+    APOLLO_RETRAIN_REGION_THRESHOLD = std::stof( apollo->util.safeGetEnv( "APOLLO_RETRAIN_REGION_THRESHOLD", "0.5" ) );
 
     return;
 }
 
 bool
-Config::sanityCheck(bool abort_on_fail=true)
+Config::sanityCheck(bool abort_on_fail)
 {
 
 #ifndef ENABLE_MPI

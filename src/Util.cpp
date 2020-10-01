@@ -43,6 +43,9 @@
 #include <algorithm>
 #include <iomanip>
 
+#include "apollo/Apollo.h"
+#include "apollo/Util.h"
+
 // -----
 
 namespace Apollo
@@ -59,7 +62,7 @@ Util::~Util()
     return;
 }
 
-inline std::string
+std::string
 Util::strToUpper(std::string s) {
     std::transform(s.begin(), s.end(), s.begin(),
         [](unsigned char c) {
@@ -68,7 +71,7 @@ Util::strToUpper(std::string s) {
     return s;
 }
 
-inline void
+void
 Util::strReplaceAll(std::string& input, const std::string& from, const std::string& to) {
 	size_t pos = 0;
 	while ((pos = input.find(from, pos)) != std::string::npos) {
@@ -77,11 +80,11 @@ Util::strReplaceAll(std::string& input, const std::string& from, const std::stri
 	}
 }
 
-inline const char*
+const char*
 Util::safeGetEnv(
         const char *var_name,
         const char *use_this_if_not_found,
-        bool        silent=false)
+        bool        silent)
 {
     char *c = getenv(var_name);
     if (c == NULL) {

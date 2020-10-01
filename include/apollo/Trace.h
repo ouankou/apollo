@@ -34,12 +34,26 @@
 #ifndef APOLLO_TRACE_H
 #define APOLLO_TRACE_H
 
+#include <string>
+#include <vector>
+#include <unordered_map>
+#include <iostream>
+#include <sstream>
+#include <fstream>
+#include <cstdint>
+#include <cstring>
+#include <typeinfo>
+#include <algorithm>
+#include <iomanip>
+
+
 namespace Apollo
 {
 
 class Trace
 {
     public:
+        Trace();
         ~Trace();
         //disallow copy constructor
         Trace(const Trace&) = delete;
@@ -74,6 +88,7 @@ class Trace
     void writeVector(void);
 
 }; //end: Trace (class)
+
 }; //end: Apollo (namespace)
 
 #endif

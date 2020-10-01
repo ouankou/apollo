@@ -36,6 +36,8 @@
 #include "apollo/Config.h"
 #include "apollo/models/Random.h"
 
+namespace Apollo {
+
 int
 Random::getIndex(std::vector<float> &features)
 {
@@ -72,3 +74,6 @@ Random::~Random()
 {
     return;
 }
+
+}; //end: Apollo (namespace)
+

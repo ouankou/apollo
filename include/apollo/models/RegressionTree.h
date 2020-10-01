@@ -10,6 +10,8 @@ using namespace cv::ml;
 
 #include "apollo/TimingModel.h"
 
+namespace Apollo {
+
 class RegressionTree : public TimingModel {
 
     public:
@@ -29,5 +31,7 @@ class RegressionTree : public TimingModel {
         //Ptr<LogisticRegression> dtree;
 }; //end: RegressionTree (class)
 
+
+}; //end: Apollo (namespace)
 
 #endif

@@ -56,6 +56,8 @@ static inline bool fileExists(std::string path) {
     return (stat(path.c_str(), &stbuf) == 0);
 }
 
+namespace Apollo {
+
 DecisionTree::DecisionTree(int num_policies, std::string path)
     : PolicyModel(num_policies, "DecisionTree", false)
 {
@@ -184,3 +186,5 @@ void DecisionTree::store(const std::string &filename)
 {
     dtree->save( filename );
 }
+
+}; //end: Apollo (namespace)

@@ -35,6 +35,11 @@
 
 #include "apollo/models/Sequential.h"
 
+
+
+namespace Apollo {
+
+
 int
 Sequential::getIndex(std::vector<float> &features)
 {
@@ -60,3 +65,5 @@ Sequential::~Sequential()
 {
     return;
 }
+
+}; //end: Apollo (namespace)

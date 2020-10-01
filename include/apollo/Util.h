@@ -34,6 +34,8 @@
 #ifndef APOLLO_UTIL_H
 #define APOLLO_UTIL_H
 
+#include <string>
+
 namespace Apollo
 {
 class Util
@@ -43,30 +45,19 @@ class Util
         Util();
         ~Util();
 
-        inline std::string strToUpper(std::string s);
+        std::string strToUpper(std::string s);
 
-        inline void strReplaceAll(std::string& input, const std::string& from, const std::string& to);
+        void strReplaceAll(std::string& input, const std::string& from, const std::string& to);
 
-        inline const char* safeGetEnv(
+        const char* safeGetEnv(
                 const char *var_name,
                 const char *use_this_if_not_found,
                 bool        silent=false);
 
         bool strOptionIsEnabled(std::string so);
 
-        // Extract the location in code where a template was instantiated,
-        // returning a string with both the module and the offset within.
-        // NOTE: We default to walk_distance of 2 so we can
-        //       step out of this method, then step out of
-        //       some portable policy template, and get to the
-        //       module name and offset where that template
-        //       has been instantiated in the application code.
-        //       For different embeddings, you can adjust the param.
-        std::string getCallpathOffset(int walk_distance=2);
-        void *callpath_ptr;
 
-
-} //end: Util (class)
+}; //end: Util (class)
 
 } //end: Apollo (namespace)
 

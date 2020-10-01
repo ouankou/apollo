@@ -3,9 +3,11 @@
 
 #include "apollo/PolicyModel.h"
 
+namespace Apollo {
+
 class Static : public PolicyModel {
     public:
-        Static(int num_policies, int policy_choice) : 
+        Static(int num_policies, int policy_choice) :
            PolicyModel(num_policies, "Static", false), policy_choice(policy_choice) {};
         ~Static() {};
 
@@ -18,5 +20,5 @@ class Static : public PolicyModel {
 
 }; //end: Static (class)
 
-
+}; //end: Apollo (namespace)
 #endif

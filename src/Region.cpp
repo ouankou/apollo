@@ -41,7 +41,8 @@
 
 #include "assert.h"
 
-#include "apollo/Apollo.h"
+#include "apollo/Exec.h"
+#include "apollo/Config.h"
 #include "apollo/Region.h"
 #include "apollo/Logging.h"
 #include "apollo/ModelFactory.h"
@@ -68,12 +69,14 @@ Apollo::Region::getPolicyIndex(void)
     assert( currently_inside_region );
 #endif
 
+    Apollo::Exec *apollo = Apollo::Exec::instance();
+
     int choice = model->getIndex( features );
 
-    if( Config::APOLLO_TRACE_POLICY ) {
+    if( apollo->config.APOLLO_TRACE_POLICY ) {
         std::stringstream trace_out;
         int rank;
-        rank = apollo->mpiRank;
+        rank = apollo->env.mpiRank;
         trace_out << "Rank " << rank \
             << " region " << name \
             << " model " << model->name \
@@ -113,29 +116,29 @@ Apollo::Region::Region(
     :
         num_features(num_features)
 {
-    apollo = Apollo::instance();
-    if( Config::APOLLO_NUM_POLICIES ) {
-        apollo->num_policies = Config::APOLLO_NUM_POLICIES;
+    Apollo::Exec *apollo = Apollo::Exec::instance();
+
+    if( apollo->config.APOLLO_NUM_POLICIES ) {
+        apollo->num_policies = apollo->config.APOLLO_NUM_POLICIES;
     }
     else {
         apollo->num_policies = numAvailablePolicies;
     }
 
-    strncpy(name, regionName, sizeof(name)-1 );
-    name[ sizeof(name)-1 ] = '\0';
+    name = regionName;
 
     current_policy            = -1;
     currently_inside_region   = false;
 
 
-    if( Config::APOLLO_LOAD_MODEL != "" ) {
-        model = ModelFactory::loadDecisionTree( apollo->num_policies, Config::APOLLO_LOAD_MODEL );
+    if( apollo->config.APOLLO_LOAD_MODEL != "" ) {
+        model = ModelFactory::loadDecisionTree( apollo->num_policies, apollo->config.APOLLO_LOAD_MODEL );
     } else {
         // TODO use best_policies to train a model for new region for which there's training data
-        size_t pos = Config::APOLLO_INIT_MODEL.find(",");
-        std::string model_str = Config::APOLLO_INIT_MODEL.substr(0, pos);
+        size_t pos = apollo->config.APOLLO_INIT_MODEL.find(",");
+        std::string model_str = apollo->config.APOLLO_INIT_MODEL.substr(0, pos);
         if( "Static" == model_str ) {
-            int policy_choice = std::stoi( Config::APOLLO_INIT_MODEL.substr( pos+1 ) );
+            int policy_choice = std::stoi( apollo->config.APOLLO_INIT_MODEL.substr( pos+1 ) );
             if( policy_choice < 0 || policy_choice >= numAvailablePolicies ) {
                 std::cerr << "Invalid policy_choice " << policy_choice << std::endl;
                 abort();
@@ -152,7 +155,7 @@ Apollo::Region::Region(
             //std::cout << "Model RoundRobin" << std::endl;
         }
         else {
-            std::cerr << "Invalid model env var: " + Config::APOLLO_INIT_MODEL << std::endl;
+            std::cerr << "Invalid model env var: " + apollo->config.APOLLO_INIT_MODEL << std::endl;
             abort();
         }
     }
@@ -170,16 +173,15 @@ Apollo::Region::Region(
     :
         num_features(num_features)
 {
-    apollo = Apollo::instance();
-    if( Config::APOLLO_NUM_POLICIES ) {
-        apollo->num_policies = Config::APOLLO_NUM_POLICIES;
+    Apollo::Exec *apollo = Apollo::Exec::instance();
+    if( apollo->config.APOLLO_NUM_POLICIES ) {
+        apollo->num_policies = apollo->config.APOLLO_NUM_POLICIES;
     }
     else {
         apollo->num_policies = numAvailablePolicies;
     }
 
-    strncpy(name, regionName, sizeof(name)-1 );
-    name[ sizeof(name)-1 ] = '\0';
+    name = regionName;
 
     current_policy            = -1;
     currently_inside_region   = false;
@@ -255,6 +257,7 @@ Apollo::Region::end(double duration)
 #endif
     currently_inside_region = false;
 
+    static Apollo::Exec *apollo = Apollo::Exec::instance();
 
     // TODO reduce overhead, move time calculation to reduceBestPolicies?
     // TODO buckets of features?
@@ -277,7 +280,7 @@ Apollo::Region::end(double duration)
         iter->second->time_total += duration;
     }
 
-    if (apollo->traceEnabled) {
+    if (apollo->trace.enabled) {
         // TODO(cdw): extract the correct values.
         int num_threads      = -999;
         int num_elements     = current_elem_count;
@@ -305,7 +308,7 @@ Apollo::Region::end(double duration)
         //            in the future when we have more features.
         // NOTE.....: This works when features are a key/value map.
         //
-        //if (apollo->traceEmitAllFeatures) {
+        //if (apollo->trace.emitAllFeatures) {
         //    if (apollo->features.size() > 0) {
         //        std::stringstream ss;
         //        ss.precision(17);
@@ -324,7 +327,7 @@ Apollo::Region::end(double duration)
 
         // TODO(cdw): ...for now, we make a quoted CSV of the elements counts
         //            for OpenMP collapsed loops.
-        if (apollo->traceEmitAllFeatures) {
+        if (apollo->trace.emitAllFeatures) {
             std::stringstream ssvec;
             ssvec << "\"";
             for (auto &ft : features) {
@@ -338,7 +341,7 @@ Apollo::Region::end(double duration)
             optional_all_feature_column += ssvec.str();
         }
 
-        Apollo::TraceLine_t \
+        Apollo::Trace::TraceLine_t \
            t = std::make_tuple(
                 wall_time,
                 node_id,
@@ -351,10 +354,10 @@ Apollo::Region::end(double duration)
                 optional_all_feature_column
             );
 
-        if (apollo->traceEmitOnline) {
-            apollo->writeTraceLine(t);
+        if (apollo->trace.emitOnline) {
+            apollo->trace.writeLine(t);
         } else {
-            apollo->storeTraceLine(t);
+            apollo->trace.storeLine(t);
         }
     } // end: if (apollo->traceEnabled)
 
@@ -389,11 +392,13 @@ Apollo::Region::end(void)
 int
 Apollo::Region::reduceBestPolicies(int step)
 {
+    Apollo::Exec *apollo = Apollo::Exec::instance();
+
     std::stringstream trace_out;
     int rank;
-    if( Config::APOLLO_TRACE_MEASURES ) {
+    if( apollo->config.APOLLO_TRACE_MEASURES ) {
 #ifdef ENABLE_MPI
-        rank = apollo->mpiRank;
+        rank = apollo->env.mpiRank;
 #else
         rank = 0;
 #endif //ENABLE_MPI
@@ -407,7 +412,7 @@ Apollo::Region::reduceBestPolicies(int step)
         const int policy_index                   = iter_measure->first.second;
         auto                           &time_set = iter_measure->second;
 
-        if( Config::APOLLO_TRACE_MEASURES ) {
+        if( apollo->config.APOLLO_TRACE_MEASURES ) {
             trace_out << "features: [ ";
             int mul = 1;
             for(auto &f : feature_vector ) { \
@@ -434,7 +439,7 @@ Apollo::Region::reduceBestPolicies(int step)
         }
     }
 
-    if( Config::APOLLO_TRACE_MEASURES ) {
+    if( apollo->config.APOLLO_TRACE_MEASURES ) {
         trace_out << ".-" << std::endl;
         trace_out << "Rank " << rank << " Region " << name << " Reduce " << std::endl;
         for( auto &b : best_policies ) {

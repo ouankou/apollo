@@ -34,18 +34,20 @@
 #ifndef APOLLO_APOLLO_H
 #define APOLLO_APOLLO_H
 
-#include "apollo/Exec.h"
-
-// So application codes can simply use:   Apollo_t *apollo = Apollo::instance();
-typedef Apollo::Exec Apollo_t;
-
-namespace Apollo
-{
-
-    // Return a pointer to the singleton instance of Apollo
-    inline Apollo::Exec* instance(void) noexcept {
-        return Apollo::Exec::instance();
-    }
-
-} //end: Apollo (namespace)
+// NOTE[cdw]: Removed because this creates a circular dependency and is also not needed.
+//
+//    #include "apollo/Exec.h"
+//
+//    // So application codes can simply use:   Apollo_t *apollo = Apollo::instance();
+//    typedef Apollo::Exec Apollo_t;
+//
+//    namespace Apollo
+//    {
+//
+//        // Return a pointer to the singleton instance of Apollo
+//        inline Apollo::Exec* instance(void) noexcept {
+//            return Apollo::Exec::instance();
+//        }
+//
+//    } //end: Apollo (namespace)
 #endif

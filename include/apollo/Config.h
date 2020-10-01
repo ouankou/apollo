@@ -34,15 +34,20 @@
 #ifndef APOLLO_CONFIG_H
 #define APOLLO_CONFIG_H
 
+#include <string>
+
+
 namespace Apollo
 {
 
 class Config {
     public:
+        Config();
         ~Config();
 
         void loadSettings(void);
-        bool sanityCheck(bool abort_on_fail);
+        bool sanityCheck(bool abort_on_fail=true);
+        void print(void);
 
         int APOLLO_COLLECTIVE_TRAINING;
         int APOLLO_LOCAL_TRAINING;
@@ -61,10 +66,7 @@ class Config {
         std::string APOLLO_INIT_MODEL;
         std::string APOLLO_LOAD_MODEL;
 
-    private:
-        Config();
 
-    friend class Apollo::Exec;
 }; //end: Config (class)
 }; //end: Apollo (namespace)
 
