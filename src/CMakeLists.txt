@@ -52,6 +52,7 @@ include_directories(
 set(APOLLO_HEADERS
     ../include/apollo/Apollo.h
     ../include/apollo/Config.h
+    ../include/apollo/Env.h
     ../include/apollo/Exec.h
     ../include/apollo/Logging.h
     ../include/apollo/Macros.h
@@ -66,6 +67,7 @@ set(APOLLO_HEADERS
 set(APOLLO_SOURCES
     Apollo.cpp
     Config.cpp
+    Env.cpp
     Exec.cpp
     Trace.cpp
     Util.cpp

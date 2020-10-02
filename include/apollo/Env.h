@@ -34,30 +34,32 @@
 #ifndef APOLLO_ENV_H
 #define APOLLO_ENV_H
 
+#include <string>
 
+#ifdef _OPENMP
 #include "omp.h"
-
+#endif
 
 namespace Apollo
 {
 class Env
 {
     public:
+        Env();
+        ~Env();
 
-        enum class Name {
-            UNKNOWN, LSF, SLURM
-        };
+        // ---
 
-        void    clear(void);
-        Name    detect(void);
-        void    load(Name from_env);
-        bool    validate(void);
-        bool    refresh(void);
+        void         clear(void);
+        std::string  detect(void);
+        void         load(std::string from_env);
+        bool         validate(void);
+        bool         refresh(void);
 
         // ---
 
         bool loaded;
-        Name name;
+        std::string name;
 
         int numNodes;
         int numCPUsOnNode;
@@ -68,9 +70,12 @@ class Env
 
         int numThreadsPerCPUCap;
 
+#ifdef _OPENMP
         omp_sched_t ompDefaultSchedule;
         int         ompDefaultNumThreads;
         int         ompDefaultChunkSize;
+#endif
+
         //
         int mpiSize;   // 1 if no MPI
         int mpiRank;   // 0 if no MPI

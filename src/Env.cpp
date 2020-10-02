@@ -36,13 +36,9 @@
 #include <omp.h>
 #endif
 
-#include "apollo/Apollo.h"
+#include "apollo/Exec.h"
 #include "apollo/Env.h"
 #include "apollo/Logging.h"
-
-void getEnvLSF(void);
-void getEnvSLURM(void);
-void getEnvUNKNOWN(void);
 
 namespace Apollo
 {
@@ -62,64 +58,33 @@ Env::~Env()
 void
 Env::clear(void)
 {
-    //TODO(chad): Clear out the values before loading them from the environment.
+    //TODO[cdw]: Clear out the values before loading them from the environment.
+    name = "unknown";
     return;
 } //end: clear
 
-Apollo::Env::Name
+std::string
 Env::detect(void)
 {
-    return Apollo::Env::Name.UNKNOWN;
-}
-
-void
-load(Apollo::Env::Name detected_env)
-{
-    using Apollo::Env::Name;
-
-    switch(detected_env) {
-        case LSF:     getEnvLSF();     break;
-        case SLURM:   getEnvSLURM();   break;
-        case UNKNOWN: getEnvUNKNOWN(); break;
-        default:      getEnvUNKNOWN(); break;
-    }
-
-    loadSlurmEnv();
-    return;
-
+    //TODO[cdw]: Add support for LSF environments.
+    return "slurm";
 }
 
 
 void
-getEnvLSF(void)
+Env::load(std::string from_env)
 {
-    //TODO(chad): Extract information from the LSF environment variables.
-    return;
-} //end: getEnvLSF
-
-void
-getEnvUNKNOWN(void)
-{
-    //TODO(chad): Extract information from an UNKNOWN environment (defaults).
-    return;
-} //end: getEnvUNKNOWN
-
-
-void
-getEnvSLURM(void)
-{
-
-    using safeEnv = Apollo::Utils::safeGetEnv;
+    Apollo::Exec *apollo = Apollo::Exec::instance();
 
     log("Reading SLURM env...");
-    numNodes      = std::stoi(safeEnv("SLURM_NNODES", "1"));
-    numProcs      = std::stoi(safeEnv("SLURM_NPROCS", "1"));
-    numCPUsOnNode = std::stoi(safeEnv("SLURM_CPUS_ON_NODE", "36"));
+    numNodes      = std::stoi(apollo->util.safeGetEnv("SLURM_NNODES", "1"));
+    numProcs      = std::stoi(apollo->util.safeGetEnv("SLURM_NPROCS", "1"));
+    numCPUsOnNode = std::stoi(apollo->util.safeGetEnv("SLURM_CPUS_ON_NODE", "36"));
     log("    numCPUsOnNode ...........: ", numCPUsOnNode);
     log("    numNodes ................: ", numNodes);
     log("    numProcs ................: ", numProcs);
 
-    std::string envProcPerNode = safeEnv("SLURM_TASKS_PER_NODE", "1");
+    std::string envProcPerNode = apollo->util.safeGetEnv("SLURM_TASKS_PER_NODE", "1");
     // Sometimes SLURM sets this to something like "4(x2)" and
     // all we care about here is the "4":
     auto pos = envProcPerNode.find('(');
@@ -130,12 +95,13 @@ getEnvSLURM(void)
     }
     log("    numProcsPerNode .........: ", numProcsPerNode);
 
-    numThreadsPerProcCap = std::max(1, (int)(numCPUsOnNode / numProcsPerNode));
-    log("    numThreadsPerProcCap ....: ", numThreadsPerProcCap);
+    numThreadsPerCPUCap = std::max(1, (int)(numCPUsOnNode / numProcsPerNode));
+    log("    numThreadsPerCPUCap ....: ", numThreadsPerCPUCap);
 
+#ifdef _OPENMP
     log("Reading OMP env...");
     ompDefaultSchedule   = omp_sched_static;       //<-- libgomp.so default
-    ompDefaultNumThreads = numThreadsPerProcCap;   //<-- from SLURM calc above
+    ompDefaultNumThreads = numThreadsPerCPUCap;    //<-- from SLURM calc above
     ompDefaultChunkSize  = -1;                     //<-- let OMP decide
 
     // Override the OMP defaults ONLY if there is an environment variable set:
@@ -162,14 +128,17 @@ getEnvSLURM(void)
         }
     }
 
-    numThreads = ompDefaultNumThreads;
-} //end: getEnvSLURM
+    //TODO[cdw]: This 'global' should go away if not in use.
+    Apollo::Exec::instance()->numThreads = ompDefaultNumThreads;
+#endif
+
+} //end: load
 
 
 bool
 Env::validate(void)
 {
-    //TODO(chad): Sanity-check all the values loaded from environment or defaults.
+    //TODO[cdw]: Sanity-check all the values loaded from environment or defaults.
     return true;
 } //end: validate
 
@@ -177,10 +146,10 @@ Env::validate(void)
 bool
 Env::refresh(void)
 {
-    this->clear();
-    this->name = this->detect();
-    this->load(this->name);
-    return this->validate();
+    clear();
+    name = detect();
+    load(name);
+    return validate();
 } //end: refresh
 
 
