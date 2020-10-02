@@ -57,11 +57,20 @@ set(APOLLO_HEADERS
     ../include/apollo/Logging.h
     ../include/apollo/Macros.h
     ../include/apollo/ModelFactory.h
-    ../include/apollo/TimingModel.h
-    ../include/apollo/PolicyModel.h
     ../include/apollo/Region.h
     ../include/apollo/Trace.h
     ../include/apollo/Util.h
+    ../include/apollo/TimingModel.h
+    ../include/apollo/PolicyModel.h
+    )
+
+set(APOLLO_MODEL_HEADERS
+    ../include/apollo/models/DecisionTree.h
+    ../include/apollo/models/Random.h
+    ../include/apollo/models/RegressionTree.h
+    ../include/apollo/models/RoundRobin.h
+    ../include/apollo/models/Sequential.h
+    ../include/apollo/models/Static.h
     )
 
 set(APOLLO_SOURCES
@@ -94,6 +103,7 @@ foreach(_extlib ${APOLLO_EXTERNAL_LIBS})
 endforeach()
 
 install(FILES ${APOLLO_HEADERS} DESTINATION include/apollo)
+install(FILES ${APOLLO_MODEL_HEADERS} DESTINATION include/apollo/models)
 
 install(TARGETS apollo
     EXPORT apollo
