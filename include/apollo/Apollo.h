@@ -34,20 +34,46 @@
 #ifndef APOLLO_APOLLO_H
 #define APOLLO_APOLLO_H
 
-// NOTE[cdw]: Removed because this creates a circular dependency and is also not needed.
+#ifndef APOLLO_MACROS_H
+// Apollo header files should always begin with this, to provide
+// universal override capability regardless of which header files
+// a user includes, and which order they include them.
+#include "apollo/Macros.h"
+#endif
+
+// NOTE: "apollo/Apollo.h" is a convenient single-include for all of Apollo.
+
+#include "apollo/Config.h"
+#include "apollo/Env.h"
+#include "apollo/Exec.h"
+#include "apollo/Logging.h"
+#include "apollo/Util.h"
+#include "apollo/Trace.h"
+#include "apollo/Region.h"
+#include "apollo/TimingModel.h"
+#include "apollo/PolicyModel.h"
+
+#include "apollo/models/DecisionTree.h"
+#include "apollo/models/Random.h"
+#include "apollo/models/RegressionTree.h"
+#include "apollo/models/RoundRobin.h"
+#include "apollo/models/Sequential.h"
+#include "apollo/models/Static.h"
+
+
+// So application codes can simply use:
 //
-//    #include "apollo/Exec.h"
+//          Apollo_t *apollo = Apollo::instance();
 //
-//    // So application codes can simply use:   Apollo_t *apollo = Apollo::instance();
-//    typedef Apollo::Exec Apollo_t;
-//
-//    namespace Apollo
-//    {
-//
-//        // Return a pointer to the singleton instance of Apollo
-//        inline Apollo::Exec* instance(void) noexcept {
-//            return Apollo::Exec::instance();
-//        }
-//
-//    } //end: Apollo (namespace)
+typedef Apollo::Exec Apollo_t;
+
+namespace Apollo
+{
+
+    // Return a pointer to the singleton instance of Apollo
+    inline Apollo::Exec* instance(void) noexcept {
+        return Apollo::Exec::instance();
+    }
+
+} //end: Apollo (namespace)
 #endif

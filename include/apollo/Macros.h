@@ -34,7 +34,21 @@
 #ifndef APOLLO_MACROS_H
 #define APOLLO_MACROS_H
 
-#define APOLLO_FEATURE(apollo_ptr, name, goal, unit, var_ptr) \
-    Apollo::Feature __apollo_feat##name
+// ----
+// NOTE: This file is set to be included before any other content of Apollo
+//       header files, regardless of the order or subset of header files that
+//       a user includes.
+//
+//       The intent is that this file can be tailored to provide safe universally-
+//       available #define's, conditional #includes, and other global content
+//       both within and around the Apollo namespace, that will be available
+//       in any context where Apollo is being referenced.
+// ----
+
+
+namespace Apollo {
+
+}; //end: Apollo (namespace)
+
 
 #endif

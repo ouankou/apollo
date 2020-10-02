@@ -35,6 +35,13 @@
 #ifndef APOLLO_REGION_H
 #define APOLLO_REGION_H
 
+#ifndef APOLLO_MACROS_H
+// Apollo header files should always begin with this, to provide
+// universal override capability regardless of which header files
+// a user includes, and which order they include them.
+#include "apollo/Macros.h"
+#endif
+
 #include <vector>
 #include <chrono>
 #include <memory>
