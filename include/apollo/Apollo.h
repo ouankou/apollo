@@ -53,13 +53,6 @@
 #include "apollo/TimingModel.h"
 #include "apollo/PolicyModel.h"
 
-#include "apollo/models/DecisionTree.h"
-#include "apollo/models/Random.h"
-#include "apollo/models/RegressionTree.h"
-#include "apollo/models/RoundRobin.h"
-#include "apollo/models/Sequential.h"
-#include "apollo/models/Static.h"
-
 
 // So application codes can simply use:
 //
