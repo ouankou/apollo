@@ -43,6 +43,10 @@
 #include <algorithm>
 #include <iomanip>
 
+#ifdef ENABLE_MPI
+#include <mpi.h>
+#endif
+
 #include "apollo/Apollo.h"
 #include "apollo/Util.h"
 #include "apollo/Logging.h"
@@ -97,11 +101,11 @@ Exec::Exec()
 
 #ifdef ENABLE_MPI
     MPI_Comm_dup(MPI_COMM_WORLD, &apollo_mpi_comm);
-    MPI_Comm_rank(apollo_mpi_comm, &env.mpiRank);
-    MPI_Comm_size(apollo_mpi_comm, &env.mpiSize);
+    MPI_Comm_rank(apollo_mpi_comm, &env.mpi_rank);
+    MPI_Comm_size(apollo_mpi_comm, &env.mpi_size);
 #else
-    env.mpiSize = 1;
-    env.mpiRank = 0;
+    env.mpi_size = 1;
+    env.mpi_rank = 0;
 #endif //ENABLE_MPI
 
     log("Initialized.");
@@ -158,7 +162,7 @@ Exec::packMeasurements(char *buf, int size, void *_reg) {
         double time_avg = it.second.second;
 
         // rank
-        MPI_Pack( &apollo->env.mpiRank, 1, MPI_INT, buf, size, &pos, apollo_mpi_comm );
+        MPI_Pack( &apollo->env.mpi_rank, 1, MPI_INT, buf, size, &pos, apollo_mpi_comm );
         //std::cout << "rank," << rank << " pos: " << pos << std::endl;
 
         // num features
@@ -319,7 +323,7 @@ Exec::gatherReduceCollectiveTrainingData(size_t step)
     if( apollo->config.APOLLO_TRACE_ALLGATHER ) {
         std::cout << trace_out.str() << std::endl;
         std::ofstream fout("step-" + std::to_string(step) + \
-                "-rank-" + std::to_string(apollo->env.mpiRank) + "-allgather.txt");
+                "-rank-" + std::to_string(apollo->env.mpi_rank) + "-allgather.txt");
 
         fout << trace_out.str();
         fout.close();
@@ -335,7 +339,7 @@ void
 Exec::step(size_t step, bool run_async)
 {
     Apollo::Exec *apollo = Apollo::Exec::instance();
-    int rank = apollo->env.mpiRank;  //Automatically 0 if not an MPI environment.
+    int rank = apollo->env.mpi_rank;  //Automatically 0 if not an MPI environment.
 
     // Reduce local region measurements to best policies
     // NOTE[chad]: reg->reduceBestPolicies() will guard any MPI collectives

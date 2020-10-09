@@ -52,7 +52,7 @@
 #include "apollo/Region.h"
 #include "apollo/TimingModel.h"
 #include "apollo/PolicyModel.h"
-
+#include "apollo/Perf.h"
 
 // So application codes can simply use:
 //

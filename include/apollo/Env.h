@@ -86,8 +86,8 @@ class Env
 #endif
 
         //
-        int mpiSize;   // 1 if no MPI
-        int mpiRank;   // 0 if no MPI
+        int mpi_size;   // 1 if no MPI
+        int mpi_rank;   // 0 if no MPI
 
 }; //end: Env (class)
 

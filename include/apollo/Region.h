@@ -50,9 +50,6 @@
 #include "apollo/PolicyModel.h"
 #include "apollo/TimingModel.h"
 
-#ifdef ENABLE_MPI
-#include <mpi.h>
-#endif //ENABLE_MPI
 
 namespace Apollo {
 

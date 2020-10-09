@@ -12,6 +12,8 @@
 #include <mutex>
 #include <atomic>
 
+#include "apollo/Apollo.h"
+
 
 static void __attribute__((constructor)) initTrace(void);
 //static void __attribute__((destructor)) flushTrace(void);
@@ -43,11 +45,6 @@ std::atomic<uint64_t> num_buffers{0};
 std::atomic<uint64_t> num_buffers_processed{0};
 bool flushing{false};
 
-// The map that holds correlation IDs and matches them to GUIDs
-std::unordered_map<uint32_t, std::shared_ptr<Apollo::KernelInfo>> correlation_map;
-std::mutex map_mutex;
-
-
 void
 store_profiler_data(
         const std::string &name,
@@ -61,88 +58,17 @@ store_profiler_data(
 
     static Apollo::Exec* apollo = Apollo::Exec::instance();
 
-    Apollo::KernelInfo kref;
+    Apollo::Region *reg;
 
     if (correlationId > 0) {
-        map_mutex.lock();
-        kref = correlation_map[correlationId];
-        correlation_map.erase(correlationId);
-        map_mutex.unlock();
+        reg = apollo->perf.find(correlationId);
+        apollo->perf.unbind(correlationId);
     }
 
     // NOTE[cdw]: Here is where we bring the information over to Apollo.
 
 }
 
-
-
-static const char * getMemcpyKindString(uint8_t kind)
-{
-    switch (kind) {
-        case CUPTI_ACTIVITY_MEMCPY_KIND_HTOD:
-            return "Memcpy HtoD";
-        case CUPTI_ACTIVITY_MEMCPY_KIND_DTOH:
-            return "Memcpy DtoH";
-        case CUPTI_ACTIVITY_MEMCPY_KIND_HTOA:
-            return "Memcpy HtoA";
-        case CUPTI_ACTIVITY_MEMCPY_KIND_ATOH:
-            return "Memcpy AtoH";
-        case CUPTI_ACTIVITY_MEMCPY_KIND_ATOA:
-            return "Memcpy AtoA";
-        case CUPTI_ACTIVITY_MEMCPY_KIND_ATOD:
-            return "Memcpy AtoD";
-        case CUPTI_ACTIVITY_MEMCPY_KIND_DTOA:
-            return "Memcpy DtoA";
-        case CUPTI_ACTIVITY_MEMCPY_KIND_DTOD:
-            return "Memcpy DtoD";
-        case CUPTI_ACTIVITY_MEMCPY_KIND_HTOH:
-            return "Memcpy HtoH";
-        case CUPTI_ACTIVITY_MEMCPY_KIND_PTOP:
-            return "Memcpy PtoP";
-        default:
-            break;
-    }
-    return "<unknown>";
-}
-
-static const char *
-getUvmCounterKindString(CUpti_ActivityUnifiedMemoryCounterKind kind)
-{
-    switch (kind)
-    {
-        case CUPTI_ACTIVITY_UNIFIED_MEMORY_COUNTER_KIND_BYTES_TRANSFER_HTOD:
-            return "Unified Memcpy HTOD";
-        case CUPTI_ACTIVITY_UNIFIED_MEMORY_COUNTER_KIND_BYTES_TRANSFER_DTOH:
-            return "Unified Memcpy DTOH";
-        case CUPTI_ACTIVITY_UNIFIED_MEMORY_COUNTER_KIND_CPU_PAGE_FAULT_COUNT:
-            return "Unified Memory CPU Page Fault Count";
-        case CUPTI_ACTIVITY_UNIFIED_MEMORY_COUNTER_KIND_GPU_PAGE_FAULT:
-            return "Unified Memory GPU Page Fault Groups";
-        case CUPTI_ACTIVITY_UNIFIED_MEMORY_COUNTER_KIND_THRASHING:
-            return "Unified Memory Trashing";
-        case CUPTI_ACTIVITY_UNIFIED_MEMORY_COUNTER_KIND_THROTTLING:
-            return "Unified Memory Throttling";
-        default:
-            break;
-    }
-    return "<unknown>";
-}
-
-static uint32_t
-getUvmCounterDevice(CUpti_ActivityUnifiedMemoryCounterKind kind,
-        uint32_t source, uint32_t dest)
-{
-    switch (kind)
-    {
-        case CUPTI_ACTIVITY_UNIFIED_MEMORY_COUNTER_KIND_BYTES_TRANSFER_HTOD:
-            return dest;
-        case CUPTI_ACTIVITY_UNIFIED_MEMORY_COUNTER_KIND_BYTES_TRANSFER_DTOH:
-            return source;
-        default:
-            break;
-    }
-    return 0;
-}
 
 //array enumerating CUpti_OpenAccEventKind strings
 const char* openacc_event_names[] = {
@@ -284,10 +210,6 @@ static void printActivity(CUpti_Activity *record) {
         }
         case CUPTI_ACTIVITY_KIND_OPENMP: {
             openmpActivity(record);
-            break;
-        }
-        case CUPTI_ACTIVITY_KIND_ENVIRONMENT: {
-            environmentActivity(record);
             break;
         }
         default:
@@ -434,8 +356,6 @@ void apollo_cupti_callback_dispatch(void *ud, CUpti_CallbackDomain domain,
 }
 
 void initTrace() {
-    bool& registered = get_registered();
-    registered = true;
 
     // Register callbacks for buffer requests and for buffers completed by CUPTI.
     CUPTI_CALL(cuptiActivityRegisterCallbacks(bufferRequested, bufferCompleted));

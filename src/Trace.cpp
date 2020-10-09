@@ -61,7 +61,7 @@ Apollo::Trace::Trace()
             outputIsActualFile = false;
         } else {
             outputFileName += ".";
-            outputFileName += std::to_string(apollo->env.mpiRank);
+            outputFileName += std::to_string(apollo->env.mpi_rank);
             outputFileName += ".csv";
             try {
                 outputFileHandle.open(outputFileName, std::fstream::out);

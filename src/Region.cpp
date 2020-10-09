@@ -76,7 +76,7 @@ Apollo::Region::getPolicyIndex(void)
     if( apollo->config.APOLLO_TRACE_POLICY ) {
         std::stringstream trace_out;
         int rank;
-        rank = apollo->env.mpiRank;
+        rank = apollo->env.mpi_rank;
         trace_out << "Rank " << rank \
             << " region " << name \
             << " model " << model->name \
@@ -398,7 +398,7 @@ Apollo::Region::reduceBestPolicies(int step)
     int rank;
     if( apollo->config.APOLLO_TRACE_MEASURES ) {
 #ifdef ENABLE_MPI
-        rank = apollo->env.mpiRank;
+        rank = apollo->env.mpi_rank;
 #else
         rank = 0;
 #endif //ENABLE_MPI

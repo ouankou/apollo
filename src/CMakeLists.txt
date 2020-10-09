@@ -62,6 +62,7 @@ set(APOLLO_HEADERS
     ../include/apollo/Util.h
     ../include/apollo/TimingModel.h
     ../include/apollo/PolicyModel.h
+    ../include/apollo/Perf.h
     )
 
 set(APOLLO_MODEL_HEADERS
@@ -82,6 +83,7 @@ set(APOLLO_SOURCES
     Util.cpp
     Region.cpp
     ModelFactory.cpp
+    Perf.cpp
     models/Random.cpp
     models/Sequential.cpp
     models/Static.cpp

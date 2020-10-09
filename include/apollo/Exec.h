@@ -46,6 +46,7 @@
 #include "apollo/Config.h"
 #include "apollo/Trace.h"
 #include "apollo/Region.h"
+#include "apollo/Perf.h"
 
 namespace Apollo
 {
@@ -69,6 +70,7 @@ class Exec
         Apollo::Env    env;
         Apollo::Config config;
         Apollo::Trace  trace;
+        Apollo::Perf   perf;
 
         // Call step() at the bottom of each major simulation loop, after the
         // application's work is done, and potentially overlapping with an I/O
