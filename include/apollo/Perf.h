@@ -58,14 +58,26 @@ class Perf
         Perf();
         ~Perf();
 
-        void bind(uint32_t id, Apollo::Region *reg);
-        void unbind(uint32_t id);
+        class Record
+        {
+            //TODO[cdw]: Make this like the ApolloContext in the develop branch.
+        };
+
+        void queueRecord(uint32_t streamId, Apollo::Perf::Record *pr);
+        Apollo::Perf::Record* dequeueRecord(uint32_t streamId);
+
+        void bindRecord(uint32_t correlationId, Apollo::Perf::Record *pr);
+        void unbindRecord(uint32_t correlationId);
 
         Apollo::Region* find(uint32_t id);
 
     private:
-        std::unordered_map<uint32_t, Apollo::Region*> id_map;
-        std::mutex map_mutex;
+        // For binding async Apollo kernel launches w/CUDA streamId:
+        std::unordered_map<uint32_t, std::queue<Apollo::Perf::Record*> > stream_map;
+        std::mutex stream_map_mutex;
+        // For looking up Perf::Record data by CUPTI correlationId:
+        std::unordered_map<uint32_t, Apollo::Perf::Record*> record_map;
+        std::mutex record_map_mutex;
 
 
         // ---
