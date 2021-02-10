@@ -1,0 +1,64 @@
+%YAML:1.0
+---
+opencv_ml_rtrees:
+   format: 3
+   is_classifier: 0
+   var_all: 3
+   var_count: 2
+   ord_var_count: 3
+   cat_var_count: 0
+   training_params:
+      use_surrogates: 0
+      max_categories: 10
+      regression_accuracy: 9.9999999747524271e-07
+      max_depth: 5
+      min_sample_count: 1
+      cross_validation_folds: 0
+      nactive_vars: 0
+   global_var_idx: 1
+   var_idx: [ 0, 1 ]
+   var_type: [ 0, 0, 0 ]
+   cat_ofs: [ 0, 0, 0, 0 ]
+   missing_subst: [ 0., 0., 0. ]
+   oob_error: 1.0733390152891676e-04
+   ntrees: 1
+   trees:
+      -
+         nodes:
+            -
+               depth: 0
+               value: 3.3767720596161142e-02
+               splits:
+                  - { var:0, quality:1.8540443480014801e-01, le:5697257. }
+            -
+               depth: 1
+               value: 8.6714640985416543e-03
+               splits:
+                  - { var:1, quality:8.2082785665988922e-03,
+                      le:5.0000000000000000e-01 }
+            -
+               depth: 2
+               value: 5.5104800462843213e-04
+            -
+               depth: 2
+               value: 1.8483633545353467e-02
+            -
+               depth: 1
+               value: 6.1478170478949323e-02
+               splits:
+                  - { var:1, quality:2.6698118448257446e-01,
+                      le:5.0000000000000000e-01 }
+            -
+               depth: 2
+               value: 1.7698337032925338e-03
+            -
+               depth: 2
+               value: 9.1332338866777718e-02
+               splits:
+                  - { var:0, quality:4.7959253191947937e-01, le:5744965. }
+            -
+               depth: 3
+               value: 3.0701658129692078e-01
+            -
+               depth: 3
+               value: 6.0520304233900139e-02
