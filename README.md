@@ -15,11 +15,11 @@ To contribute to Apollo please send a
 
 Apollo depends on OpenCV for machine learning support.  We use lassen@Livermore Computing as an example to show the installation steps: 
 
-First install OpenCV using spack. 
+First install OpenCV using Spack: 
 
 ```
 
-# Get spack first
+# Get Spack first
 git clone git@github.com:spack/spack.git
 
 source spack/share/spack/setup-env.sh
@@ -32,7 +32,7 @@ spack load opencv  # load the installed opencv
 ```
 
 
-Now install Apollo
+Now install Apollo:
 ```
 git clone git@github.com:LLNL/apollo.git
 cd apollo
