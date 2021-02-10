@@ -11,6 +11,42 @@ To contribute to Apollo please send a
 [pull request](https://help.github.com/articles/using-pull-requests/) on the
 `develop` branch of this repo. Apollo follows Gitflow for managing development.
 
+## Installation
+
+Apollo depends on OpenCV for machine learning support.  We use lassen@Livermore Computing as an example to show the installation steps: 
+
+First install OpenCV using spack. 
+
+```
+
+# Get spack first
+git clone git@github.com:spack/spack.git
+
+source spack/share/spack/setup-env.sh
+
+# Using spack to install OpenCV, with its machine learning library explicitly enabled. 
+spack install opencv+powerpc+vsx~zlib~vtk~videostab~video~ts~tiff~superres~stitching~png~openclamdfft~openclamdblas~gtk~highgui~eigen+python~openmp~videoio~calib3d~features2d~dnn~flann~imgproc~ipp~ipp_iw~jasper~java~jpeg~lapack~opencl~opencl_svm~pthreads_pf+ml
+
+spack load opencv  # load the installed opencv
+
+```
+
+
+Now install Apollo
+```
+git clone git@github.com:LLNL/apollo.git
+cd apollo
+mkdir build
+cd build
+
+# MPI has to be turned off for now
+cmake ../. -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_INSTALL_PREFIX=../install-lassen -DCMAKE_BUILD_TYPE=RelWithDebInfo -DENABLE_MPI=Off -Wno-dev
+
+make install
+
+```
+
+
 ## Authors
 
 Apollo is currently developed by Giorgis Georgakoudis, georgakoudis1@llnl.gov,
