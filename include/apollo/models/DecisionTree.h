@@ -25,7 +25,7 @@ class DecisionTree : public PolicyModel {
 
     private:
         //Ptr<DTrees> dtree;
-        Ptr<RTrees> dtree;
+        Ptr<RTrees> dtree;  // Random Forest
         //Ptr<SVM> dtree;
         //Ptr<NormalBayesClassifier> dtree;
         //Ptr<KNearest> dtree;
