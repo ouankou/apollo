@@ -49,6 +49,8 @@ class Apollo
         std::string getCallpathOffset(int walk_distance=2);
         void *callpath_ptr;
 
+        // Lookup a region by its name
+        Apollo::Region* getRegion(const std::string& region_name);
         void flushAllRegionMeasurements(int step);
 
     private:
