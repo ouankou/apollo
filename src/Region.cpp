@@ -114,6 +114,10 @@ Apollo::Region::Region(
     :
         num_features(num_features), current_context(nullptr), idx(0), callback_pool(callbackPool)
 {
+  // timestamps are using 1 second as the smallest granularity, which is often not sufficient
+  // we additionally add a sequence id to avoid conflicting names generated. 
+   static int seq=0;
+
     apollo = Apollo::instance();
     if( Config::APOLLO_NUM_POLICIES ) {
         apollo->num_policies = Config::APOLLO_NUM_POLICIES;
@@ -190,7 +194,7 @@ Apollo::Region::Region(
         }
         std::string fname("./trace" + Config::APOLLO_TRACE_CSV_FOLDER_SUFFIX +
                           "/trace-" + Config::APOLLO_INIT_MODEL + "-region-" +
-                          name + "-rank-" + std::to_string(apollo->mpiRank) + getTimeStamp() +
+                          name + "-rank-" + std::to_string(apollo->mpiRank) + getTimeStamp() +"-"+ to_string(seq++)+
                           ".csv");
         std::cout << "TRACE_CSV fname " << fname << std::endl;
         trace_file.open(fname);
@@ -199,11 +203,11 @@ Apollo::Region::Region(
             abort();
         }
         // Write header.
-        trace_file << "rankid training region idx";
+        trace_file << "rankid,training,region,idx";
         //trace_file << "features";
         for(int i=0; i<num_features; i++)
-            trace_file << " f" << i;
-        trace_file << " policy xtime\n";
+            trace_file << ",f" << i;
+        trace_file << ",policy,xtime\n";
     }
     //std::cout << "Insert region " << name << " ptr " << this << std::endl;
     const auto ret = apollo->regions.insert( { name, this } );
@@ -267,13 +271,13 @@ Apollo::Region::collectContext(Apollo::RegionContext *context, double metric)
     }
 
     if( Config::APOLLO_TRACE_CSV ) {
-        trace_file << apollo->mpiRank << " ";
-        trace_file << Config::APOLLO_INIT_MODEL << " ";
-        trace_file << this->name << " ";
-        trace_file << context->idx << " ";
+        trace_file << apollo->mpiRank << ",";
+        trace_file << Config::APOLLO_INIT_MODEL << ",";
+        trace_file << this->name << ",";
+        trace_file << context->idx << ",";
         for(auto &f : context->features)
-            trace_file << f << " ";
-        trace_file << context->policy << " ";
+            trace_file << setprecision(15)<<f << ",";
+        trace_file << context->policy << ",";
         trace_file << metric << "\n";
     }
 
