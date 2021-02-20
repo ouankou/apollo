@@ -54,6 +54,17 @@
 #include <mpi.h>
 #endif //ENABLE_MPI
 
+using namespace std;
+// get a timestamp for now, "2021-02-19-16:04:40-PST"
+static string getTimeStamp ()
+{
+  time_t now = time(0);
+  struct tm * timeinfo = localtime (&now);
+  char buffer [30];
+  strftime (buffer, 30, "%F-%T-%Z",timeinfo);
+  return string(buffer);
+}
+
 int
 Apollo::Region::getPolicyIndex(Apollo::RegionContext *context)
 {
@@ -179,7 +190,7 @@ Apollo::Region::Region(
         }
         std::string fname("./trace" + Config::APOLLO_TRACE_CSV_FOLDER_SUFFIX +
                           "/trace-" + Config::APOLLO_INIT_MODEL + "-region-" +
-                          name + "-rank-" + std::to_string(apollo->mpiRank) +
+                          name + "-rank-" + std::to_string(apollo->mpiRank) + getTimeStamp() +
                           ".csv");
         std::cout << "TRACE_CSV fname " << fname << std::endl;
         trace_file.open(fname);
