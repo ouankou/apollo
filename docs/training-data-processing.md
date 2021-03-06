@@ -81,3 +81,52 @@ This happens in Apollo:Region::reduceBestPolicies()
             }
         }        
 ```
+# Feed Labelled Training Data to Machine Model Builders
+
+For each region, just obtain the labelled data and call ModelFactory interface functions
+
+```
+// for classification model: two vectors
+    std::vector< std::vector<float> > train_features;  // feature vectors
+    std::vector< int > train_responses;          // best policy choice for the vector
+
+
+// for regression model: another two vectors
+    std::vector< std::vector< float > > train_time_features;
+    std::vector< float > train_time_responses;
+
+
+       if( reg->model->training && reg->best_policies.size() > 0 ) {
+            if( Config::APOLLO_REGION_MODEL ) {
+                //std::cout << "TRAIN MODEL PER REGION" << std::endl;
+                // Reset training vectors
+                train_features.clear();
+                train_responses.clear();
+                train_time_features.clear();
+                train_time_responses.clear();
+
+                // Prepare training data
+                for(auto &it2 : reg->best_policies) {
+                    train_features.push_back( it2.first );
+                    train_responses.push_back( it2.second.first );
+
+                    std::vector< float > feature_vector = it2.first;
+                    feature_vector.push_back( it2.second.first );
+                    train_time_features.push_back( feature_vector );
+                    train_time_responses.push_back( it2.second.second );
+                }
+            }
+
+...
+//feed training data sets into the model builder 
+
+            // TODO(cdw): Load prior decisiontree...
+            reg->model = ModelFactory::createDecisionTree(
+                    num_policies,
+                    train_features,
+                    train_responses );
+
+            reg->time_model = ModelFactory::createRegressionTree(
+                    train_time_features,
+                    train_time_responses );
+```
