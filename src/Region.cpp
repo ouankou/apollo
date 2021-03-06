@@ -391,7 +391,7 @@ Apollo::Region::reduceBestPolicies(int step)
             best_policies.insert( { feature_vector, { policy_index, time_avg } } );
         }
         else {
-            // Key exists
+            // Key exists, update only if we find better choices
             if(  best_policies[ feature_vector ].second > time_avg ) {
                 best_policies[ feature_vector ] = { policy_index, time_avg };
             }

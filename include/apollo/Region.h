@@ -57,7 +57,7 @@ class Apollo::Region {
         Apollo::CallbackDataPool *callback_pool;
 
         std::map<
-            std::vector< float >,
+            std::vector< float >,   // a feature vector -> corresponding best policy and associated execution time
             std::pair< int, double > > best_policies;
 
         std::map<
@@ -87,7 +87,7 @@ struct Apollo::RegionContext
     std::chrono::steady_clock::time_point exec_time_end;
     std::vector<float> features;
     int policy;
-    int idx;
+    int idx; // a unique id of the calling times , starting from 0. The count a region context is executed. 
     // Arguments: void *data, bool *returnMetric, double *metric (valid if
     // returnsMetric == true).
     bool (*isDoneCallback)(void *, bool *, double *);
