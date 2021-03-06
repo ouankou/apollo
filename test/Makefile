@@ -1,5 +1,5 @@
 CC=clang++
-CXXFLAGS=-O3 -fopenmp -fopenmp-targets=nvptx64
+CXXFLAGS=-O3 -g -fopenmp -fopenmp-targets=nvptx64
 # APOLLO_HOME is your environment variable indicating the path to Apollo Installation
 # e.g /home/xyz/opt/apollo
 APOLLO_DIR=$(APOLLO_HOME)
