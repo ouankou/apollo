@@ -277,8 +277,7 @@ void Apollo::Region::serialize(int training_steps=0)
   }
 
   // TODO: better file name for region data
-  string file_name="Region-Data-rank-" + std::to_string(rank) + "-" + name + "-measures.txt"; 
-  std::ofstream fout( folder_name+'/'+file_name); 
+  std::ofstream fout( getHistoryFilePath()+'/'+getHistoryFileName()); 
 
   fout << trace_out.str();
   fout.close();
@@ -535,7 +534,19 @@ static string extractOneCell(string& line, size_t& pos)
   pos=end+1; 
   return res; 
 }
+std::string 
+Apollo::Region::getHistoryFilePath()
+{
+  return "./trace" + Config::APOLLO_TRACE_CSV_FOLDER_SUFFIX;
+}
 
+std::string 
+Apollo::Region::getHistoryFileName()
+{
+   int rank = apollo->mpiRank;  //Automatically 0 if not an MPI environment.
+
+  return "Region-Data-rank-" + std::to_string(rank) + "-" + name + "-measures.txt";
+}
 /*
 
 Current data dump of measures has the following content
@@ -563,11 +574,7 @@ std::map< std::pair< std::vector<float>, int >, std::unique_ptr<Apollo::Region::
 bool
 Apollo::Region::loadPreviousMeasures()
 {
-  int rank = apollo->mpiRank;  //Automatically 0 if not an MPI environment.
-
-  string folder_name = "./trace" + Config::APOLLO_TRACE_CSV_FOLDER_SUFFIX;
-  string file_name="Region-Data-rank-" + std::to_string(rank) + "-" + name + "-measures.txt";
-  string prev_data_file = folder_name+'/'+file_name;
+  string prev_data_file = getHistoryFilePath()+'/'+getHistoryFileName();
 
   ifstream datafile (prev_data_file.c_str(), ios::in);
 

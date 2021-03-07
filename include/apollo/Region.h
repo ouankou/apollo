@@ -85,6 +85,8 @@ class Apollo::Region {
         void collectContext(Apollo::RegionContext *, double);
 
         // save region information into a file, enable cross-execution optimization
+        std::string getHistoryFilePath();
+        std::string getHistoryFileName();
         void serialize(int training_steps);
 
 
