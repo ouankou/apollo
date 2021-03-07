@@ -50,8 +50,8 @@ class Apollo
         std::string getCallpathOffset(int walk_distance=2);
         void *callpath_ptr;
 
-        // Lookup a region by its name
-        Apollo::Region* getRegion(const std::string& region_name);
+        // Lookup a region by its name. If not found, create a new one. Also load its previous execution data if any.
+        Apollo::Region* getRegion(const std::string& region_name, int feature_count, int policy_count);
         void flushAllRegionMeasurements(int step);
 
     private:

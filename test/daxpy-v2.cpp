@@ -63,9 +63,9 @@ int main(int argc, char** argv)
   Apollo *apollo = Apollo::instance();
 
   // Create Apollo region
-  Apollo::Region *region = new Apollo::Region(
-      /* NumFeatures */ 1,
+  Apollo::Region *region = apollo->getRegion(
       /* id */ "daxpy",
+      /* NumFeatures */ 1,
       /* NumPolicies */ 2);
 
   // Run for ITERS iterations, train after the first TRAIN_ITERS

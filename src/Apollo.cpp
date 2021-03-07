@@ -160,7 +160,7 @@ Apollo::Apollo()
 
     // cross-execution training, default 0
     // It reuses CSV tracer file's folder to store the serialization files
-    Config::APOLLO_CROSS_EXECUTION    = std::stoi( apolloUtils::safeGetEnv( "APOLLO_CROSS_EXECUTION", "0" ) );
+    Config::APOLLO_CROSS_EXECUTION    = std::stoi( apolloUtils::safeGetEnv( "APOLLO_CROSS_EXECUTION", "1" ) );
 
     Config::APOLLO_RETRAIN_ENABLE      = std::stoi( apolloUtils::safeGetEnv( "APOLLO_RETRAIN_ENABLE", "1" ) );
     Config::APOLLO_RETRAIN_TIME_THRESHOLD   = std::stof( apolloUtils::safeGetEnv( "APOLLO_RETRAIN_TIME_THRESHOLD", "2.0" ) );
@@ -451,9 +451,18 @@ Apollo::gatherReduceCollectiveTrainingData(int step)
     free( recvbuf );
 #endif //ENABLE_MPI
 }
-
-Apollo::Region* Apollo::getRegion (const std::string& region_name)
+Apollo::Region* Apollo::getRegion (const std::string& region_name, int feature_count, int policy_count)
 {
+  if (regions.count(region_name))
+    return regions[region_name];
+
+  Apollo::Region* region = new Apollo::Region (feature_count, region_name.c_str(), policy_count);
+  regions[region_name] = region;
+
+  // Load previous execution's data
+  if (Config::APOLLO_CROSS_EXECUTION) 
+    region->loadPreviousMeasures();
+
   return regions[region_name];
 }
 

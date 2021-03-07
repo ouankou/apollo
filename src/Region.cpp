@@ -561,8 +561,14 @@ std::map< std::pair< std::vector<float>, int >, std::unique_ptr<Apollo::Region::
 
  * */
 bool
-Apollo::Region::loadPreviousMeasures(const string& prev_data_file)
+Apollo::Region::loadPreviousMeasures()
 {
+  int rank = apollo->mpiRank;  //Automatically 0 if not an MPI environment.
+
+  string folder_name = "./trace" + Config::APOLLO_TRACE_CSV_FOLDER_SUFFIX;
+  string file_name="Region-Data-rank-" + std::to_string(rank) + "-" + name + "-measures.txt";
+  string prev_data_file = folder_name+'/'+file_name;
+
   ifstream datafile (prev_data_file.c_str(), ios::in);
 
   if (!datafile.is_open())
@@ -577,7 +583,7 @@ Apollo::Region::loadPreviousMeasures(const string& prev_data_file)
     getline(datafile, line);
     if (line==".-")
     {
-     // cout<<"Found end line, stopping.."<<endl;
+      // cout<<"Found end line, stopping.."<<endl;
       break;
     }
 
@@ -599,32 +605,40 @@ Apollo::Region::loadPreviousMeasures(const string& prev_data_file)
 
       // extract one or more features, separated by ',' between pos and end_bracket_pos
       size_t end=pos;
+      vector<float> cur_features; 
       while (pos<end_bracket_pos)
       {
         string cell=extractOneCell(line, pos); 
         // may reaching over ] , skip them
         // only keep one extracted before ']'
         if (pos < end_bracket_pos)
-          cout<<stoi(cell) << " " ; // convert to integer, they are mostly sizes of things right now
+        {
+          //  cout<<stoi(cell) << " " ; // convert to integer, they are mostly sizes of things right now
+          cur_features.push_back(stof(cell));
+        }
         else
           break; 
       }
 
       // extract policy
+      int cur_policy;
       pos = line.find("policy:", end_bracket_pos);
       if (pos==string::npos)
         return false;
       pos+=7;
       string policy_id=extractOneCell(line, pos);
-      cout<<"policy:"<<stoi(policy_id) <<" "; // convert to integer, they are mostly sizes of things right now
+      //cout<<"policy:"<<stoi(policy_id) <<" "; // convert to integer, they are mostly sizes of things right now
+      cur_policy = stoi(policy_id);
 
       // extract count
+      int cur_count; 
       pos = line.find("count:", end_bracket_pos);
       if (pos==string::npos)
         return false;
       pos+=6;
       string count=extractOneCell(line, pos);
-      cout<<"count:"<<stoi(count) <<" "; // convert to integer, they are mostly sizes of things right now
+      //cout<<"count:"<<stoi(count) <<" "; // convert to integer, they are mostly sizes of things right now
+      cur_count = stoi(count);
 
       //extract total execution time
       pos = line.find("total:", end_bracket_pos);
@@ -632,10 +646,25 @@ Apollo::Region::loadPreviousMeasures(const string& prev_data_file)
         return false;
       pos+=6;
       string total=extractOneCell(line, pos);
-      cout<<"total exe time:"<<stof(total) <<endl; // convert to integer, they are mostly sizes of things right now
+      // cout<<"total exe time:"<<stof(total) <<endl; // convert to integer, they are mostly sizes of things right now
+      float cur_total_time = stof(total); 
 
+      auto iter = measures.find({cur_features, cur_policy});
+      if (iter == measures.end()) {
+        iter = measures
+          .insert(std::make_pair(
+                std::make_pair(cur_features, cur_policy),
+                std::move(
+                  std::make_unique<Apollo::Region::Measure>(cur_count, cur_total_time))))
+          .first;
+      } else {
+        // we dont' really expect anything going this branch
+        // the previous training data should already be aggregated data. 
+        assert (false);
+        iter->second->exec_count+=cur_count;
+        iter->second->time_total += cur_total_time;
+      }
     } // hande a line 
-
   } // end while
 
   datafile.close();

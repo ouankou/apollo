@@ -1,7 +1,7 @@
 =================================
 Rank 0 Region daxpy MEASURES 
-features: [ 10000000,  ]: policy: 0 , count: 5 , total: 0.0291654 , time_avg: 0.00583309
-features: [ 10000000,  ]: policy: 1 , count: 5 , total: 0.664431 , time_avg: 0.132886
+features: [ 10000000,  ]: policy: 0 , count: 15 , total: 0.0868354 , time_avg: 0.00578903
+features: [ 10000000,  ]: policy: 1 , count: 15 , total: 1.94228 , time_avg: 0.129486
 .-
 Rank 0 Region daxpy Reduce 
 .-

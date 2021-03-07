@@ -70,7 +70,7 @@ class Apollo::Region {
 
         // Support cross execution profling/modeling/adaptation, we need to load previous measures of a region
         // return true if load is successful
-        bool loadPreviousMeasures(std::string& prev_data_file); 
+        bool loadPreviousMeasures(); 
 
     private:
         //
@@ -87,8 +87,6 @@ class Apollo::Region {
         // save region information into a file, enable cross-execution optimization
         void serialize(int training_steps);
 
-        // load previous saved data file for a region
-        bool loadPreviousMeasures(const std::string&); 
 
 }; // end: Apollo::Region
 
