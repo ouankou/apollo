@@ -9,24 +9,10 @@ A machine learning model is trained for a list of features to predict either the
 A code region may contain several code variants (one policy id for each)
 
 Each measured execution time is tied to 
-* the activateed policy choice, or code variant choice
+* the activated policy choice for this execution, or the code variant choice
 
-It is also associated with a feature vector values. 
+It is also associated with a feature vector values 
 
-A same code region+ same policy + same feature vector value  may repeat multiple times during execution
-
-example
-* code region 1, choosing serial execution policy 1,  with a feature vector of size 1 storing iteration size. 
-
-As a result, an aggregate variable {execution_count, time_total} is used to store all appearance of the unique code region+policy+feature vector. 
-
-```
-
-A measure= execution_count + time_total // aggregate variable
-
-map < pair <vector<float>, int> , unique_ptr<Apollo::Region::Measure> > measures
-
-```
 # Actual measure of start and end time
 
 Timing happens within Region::begin() and Region::end(). 
@@ -50,7 +36,25 @@ Apollo::Region::end(Apollo::RegionContext *context)
 }
 ```
 
-# Postprocessing of raw measurements
+# Raw metrics and Aggregated Measures
+
+A same code region+ same policy + same feature vector value  may repeat multiple times during execution. 
+* the primary key for execution timing records = (feature-vector, policy)
+
+Example
+* Code region 1: choosing serial execution policy 1,  with a feature vector of size 1 (storing iteration size of the code region). 
+
+As a result, an aggregate result {execution_count, time_total} is used to store all appearance of the unique code region+policy+feature vector. 
+
+```
+
+A measure= execution_count + time_total // aggregate variable
+
+map < pair <vector<float>, int> , unique_ptr<Apollo::Region::Measure> > measures
+
+```
+
+# Postprocessing of Aggregated measurements
 
 Raw timing information need to be calculated for average values , and labeled with best policies for each feature vectors. 
 
