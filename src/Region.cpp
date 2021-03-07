@@ -215,6 +215,75 @@ Apollo::Region::Region(
     return;
 }
 
+
+// Store training datasets into a file
+// The data include both  aggregated data (measures) and labeled data (with best policy information)
+void Apollo::Region::serialize(int training_steps=0)
+{
+  std::stringstream trace_out;
+  int rank;
+#ifdef ENABLE_MPI
+  rank = apollo->mpiRank;
+#else
+  rank = 0;
+#endif //ENABLE_MPI
+  trace_out << "=================================" << std::endl \
+    << "Rank " << rank << " Region " << name << " MEASURES "  << std::endl;
+
+  for (auto iter_measure = measures.begin();
+      iter_measure != measures.end();   iter_measure++) {
+
+    const std::vector<float>& feature_vector = iter_measure->first.first;
+    const int policy_index                   = iter_measure->first.second;
+    auto  &time_set = iter_measure->second;
+
+    trace_out << "features: [ ";
+    for(auto &f : feature_vector ) { \
+      trace_out << (int)f << ", ";
+    }
+    trace_out << " ]: "
+      << "policy: " << policy_index
+      << " , count: " << time_set->exec_count
+      << " , total: " << time_set->time_total
+      << " , time_avg: " <<  ( time_set->time_total / time_set->exec_count ) << std::endl;
+    double time_avg = ( time_set->time_total / time_set->exec_count );
+  }
+
+  // separator for two portion of data
+  trace_out << ".-" << std::endl;
+
+  // serialize the reduced data
+  //------------------------
+  trace_out << "Rank " << rank << " Region " << name << " Reduce " << std::endl;
+  for( auto &b : best_policies ) {
+    trace_out << "features: [ ";
+    for(auto &f : b.first )
+      trace_out << (int)f << ", ";
+    trace_out << "]: P:"
+      << b.second.first << " T: " << b.second.second << std::endl;
+  }
+  trace_out << ".-" << std::endl;
+  //  std::cout << trace_out.str();
+
+  // save to a file
+  string folder_name = "./trace" + Config::APOLLO_TRACE_CSV_FOLDER_SUFFIX;
+
+  int ret;
+  ret = mkdir(folder_name.c_str(),  S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH);
+
+  if (ret != 0 && errno != EEXIST) {
+    perror("Apollo::Region::serialize()  mkdir");
+    abort();
+  }
+
+  // TODO: better file name for region data
+  string file_name="Region-Data-rank-" + std::to_string(rank) + "-" + name + "-measures.txt"; 
+  std::ofstream fout( folder_name+'/'+file_name); 
+
+  fout << trace_out.str();
+  fout.close();
+}
+
 Apollo::Region::~Region()
 {
     // Disable period based flushing.
@@ -227,6 +296,10 @@ Apollo::Region::~Region()
 
     if( Config::APOLLO_TRACE_CSV )
         trace_file.close();
+
+    // Save region information into a file
+    if (Config::APOLLO_CROSS_EXECUTION)
+      serialize();
 
     return;
 }
@@ -446,4 +519,126 @@ void
 Apollo::Region::setFeature(float value)
 {
     setFeature(current_context, value);
+}
+
+// A helper function to extract numbers from a line
+// from pos, to next ',' extract a cell, return the field, and new pos
+static string extractOneCell(string& line, size_t& pos)
+{
+  size_t end=pos; 
+  while (end<line.size() && line[end]!=',')
+    end++; 
+
+  // now end is end or , 
+  string res= line.substr(pos, end-pos);
+  //  cout<<"start pos:"<<pos << "--end pos:"<< end <<endl;
+  pos=end+1; 
+  return res; 
+}
+
+/*
+
+Current data dump of measures has the following content
+------begin of the file
+=================================
+Rank 0 Region daxpy MEASURES 
+features: [ 9027,  ]: policy: 1 , count: 1 , total: 0.000241501 , time_avg: 0.000241501
+features: [ 38863,  ]: policy: 0 , count: 1 , total: 0.00714597 , time_avg: 0.00714597
+features: [ 61640,  ]: policy: 0 , count: 1 , total: 0.00875109 , time_avg: 0.00875109
+features: [ 148309,  ]: policy: 0 , count: 1 , total: 0.00658767 , time_avg: 0.00658767
+features: [ 240700,  ]: policy: 0 , count: 1 , total: 0.00978215 , time_avg: 0.00978215
+features: [ 366001,  ]: policy: 1 , count: 1 , total: 0.00142485 , time_avg: 0.00142485
+..
+.-  
+Rank 0 Region daxpy Reduce 
+features: [ 9027, ]: P:1 T: 0.000241501
+features: [ 38863, ]: P:0 T: 0.00714597
+ 
+---------end of file
+We only need to read in the first portion to populate the map of feature vector+policy -> measure pair<count, total>
+
+std::map< std::pair< std::vector<float>, int >, std::unique_ptr<Apollo::Region::Measure> > measures;
+
+ * */
+bool
+Apollo::Region::loadPreviousMeasures(const string& prev_data_file)
+{
+  ifstream datafile (prev_data_file.c_str(), ios::in);
+
+  if (!datafile.is_open())
+  {
+    cerr<<"Fatal Error: Apollo::Region::loadPreviousMeasures() cannot open txt file "<< prev_data_file<<endl;
+    return false;
+  } 
+
+  while (!datafile.eof())
+  {
+    string line;
+    getline(datafile, line);
+    if (line==".-")
+    {
+     // cout<<"Found end line, stopping.."<<endl;
+      break;
+    }
+
+    // we have the line in a string anyway, just use it.
+    size_t pos=0; 
+    while (pos<line.size()) 
+    {
+      pos=line.find('[', pos);
+      if (pos==string::npos) // a line without [ 
+        break; 
+
+      pos++; // skip [
+      size_t end_bracket_pos=line.find(']', pos);
+      if (end_bracket_pos==string::npos) // something is wrong
+      {
+        cerr<<"Error in Apollo::Region::loadPreviousMeasures(). cannot find ending ] in "<< line <<endl;
+        return false; 
+      }
+
+      // extract one or more features, separated by ',' between pos and end_bracket_pos
+      size_t end=pos;
+      while (pos<end_bracket_pos)
+      {
+        string cell=extractOneCell(line, pos); 
+        // may reaching over ] , skip them
+        // only keep one extracted before ']'
+        if (pos < end_bracket_pos)
+          cout<<stoi(cell) << " " ; // convert to integer, they are mostly sizes of things right now
+        else
+          break; 
+      }
+
+      // extract policy
+      pos = line.find("policy:", end_bracket_pos);
+      if (pos==string::npos)
+        return false;
+      pos+=7;
+      string policy_id=extractOneCell(line, pos);
+      cout<<"policy:"<<stoi(policy_id) <<" "; // convert to integer, they are mostly sizes of things right now
+
+      // extract count
+      pos = line.find("count:", end_bracket_pos);
+      if (pos==string::npos)
+        return false;
+      pos+=6;
+      string count=extractOneCell(line, pos);
+      cout<<"count:"<<stoi(count) <<" "; // convert to integer, they are mostly sizes of things right now
+
+      //extract total execution time
+      pos = line.find("total:", end_bracket_pos);
+      if (pos==string::npos)
+        return false;
+      pos+=6;
+      string total=extractOneCell(line, pos);
+      cout<<"total exe time:"<<stof(total) <<endl; // convert to integer, they are mostly sizes of things right now
+
+    } // hande a line 
+
+  } // end while
+
+  datafile.close();
+
+  return true;
 }

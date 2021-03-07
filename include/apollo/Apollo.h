@@ -13,6 +13,7 @@
 class Apollo
 {
     public:
+      //! Close the runtime. Save region information into a file if cross-execution model is turned on
        ~Apollo();
         // disallow copy constructor
         Apollo(const Apollo&) = delete;

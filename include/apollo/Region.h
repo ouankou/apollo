@@ -68,6 +68,10 @@ class Apollo::Region {
         std::unique_ptr<TimingModel> time_model;
         std::unique_ptr<PolicyModel> model;
 
+        // Support cross execution profling/modeling/adaptation, we need to load previous measures of a region
+        // return true if load is successful
+        bool loadPreviousMeasures(std::string& prev_data_file); 
+
     private:
         //
         Apollo        *apollo;
@@ -79,6 +83,13 @@ class Apollo::Region {
         std::vector<Apollo::RegionContext *> pending_contexts;
         void collectPendingContexts();
         void collectContext(Apollo::RegionContext *, double);
+
+        // save region information into a file, enable cross-execution optimization
+        void serialize(int training_steps);
+
+        // load previous saved data file for a region
+        bool loadPreviousMeasures(const std::string&); 
+
 }; // end: Apollo::Region
 
 struct Apollo::RegionContext

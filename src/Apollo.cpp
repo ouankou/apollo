@@ -155,18 +155,27 @@ Apollo::Apollo()
     Config::APOLLO_LOCAL_TRAINING      = std::stoi( apolloUtils::safeGetEnv( "APOLLO_LOCAL_TRAINING", "1" ) );
     Config::APOLLO_SINGLE_MODEL        = std::stoi( apolloUtils::safeGetEnv( "APOLLO_SINGLE_MODEL", "0" ) );
     Config::APOLLO_REGION_MODEL        = std::stoi( apolloUtils::safeGetEnv( "APOLLO_REGION_MODEL", "1" ) );
-    //Config::APOLLO_TRACE_MEASURES      = std::stoi( apolloUtils::safeGetEnv( "APOLLO_TRACE_MEASURES", "0" ) );
-    Config::APOLLO_TRACE_MEASURES      = std::stoi( apolloUtils::safeGetEnv( "APOLLO_TRACE_MEASURES", "1" ) );
     Config::APOLLO_NUM_POLICIES        = std::stoi( apolloUtils::safeGetEnv( "APOLLO_NUM_POLICIES", "0" ) );
     Config::APOLLO_FLUSH_PERIOD       = std::stoi( apolloUtils::safeGetEnv( "APOLLO_FLUSH_PERIOD", "0" ) );
-    Config::APOLLO_TRACE_POLICY        = std::stoi( apolloUtils::safeGetEnv( "APOLLO_TRACE_POLICY", "0" ) );
-    Config::APOLLO_STORE_MODELS        = std::stoi( apolloUtils::safeGetEnv( "APOLLO_STORE_MODELS", "1" ) );
-    Config::APOLLO_TRACE_RETRAIN       = std::stoi( apolloUtils::safeGetEnv( "APOLLO_TRACE_RETRAIN", "0" ) );
-    Config::APOLLO_TRACE_ALLGATHER     = std::stoi( apolloUtils::safeGetEnv( "APOLLO_TRACE_ALLGATHER", "0" ) );
-    Config::APOLLO_TRACE_BEST_POLICIES = std::stoi( apolloUtils::safeGetEnv( "APOLLO_TRACE_BEST_POLICIES", "0" ) );
+
+    // cross-execution training, default 0
+    // It reuses CSV tracer file's folder to store the serialization files
+    Config::APOLLO_CROSS_EXECUTION    = std::stoi( apolloUtils::safeGetEnv( "APOLLO_CROSS_EXECUTION", "0" ) );
+
     Config::APOLLO_RETRAIN_ENABLE      = std::stoi( apolloUtils::safeGetEnv( "APOLLO_RETRAIN_ENABLE", "1" ) );
     Config::APOLLO_RETRAIN_TIME_THRESHOLD   = std::stof( apolloUtils::safeGetEnv( "APOLLO_RETRAIN_TIME_THRESHOLD", "2.0" ) );
     Config::APOLLO_RETRAIN_REGION_THRESHOLD = std::stof( apolloUtils::safeGetEnv( "APOLLO_RETRAIN_REGION_THRESHOLD", "0.5" ) );
+
+    // Putting trace/storing options together
+    //
+    Config::APOLLO_STORE_MODELS        = std::stoi( apolloUtils::safeGetEnv( "APOLLO_STORE_MODELS", "1" ) );
+    Config::APOLLO_TRACE_POLICY        = std::stoi( apolloUtils::safeGetEnv( "APOLLO_TRACE_POLICY", "0" ) );
+    //Config::APOLLO_TRACE_MEASURES      = std::stoi( apolloUtils::safeGetEnv( "APOLLO_TRACE_MEASURES", "0" ) );
+    Config::APOLLO_TRACE_MEASURES      = std::stoi( apolloUtils::safeGetEnv( "APOLLO_TRACE_MEASURES", "1" ) );
+    Config::APOLLO_TRACE_RETRAIN       = std::stoi( apolloUtils::safeGetEnv( "APOLLO_TRACE_RETRAIN", "0" ) );
+    Config::APOLLO_TRACE_ALLGATHER     = std::stoi( apolloUtils::safeGetEnv( "APOLLO_TRACE_ALLGATHER", "0" ) );
+    Config::APOLLO_TRACE_BEST_POLICIES = std::stoi( apolloUtils::safeGetEnv( "APOLLO_TRACE_BEST_POLICIES", "0" ) );
+
     Config::APOLLO_TRACE_CSV = std::stoi( apolloUtils::safeGetEnv( "APOLLO_TRACE_CSV", "1" ) );
     Config::APOLLO_TRACE_CSV_FOLDER_SUFFIX = apolloUtils::safeGetEnv( "APOLLO_TRACE_CSV_FOLDER_SUFFIX", "apollo_csv" );
 
@@ -203,6 +212,16 @@ Apollo::Apollo()
         std::cerr << "Either global or region modeling must be enabled" << std::endl;
         abort();
     }
+
+#if 0    
+    // Cross execution training needs to store measures and models generated from previous executions
+    // We use dedicated flags instead
+    if (Config::APOLLO_CROSS_EXECUTION)
+    {
+//      Config::APOLLO_STORE_MODELS = 1;
+//      Config::APOLLO_TRACE_MEASURES = 1;
+    }
+#endif
 
 #ifdef ENABLE_MPI
     MPI_Comm_dup(MPI_COMM_WORLD, &apollo_mpi_comm);
