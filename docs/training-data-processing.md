@@ -1,3 +1,5 @@
+This document follows the training datasets to explain the pipeline of data generation, aggregation, postprocessing, and model building in Apollo. 
+
 # Key Concepts
 
 All training data is associated with a code region (Apollo:Region), often a parallelized OpenMP loop.
