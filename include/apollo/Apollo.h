@@ -13,7 +13,8 @@
 class Apollo
 {
     public:
-       ~Apollo();
+      // close the runtime, save region information into files if cross-execution mode is turned on
+       ~Apollo();  
         // disallow copy constructor
         Apollo(const Apollo&) = delete;
         Apollo& operator=(const Apollo&) = delete;
