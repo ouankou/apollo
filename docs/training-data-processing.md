@@ -1,8 +1,10 @@
 # Key Concepts
 
-All training data is associated with a code region (Apollo:Region)
+All training data is associated with a code region (Apollo:Region), often a parallelized OpenMP loop.
 
-A machine learning model is trained for a list of features to predict either the best policy or code variant choice (classification model) or execution time (regression modeling).
+Machine learning is used to use a list of features to predict 
+* either the best policy (code variant) choice: a classification model 
+* or execution time: a regression modeling
 
 # Context of a measured executime time
 
@@ -11,9 +13,9 @@ A code region may contain several code variants (one policy id for each)
 Each measured execution time is tied to 
 * the activated policy choice for this execution, or the code variant choice
 
-It is also associated with a feature vector values 
+It is also associated with a feature vector's values. A simplest feature vector can have a length of 1 and store the count of loop iteration. 
 
-# Actual measure of start and end time
+# Measuring the start and end time of a region
 
 Timing happens within Region::begin() and Region::end(). 
 
@@ -36,9 +38,9 @@ Apollo::Region::end(Apollo::RegionContext *context)
 }
 ```
 
-# Raw metrics and Aggregated Measures
+# Raw Metrics and Aggregated Measures
 
-A same code region+ same policy + same feature vector value  may repeat multiple times during execution. 
+A same code region+ same policy + same feature vector value  may repeat multiple times during an execution. 
 * the primary key for execution timing records = (feature-vector, policy)
 
 Example
@@ -46,11 +48,17 @@ Example
 
 As a result, an aggregate result {execution_count, time_total} is used to store all appearance of the unique code region+policy+feature vector. 
 
-```
-
 A measure= execution_count + time_total // aggregate variable
 
-map < pair <vector<float>, int> , unique_ptr<Apollo::Region::Measure> > measures
+```
+
+typedef struct Measure {
+            int       exec_count;
+            double    time_total;
+            Measure(int e, double t) : exec_count(e), time_total(t) {}
+} Measure;
+        
+map < pair <vector<float>, int> , unique_ptr<Apollo::Region::Measure> > measures;
 
 ```
 
