@@ -64,6 +64,9 @@ map < pair <vector<float>, int> , unique_ptr<Apollo::Region::Measure> > measures
 
 ```
 
+TODO: std::map<> has O(logN) complexity for insertion operations.  We may need to use unordered_map<> with O(1) instead. 
+
+
 # Postprocessing of Aggregated measurements
 
 Raw timing information need to be calculated for average values , and labeled with best policies for each feature vectors. 
