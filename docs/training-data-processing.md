@@ -79,6 +79,14 @@ Saving happens in Apollo::Region::~Region()
 
 ```
 
+Saved data has the following content:
+
+```
+Rank 0 Region daxpy MEASURES
+features: [ 10000000,  ]: policy: 0 , count: 10 , total: 0.0603572 , time_avg: 0.00603572
+features: [ 10000000,  ]: policy: 1 , count: 10 , total: 1.27882 , time_avg: 0.127882
+```
+
 Loading happens in Apollo::Region* Apollo::getRegion(). This is the new recommended interface to create all regions also. 
 
 ```
