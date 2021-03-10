@@ -69,7 +69,7 @@ TODO: std::map<> has O(logN) complexity for insertion operations.  We may need t
 
 ## Cross-Exection Data Collection and Merging
 
-This is a new feature controled by Config::APOLLO_CROSS_EXECUTION. Aggregated measures of each code region can be saved into a text file when a monitored program terminates.  The file will also be loaded next time the program starts. 
+This is a new feature controlled by Config::APOLLO_CROSS_EXECUTION. Aggregated measures of each code region can be saved into a text file when a monitored program terminates.  The file will also be loaded next time the program starts. 
 
 Saving happens in Apollo::Region::~Region()
 ```
