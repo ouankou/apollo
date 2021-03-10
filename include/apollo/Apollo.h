@@ -13,8 +13,9 @@
 class Apollo
 {
     public:
-      // close the runtime, save region information into files if cross-execution mode is turned on
-       ~Apollo();  
+     //! Close the runtime. Save region information into a file if cross-execution model is turned on
+       ~Apollo();
+
         // disallow copy constructor
         Apollo(const Apollo&) = delete;
         Apollo& operator=(const Apollo&) = delete;
@@ -50,8 +51,8 @@ class Apollo
         std::string getCallpathOffset(int walk_distance=2);
         void *callpath_ptr;
 
-        // Lookup a region by its name
-        Apollo::Region* getRegion(const std::string& region_name);
+        // Lookup a region by its name. If not found, create a new one. Also load its previous execution data if any.
+        Apollo::Region* getRegion(const std::string& region_name, int feature_count, int policy_count);
         void flushAllRegionMeasurements(int step);
 
     private:
