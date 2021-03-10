@@ -67,7 +67,39 @@ map < pair <vector<float>, int> , unique_ptr<Apollo::Region::Measure> > measures
 TODO: std::map<> has O(logN) complexity for insertion operations.  We may need to use unordered_map<> with O(1) instead. 
 
 
-# Postprocessing of Aggregated measurements
+## Cross-Exection Data Collection and Merging
+
+This is a new feature controled by Config::APOLLO_CROSS_EXECUTION. Aggregated measures of each code region can be saved into a text file when a monitored program terminates.  The file will also be loaded next time the program starts. 
+
+Saving happens in Apollo::Region::~Region()
+```
+    // Save region information into a file
+    if (Config::APOLLO_CROSS_EXECUTION)
+      serialize();
+
+```
+
+Loading happens in Apollo::Region* Apollo::getRegion(). This is the new recommended interface to create all regions also. 
+
+```
+Apollo::Region* Apollo::getRegion (const std::string& region_name, int feature_count, int policy_count)
+{
+  if (regions.count(region_name))
+    return regions[region_name];
+
+  Apollo::Region* region = new Apollo::Region (feature_count, region_name.c_str(), policy_count);
+  regions[region_name] = region;
+
+  // Load previous execution's data
+  if (Config::APOLLO_CROSS_EXECUTION) 
+    region->loadPreviousMeasures();
+
+  return regions[region_name];
+}
+
+```
+
+# Postprocessing and Labeling of Aggregated measurements
 
 Raw timing information need to be calculated for average values , and labeled with best policies for each feature vectors. 
 
@@ -98,7 +130,7 @@ This happens in Apollo:Region::reduceBestPolicies()
             }
         }        
 ```
-# Feed Labelled Training Data to Machine Model Builders
+# Feed Labeled Training Data to Machine Model Builders
 
 For each region, just obtain the labelled data and call ModelFactory interface functions
 
