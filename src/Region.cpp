@@ -39,6 +39,7 @@
 #include <memory>
 #include <utility>
 #include <algorithm>
+#include <cmath>
 
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -114,9 +115,6 @@ Apollo::Region::Region(
     :
         num_features(num_features), current_context(nullptr), idx(0), callback_pool(callbackPool)
 {
-  // timestamps are using 1 second as the smallest granularity, which is often not sufficient
-  // we additionally add a sequence id to avoid conflicting names generated. 
-   static int seq=0;
 
     apollo = Apollo::instance();
     if( Config::APOLLO_NUM_POLICIES ) {
@@ -125,10 +123,154 @@ Apollo::Region::Region(
     else {
         apollo->num_policies = numAvailablePolicies;
     }
+    
+  // We need per region policy count
+   num_region_policies = numAvailablePolicies; 
 
     strncpy(name, regionName, sizeof(name)-1 );
     name[ sizeof(name)-1 ] = '\0';
 
+    // if cross-execution training is turned on, we need to set a threshold
+    if (Config::APOLLO_CROSS_EXECUTION)
+      setDataCollectionThreshold();
+
+    // This first time the region is created, load an available model vs. set an initial model
+    setPolicyModel (num_region_policies, modelYamlFile); // refactor the model setting logic into a separated function.
+
+    // Set the current model used to select a policy 
+    //std::cout << "Insert region " << name << " ptr " << this << std::endl;
+    const auto ret = apollo->regions.insert( { name, this } );
+
+    return;
+}
+
+// Per region model building, after checking if we have enough data, if so. 
+// Only used when cross-execution training is enabled.
+void Apollo::Region::checkAndFlushMeasurements(int step)
+{
+  int rank = apollo->mpiRank; 
+
+  if (!hasEnoughTrainingData()) return; 
+
+  if (Config::APOLLO_TRACE_CROSS_EXECUTION)
+    cout<<"Apollo::Region::checkAndFlushMeasurements(): has enough training data, build the model and flush measures..."<<endl;
+   // must save current measures into a file first. Or we will lose them
+  reduceBestPolicies(step);
+  measures.clear();
+
+  //TODO: support MPI?
+  /*
+    if( Config::APOLLO_COLLECTIVE_TRAINING ) {
+        //std::cout << "DO COLLECTIVE TRAINING" << std::endl; //ggout
+              gatherReduceCollectiveTrainingData(step);
+        }
+   */
+    std::vector< std::vector<float> > train_features;
+    std::vector< int > train_responses;
+
+    std::vector< std::vector< float > > train_time_features;
+    std::vector< float > train_time_responses;
+
+   if (model->training && best_policies.size()>0)
+   {
+     if( Config::APOLLO_REGION_MODEL ) {
+       //std::cout << "TRAIN MODEL PER REGION" << std::endl;
+       // Reset training vectors
+       train_features.clear();
+       train_responses.clear();
+       train_time_features.clear();
+       train_time_responses.clear();
+
+       // Prepare training data
+       for(auto &it2 : best_policies) {
+         train_features.push_back( it2.first );
+         train_responses.push_back( it2.second.first );
+
+         std::vector< float > feature_vector = it2.first;
+         feature_vector.push_back( it2.second.first );
+         train_time_features.push_back( feature_vector );
+         train_time_responses.push_back( it2.second.second );
+       }
+     }
+
+     if( Config::APOLLO_TRACE_BEST_POLICIES ) {
+       std::stringstream trace_out;
+       trace_out << "=== Rank " << rank \
+         << " BEST POLICIES Region " << name << " ===" << std::endl;
+       for( auto &b : best_policies ) {
+         trace_out << "[ ";
+         for(auto &f : b.first)
+           trace_out << (int)f << ", ";
+         trace_out << "] P:" \
+           << b.second.first << " T: " << b.second.second << std::endl;
+       }
+       trace_out << ".-" << std::endl;
+       std::cout << trace_out.str();
+       std::ofstream fout("step-" + std::to_string(step) + \
+           "-rank-" + std::to_string(rank) + "-" + name + "-best_policies.txt"); \
+         fout << trace_out.str(); \
+         fout.close();
+     }
+
+     // TODO(cdw): Load prior decisiontree...
+     model = ModelFactory::createDecisionTree(
+         num_region_policies,
+         train_features,
+         train_responses );
+
+     time_model = ModelFactory::createRegressionTree(
+         train_time_features,
+         train_time_responses );
+
+    // For cross-execution model, we always store the trained model for reuse later.
+    // if( Config::APOLLO_STORE_MODELS ) 
+//       model->store( "dtree-step-" + std::to_string( step ) \
+//           + "-rank-" + std::to_string( rank ) \
+//           + "-" + name + ".yaml" );
+
+       model->store( getHistoryFilePath()+"/"+getPolicyModelFileName() ) ;
+
+//       time_model->store("regtree-step-" + std::to_string( step ) \
+//           + "-rank-" + std::to_string( rank ) \
+//           + "-" + name + ".yaml");
+
+       time_model->store(getHistoryFilePath()+"/"+getTimingModelFileName());
+     
+   }
+  // TODO: support retrain logic at region level
+   best_policies.clear();
+}
+
+std::string Apollo::Region::getPolicyModelFileName(bool timeStamp/*=false*/)
+{
+  int rank = apollo->mpiRank;
+  string res= "dtree-latest-rank-" + std::to_string( rank ) + "-" + name + ".yaml";
+  return res; 
+}
+
+std::string Apollo::Region::getTimingModelFileName(bool timeStamp/*=false*/)
+{
+  int rank = apollo->mpiRank;
+  string res= "regtree-latest-rank-" + std::to_string( rank ) + "-" + name + ".yaml";
+  return res; 
+}
+
+// set the policy model of this region
+/*
+ If a yaml file is specified, we load the model from the file
+
+ Otherwise we read the model from environment variable: APOLLO_INIT_MODEL, which can be
+    static| Random| RoundRobin or
+    Load another yaml file
+ 
+ * */ 
+void Apollo::Region::setPolicyModel (int numAvailablePolicies, const std::string &modelYamlFile)
+{
+  // timestamps are using 1 second as the smallest granularity, which is often not sufficient
+  // we additionally add a sequence id to avoid conflicting names generated. 
+   static int seq=0;
+
+// TODO: why do we have global policy count??
     if (!modelYamlFile.empty()) {
         model = ModelFactory::loadDecisionTree(apollo->num_policies, modelYamlFile);
     }
@@ -209,25 +351,58 @@ Apollo::Region::Region(
             trace_file << ",f" << i;
         trace_file << ",policy,xtime\n";
     }
-    //std::cout << "Insert region " << name << " ptr " << this << std::endl;
-    const auto ret = apollo->regions.insert( { name, this } );
+}
+/*
+We use a simple threshold for now.
 
-    return;
+Assuming the following parameters
+1. Feature vector size: F_size
+2. Each feature: we collect least point_count
+3. Policy count: policy_count
+
+Total record count in measures would be:
+Record_count = power (point_count, F_size) * policy_count
+
+Record_threshhold= power(Minimum_point_count, F_size)* policy_count
+
+TODO: This is exponential complexity. 
+ * */
+
+void Apollo::Region::setDataCollectionThreshold()
+{
+  // A threshold to check if enough data is collected for a region
+  const int Min_Point_Count=50;
+  min_record_count = min(5000000, (int)pow(Min_Point_Count,num_features )* num_region_policies);
+  if (Config::APOLLO_TRACE_CROSS_EXECUTION)
+    cout<<"min_record_count="<<min_record_count<<endl;
 }
 
 
+bool Apollo::Region::hasEnoughTrainingData()
+{
+  return measures.size()>=min_record_count;
+}
+
 // Store training datasets into a file
 // The data include both  aggregated data (measures) and labeled data (with best policy information)
+//
+// Empty records may be found, if the execution already collects sufficient data and called model building already
 void Apollo::Region::serialize(int training_steps=0)
 {
+
+  // do nothing if empty measures. 
+  // This happens if the execution already collects sufficient data and called model building.
+  if (measures.empty()) return; 
+
   std::stringstream trace_out;
+  string t_stamp=getTimeStamp();
   int rank;
 #ifdef ENABLE_MPI
   rank = apollo->mpiRank;
 #else
   rank = 0;
 #endif //ENABLE_MPI
-  trace_out << "=================================" << std::endl \
+  trace_out << "========Apollo::Region::serialize()"<< t_stamp<< "================" << std::endl \
     << "Rank " << rank << " Region " << name << " MEASURES "  << std::endl;
 
   for (auto iter_measure = measures.begin();
@@ -266,7 +441,7 @@ void Apollo::Region::serialize(int training_steps=0)
   //  std::cout << trace_out.str();
 
   // save to a file
-  string folder_name = "./trace" + Config::APOLLO_TRACE_CSV_FOLDER_SUFFIX;
+  string folder_name = getHistoryFilePath(); // "./trace" + Config::APOLLO_TRACE_CSV_FOLDER_SUFFIX;
 
   int ret;
   ret = mkdir(folder_name.c_str(),  S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH);
@@ -277,10 +452,17 @@ void Apollo::Region::serialize(int training_steps=0)
   }
 
   // TODO: better file name for region data
-  std::ofstream fout( getHistoryFilePath()+'/'+getHistoryFileName()); 
-
+  std::ofstream fout( folder_name +'/'+getHistoryFileName()); 
   fout << trace_out.str();
   fout.close();
+
+  //In debugging mode: we also save into timestamped files as history
+  if (Config::APOLLO_CROSS_EXECUTION) 
+  {
+    std::ofstream fout2( folder_name +'/'+getHistoryFileName(true)); 
+    fout2 << trace_out.str();
+    fout2.close();
+  }
 }
 
 Apollo::Region::~Region()
@@ -297,6 +479,7 @@ Apollo::Region::~Region()
         trace_file.close();
 
     // Save region information into a file
+    // serialize could be done when we 
     if (Config::APOLLO_CROSS_EXECUTION)
       serialize();
 
@@ -316,6 +499,9 @@ Apollo::Region::begin()
     return context;
 }
 
+//! this this the default begin() of a region
+// It also tries to load models, if they are available
+// No: model is set to region in memory, if it is built during this current run (by some previous iteration's region->end())
 Apollo::RegionContext *
 Apollo::Region::begin(std::vector<float> features)
 {
@@ -436,7 +622,10 @@ Apollo::Region::end(double metric)
 void
 Apollo::Region::end(void)
 {
-    end(current_context);
+//TODO: test this in synchronous processing first, move to asynchronous handling later.
+   if (Config::APOLLO_CROSS_EXECUTION)
+     checkAndFlushMeasurements(idx);
+   end(current_context);
 }
 
 int
@@ -541,11 +730,13 @@ Apollo::Region::getHistoryFilePath()
 }
 
 std::string 
-Apollo::Region::getHistoryFileName()
+Apollo::Region::getHistoryFileName(bool timestime)
 {
    int rank = apollo->mpiRank;  //Automatically 0 if not an MPI environment.
-
-  return "Region-Data-rank-" + std::to_string(rank) + "-" + name + "-measures.txt";
+   string t_str;
+  if (timestime)
+   t_str= getTimeStamp();
+  return "Region-Data-rank-" + std::to_string(rank) + "-" + name + "-measures"+ t_str+ ".txt";
 }
 /*
 
@@ -580,9 +771,13 @@ Apollo::Region::loadPreviousMeasures()
 
   if (!datafile.is_open())
   {
-    cerr<<"Fatal Error: Apollo::Region::loadPreviousMeasures() cannot open txt file "<< prev_data_file<<endl;
+    if (Config::APOLLO_TRACE_CROSS_EXECUTION)
+      cout<<"Apollo::Region::loadPreviousMeasures() cannot find/open txt file "<< prev_data_file<<endl;
     return false;
   } 
+
+  if (Config::APOLLO_TRACE_CROSS_EXECUTION)
+    cout<<"loadPreviousMeasures() opens previous measure data file successfully: "<< prev_data_file <<endl;
 
   while (!datafile.eof())
   {
@@ -656,6 +851,7 @@ Apollo::Region::loadPreviousMeasures()
       // cout<<"total exe time:"<<stof(total) <<endl; // convert to integer, they are mostly sizes of things right now
       float cur_total_time = stof(total); 
 
+
       auto iter = measures.find({cur_features, cur_policy});
       if (iter == measures.end()) {
         iter = measures
@@ -673,6 +869,9 @@ Apollo::Region::loadPreviousMeasures()
       }
     } // hande a line 
   } // end while
+
+  if (Config::APOLLO_TRACE_CROSS_EXECUTION)
+      cout<<"After insertion: measures.size():"<<measures.size() <<endl;
 
   datafile.close();
 

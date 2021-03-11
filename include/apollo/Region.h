@@ -50,6 +50,7 @@ class Apollo::Region {
         void setFeature(Apollo::RegionContext *, float value);
 
         int idx;
+        int num_region_policies;  // region level policies
         int      num_features;
         int      reduceBestPolicies(int step);
         //
@@ -68,9 +69,25 @@ class Apollo::Region {
         std::unique_ptr<TimingModel> time_model;
         std::unique_ptr<PolicyModel> model;
 
+        // set the policy model of this region
+        void setPolicyModel (int numAvailablePolicies, const std::string &modelYamlFile);
+
         // Support cross execution profling/modeling/adaptation, we need to load previous measures of a region
         // return true if load is successful
+        // Save measures of the current execution
+        void serialize(int training_steps);
+        // Load previuos execution's data file
         bool loadPreviousMeasures(); 
+
+        // Per region model building, after checking if we have enough data, if so. 
+        void checkAndFlushMeasurements(int step);
+
+        // save region information into a file, enable cross-execution optimization
+        std::string getHistoryFilePath();
+        std::string getHistoryFileName(bool timeStamp=false);
+
+        std::string getPolicyModelFileName(bool timeStamp=false);
+        std::string getTimingModelFileName(bool timeStamp=false);
 
     private:
         //
@@ -84,11 +101,10 @@ class Apollo::Region {
         void collectPendingContexts();
         void collectContext(Apollo::RegionContext *, double);
 
-        // save region information into a file, enable cross-execution optimization
-        std::string getHistoryFilePath();
-        std::string getHistoryFileName();
-        void serialize(int training_steps);
-
+        // check if a region has enough training data collected
+        int min_record_count; // a threshold to decide if we have collected enough data
+        void setDataCollectionThreshold();
+        bool hasEnoughTrainingData();
 
 }; // end: Apollo::Region
 

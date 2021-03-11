@@ -24,6 +24,7 @@ class Config {
         static int APOLLO_TRACE_RETRAIN;
         static int APOLLO_TRACE_ALLGATHER;
         static int APOLLO_TRACE_BEST_POLICIES;
+        static int APOLLO_TRACE_CROSS_EXECUTION;
 
         static int APOLLO_FLUSH_PERIOD;
         static int APOLLO_TRACE_CSV;

@@ -20,6 +20,7 @@ int Config::APOLLO_FLUSH_PERIOD;
 int Config::APOLLO_TRACE_CSV;
 
 int Config::APOLLO_CROSS_EXECUTION;
+int Config::APOLLO_TRACE_CROSS_EXECUTION;
 
 std::string Config::APOLLO_INIT_MODEL;
 std::string Config::APOLLO_TRACE_CSV_FOLDER_SUFFIX;
