@@ -16,6 +16,8 @@ class Config {
         static float APOLLO_RETRAIN_REGION_THRESHOLD;
 
         static int APOLLO_CROSS_EXECUTION;  // enable cross execution profiling/ modeling/adaptation
+        // minimum number of data points for each feature needed to trigger model building
+        static int APOLLO_CROSS_EXECUTION_MIN_DATAPOINT_COUNT;  
 
         // Debugging and tracing configurations
         static int APOLLO_STORE_MODELS;

@@ -1,0 +1,6 @@
+========Apollo::Region::serialize()2021-03-10-18:16:11-PST================
+Rank 0 Region daxpy MEASURES 
+features: [ 760000,  ]: policy: 0 , count: 10 , total: 0.0117056 , time_avg: 0.00117056
+.-
+Rank 0 Region daxpy Reduce 
+.-

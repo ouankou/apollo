@@ -162,6 +162,8 @@ Apollo::Apollo()
     // cross-execution training, default 0
     // It reuses CSV tracer file's folder to store the serialization files
     Config::APOLLO_CROSS_EXECUTION    = std::stoi( apolloUtils::safeGetEnv( "APOLLO_CROSS_EXECUTION", "1" ) );
+    // min datapoints needed for each dimension of the feature vector. Used to decide if we have enough data to trigger model building.
+    Config::APOLLO_CROSS_EXECUTION_MIN_DATAPOINT_COUNT = std::stoi( apolloUtils::safeGetEnv( "APOLLO_CROSS_EXECUTION_MIN_DATAPOINT_COUNT", "25" ) );
 
     Config::APOLLO_RETRAIN_ENABLE      = std::stoi( apolloUtils::safeGetEnv( "APOLLO_RETRAIN_ENABLE", "1" ) );
     Config::APOLLO_RETRAIN_TIME_THRESHOLD   = std::stof( apolloUtils::safeGetEnv( "APOLLO_RETRAIN_TIME_THRESHOLD", "2.0" ) );

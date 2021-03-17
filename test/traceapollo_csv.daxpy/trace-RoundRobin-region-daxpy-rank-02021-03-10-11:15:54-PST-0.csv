@@ -1,0 +1,11 @@
+rankid,training,region,idx,f0,policy,xtime
+0,RoundRobin,daxpy,0,139000,0,0.015303204
+0,RoundRobin,daxpy,1,139000,1,0.28483055
+0,RoundRobin,daxpy,2,139000,0,7.8008e-05
+0,RoundRobin,daxpy,3,139000,0,0.002778924
+0,RoundRobin,daxpy,4,139000,0,1.839e-05
+0,RoundRobin,daxpy,5,139000,0,1.2253e-05
+0,RoundRobin,daxpy,6,139000,0,1.2507e-05
+0,RoundRobin,daxpy,7,139000,0,1.3173e-05
+0,RoundRobin,daxpy,8,139000,0,1.348e-05
+0,RoundRobin,daxpy,9,139000,0,1.3478e-05

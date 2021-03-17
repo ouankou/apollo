@@ -371,8 +371,8 @@ TODO: This is exponential complexity.
 void Apollo::Region::setDataCollectionThreshold()
 {
   // A threshold to check if enough data is collected for a region
-  const int Min_Point_Count=50;
-  min_record_count = min(5000000, (int)pow(Min_Point_Count,num_features )* num_region_policies);
+  const int Min_Point_Count=Config::APOLLO_CROSS_EXECUTION_MIN_DATAPOINT_COUNT;
+  min_record_count = min(50000, (int)pow(Min_Point_Count,num_features )* num_region_policies);
   if (Config::APOLLO_TRACE_CROSS_EXECUTION)
     cout<<"min_record_count="<<min_record_count<<endl;
 }
