@@ -16,8 +16,10 @@ daxpy: daxpy.cpp
 # version 2 accepts an option to specify array size, enabling cross-execution optimiztion  
 daxpy-v2: daxpy-v2.cpp
 	$(CC) $(CXXFLAGS) -I $(INC_DIR) -L $(LIB_DIR) -Wl,--rpath,$(LIB_DIR) $^ -o $@ $(LIBS)
+daxpy-v3: daxpy-v3.cpp
+	$(CC) $(CXXFLAGS) -I $(INC_DIR) -L $(LIB_DIR) -Wl,--rpath,$(LIB_DIR) $^ -o $@ $(LIBS)
   
-all: daxpy daxpy-v2  
+all: daxpy daxpy-v2 daxpy-v3 
 .PHONY: clean run
 # TEST cross execution: save region information from current execution
 run2: daxpy-v2

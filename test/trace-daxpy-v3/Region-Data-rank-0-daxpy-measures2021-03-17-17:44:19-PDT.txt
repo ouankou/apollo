@@ -1,0 +1,11 @@
+========Apollo::Region::serialize()2021-03-17-17:44:19-PDT================
+Rank 0 Region daxpy MEASURES 
+features: [ 40000,  ]: policy: 0 , count: 5 , total: 0.016476 , time_avg: 0.0032952
+features: [ 40000,  ]: policy: 1 , count: 5 , total: 0.281904 , time_avg: 0.0563808
+features: [ 80000,  ]: policy: 0 , count: 5 , total: 0.0139314 , time_avg: 0.00278628
+features: [ 80000,  ]: policy: 1 , count: 5 , total: 0.272403 , time_avg: 0.0544806
+features: [ 120000,  ]: policy: 0 , count: 5 , total: 0.0107699 , time_avg: 0.00215399
+features: [ 120000,  ]: policy: 1 , count: 5 , total: 0.2699 , time_avg: 0.0539799
+.-
+Rank 0 Region daxpy Reduce 
+.-
