@@ -8,6 +8,52 @@ Machine learning is used to use a list of features to predict
 * either the best policy (code variant) choice: a classification model 
 * or execution time: a regression modeling
 
+# Code Region Instrumentation
+
+To enable adaptation of an OpenMP loop, the code needs to be transformed to have several variants and controlled by Apollo APIs. 
+
+One example is https://github.com/chunhualiao/apollo/blob/develop/test/daxpy-v3.cpp
+
+```
+// step 1: add headers 
+
+#include <apollo/Apollo.h>
+#include <apollo/Region.h>
+
+
+  // skeleton of some iterative algorithm
+  for(int j=0; j<ITERS; j++) {
+  
+  
+    size_t test_size = size;
+
+    //step 2. Create Apollo region if needed
+    Apollo::Region *region = Apollo::instance()->getRegion(
+        /* id */ "daxpy",
+        /* NumFeatures */ 1,
+        /* NumPolicies */ 2);
+
+    //step 3. Begin region and set feature vector's value
+    // Feature vector has only 1 element for this example
+    region->begin( /* feature vector */ { (float)test_size } );
+
+    // Get the policy to execute from Apollo
+    int policy = region->getPolicyIndex();
+
+    switch(policy) {
+      case 0: daxpy_cpu(A, x, y, r, test_size); break;
+      case 1: daxpy_gpu(A, x, y, r, test_size); break;
+      default: assert("invalid policy\n");
+    }
+
+    //step 4.  End region execution
+    region->end();
+
+  }
+  
+```
+
+
 # Context of a measured executime time
 
 A code region may contain several code variants (one policy id for each)
