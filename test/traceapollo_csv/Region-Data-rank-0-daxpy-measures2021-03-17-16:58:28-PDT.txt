@@ -1,0 +1,43 @@
+========Apollo::Region::serialize()2021-03-17-16:58:28-PDT================
+Rank 0 Region daxpy MEASURES 
+features: [ 40000,  ]: policy: 0 , count: 5 , total: 0.016929 , time_avg: 0.0033858
+features: [ 40000,  ]: policy: 1 , count: 5 , total: 0.28078 , time_avg: 0.056156
+features: [ 80000,  ]: policy: 0 , count: 5 , total: 0.0144417 , time_avg: 0.00288834
+features: [ 80000,  ]: policy: 1 , count: 5 , total: 0.264411 , time_avg: 0.0528822
+features: [ 120000,  ]: policy: 0 , count: 5 , total: 0.0117228 , time_avg: 0.00234456
+features: [ 120000,  ]: policy: 1 , count: 5 , total: 0.266075 , time_avg: 0.053215
+features: [ 160000,  ]: policy: 0 , count: 5 , total: 0.0128011 , time_avg: 0.00256022
+features: [ 160000,  ]: policy: 1 , count: 5 , total: 0.271313 , time_avg: 0.0542626
+features: [ 200000,  ]: policy: 0 , count: 5 , total: 0.0143173 , time_avg: 0.00286346
+features: [ 200000,  ]: policy: 1 , count: 5 , total: 0.33329 , time_avg: 0.066658
+features: [ 240000,  ]: policy: 0 , count: 5 , total: 0.0118876 , time_avg: 0.00237752
+features: [ 240000,  ]: policy: 1 , count: 5 , total: 0.272418 , time_avg: 0.0544836
+features: [ 280000,  ]: policy: 0 , count: 5 , total: 0.0114113 , time_avg: 0.00228226
+features: [ 280000,  ]: policy: 1 , count: 5 , total: 0.275856 , time_avg: 0.0551712
+features: [ 320000,  ]: policy: 0 , count: 5 , total: 0.0113235 , time_avg: 0.0022647
+features: [ 320000,  ]: policy: 1 , count: 5 , total: 0.280467 , time_avg: 0.0560934
+features: [ 360000,  ]: policy: 0 , count: 5 , total: 0.0142639 , time_avg: 0.00285278
+features: [ 360000,  ]: policy: 1 , count: 5 , total: 0.274183 , time_avg: 0.0548366
+features: [ 400000,  ]: policy: 0 , count: 5 , total: 0.0124899 , time_avg: 0.00249798
+features: [ 400000,  ]: policy: 1 , count: 5 , total: 0.277091 , time_avg: 0.0554182
+features: [ 440000,  ]: policy: 0 , count: 5 , total: 0.0121271 , time_avg: 0.00242542
+features: [ 440000,  ]: policy: 1 , count: 5 , total: 0.278196 , time_avg: 0.0556392
+features: [ 480000,  ]: policy: 0 , count: 5 , total: 0.0141373 , time_avg: 0.00282746
+features: [ 480000,  ]: policy: 1 , count: 5 , total: 0.282831 , time_avg: 0.0565662
+features: [ 520000,  ]: policy: 0 , count: 5 , total: 0.012765 , time_avg: 0.002553
+features: [ 520000,  ]: policy: 1 , count: 5 , total: 0.281247 , time_avg: 0.0562494
+features: [ 560000,  ]: policy: 0 , count: 5 , total: 0.0111116 , time_avg: 0.00222232
+features: [ 560000,  ]: policy: 1 , count: 5 , total: 0.284788 , time_avg: 0.0569576
+features: [ 600000,  ]: policy: 0 , count: 5 , total: 0.0140978 , time_avg: 0.00281956
+features: [ 600000,  ]: policy: 1 , count: 5 , total: 0.284008 , time_avg: 0.0568016
+features: [ 640000,  ]: policy: 0 , count: 5 , total: 0.0138711 , time_avg: 0.00277422
+features: [ 640000,  ]: policy: 1 , count: 5 , total: 0.283172 , time_avg: 0.0566344
+features: [ 680000,  ]: policy: 0 , count: 5 , total: 0.0119266 , time_avg: 0.00238532
+features: [ 680000,  ]: policy: 1 , count: 5 , total: 0.284788 , time_avg: 0.0569576
+features: [ 720000,  ]: policy: 0 , count: 5 , total: 0.0126166 , time_avg: 0.00252332
+features: [ 720000,  ]: policy: 1 , count: 5 , total: 0.290783 , time_avg: 0.0581566
+features: [ 760000,  ]: policy: 0 , count: 5 , total: 0.0134297 , time_avg: 0.00268595
+features: [ 760000,  ]: policy: 1 , count: 5 , total: 0.288167 , time_avg: 0.0576335
+.-
+Rank 0 Region daxpy Reduce 
+.-
