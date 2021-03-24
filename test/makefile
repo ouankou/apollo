@@ -19,6 +19,9 @@ daxpy-v2: daxpy-v2.cpp
 daxpy-v3: daxpy-v3.cpp
 	$(CC) $(CXXFLAGS) -I $(INC_DIR) -L $(LIB_DIR) -Wl,--rpath,$(LIB_DIR) $^ -o $@ $(LIBS)
   
+matrixMultiplication.out: matrixMultiplication.cpp
+	$(CC) $(CXXFLAGS) -I $(INC_DIR) -L $(LIB_DIR) -Wl,--rpath,$(LIB_DIR) $< -o $@ $(LIBS)
+
 all: daxpy daxpy-v2 daxpy-v3 
 .PHONY: clean run
 # TEST cross execution: save region information from current execution

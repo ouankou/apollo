@@ -1,10 +1,10 @@
 /*
-Naive matrix-matrix multiplication(mmm)
- c = a * b
+   Naive matrix-matrix multiplication(mmm)
+   c = a * b
 
- a: N*M
- b: M*K
- c: N*K
+a: N*M
+b: M*K
+c: N*K
 
 By C. Liao
 */
@@ -15,6 +15,9 @@ By C. Liao
 #ifdef _OPENMP
 #include <omp.h>
 #endif
+
+#include <apollo/Apollo.h>
+#include <apollo/Region.h>
 
 #define REAL float 
 
@@ -110,7 +113,7 @@ int main(int argc, char* argv[])
     printf("Usage: %s array_size\n", argv[0]);
     return 0;
   }
- 
+
   N=M=K=atoi(argv[1]);
   printf("matrix size : %d\n", N);
 
@@ -122,8 +125,38 @@ int main(int argc, char* argv[])
 
   init(a, b, c1, c2, N, M, K);
 
-  mm_cpu(a,b,c1, N, M, K);
-  mm_gpu(a,b,c2, N, M, K);
+  // original code does not have an iteration enclosing two choices
+  // round robin policy may not work, using random is better
+  // Another choice: repeat it anyway by adding a loop
+  for (int repeat=0; repeat<4; repeat++)
+  {
+    // Create Apollo region if needed
+    Apollo::Region *region = Apollo::instance()->getRegion(
+        /* id */ "mm",
+        /* NumFeatures */ 1,
+        /* NumPolicies */ 2);
+
+    region->begin( /* feature vector */ { (float)N } );
+
+    int policy = region->getPolicyIndex();
+
+    switch (policy)
+    {
+      case 0: 
+        {
+          mm_cpu(a,b,c1, N, M, K); 
+          break;
+        }
+      case 1: 
+        {
+          mm_gpu(a,b,c2, N, M, K); 
+          break;
+        }
+
+      default: assert ("Invalid policy\n");
+    }  
+    region->end();
+  }
 
   verify(c1,c2, N, K);
 
