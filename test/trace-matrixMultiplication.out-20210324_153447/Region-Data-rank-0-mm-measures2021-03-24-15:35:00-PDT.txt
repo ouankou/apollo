@@ -1,0 +1,23 @@
+========Apollo::Region::serialize()2021-03-24-15:35:00-PDT================
+Rank 0 Region mm MEASURES 
+features: [ 256,  ]: policy: 0 , count: 2 , total: 0.00141695 , time_avg: 0.000708475
+features: [ 256,  ]: policy: 1 , count: 2 , total: 0.279804 , time_avg: 0.139902
+features: [ 512,  ]: policy: 0 , count: 2 , total: 0.0250743 , time_avg: 0.0125371
+features: [ 512,  ]: policy: 1 , count: 2 , total: 0.27144 , time_avg: 0.13572
+features: [ 768,  ]: policy: 0 , count: 2 , total: 0.0834573 , time_avg: 0.0417286
+features: [ 768,  ]: policy: 1 , count: 2 , total: 0.275729 , time_avg: 0.137865
+features: [ 1024,  ]: policy: 0 , count: 2 , total: 0.223408 , time_avg: 0.111704
+features: [ 1024,  ]: policy: 1 , count: 2 , total: 0.283326 , time_avg: 0.141663
+features: [ 1280,  ]: policy: 0 , count: 2 , total: 0.327805 , time_avg: 0.163903
+features: [ 1280,  ]: policy: 1 , count: 2 , total: 0.300085 , time_avg: 0.150043
+features: [ 1536,  ]: policy: 0 , count: 2 , total: 0.76401 , time_avg: 0.382005
+features: [ 1536,  ]: policy: 1 , count: 2 , total: 0.322882 , time_avg: 0.161441
+features: [ 1792,  ]: policy: 0 , count: 2 , total: 1.21232 , time_avg: 0.60616
+features: [ 1792,  ]: policy: 1 , count: 2 , total: 0.349566 , time_avg: 0.174783
+features: [ 2048,  ]: policy: 0 , count: 2 , total: 1.84447 , time_avg: 0.922235
+features: [ 2048,  ]: policy: 1 , count: 2 , total: 0.392474 , time_avg: 0.196237
+features: [ 2304,  ]: policy: 0 , count: 2 , total: 2.47849 , time_avg: 1.23924
+features: [ 2304,  ]: policy: 1 , count: 2 , total: 0.426706 , time_avg: 0.213353
+.-
+Rank 0 Region mm Reduce 
+.-

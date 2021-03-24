@@ -1,0 +1,51 @@
+========Apollo::Region::serialize()2021-03-24-15:39:31-PDT================
+Rank 0 Region mm MEASURES 
+features: [ 256,  ]: policy: 0 , count: 2 , total: 0.00141695 , time_avg: 0.000708475
+features: [ 256,  ]: policy: 1 , count: 2 , total: 0.279804 , time_avg: 0.139902
+features: [ 512,  ]: policy: 0 , count: 2 , total: 0.0250743 , time_avg: 0.0125371
+features: [ 512,  ]: policy: 1 , count: 2 , total: 0.27144 , time_avg: 0.13572
+features: [ 768,  ]: policy: 0 , count: 2 , total: 0.0834573 , time_avg: 0.0417286
+features: [ 768,  ]: policy: 1 , count: 2 , total: 0.275729 , time_avg: 0.137865
+features: [ 1024,  ]: policy: 0 , count: 2 , total: 0.223408 , time_avg: 0.111704
+features: [ 1024,  ]: policy: 1 , count: 2 , total: 0.283326 , time_avg: 0.141663
+features: [ 1280,  ]: policy: 0 , count: 2 , total: 0.327805 , time_avg: 0.163903
+features: [ 1280,  ]: policy: 1 , count: 2 , total: 0.300085 , time_avg: 0.150043
+features: [ 1536,  ]: policy: 0 , count: 2 , total: 0.76401 , time_avg: 0.382005
+features: [ 1536,  ]: policy: 1 , count: 2 , total: 0.322882 , time_avg: 0.161441
+features: [ 1792,  ]: policy: 0 , count: 2 , total: 1.21232 , time_avg: 0.60616
+features: [ 1792,  ]: policy: 1 , count: 2 , total: 0.349566 , time_avg: 0.174783
+features: [ 2048,  ]: policy: 0 , count: 2 , total: 1.84447 , time_avg: 0.922235
+features: [ 2048,  ]: policy: 1 , count: 2 , total: 0.392474 , time_avg: 0.196237
+features: [ 2304,  ]: policy: 0 , count: 2 , total: 2.47849 , time_avg: 1.23925
+features: [ 2304,  ]: policy: 1 , count: 2 , total: 0.426706 , time_avg: 0.213353
+features: [ 2560,  ]: policy: 0 , count: 2 , total: 2.84816 , time_avg: 1.42408
+features: [ 2560,  ]: policy: 1 , count: 2 , total: 0.476789 , time_avg: 0.238394
+features: [ 2816,  ]: policy: 0 , count: 2 , total: 4.35743 , time_avg: 2.17871
+features: [ 2816,  ]: policy: 1 , count: 2 , total: 0.541554 , time_avg: 0.270777
+features: [ 3072,  ]: policy: 0 , count: 2 , total: 5.87691 , time_avg: 2.93846
+features: [ 3072,  ]: policy: 1 , count: 2 , total: 0.6061 , time_avg: 0.30305
+features: [ 3328,  ]: policy: 0 , count: 2 , total: 7.51492 , time_avg: 3.75746
+features: [ 3328,  ]: policy: 1 , count: 2 , total: 0.674325 , time_avg: 0.337162
+features: [ 3584,  ]: policy: 0 , count: 2 , total: 9.39061 , time_avg: 4.6953
+features: [ 3584,  ]: policy: 1 , count: 2 , total: 0.762939 , time_avg: 0.381469
+features: [ 3840,  ]: policy: 0 , count: 2 , total: 9.78743 , time_avg: 4.89371
+features: [ 3840,  ]: policy: 1 , count: 2 , total: 0.872779 , time_avg: 0.43639
+features: [ 4096,  ]: policy: 0 , count: 2 , total: 15.1128 , time_avg: 7.5564
+features: [ 4096,  ]: policy: 1 , count: 2 , total: 1.03129 , time_avg: 0.515645
+features: [ 4352,  ]: policy: 0 , count: 2 , total: 15.8585 , time_avg: 7.92925
+features: [ 4352,  ]: policy: 1 , count: 2 , total: 1.1373 , time_avg: 0.56865
+features: [ 4608,  ]: policy: 0 , count: 2 , total: 19.1866 , time_avg: 9.5933
+features: [ 4608,  ]: policy: 1 , count: 2 , total: 1.32235 , time_avg: 0.661175
+features: [ 4864,  ]: policy: 0 , count: 2 , total: 21.9633 , time_avg: 10.9817
+features: [ 4864,  ]: policy: 1 , count: 2 , total: 1.43636 , time_avg: 0.71818
+features: [ 5120,  ]: policy: 0 , count: 2 , total: 26.5618 , time_avg: 13.2809
+features: [ 5120,  ]: policy: 1 , count: 2 , total: 1.62916 , time_avg: 0.81458
+features: [ 5376,  ]: policy: 0 , count: 2 , total: 30.5563 , time_avg: 15.2781
+features: [ 5376,  ]: policy: 1 , count: 2 , total: 1.82654 , time_avg: 0.91327
+features: [ 5632,  ]: policy: 0 , count: 2 , total: 37.2898 , time_avg: 18.6449
+features: [ 5632,  ]: policy: 1 , count: 2 , total: 2.1081 , time_avg: 1.05405
+features: [ 5888,  ]: policy: 0 , count: 2 , total: 42.0958 , time_avg: 21.0479
+features: [ 5888,  ]: policy: 1 , count: 2 , total: 2.55247 , time_avg: 1.27623
+.-
+Rank 0 Region mm Reduce 
+.-

@@ -158,7 +158,8 @@ int main(int argc, char* argv[])
     region->end();
   }
 
-  verify(c1,c2, N, K);
+// It is possible only one version is executed in this adaptive version.
+//  verify(c1,c2, N, K);
 
   free(a);
   free(b);

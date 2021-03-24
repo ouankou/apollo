@@ -1,0 +1,5 @@
+rankid,training,region,idx,f0,policy,xtime
+0,RoundRobin,mm,0,5632,0,18.76434564
+0,RoundRobin,mm,1,5632,1,1.177063628
+0,RoundRobin,mm,2,5632,0,18.525416228
+0,RoundRobin,mm,3,5632,1,0.931036958
