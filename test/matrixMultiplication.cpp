@@ -66,7 +66,7 @@ int mm_gpu(REAL* a, REAL* b, REAL* c, int N, int M, int K)
 {
   int i,j,k;
 #pragma omp target map(tofrom:c[0:N*K]), map(to:a[0:N*M],b[0:M*K])
-#pragma omp parallel for private(i,j,k) collapse(2)
+#pragma omp teams distribute parallel for private(i,j,k) collapse(2)
   for (i = 0; i < N; i++)
     for (j = 0; j < M; j++)
       for (k = 0; k < K; k++)
