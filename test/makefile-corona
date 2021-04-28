@@ -25,7 +25,7 @@ LINK_FALGS+= -L/usr/tce/packages/gcc/gcc-4.9.3/lib64/ -Wl,--rpath,/usr/tce/packa
 
 # This version uses a fixed sized array and random sized portion to collect data
 daxpy: daxpy.cpp
-	$(CC) $(CXXFLAGS) -I $(INC_DIR) $(LINK_FALGS) daxpy.cpp -o daxpy $(LIBS)
+	spack load opencv@4.5.0%gcc@4.9.3; $(CC) $(CXXFLAGS) -I $(INC_DIR) $(LINK_FALGS) daxpy.cpp -o daxpy $(LIBS)
 
 # version 2 accepts an option to specify array size, enabling cross-execution optimiztion  
 daxpy-v2: daxpy-v2.cpp
@@ -34,7 +34,7 @@ daxpy-v3: daxpy-v3.cpp
 	$(CC) $(CXXFLAGS) -I $(INC_DIR) -L $(LIB_DIR) -Wl,--rpath,$(LIB_DIR) $^ -o $@ $(LIBS)
   
 matrixMultiplication.out: matrixMultiplication.cpp
-	$(CC) $(CXXFLAGS) -I $(INC_DIR) -L $(LIB_DIR) -Wl,--rpath,$(LIB_DIR) $< -o $@ $(LIBS)
+	spack load opencv@4.5.0%gcc@4.9.3; $(CC) $(CXXFLAGS) -I $(INC_DIR) $(LINK_FALGS) $< -o $@ $(LIBS)
 
 all: daxpy daxpy-v2 daxpy-v3 
 .PHONY: clean run

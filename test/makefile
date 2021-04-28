@@ -1,5 +1,15 @@
-CC=clang++
-CXXFLAGS=-O3 -g -fopenmp -fopenmp-targets=nvptx64
+SHELL=/bin/bash
+
+# AMD GPU
+ifeq ($(findstring corona,$(HOSTNAME)), corona)
+  CC=/opt/rocm-4.1.0/llvm/bin/clang++
+  CXXFLAGS=-O3 -target x86_64-pc-linux-gnu -fopenmp -fopenmp-version=50 -fopenmp-targets=amdgcn-amd-amdhsa -Xopenmp-target=amdgcn-amd-amdhsa -march=gfx906
+
+# on lassen, Nvidia GPU  
+else
+  CC=clang++
+  CXXFLAGS=-O3 -g -fopenmp -fopenmp-targets=nvptx64
+endif 
 
 # APOLLO_HOME is your environment variable indicating the path to Apollo Installation
 # e.g.: 
@@ -9,20 +19,31 @@ INC_DIR=$(APOLLO_DIR)/include
 LIB_DIR=$(APOLLO_DIR)/lib
 LIBS=-lapollo
 
-# This version uses a fixed sized array and random sized portion to collect data
-daxpy: daxpy.cpp
-	$(CC) $(CXXFLAGS) -I $(INC_DIR) -L $(LIB_DIR) -Wl,--rpath,$(LIB_DIR) daxpy.cpp -o daxpy $(LIBS)
+LINK_FALGS= -L$(LIB_DIR) -Wl,--rpath,$(LIB_DIR)
 
-# version 2 accepts an option to specify array size, enabling cross-execution optimiztion  
-daxpy-v2: daxpy-v2.cpp
-	$(CC) $(CXXFLAGS) -I $(INC_DIR) -L $(LIB_DIR) -Wl,--rpath,$(LIB_DIR) $^ -o $@ $(LIBS)
-daxpy-v3: daxpy-v3.cpp
-	$(CC) $(CXXFLAGS) -I $(INC_DIR) -L $(LIB_DIR) -Wl,--rpath,$(LIB_DIR) $^ -o $@ $(LIBS)
-  
-matrixMultiplication.out: matrixMultiplication.cpp
-	$(CC) $(CXXFLAGS) -I $(INC_DIR) -L $(LIB_DIR) -Wl,--rpath,$(LIB_DIR) $< -o $@ $(LIBS)
+ifeq ($(findstring corona,$(HOSTNAME)), corona)
+# must use alternative libstdc++ /usr/tce/packages/gcc/gcc-4.9.3/lib64/ 
+# # opencv and apollo are built using gcc 4.9.3
+ LINK_FALGS+= -L/usr/tce/packages/gcc/gcc-4.9.3/lib64/ -Wl,--rpath,/usr/tce/packages/gcc/gcc-4.9.3/lib64/
+endif  
 
-all: daxpy daxpy-v2 daxpy-v3 
+
+CPP_SRC_FILES = \
+daxpy.cpp \
+daxpy-v2.cpp \
+daxpy-v3.cpp \
+matrixMultiplication.cpp \
+hasGPU.cpp
+
+OBJ_FILES = $(addsuffix .out, $(basename $(CPP_SRC_FILES)))
+
+%.out:%.cpp
+	$(CC) $(CXXFLAGS) -I$(INC_DIR) $(LINK_FALGS) $^ -o $@ $(LIBS)
+
+all: $(OBJ_FILES)
+test:
+	echo $(OBJ_FILES)
+
 .PHONY: clean run
 # TEST cross execution: save region information from current execution
 run2: daxpy-v2
@@ -33,5 +54,5 @@ run: daxpy
 #APOLLO_RETRAIN_ENABLE=0 APOLLO_COLLECTIVE_TRAINING=0 APOLLO_LOCAL_TRAINING=1 APOLLO_STORE_MODELS=1 APOLLO_INIT_MODEL="RoundRobin" ./daxpy
 
 clean:
-	rm -rf daxpy daxpy-v2
+	rm -rf daxpy daxpy-v2 *.out
 
