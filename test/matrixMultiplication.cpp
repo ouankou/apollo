@@ -114,6 +114,26 @@ int main(int argc, char* argv[])
     return 0;
   }
 
+#pragma omp parallel 
+    {
+#pragma omp master          
+      {
+        int thread_count = omp_get_num_threads();
+        printf ("Using %d out of max %d threads...\n", thread_count, omp_get_max_threads());
+      }
+    }
+  // test if GPU offloading is supported
+  int runningOnGPU = 0;
+
+  /* Test if GPU is available using OpenMP4.5 */
+#pragma omp target map(from:runningOnGPU)
+  {
+    // This function returns true if currently running on the host device, false otherwise.
+    if (!omp_is_initial_device())
+      runningOnGPU = 1;
+  }
+  assert (runningOnGPU == 1);
+ 
   N=M=K=atoi(argv[1]);
   printf("matrix size : %d\n", N);
 

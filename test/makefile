@@ -41,8 +41,8 @@ OBJ_FILES = $(addsuffix .out, $(basename $(CPP_SRC_FILES)))
 	$(CC) $(CXXFLAGS) -I$(INC_DIR) $(LINK_FALGS) $^ -o $@ $(LIBS)
 
 all: $(OBJ_FILES)
-test:
-	echo $(OBJ_FILES)
+test: hasGPU.out
+	./$<
 
 .PHONY: clean run
 # TEST cross execution: save region information from current execution
