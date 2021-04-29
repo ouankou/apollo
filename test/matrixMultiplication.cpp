@@ -146,7 +146,8 @@ int main(int argc, char* argv[])
   init(a, b, c1, c2, N, M, K);
 
   // original code does not have an iteration enclosing two choices
-  // round robin policy may not work, using random is better
+  // round robin policy may not work, using random is better, plus the execution drivers repeating the executions.
+  // Or the driver specify the policies!
   // Another choice: repeat it anyway by adding a loop
   for (int repeat=0; repeat<4; repeat++)
   {

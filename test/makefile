@@ -33,7 +33,8 @@ daxpy.cpp \
 daxpy-v2.cpp \
 daxpy-v3.cpp \
 matrixMultiplication.cpp \
-hasGPU.cpp
+hasGPU.cpp \
+omp_smithW-v8-apollo.cpp  
 
 OBJ_FILES = $(addsuffix .out, $(basename $(CPP_SRC_FILES)))
 
