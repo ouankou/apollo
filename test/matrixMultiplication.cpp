@@ -145,11 +145,17 @@ int main(int argc, char* argv[])
 
   init(a, b, c1, c2, N, M, K);
 
+
+  bool b_cpu=false, b_gpu=false;
   // original code does not have an iteration enclosing two choices
   // round robin policy may not work, using random is better, plus the execution drivers repeating the executions.
   // Or the driver specify the policies!
   // Another choice: repeat it anyway by adding a loop
-  for (int repeat=0; repeat<4; repeat++)
+  // for smaller data sizes, we repeat mores to counter system noises
+  int limit= 4;
+  if (N<2000) 
+    limit = 20;
+  for (int repeat=0; repeat<limit; repeat++)
   {
     // Create Apollo region if needed
     Apollo::Region *region = Apollo::instance()->getRegion(
@@ -166,11 +172,13 @@ int main(int argc, char* argv[])
       case 0: 
         {
           mm_cpu(a,b,c1, N, M, K); 
+          b_cpu = true; 
           break;
         }
       case 1: 
         {
           mm_gpu(a,b,c2, N, M, K); 
+          b_gpu = true;
           break;
         }
 
@@ -179,8 +187,10 @@ int main(int argc, char* argv[])
     region->end();
   }
 
+  
 // It is possible only one version is executed in this adaptive version.
-//  verify(c1,c2, N, K);
+  if (b_cpu && b_gpu)
+    verify(c1,c2, N, K);
 
   free(a);
   free(b);

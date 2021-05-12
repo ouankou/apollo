@@ -7,7 +7,9 @@ ifeq ($(findstring corona,$(HOSTNAME)), corona)
 
 # on lassen, Nvidia GPU  
 else
-  CC=clang++
+# system default clang++ has problem with smith waterman code
+#  CC=clang++
+  CC=/g/g17/liao6/workspace-wsa/opt/llvm-master-offload/bin/clang++
   CXXFLAGS=-O3 -g -fopenmp -fopenmp-targets=nvptx64
 endif 
 
@@ -25,6 +27,9 @@ ifeq ($(findstring corona,$(HOSTNAME)), corona)
 # must use alternative libstdc++ /usr/tce/packages/gcc/gcc-4.9.3/lib64/ 
 # # opencv and apollo are built using gcc 4.9.3
  LINK_FALGS+= -L/usr/tce/packages/gcc/gcc-4.9.3/lib64/ -Wl,--rpath,/usr/tce/packages/gcc/gcc-4.9.3/lib64/
+else
+# using my own clang installation on lassen
+ LINK_FALGS+=-Wl,--rpath,/g/g17/liao6/workspace-wsa/opt/llvm-master-offload/lib
 endif  
 
 
