@@ -35,7 +35,6 @@
 #include <fstream>
 #include <iomanip>
 #include <ctime>
-#include <chrono>
 #include <memory>
 #include <utility>
 #include <algorithm>
@@ -326,8 +325,16 @@ void Apollo::Region::setPolicyModel (int numAvailablePolicies, const std::string
                 // Load the same model for all regions.
                 model_file = Config::APOLLO_INIT_MODEL.substr(pos + 1);
             }
-            //std::cout << "Model Load " << model_file << std::endl;
-            model = ModelFactory::loadDecisionTree(apollo->num_policies, model_file);
+
+            if (fileExists(model_file))
+                //std::cout << "Model Load " << model_file << std::endl;
+                model = ModelFactory::loadDecisionTree(apollo->num_policies, model_file);
+            else {
+                // Fallback to default model.
+                std::cout << "WARNING: could not load file " << model_file
+                          << ", falling back to default Static, 0" << std::endl;
+                model = ModelFactory::createStatic(apollo->num_policies, 0);
+            }
         }
         else if ("Random" == model_str)
         {
@@ -526,7 +533,10 @@ Apollo::Region::begin()
     current_context = context;
     context->idx = this->idx;
     this->idx++;
-    context->exec_time_begin = std::chrono::steady_clock::now();
+
+    struct timespec ts;
+    clock_gettime(CLOCK_MONOTONIC, &ts);
+    context->exec_time_begin = ts.tv_sec + ts.tv_nsec/1e9;
     context->isDoneCallback = nullptr;
     context->callback_arg = nullptr;
     return context;
@@ -603,10 +613,10 @@ void Apollo::Region::collectPendingContexts() {
       if (returnsMetric)
         collectContext(context, metric);
       else {
-        context->exec_time_end = std::chrono::steady_clock::now();
-        double duration = std::chrono::duration<double>(
-                              context->exec_time_end - context->exec_time_begin)
-                              .count();
+        struct timespec ts;
+        clock_gettime(CLOCK_MONOTONIC, &ts);
+        context->exec_time_end = ts.tv_sec + ts.tv_nsec/1e9;
+        double duration = context->exec_time_end - context->exec_time_begin;
         collectContext(context, duration);
       }
       return true;
@@ -626,10 +636,10 @@ Apollo::Region::end(Apollo::RegionContext *context)
     if(context->isDoneCallback)
         pending_contexts.push_back(context);
     else {
-      context->exec_time_end = std::chrono::steady_clock::now();
-      double duration = std::chrono::duration<double>(context->exec_time_end -
-                                                      context->exec_time_begin)
-                            .count();
+      struct timespec ts;
+      clock_gettime(CLOCK_MONOTONIC, &ts);
+      context->exec_time_end = ts.tv_sec + ts.tv_nsec/1e9;
+      double duration = context->exec_time_end - context->exec_time_begin;
       collectContext(context, duration);
     }
 
