@@ -7,10 +7,13 @@ ifeq ($(findstring corona,$(HOSTNAME)), corona)
 
 # on lassen, Nvidia GPU  
 else
-# system default clang++ has problem with smith waterman code
-#  CC=clang++
-  CC=/g/g17/liao6/workspace-wsa/opt/llvm-master-offload/bin/clang++
-  CXXFLAGS=-O3 -g -fopenmp -fopenmp-targets=nvptx64
+#In the end, we use default clang++ + custom build of OpenMP runtime to make Smith Waterman code work!!
+
+# system default clang++'s runtime has problem with smith waterman code
+  CC=clang++
+# we cannot use master branch's clang++, which has a serious bug also
+#  CC=/g/g17/liao6/workspace-wsa/opt/llvm-master-offload/bin/clang++
+#  CXXFLAGS=-O3 -g -fopenmp -fopenmp-targets=nvptx64
 endif 
 
 # APOLLO_HOME is your environment variable indicating the path to Apollo Installation
@@ -27,9 +30,9 @@ ifeq ($(findstring corona,$(HOSTNAME)), corona)
 # must use alternative libstdc++ /usr/tce/packages/gcc/gcc-4.9.3/lib64/ 
 # # opencv and apollo are built using gcc 4.9.3
  LINK_FALGS+= -L/usr/tce/packages/gcc/gcc-4.9.3/lib64/ -Wl,--rpath,/usr/tce/packages/gcc/gcc-4.9.3/lib64/
-else
+else # on lassen 
 # using my own clang installation on lassen
- LINK_FALGS+=-Wl,--rpath,/g/g17/liao6/workspace-wsa/opt/llvm-master-offload/lib
+# LINK_FALGS+=-Wl,--rpath,/g/g17/liao6/workspace-wsa/opt/llvm-master-offload/lib
 endif  
 
 
@@ -39,7 +42,10 @@ daxpy-v2.cpp \
 daxpy-v3.cpp \
 matrixMultiplication.cpp \
 hasGPU.cpp \
-omp_smithW-v8-apollo.cpp  
+omp_smithW-v8-apollo.cpp \
+smithw-serial.cpp \
+smithw-omp-cpu.cpp \
+smithw-omp-offload.cpp
 
 OBJ_FILES = $(addsuffix .out, $(basename $(CPP_SRC_FILES)))
 

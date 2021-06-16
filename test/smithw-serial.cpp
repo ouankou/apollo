@@ -22,8 +22,6 @@
 //#define CUTOFF 1024
 // #include "parameters.h"
 
-#include <apollo/Apollo.h>
-#include <apollo/Region.h>
 
 /*--------------------------------------------------------------------
  * Text Tweaks
@@ -90,6 +88,7 @@ char *a, *b;
 int matchMissmatchScore(long long int i, long long int j);
 void similarityScore(long long int i, long long int j, int* H, int* P, long long int* maxPos);
 #pragma omp end declare target
+
 
 // without omp critical: how to conditionalize it?
 void similarityScore_serial(long long int i, long long int j, int* H, int* P, long long int* maxPos);
@@ -167,7 +166,29 @@ int main(int argc, char* argv[])
 
   if (useBuiltInData)
   {
-   // https://en.wikipedia.org/wiki/Smith%E2%80%93Waterman_algorithm#Example
+    //Uncomment this to test the sequence available at 
+    //http://vlab.amrita.edu/?sub=3&brch=274&sim=1433&cnt=1
+    // OBS: m=11 n=7
+    // a[0] =   'C';
+    // a[1] =   'G';
+    // a[2] =   'T';
+    // a[3] =   'G';
+    // a[4] =   'A';
+    // a[5] =   'A';
+    // a[6] =   'T';
+    // a[7] =   'T';
+    // a[8] =   'C';
+    // a[9] =   'A';
+    // a[10] =  'T';
+
+    // b[0] =   'G';
+    // b[1] =   'A';
+    // b[2] =   'C';
+    // b[3] =   'T';
+    // b[4] =   'T';
+    // b[5] =   'A';
+    // b[6] =   'C';
+    // https://en.wikipedia.org/wiki/Smith%E2%80%93Waterman_algorithm#Example
     // Using the wiki example to verify the results
     b[0] =   'G';
     b[1] =   'G';
@@ -211,68 +232,12 @@ int main(int argc, char* argv[])
   printf("Number of wavefront lines and their first element positions:\n");
 #endif
 
-#ifdef _OPENMP
-#pragma omp parallel 
-  {
-#pragma omp master	    
-    {
-      thread_count = omp_get_num_threads();
-      printf ("Using %d out of max %d threads...\n", thread_count, omp_get_max_threads());
-    }
-  }
-
-  // detect GPU support 
-  int runningOnGPU = 0;
-
-  printf ("The number of target devices =%d\n", omp_get_num_devices());
-  /* Test if GPU is available using OpenMP4.5 */
-#pragma omp target map(from:runningOnGPU)
-  {
-    // This function returns true if currently running on the host device, false otherwise.
-    if (!omp_is_initial_device())
-      runningOnGPU = 1;
-  }
-  /* If still running on CPU, GPU must not be available */
-  if (runningOnGPU == 1)
-    printf("### Able to use the GPU! ### \n");
-  else
-  {
-    printf("### Unable to use the GPU, using CPU! ###\n");
-    assert (false);
-  }
-#endif
   //Gets Initial time
   double initialTime = omp_get_wtime();
 
   // mistake: element count, not byte size!!
   // int asz= m*n*sizeof(int);
   int asz= m*n;
-
-
-  // first dependent region: 
-  // Obain the main region
-  Apollo::Region *region1 = Apollo::instance()->getRegion(
-      /* id */ "smith-waterman",
-      /* NumFeatures */ 1,
-      /* NumPolicies */ 3);
-
-  // dependent region  still need to feed the features used by the model
-  region1->begin( /* feature vector */ {(float)nDiag} ); // using diagonal line count instead
-
-//  if (!(region1->model->training))// Static model's training flag is false!
-  if (!(region1->model->training))
-  {
-    // Get the policy to execute from Apollo
-    int policy = region1->getPolicyIndex();
-    if (policy ==2)
-    {
-#pragma omp target enter data map(to:a[0:m-1], b[0:n-1]) map(to: H[0:asz], P[0:asz], maxPos)
-    }
-  }
-  region1->end();
-
-
- {
     for (i = 1; i <= nDiag; ++i) // start from 1 since 0 is the boundary padding
     {
       long long int nEle, si, sj;
@@ -306,24 +271,7 @@ int main(int argc, char* argv[])
         sj = i - n + 2; // j position is the nDiag (id -n) +1 +1 // first +1 
       }
 
-      // Create Apollo region if needed
-      Apollo::Region *region = Apollo::instance()->getRegion(
-          /* id */ "smith-waterman",
-          /* NumFeatures */ 1,
-          /* NumPolicies */ 3);
-
-      // Begin region and set feature vector's value
-      // Feature vector has only 1 element for this example
-      // region->begin( /* feature vector */ {(float)nEle} ); //not best feature based on the previous iwomp paper
-       region->begin( /* feature vector */ {(float)nDiag} ); // using diagonal line count instead
-
-      // Get the policy to execute from Apollo
-      int policy = region->getPolicyIndex();
-
-      switch (policy)
-      {
-        case 0:  // serial 
-          {
+       // serial 
             //	  if (i%interval==0)
             //	    printf ("Serial version is activated since the diagonal element count %lld is less than MEDIUM %d\n", nEle, MEDIUM);
             for (j = 0; j < nEle; ++j) 
@@ -332,84 +280,18 @@ int main(int argc, char* argv[])
               long long int aj = sj + j;  //  going right in horizontal
               similarityScore_serial(ai, aj, H, P, &maxPos); // a specialized version without a critical section used inside
             }
-            break;
-          }
-        case 1:  // OpenMP CPU threading
-          {
-
-            //	  if (i%interval==0)
-            //	    printf ("OpenMP CPU version is activated since the diagonal element count %lld is less than LARGE %d\n", nEle, LARGE);
-#pragma omp parallel for private(j) shared (nEle, si, sj, H, P, maxPos) 
-            for (j = 0; j < nEle; ++j)
-            {  // going upwards : anti-diagnol direction
-              long long int ai = si - j ; // going up vertically
-              long long int aj = sj + j;  //  going right in horizontal
-              similarityScore(ai, aj, H, P, &maxPos); // a critical section is used inside
-            }
-            break;
-          }
-        case 2: // OpenMP GPU offloading
-          //--------------------------------------
-          {
-            //	  if (i%interval==0)
-            //	    printf ("OpenMP GPU version is activated since the diagonal element count %lld >= LARGE %d\n", nEle, LARGE);
-            // choice 1: map data before the inner loop
-//#pragma omp target map (to:a[0:m-1], b[0:n-1], nEle, m,n,gapScore, matchScore, missmatchScore, si, sj) map(tofrom: H[0:asz], P[0:asz], maxPos)
-#pragma omp target teams distribute parallel for default(none) private(j) shared (a,b, nEle, m, n, gapScore, matchScore, missmatchScore, si, sj, H, P, maxPos)
-            for (j = 0; j < nEle; ++j) 
-            {  // going upwards : anti-diagnol direction
-              long long int ai = si - j ; // going up vertically
-              long long int aj = sj + j;  //  going right in horizontal
-              ///------------inlined ------------------------------------------
-              similarityScore(ai, aj, H, P, &maxPos); // a critical section is used inside
-            }
-            break;
-          } // end the third choice
-
-        default: assert ("Invalid policy\n");
-      } // end switch-case
-
-      // End region execution
-      region->end();
-    } // for end nDiag
-  } // end omp parallel
- 
-
-  // 2nd dependent region
-  // Obain the main region
-  Apollo::Region *region2 = Apollo::instance()->getRegion(
-      /* id */ "smith-waterman",
-      /* NumFeatures */ 1,
-      /* NumPolicies */ 3);
-
-  // dependent region  still need to feed the features used by the model
-  region2->begin( /* feature vector */ {(float)nDiag} ); // using diagonal line count instead
-
-  if (!(region2->model->training))
-  {
-    // Get the policy to execute from Apollo
-    int policy = region2->getPolicyIndex();
-    if (policy ==2)
-    {
-   #pragma omp target exit data map(from: H[0:asz], P[0:asz], maxPos)
-    }
-  }
-  region2->end();
- 
+  } 
 
   double finalTime = omp_get_wtime();
   printf("\nElapsed time for scoring matrix computation: %f\n", finalTime - initialTime);
-
-#if !SKIP_BACKTRACK
 
   initialTime = omp_get_wtime();
   backtrack(P, maxPos);
   finalTime = omp_get_wtime();
 
   //Gets backtrack time
-  finalTime = omp_get_wtime();
-  printf("Elapsed time for backtracking: %f\n", finalTime - initialTime);
-#endif
+//  finalTime = omp_get_wtime();
+//  printf("Elapsed time for backtracking: %f\n", finalTime - initialTime);
 
 #ifdef DEBUG
   printf("\nSimilarity Matrix:\n");
@@ -423,20 +305,15 @@ int main(int argc, char* argv[])
   {
     printf ("Verifying results using the builtinIn data: %s\n", (H[n*m-1]==7)?"true":"false");
     assert (H[n*m-1]==7);
-#if !SKIP_BACKTRACK      
-    assert (maxPos==69);
-    assert (H[maxPos]==13);
-#endif
   }
 
   //Frees similarity matrixes
   free(H);
   free(P);
-#if 0 // TODO: causing corona clang compiler core dump
+
   //Frees input arrays
   free(a);
   free(b);
-#endif
 
   return 0;
 }  /* End of main */
@@ -577,13 +454,12 @@ void similarityScore(long long int i, long long int j, int* H, int* P, long long
     //Inserts the value in the similarity and predecessor matrixes
     H[index] = max;
     P[index] = pred;
-#if !SKIP_BACKTRACK
+
     //Updates maximum score to be used as seed on backtrack
     #pragma omp critical
     if (max > H[*maxPos]) {
         *maxPos = index;
     }
-#endif    
 }  /* End of similarityScore */
 
 /*--------------------------------------------------------------------
