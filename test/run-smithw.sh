@@ -3,7 +3,8 @@
 # -e abor on any error
 
 EXE_FILE=omp_smithW-v8-apollo.out
-TIMESTAMP=$(date +%Y%m%d_%H%M%S)
+#TIMESTAMP=$(date +%Y%m%d_%H%M%S)
+TIMESTAMP="debug"
 NODE_NAME=`uname -n`
 HARDWAREE_NAME=`uname -m`
 make clean
@@ -18,7 +19,7 @@ make ./$EXE_FILE
 # or run up to 25 times only
 # 40k to 1040k, step 40k
 
-M_SIZE=2000
+#M_SIZE=2000
 
 # for each N size
 counter=""
@@ -27,6 +28,8 @@ counter=""
 for n_size in {5000..10000..256}; do
  let "counter += 1"
  echo "running count=$counter, problem m_size=$M_SIZE n_size=$n_size"
+
+  M_SIZE=$n_size
 
 # SW has 3 variants: one input size, one policy only each time
   for policy in 0 1 2;   do

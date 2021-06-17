@@ -260,7 +260,7 @@ int main(int argc, char* argv[])
   region1->begin( /* feature vector */ {(float)nDiag} ); // using diagonal line count instead
 
 //  if (!(region1->model->training))// Static model's training flag is false!
-  if (!(region1->model->training))
+//  if (region1->model->name=="DecisionTree") // we cannot use model name neither. During training run, Static model is used!
   {
     // Get the policy to execute from Apollo
     int policy = region1->getPolicyIndex();
@@ -385,7 +385,8 @@ int main(int argc, char* argv[])
   // dependent region  still need to feed the features used by the model
   region2->begin( /* feature vector */ {(float)nDiag} ); // using diagonal line count instead
 
-  if (!(region2->model->training))
+  //if (!(region2->model->training)) // Static has training set to be false!
+//  if (region1->model->name=="DecisionTree")
   {
     // Get the policy to execute from Apollo
     int policy = region2->getPolicyIndex();

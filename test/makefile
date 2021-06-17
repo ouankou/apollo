@@ -13,8 +13,11 @@ else
   CC=clang++
 # we cannot use master branch's clang++, which has a serious bug also
 #  CC=/g/g17/liao6/workspace-wsa/opt/llvm-master-offload/bin/clang++
-#  CXXFLAGS=-O3 -g -fopenmp -fopenmp-targets=nvptx64
+  CXXFLAGS=-O3 -g -fopenmp -fopenmp-targets=nvptx64 
 endif 
+
+
+CXXFLAGS+=-DSKIP_BACKTRACK=1
 
 # APOLLO_HOME is your environment variable indicating the path to Apollo Installation
 # e.g.: 
