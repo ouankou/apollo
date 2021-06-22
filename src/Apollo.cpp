@@ -165,6 +165,9 @@ Apollo::Apollo()
     // min datapoints needed for each dimension of the feature vector. Used to decide if we have enough data to trigger model building.
     Config::APOLLO_CROSS_EXECUTION_MIN_DATAPOINT_COUNT = std::stoi( apolloUtils::safeGetEnv( "APOLLO_CROSS_EXECUTION_MIN_DATAPOINT_COUNT", "25" ) );
 
+    // For some training data , we don't average the measures, just use total accumulated time for the current execution
+    Config::APOLLO_USE_TOTAL_TIME    = std::stoi( apolloUtils::safeGetEnv( "APOLLO_USE_TOTAL_TIME", "0" ) );
+    
     Config::APOLLO_RETRAIN_ENABLE      = std::stoi( apolloUtils::safeGetEnv( "APOLLO_RETRAIN_ENABLE", "1" ) );
     Config::APOLLO_RETRAIN_TIME_THRESHOLD   = std::stof( apolloUtils::safeGetEnv( "APOLLO_RETRAIN_TIME_THRESHOLD", "2.0" ) );
     Config::APOLLO_RETRAIN_REGION_THRESHOLD = std::stof( apolloUtils::safeGetEnv( "APOLLO_RETRAIN_REGION_THRESHOLD", "0.5" ) );

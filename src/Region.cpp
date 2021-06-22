@@ -660,16 +660,29 @@ Apollo::Region::reduceBestPolicies(int step)
                 << " , total: " << time_set->time_total
                 << " , time_avg: " <<  ( time_set->time_total / time_set->exec_count ) << std::endl;
         }
-        double time_avg = ( time_set->time_total / time_set->exec_count );
+        
 
+        // we now support two kinds of time features: total accumulated time vs. average time (default)
+        double final_time ; 
+        
+        if (Config::APOLLO_USE_TOTAL_TIME) 
+        {
+            final_time = time_set->time_total; 
+        }
+        else
+        {
+           double time_avg = ( time_set->time_total / time_set->exec_count );
+           final_time = time_avg; 
+        }
+        
         auto iter =  best_policies.find( feature_vector );
         if( iter ==  best_policies.end() ) {
-            best_policies.insert( { feature_vector, { policy_index, time_avg } } );
+            best_policies.insert( { feature_vector, { policy_index, final_time } } );
         }
         else {
             // Key exists, update only if we find better choices
-            if(  best_policies[ feature_vector ].second > time_avg ) {
-                best_policies[ feature_vector ] = { policy_index, time_avg };
+            if(  best_policies[ feature_vector ].second > final_time ) {
+                best_policies[ feature_vector ] = { policy_index, final_time };
             }
         }
     }
