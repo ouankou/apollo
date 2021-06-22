@@ -60,7 +60,24 @@ cmake ../. -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_INSTALL_PREFIX=../install-
 make install
 
 ```
+## Testing
 
+Preparing environment: 
+```
+# apollo specific stuff
+export APOLLO_HOME=/home/user1/apollo/install
+source spack/share/spack/setup-env.sh
+spack load opencv@4.5.2%gcc@9.2.0
+```
+
+Run builtin tests
+
+```
+cd apollo/test
+# customize makefile as needed
+make
+
+```
 
 ## Authors
 
