@@ -96,7 +96,7 @@ Example
 
 As a result, an aggregate result {execution_count, time_total} is used to store all appearance of the unique code region+policy+feature vector. 
 
-A measure= execution_count + time_total // aggregate variable
+A measure= execution_count plus time_total // aggregate variable
 
 ```
 
@@ -183,6 +183,52 @@ This happens in Apollo:Region::reduceBestPolicies()
                 best_policies[ feature_vector ] = { policy_index, time_avg };
             }
         }        
+```
+
+A new option has been introduced :  APOLLO_USE_TOTAL_TIME 
+
+This is used for some experiment when a single execution with a given input data will only explore one policy.  All executions of the same region should be added into a total execution time, instead of calculating their average values.
+
+
+```
+diff --git a/src/Region.cpp b/src/Region.cpp
+index 3bb6f21..d0285dc 100644
+--- a/src/Region.cpp
++++ b/src/Region.cpp
+@@ -660,16 +660,29 @@ Apollo::Region::reduceBestPolicies(int step)
+                 << " , total: " << time_set->time_total
+                 << " , time_avg: " <<  ( time_set->time_total / time_set->exec_count ) << std::endl;
+         }
+-        double time_avg = ( time_set->time_total / time_set->exec_count );
++        
+ 
++        // we now support two kinds of time features: total accumulated time vs. average time (default)
++        double final_time ; 
++        
++        if (Config::APOLLO_USE_TOTAL_TIME) 
++        {
++            final_time = time_set->time_total; 
++        }
++        else
++        {
++           double time_avg = ( time_set->time_total / time_set->exec_count );
++           final_time = time_avg; 
++        }
++        
+         auto iter =  best_policies.find( feature_vector );
+         if( iter ==  best_policies.end() ) {
+-            best_policies.insert( { feature_vector, { policy_index, time_avg } } );
++            best_policies.insert( { feature_vector, { policy_index, final_time } } );
+         }
+         else {
+             // Key exists, update only if we find better choices
+-            if(  best_policies[ feature_vector ].second > time_avg ) {
+-                best_policies[ feature_vector ] = { policy_index, time_avg };
++            if(  best_policies[ feature_vector ].second > final_time ) {
++                best_policies[ feature_vector ] = { policy_index, final_time };
+             }
+         }
+     }
 ```
 # Feed Labeled Training Data to Machine Model Builders
 
