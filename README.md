@@ -25,7 +25,18 @@ git clone git@github.com:spack/spack.git
 source spack/share/spack/setup-env.sh
 
 # Using spack to install OpenCV, with its machine learning library explicitly enabled. 
+ 
 spack install opencv+powerpc+vsx~zlib~vtk~videostab~video~ts~tiff~superres~stitching~png~openclamdfft~openclamdblas~gtk~highgui~eigen+python~openmp~videoio~calib3d~features2d~dnn~flann~imgproc~ipp~ipp_iw~jasper~java~jpeg~lapack~opencl~opencl_svm~pthreads_pf+ml
+
+# On Lassen, IBM Power platform, use:
+spack install opencv+vsx+powerpc+python+ml
+
+# Note the options: 
+# vsx [off] on, off Enable POWER8 and above VSX (64-bit little-endian)
+# powerpc [off] on, off Enable PowerPC for GCC
+
+# on Intel platform: just use
+spack install opencv+python+ml
 
 spack load opencv  # load the installed opencv
 
