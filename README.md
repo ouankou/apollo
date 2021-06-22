@@ -15,6 +15,8 @@ To contribute to Apollo please send a
 
 CMake 3.9 or higher is required.
 
+Tested using GCC 4.9.2
+
 Apollo depends on OpenCV for machine learning support.  We use lassen@Livermore Computing as an example to show the installation steps: 
 
 First install OpenCV using Spack: 
