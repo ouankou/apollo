@@ -182,6 +182,12 @@ Record_count = power (point_count, F_size) * policy_count
 
 Record_threshhold= power(Minimum_point_count, F_size)* policy_count
 
+Example: 
+ * Min_Point_Count is set to 25
+ * num_features: 1
+ * num_region_policies: 3
+ * min_record_count = 25^1 *3 = 75 
+ 
 TODO: This is exponential complexity. 
  * */
 

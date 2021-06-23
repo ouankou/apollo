@@ -365,6 +365,11 @@ Record_count = power (point_count, F_size) * policy_count
 
 Record_threshhold= power(Minimum_point_count, F_size)* policy_count
 
+Example: 
+ * Min_Point_Count is set to 25
+ * num_features: 1
+ * num_region_policies: 3
+ * min_record_count = 25^1 *3 = 75   
 TODO: This is exponential complexity. 
  * */
 
@@ -380,6 +385,8 @@ void Apollo::Region::setDataCollectionThreshold()
 
 bool Apollo::Region::hasEnoughTrainingData()
 {
+  if (Config::APOLLO_TRACE_CROSS_EXECUTION)
+      cout<< "Collected "<< measures.size() << " out of " << min_record_count << "required measure count." <<endl;
   return measures.size()>=min_record_count;
 }
 
