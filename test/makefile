@@ -5,8 +5,12 @@ ifeq ($(findstring corona,$(HOSTNAME)), corona)
   CC=/opt/rocm-4.1.0/llvm/bin/clang++
   CXXFLAGS=-O3 -target x86_64-pc-linux-gnu -fopenmp -fopenmp-version=50 -fopenmp-targets=amdgcn-amd-amdhsa -Xopenmp-target=amdgcn-amd-amdhsa -march=gfx906
 
-# on lassen, Nvidia GPU  
+# tux385  
+else ifeq ($(findstring tux385,$(HOSTNAME)), tux385) 
+  CC=g++
+  CXXFLAGS=-O3 -fopenmp
 else
+# on lassen, Nvidia GPU  
 #In the end, we use default clang++ + custom build of OpenMP runtime to make Smith Waterman code work!!
 
 # system default clang++'s runtime has problem with smith waterman code

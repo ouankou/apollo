@@ -167,7 +167,7 @@ int main(int argc, char* argv[])
 
   if (useBuiltInData)
   {
-   // https://en.wikipedia.org/wiki/Smith%E2%80%93Waterman_algorithm#Example
+    // https://en.wikipedia.org/wiki/Smith%E2%80%93Waterman_algorithm#Example
     // Using the wiki example to verify the results
     b[0] =   'G';
     b[1] =   'G';
@@ -238,7 +238,7 @@ int main(int argc, char* argv[])
   else
   {
     printf("### Unable to use the GPU, using CPU! ###\n");
-    assert (false);
+//    assert (false);
   }
 #endif
   //Gets Initial time
@@ -259,8 +259,8 @@ int main(int argc, char* argv[])
   // dependent region  still need to feed the features used by the model
   region1->begin( /* feature vector */ {(float)nDiag} ); // using diagonal line count instead
 
-//  if (!(region1->model->training))// Static model's training flag is false!
-//  if (region1->model->name=="DecisionTree") // we cannot use model name neither. During training run, Static model is used!
+  //  if (!(region1->model->training))// Static model's training flag is false!
+  //  if (region1->model->name=="DecisionTree") // we cannot use model name neither. During training run, Static model is used!
   {
     // Get the policy to execute from Apollo
     int policy = region1->getPolicyIndex();
@@ -272,7 +272,7 @@ int main(int argc, char* argv[])
   region1->end();
 
 
- {
+  {
     for (i = 1; i <= nDiag; ++i) // start from 1 since 0 is the boundary padding
     {
       long long int nEle, si, sj;
@@ -315,7 +315,7 @@ int main(int argc, char* argv[])
       // Begin region and set feature vector's value
       // Feature vector has only 1 element for this example
       // region->begin( /* feature vector */ {(float)nEle} ); //not best feature based on the previous iwomp paper
-       region->begin( /* feature vector */ {(float)nDiag} ); // using diagonal line count instead
+      region->begin( /* feature vector */ {(float)nDiag} ); // using diagonal line count instead
 
       // Get the policy to execute from Apollo
       int policy = region->getPolicyIndex();
@@ -354,7 +354,7 @@ int main(int argc, char* argv[])
             //	  if (i%interval==0)
             //	    printf ("OpenMP GPU version is activated since the diagonal element count %lld >= LARGE %d\n", nEle, LARGE);
             // choice 1: map data before the inner loop
-//#pragma omp target map (to:a[0:m-1], b[0:n-1], nEle, m,n,gapScore, matchScore, missmatchScore, si, sj) map(tofrom: H[0:asz], P[0:asz], maxPos)
+            //#pragma omp target map (to:a[0:m-1], b[0:n-1], nEle, m,n,gapScore, matchScore, missmatchScore, si, sj) map(tofrom: H[0:asz], P[0:asz], maxPos)
 #pragma omp target teams distribute parallel for default(none) private(j) shared (a,b, nEle, m, n, gapScore, matchScore, missmatchScore, si, sj, H, P, maxPos)
             for (j = 0; j < nEle; ++j) 
             {  // going upwards : anti-diagnol direction
@@ -373,7 +373,7 @@ int main(int argc, char* argv[])
       region->end();
     } // for end nDiag
   } // end omp parallel
- 
+
 
   // 2nd dependent region
   // Obain the main region
@@ -386,17 +386,17 @@ int main(int argc, char* argv[])
   region2->begin( /* feature vector */ {(float)nDiag} ); // using diagonal line count instead
 
   //if (!(region2->model->training)) // Static has training set to be false!
-//  if (region1->model->name=="DecisionTree")
+  //  if (region1->model->name=="DecisionTree")
   {
     // Get the policy to execute from Apollo
     int policy = region2->getPolicyIndex();
     if (policy ==2)
     {
-   #pragma omp target exit data map(from: H[0:asz], P[0:asz], maxPos)
+#pragma omp target exit data map(from: H[0:asz], P[0:asz], maxPos)
     }
   }
   region2->end();
- 
+
 
   double finalTime = omp_get_wtime();
   printf("\nElapsed time for scoring matrix computation: %f\n", finalTime - initialTime);
@@ -652,11 +652,12 @@ void similarityScore_serial(long long int i, long long int j, int* H, int* P, lo
     //Inserts the value in the similarity and predecessor matrixes
     H[index] = max;
     P[index] = pred;
-
+#if !SKIP_BACKTRACK
     //Updates maximum score to be used as seed on backtrack
     if (max > H[*maxPos]) {
         *maxPos = index;
     }
+#endif    
 }  /* End of similarityScore_serial */
 
 

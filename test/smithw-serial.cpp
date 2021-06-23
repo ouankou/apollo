@@ -166,30 +166,6 @@ int main(int argc, char* argv[])
 
   if (useBuiltInData)
   {
-    //Uncomment this to test the sequence available at 
-    //http://vlab.amrita.edu/?sub=3&brch=274&sim=1433&cnt=1
-    // OBS: m=11 n=7
-    // a[0] =   'C';
-    // a[1] =   'G';
-    // a[2] =   'T';
-    // a[3] =   'G';
-    // a[4] =   'A';
-    // a[5] =   'A';
-    // a[6] =   'T';
-    // a[7] =   'T';
-    // a[8] =   'C';
-    // a[9] =   'A';
-    // a[10] =  'T';
-
-    // b[0] =   'G';
-    // b[1] =   'A';
-    // b[2] =   'C';
-    // b[3] =   'T';
-    // b[4] =   'T';
-    // b[5] =   'A';
-    // b[6] =   'C';
-    // https://en.wikipedia.org/wiki/Smith%E2%80%93Waterman_algorithm#Example
-    // Using the wiki example to verify the results
     b[0] =   'G';
     b[1] =   'G';
     b[2] =   'T';
@@ -238,57 +214,57 @@ int main(int argc, char* argv[])
   // mistake: element count, not byte size!!
   // int asz= m*n*sizeof(int);
   int asz= m*n;
-    for (i = 1; i <= nDiag; ++i) // start from 1 since 0 is the boundary padding
-    {
-      long long int nEle, si, sj;
-      // report at most 5 times for each diagonal line
-      // long long interval = nDiag/5; 
-      //  nEle = nElement(i);
-      //---------------inlined ------------
-      if (i < m && i < n) { // smaller than both directions
-        //Number of elements in the diagonal is increasing
-        nEle = i;
-      }
-      else if (i < max(m, n)) { // smaller than only one direction
-        //Number of elements in the diagonal is stable
-        long int min = min(m, n);  // the longer direction has the edge elements, the number is the smaller direction's size
-        nEle = min - 1;
-      }
-      else {
-        //Number of elements in the diagonal is decreasing
-        long int min = min(m, n);
-        nEle = 2 * min - i + llabs(m - n) - 2;
-      }
+  for (i = 1; i <= nDiag; ++i) // start from 1 since 0 is the boundary padding
+  {
+    long long int nEle, si, sj;
+    // report at most 5 times for each diagonal line
+    // long long interval = nDiag/5; 
+    //  nEle = nElement(i);
+    //---------------inlined ------------
+    if (i < m && i < n) { // smaller than both directions
+      //Number of elements in the diagonal is increasing
+      nEle = i;
+    }
+    else if (i < max(m, n)) { // smaller than only one direction
+      //Number of elements in the diagonal is stable
+      long int min = min(m, n);  // the longer direction has the edge elements, the number is the smaller direction's size
+      nEle = min - 1;
+    }
+    else {
+      //Number of elements in the diagonal is decreasing
+      long int min = min(m, n);
+      nEle = 2 * min - i + llabs(m - n) - 2;
+    }
 
-      //calcFirstDiagElement(i, &si, &sj);
-      //------------inlined---------------------
-      // Calculate the first element of diagonal
-      if (i < n) { // smaller than row count
-        si = i;
-        sj = 1; // start from the j==1 since j==0 is the padding
-      } else {  // now we sweep horizontally at the bottom of the matrix
-        si = n - 1;  // i is fixed
-        sj = i - n + 2; // j position is the nDiag (id -n) +1 +1 // first +1 
-      }
+    //calcFirstDiagElement(i, &si, &sj);
+    //------------inlined---------------------
+    // Calculate the first element of diagonal
+    if (i < n) { // smaller than row count
+      si = i;
+      sj = 1; // start from the j==1 since j==0 is the padding
+    } else {  // now we sweep horizontally at the bottom of the matrix
+      si = n - 1;  // i is fixed
+      sj = i - n + 2; // j position is the nDiag (id -n) +1 +1 // first +1 
+    }
 
-       // serial 
-            //	  if (i%interval==0)
-            //	    printf ("Serial version is activated since the diagonal element count %lld is less than MEDIUM %d\n", nEle, MEDIUM);
-            for (j = 0; j < nEle; ++j) 
-            {  // going upwards : anti-diagnol direction
-              long long int ai = si - j ; // going up vertically
-              long long int aj = sj + j;  //  going right in horizontal
-              similarityScore_serial(ai, aj, H, P, &maxPos); // a specialized version without a critical section used inside
-            }
+    // serial 
+    //	  if (i%interval==0)
+    //	    printf ("Serial version is activated since the diagonal element count %lld is less than MEDIUM %d\n", nEle, MEDIUM);
+    for (j = 0; j < nEle; ++j) 
+    {  // going upwards : anti-diagnol direction
+      long long int ai = si - j ; // going up vertically
+      long long int aj = sj + j;  //  going right in horizontal
+      similarityScore_serial(ai, aj, H, P, &maxPos); // a specialized version without a critical section used inside
+    }
   } 
 
   double finalTime = omp_get_wtime();
   printf("\nElapsed time for scoring matrix computation: %f\n", finalTime - initialTime);
-
+#if !SKIP_BACKTRACK
   initialTime = omp_get_wtime();
   backtrack(P, maxPos);
   finalTime = omp_get_wtime();
-
+#endif
   //Gets backtrack time
 //  finalTime = omp_get_wtime();
 //  printf("Elapsed time for backtracking: %f\n", finalTime - initialTime);
@@ -297,8 +273,8 @@ int main(int argc, char* argv[])
   printf("\nSimilarity Matrix:\n");
   printMatrix(H);
 
-  printf("\nPredecessor Matrix:\n");
-  printPredecessorMatrix(P);
+//  printf("\nPredecessor Matrix:\n");
+//  printPredecessorMatrix(P);
 #endif
 
   if (useBuiltInData)
@@ -310,11 +286,11 @@ int main(int argc, char* argv[])
   //Frees similarity matrixes
   free(H);
   free(P);
-
+#if 0
   //Frees input arrays
   free(a);
   free(b);
-
+#endif
   return 0;
 }  /* End of main */
 
@@ -454,12 +430,13 @@ void similarityScore(long long int i, long long int j, int* H, int* P, long long
     //Inserts the value in the similarity and predecessor matrixes
     H[index] = max;
     P[index] = pred;
-
+#if !SKIP_BACKTRACK
     //Updates maximum score to be used as seed on backtrack
     #pragma omp critical
     if (max > H[*maxPos]) {
         *maxPos = index;
     }
+#endif    
 }  /* End of similarityScore */
 
 /*--------------------------------------------------------------------
@@ -527,11 +504,12 @@ void similarityScore_serial(long long int i, long long int j, int* H, int* P, lo
     //Inserts the value in the similarity and predecessor matrixes
     H[index] = max;
     P[index] = pred;
-
+#if !SKIP_BACKTRACK
     //Updates maximum score to be used as seed on backtrack
     if (max > H[*maxPos]) {
         *maxPos = index;
     }
+#endif    
 }  /* End of similarityScore_serial */
 
 

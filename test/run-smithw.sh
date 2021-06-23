@@ -3,8 +3,8 @@
 # -e abor on any error
 
 EXE_FILE=omp_smithW-v8-apollo.out
-#TIMESTAMP=$(date +%Y%m%d_%H%M%S)
-TIMESTAMP="debug"
+TIMESTAMP=$(date +%Y%m%d_%H%M%S)
+#TIMESTAMP="debug"
 NODE_NAME=`uname -n`
 HARDWAREE_NAME=`uname -m`
 make clean
@@ -21,17 +21,20 @@ make ./$EXE_FILE
 
 #M_SIZE=2000
 
+# need 75 points at least to trigger model building
+# 256 * 75= 19200
 # for each N size
 counter=""
-# for n_size in {256..7000..256}; do
 # sampling range and data points are essential to capture the trend 
-for n_size in {5000..10000..256}; do
+for n_size in {256..25000..256}; do
  let "counter += 1"
  echo "running count=$counter, problem m_size=$M_SIZE n_size=$n_size"
 
   M_SIZE=$n_size
 
 # SW has 3 variants: one input size, one policy only each time
+# on tux385, we only run 2 variants.
+#  for policy in 0 1;   do
   for policy in 0 1 2;   do
 # run 3 times each so we can get average: no need to repeat. kernel will be called many times already within outer loop.
 #    for repeat in 1 2 3;   do
@@ -45,7 +48,10 @@ for n_size in {5000..10000..256}; do
 
 # another question: are all execution time added into one single value?  Or we should promote it to be outside of the inner loop?    
 # I think so: measures are added into the feature + policy    
-       APOLLO_TRACE_CSV_FOLDER_SUFFIX="-$NODE_NAME-$HARDWAREE_NAME-$EXE_FILE-$TIMESTAMP" APOLLO_CROSS_EXECUTION=1 APOLLO_INIT_MODEL="Static,$policy" ./$EXE_FILE $M_SIZE $n_size
+  APOLLO_TRACE_CSV_FOLDER_SUFFIX="-$NODE_NAME-$HARDWAREE_NAME-$EXE_FILE-$TIMESTAMP" \
+  APOLLO_CROSS_EXECUTION=1 APOLLO_USE_TOTAL_TIME=1 APOLLO_INIT_MODEL="Static,$policy" \
+  APOLLO_TRACE_CROSS_EXECUTION=1 \
+  ./$EXE_FILE $M_SIZE $n_size
 #    done
   done 
 
