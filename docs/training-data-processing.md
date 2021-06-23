@@ -96,7 +96,7 @@ Example
 
 As a result, an aggregate result {execution_count, time_total} is used to store all appearance of the unique code region+policy+feature vector. 
 
-A measure= execution_count + time_total // aggregate variable
+A measure= execution_count plus time_total // aggregate variable
 
 ```
 
@@ -153,9 +153,59 @@ Apollo::Region* Apollo::getRegion (const std::string& region_name, int feature_c
 
 ```
 
+# Checking if Sufficient Data is collected
+
+This is done within 
+
+
+```
+void Apollo::Region::checkAndFlushMeasurements(int step)
+{
+  int rank = apollo->mpiRank; 
+
+  if (!hasEnoughTrainingData()) return; 
+  //..
+  reduceBestPolicies(step);
+}
+
+
+/*
+We use a simple threshold for now.
+
+Assuming the following parameters
+1. Feature vector size: F_size
+2. Each feature: we collect least point_count
+3. Policy count: policy_count
+
+Total record count in measures would be:
+Record_count = power (point_count, F_size) * policy_count
+
+Record_threshhold= power(Minimum_point_count, F_size)* policy_count
+
+TODO: This is exponential complexity. 
+ * */
+
+void Apollo::Region::setDataCollectionThreshold()
+{
+  // A threshold to check if enough data is collected for a region
+  const int Min_Point_Count=Config::APOLLO_CROSS_EXECUTION_MIN_DATAPOINT_COUNT;
+  min_record_count = min(50000, (int)pow(Min_Point_Count,num_features )* num_region_policies);
+  if (Config::APOLLO_TRACE_CROSS_EXECUTION)
+    cout<<"min_record_count="<<min_record_count<<endl;
+}
+
+
+bool Apollo::Region::hasEnoughTrainingData()
+{
+  return measures.size()>=min_record_count;
+}
+
+
+```
 # Postprocessing and Labeling of Aggregated measurements
 
 Raw timing information need to be calculated for average values , and labeled with best policies for each feature vectors. 
+
 
 This happens in Apollo:Region::reduceBestPolicies()
 
@@ -184,11 +234,60 @@ This happens in Apollo:Region::reduceBestPolicies()
             }
         }        
 ```
+
+A new option has been introduced :  APOLLO_USE_TOTAL_TIME 
+
+This is used for some experiment when a single execution with a given input data will only explore one policy.  All executions of the same region should be added into a total execution time, instead of calculating their average values.
+
+
+```
+diff --git a/src/Region.cpp b/src/Region.cpp
+index 3bb6f21..d0285dc 100644
+--- a/src/Region.cpp
++++ b/src/Region.cpp
+@@ -660,16 +660,29 @@ Apollo::Region::reduceBestPolicies(int step)
+                 << " , total: " << time_set->time_total
+                 << " , time_avg: " <<  ( time_set->time_total / time_set->exec_count ) << std::endl;
+         }
+-        double time_avg = ( time_set->time_total / time_set->exec_count );
++        
+ 
++        // we now support two kinds of time features: total accumulated time vs. average time (default)
++        double final_time ; 
++        
++        if (Config::APOLLO_USE_TOTAL_TIME) 
++        {
++            final_time = time_set->time_total; 
++        }
++        else
++        {
++           double time_avg = ( time_set->time_total / time_set->exec_count );
++           final_time = time_avg; 
++        }
++        
+         auto iter =  best_policies.find( feature_vector );
+         if( iter ==  best_policies.end() ) {
+-            best_policies.insert( { feature_vector, { policy_index, time_avg } } );
++            best_policies.insert( { feature_vector, { policy_index, final_time } } );
+         }
+         else {
+             // Key exists, update only if we find better choices
+-            if(  best_policies[ feature_vector ].second > time_avg ) {
+-                best_policies[ feature_vector ] = { policy_index, time_avg };
++            if(  best_policies[ feature_vector ].second > final_time ) {
++                best_policies[ feature_vector ] = { policy_index, final_time };
+             }
+         }
+     }
+```
 # Feed Labeled Training Data to Machine Model Builders
 
 For each region, just obtain the labelled data and call ModelFactory interface functions
 
 ```
+void Apollo::Region::checkAndFlushMeasurements(int step)
+{
+...
 // for classification model: two vectors
     std::vector< std::vector<float> > train_features;  // feature vectors
     std::vector< int > train_responses;          // best policy choice for the vector
@@ -232,4 +331,6 @@ For each region, just obtain the labelled data and call ModelFactory interface f
             reg->time_model = ModelFactory::createRegressionTree(
                     train_time_features,
                     train_time_responses );
+//...                    
+}
 ```
