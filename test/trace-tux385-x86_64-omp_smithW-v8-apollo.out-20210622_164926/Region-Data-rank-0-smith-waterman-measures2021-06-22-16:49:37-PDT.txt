@@ -1,0 +1,17 @@
+========Apollo::Region::serialize()2021-06-22-16:49:37-PDT================
+Rank 0 Region smith-waterman MEASURES 
+features: [ 9999,  ]: policy: 0 , count: 10001 , total: 0.875514 , time_avg: 8.75426e-05
+features: [ 9999,  ]: policy: 1 , count: 10001 , total: 0.460736 , time_avg: 4.6069e-05
+features: [ 10511,  ]: policy: 0 , count: 10513 , total: 0.746103 , time_avg: 7.09696e-05
+features: [ 10511,  ]: policy: 1 , count: 10513 , total: 0.699826 , time_avg: 6.65677e-05
+features: [ 11023,  ]: policy: 0 , count: 11025 , total: 0.760074 , time_avg: 6.8941e-05
+features: [ 11023,  ]: policy: 1 , count: 11025 , total: 0.559335 , time_avg: 5.07333e-05
+features: [ 11535,  ]: policy: 0 , count: 11537 , total: 0.918246 , time_avg: 7.95914e-05
+features: [ 11535,  ]: policy: 1 , count: 11537 , total: 0.451798 , time_avg: 3.91608e-05
+features: [ 12047,  ]: policy: 0 , count: 12049 , total: 1.01183 , time_avg: 8.39763e-05
+features: [ 12047,  ]: policy: 1 , count: 12049 , total: 0.851158 , time_avg: 7.06414e-05
+features: [ 12559,  ]: policy: 0 , count: 12561 , total: 1.08723 , time_avg: 8.6556e-05
+features: [ 12559,  ]: policy: 1 , count: 12561 , total: 0.425167 , time_avg: 3.38481e-05
+.-
+Rank 0 Region smith-waterman Reduce 
+.-
