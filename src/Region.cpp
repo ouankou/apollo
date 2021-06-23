@@ -380,6 +380,8 @@ void Apollo::Region::setDataCollectionThreshold()
 
 bool Apollo::Region::hasEnoughTrainingData()
 {
+  if (Config::APOLLO_TRACE_CROSS_EXECUTION)
+      cout<< "Collected "<< measures.size() << " out of " << min_record_count << "required measure count." <<endl;
   return measures.size()>=min_record_count;
 }
 
