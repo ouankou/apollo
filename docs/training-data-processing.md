@@ -153,9 +153,25 @@ Apollo::Region* Apollo::getRegion (const std::string& region_name, int feature_c
 
 ```
 
+# Checking if Sufficient Data is collected
+
+This is done within 
+
+
+```
+void Apollo::Region::checkAndFlushMeasurements(int step)
+{
+  int rank = apollo->mpiRank; 
+
+  if (!hasEnoughTrainingData()) return; 
+  //..
+  reduceBestPolicies(step);
+}
+```
 # Postprocessing and Labeling of Aggregated measurements
 
 Raw timing information need to be calculated for average values , and labeled with best policies for each feature vectors. 
+
 
 This happens in Apollo:Region::reduceBestPolicies()
 
@@ -235,6 +251,9 @@ index 3bb6f21..d0285dc 100644
 For each region, just obtain the labelled data and call ModelFactory interface functions
 
 ```
+void Apollo::Region::checkAndFlushMeasurements(int step)
+{
+...
 // for classification model: two vectors
     std::vector< std::vector<float> > train_features;  // feature vectors
     std::vector< int > train_responses;          // best policy choice for the vector
@@ -278,4 +297,6 @@ For each region, just obtain the labelled data and call ModelFactory interface f
             reg->time_model = ModelFactory::createRegressionTree(
                     train_time_features,
                     train_time_responses );
+//...                    
+}
 ```
