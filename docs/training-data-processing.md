@@ -167,6 +167,40 @@ void Apollo::Region::checkAndFlushMeasurements(int step)
   //..
   reduceBestPolicies(step);
 }
+
+
+/*
+We use a simple threshold for now.
+
+Assuming the following parameters
+1. Feature vector size: F_size
+2. Each feature: we collect least point_count
+3. Policy count: policy_count
+
+Total record count in measures would be:
+Record_count = power (point_count, F_size) * policy_count
+
+Record_threshhold= power(Minimum_point_count, F_size)* policy_count
+
+TODO: This is exponential complexity. 
+ * */
+
+void Apollo::Region::setDataCollectionThreshold()
+{
+  // A threshold to check if enough data is collected for a region
+  const int Min_Point_Count=Config::APOLLO_CROSS_EXECUTION_MIN_DATAPOINT_COUNT;
+  min_record_count = min(50000, (int)pow(Min_Point_Count,num_features )* num_region_policies);
+  if (Config::APOLLO_TRACE_CROSS_EXECUTION)
+    cout<<"min_record_count="<<min_record_count<<endl;
+}
+
+
+bool Apollo::Region::hasEnoughTrainingData()
+{
+  return measures.size()>=min_record_count;
+}
+
+
 ```
 # Postprocessing and Labeling of Aggregated measurements
 
