@@ -1,0 +1,31 @@
+========Apollo::Region::serialize()2021-06-29-06:33:38-PDT================
+Rank 0 Region stencil MEASURES 
+features: [ 96,  ]: policy: 1 , count: 1 , total: 0.000519933 , time_avg: 0.000519933
+features: [ 124,  ]: policy: 1 , count: 1 , total: 0.00205868 , time_avg: 0.00205868
+features: [ 146,  ]: policy: 1 , count: 1 , total: 0.000542253 , time_avg: 0.000542253
+features: [ 163,  ]: policy: 0 , count: 1 , total: 0.000158891 , time_avg: 0.000158891
+features: [ 205,  ]: policy: 0 , count: 1 , total: 0.000247882 , time_avg: 0.000247882
+features: [ 409,  ]: policy: 1 , count: 1 , total: 0.000932376 , time_avg: 0.000932376
+features: [ 413,  ]: policy: 1 , count: 1 , total: 0.00115564 , time_avg: 0.00115564
+features: [ 559,  ]: policy: 0 , count: 1 , total: 0.00180409 , time_avg: 0.00180409
+features: [ 577,  ]: policy: 0 , count: 1 , total: 0.00192729 , time_avg: 0.00192729
+features: [ 638,  ]: policy: 0 , count: 1 , total: 0.00235401 , time_avg: 0.00235401
+features: [ 653,  ]: policy: 0 , count: 1 , total: 0.00246956 , time_avg: 0.00246956
+features: [ 656,  ]: policy: 0 , count: 1 , total: 0.00249298 , time_avg: 0.00249298
+features: [ 679,  ]: policy: 0 , count: 1 , total: 0.00267376 , time_avg: 0.00267376
+features: [ 730,  ]: policy: 0 , count: 1 , total: 0.0031044 , time_avg: 0.0031044
+features: [ 781,  ]: policy: 0 , count: 1 , total: 0.00358041 , time_avg: 0.00358041
+features: [ 848,  ]: policy: 0 , count: 1 , total: 0.00421527 , time_avg: 0.00421527
+features: [ 893,  ]: policy: 0 , count: 1 , total: 0.004682 , time_avg: 0.004682
+features: [ 1144,  ]: policy: 0 , count: 1 , total: 0.00767897 , time_avg: 0.00767897
+features: [ 1216,  ]: policy: 0 , count: 1 , total: 0.0086826 , time_avg: 0.0086826
+features: [ 1239,  ]: policy: 0 , count: 1 , total: 0.00899465 , time_avg: 0.00899465
+features: [ 1289,  ]: policy: 0 , count: 1 , total: 0.00974153 , time_avg: 0.00974153
+features: [ 1358,  ]: policy: 0 , count: 1 , total: 0.010814 , time_avg: 0.010814
+features: [ 1379,  ]: policy: 0 , count: 1 , total: 0.0111521 , time_avg: 0.0111521
+features: [ 1420,  ]: policy: 0 , count: 1 , total: 0.0111011 , time_avg: 0.0111011
+features: [ 1447,  ]: policy: 0 , count: 1 , total: 0.0122604 , time_avg: 0.0122604
+features: [ 1526,  ]: policy: 0 , count: 1 , total: 0.0138165 , time_avg: 0.0138165
+.-
+Rank 0 Region stencil Reduce 
+.-

@@ -1,0 +1,37 @@
+========Apollo::Region::serialize()2021-06-29-06:27:09-PDT================
+Rank 0 Region stencil MEASURES 
+features: [ 25,  ]: policy: 1 , count: 1 , total: 0.000467373 , time_avg: 0.000467373
+features: [ 60,  ]: policy: 1 , count: 1 , total: 0.000481413 , time_avg: 0.000481413
+features: [ 62,  ]: policy: 1 , count: 1 , total: 0.000481303 , time_avg: 0.000481303
+features: [ 80,  ]: policy: 1 , count: 1 , total: 0.000479163 , time_avg: 0.000479163
+features: [ 141,  ]: policy: 1 , count: 2 , total: 0.00105126 , time_avg: 0.000525629
+features: [ 144,  ]: policy: 1 , count: 1 , total: 0.000520144 , time_avg: 0.000520144
+features: [ 152,  ]: policy: 1 , count: 1 , total: 0.000517994 , time_avg: 0.000517994
+features: [ 163,  ]: policy: 0 , count: 1 , total: 0.000141721 , time_avg: 0.000141721
+features: [ 167,  ]: policy: 0 , count: 1 , total: 0.000144021 , time_avg: 0.000144021
+features: [ 181,  ]: policy: 0 , count: 1 , total: 0.000168841 , time_avg: 0.000168841
+features: [ 184,  ]: policy: 0 , count: 1 , total: 0.000173921 , time_avg: 0.000173921
+features: [ 204,  ]: policy: 0 , count: 1 , total: 0.000211762 , time_avg: 0.000211762
+features: [ 270,  ]: policy: 0 , count: 1 , total: 0.00186054 , time_avg: 0.00186054
+features: [ 274,  ]: policy: 0 , count: 1 , total: 0.000377303 , time_avg: 0.000377303
+features: [ 320,  ]: policy: 0 , count: 1 , total: 0.000521013 , time_avg: 0.000521013
+features: [ 321,  ]: policy: 0 , count: 1 , total: 0.000524473 , time_avg: 0.000524473
+features: [ 346,  ]: policy: 1 , count: 1 , total: 0.000764445 , time_avg: 0.000764445
+features: [ 349,  ]: policy: 1 , count: 1 , total: 0.000742645 , time_avg: 0.000742645
+features: [ 398,  ]: policy: 1 , count: 1 , total: 0.000848895 , time_avg: 0.000848895
+features: [ 406,  ]: policy: 1 , count: 1 , total: 0.000904136 , time_avg: 0.000904136
+features: [ 414,  ]: policy: 1 , count: 1 , total: 0.00122007 , time_avg: 0.00122007
+features: [ 417,  ]: policy: 1 , count: 1 , total: 0.0010091 , time_avg: 0.0010091
+features: [ 502,  ]: policy: 0 , count: 1 , total: 0.00126279 , time_avg: 0.00126279
+features: [ 521,  ]: policy: 0 , count: 1 , total: 0.00136133 , time_avg: 0.00136133
+features: [ 551,  ]: policy: 0 , count: 1 , total: 0.00152639 , time_avg: 0.00152639
+features: [ 573,  ]: policy: 0 , count: 1 , total: 0.00164994 , time_avg: 0.00164994
+features: [ 623,  ]: policy: 0 , count: 1 , total: 0.00194734 , time_avg: 0.00194734
+features: [ 658,  ]: policy: 0 , count: 1 , total: 0.00216996 , time_avg: 0.00216996
+features: [ 663,  ]: policy: 0 , count: 1 , total: 0.00220346 , time_avg: 0.00220346
+features: [ 717,  ]: policy: 0 , count: 1 , total: 0.00256479 , time_avg: 0.00256479
+features: [ 736,  ]: policy: 0 , count: 1 , total: 0.00270709 , time_avg: 0.00270709
+features: [ 739,  ]: policy: 0 , count: 1 , total: 0.00272881 , time_avg: 0.00272881
+.-
+Rank 0 Region stencil Reduce 
+.-

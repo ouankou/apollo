@@ -1,0 +1,14 @@
+========Apollo::Region::serialize()2021-06-29-06:26:08-PDT================
+Rank 0 Region stencil MEASURES 
+features: [ 13,  ]: policy: 0 , count: 1 , total: 9.09e-06 , time_avg: 9.09e-06
+features: [ 29,  ]: policy: 1 , count: 1 , total: 0.000470163 , time_avg: 0.000470163
+features: [ 62,  ]: policy: 1 , count: 1 , total: 0.000485493 , time_avg: 0.000485493
+features: [ 103,  ]: policy: 1 , count: 1 , total: 0.00192242 , time_avg: 0.00192242
+features: [ 163,  ]: policy: 0 , count: 1 , total: 0.000136611 , time_avg: 0.000136611
+features: [ 295,  ]: policy: 0 , count: 1 , total: 0.000435643 , time_avg: 0.000435643
+features: [ 448,  ]: policy: 0 , count: 1 , total: 0.00100753 , time_avg: 0.00100753
+features: [ 460,  ]: policy: 0 , count: 1 , total: 0.00105969 , time_avg: 0.00105969
+features: [ 509,  ]: policy: 0 , count: 1 , total: 0.0012961 , time_avg: 0.0012961
+.-
+Rank 0 Region stencil Reduce 
+.-
