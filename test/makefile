@@ -49,6 +49,7 @@ daxpy-v2.cpp \
 daxpy-v3.cpp \
 matrixMultiplication.cpp \
 hasGPU.cpp \
+amr_stencil.cpp \
 omp_smithW-v8-apollo.cpp \
 smithw-serial.cpp \
 smithw-omp-cpu.cpp \
