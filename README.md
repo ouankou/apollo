@@ -114,6 +114,9 @@ Debugging and tracing configurations
 * static std::string APOLLO_INIT_MODEL; // initial policy selection modes: random, roundRobin, static,0 (always 1st one), etc
 * static std::string APOLLO_TRACE_CSV_FOLDER_SUFFIX;
 
+## Internals
+
+[Data Processing Process](https://github.com/chunhualiao/apollo/blob/develop/docs/training-data-processing.md): This file gives more detailed information about how Apollo collects training data, geneates models, and triggers model-driven adaptation. 
 
 
 ## Authors
