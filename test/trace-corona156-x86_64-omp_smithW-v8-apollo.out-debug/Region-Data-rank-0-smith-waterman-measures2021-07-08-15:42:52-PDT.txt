@@ -1,0 +1,26 @@
+========Apollo::Region::serialize()2021-07-08-15:42:52-PDT================
+Rank 0 Region smith-waterman MEASURES 
+features: [ 63,  ]: policy: 0 , count: 65 , total: 0.0002339 , time_avg: 3.59846e-06
+features: [ 63,  ]: policy: 1 , count: 65 , total: 0.0345492 , time_avg: 0.000531526
+features: [ 63,  ]: policy: 2 , count: 65 , total: 0.00407841 , time_avg: 6.27448e-05
+features: [ 319,  ]: policy: 0 , count: 321 , total: 0.00129787 , time_avg: 4.04321e-06
+features: [ 319,  ]: policy: 1 , count: 321 , total: 0.116277 , time_avg: 0.000362234
+features: [ 319,  ]: policy: 2 , count: 321 , total: 0.0394953 , time_avg: 0.000123038
+features: [ 575,  ]: policy: 0 , count: 577 , total: 0.00318133 , time_avg: 5.51357e-06
+features: [ 575,  ]: policy: 1 , count: 577 , total: 0.166852 , time_avg: 0.000289172
+features: [ 575,  ]: policy: 2 , count: 577 , total: 0.016896 , time_avg: 2.92825e-05
+features: [ 831,  ]: policy: 0 , count: 833 , total: 0.0558594 , time_avg: 6.70581e-05
+features: [ 831,  ]: policy: 1 , count: 833 , total: 0.215854 , time_avg: 0.000259128
+features: [ 831,  ]: policy: 2 , count: 833 , total: 0.0442106 , time_avg: 5.3074e-05
+features: [ 1087,  ]: policy: 0 , count: 1089 , total: 0.0726155 , time_avg: 6.66809e-05
+features: [ 1087,  ]: policy: 1 , count: 1089 , total: 0.157536 , time_avg: 0.000144661
+features: [ 1087,  ]: policy: 2 , count: 1089 , total: 0.0619888 , time_avg: 5.69227e-05
+features: [ 1343,  ]: policy: 0 , count: 1345 , total: 0.100792 , time_avg: 7.49383e-05
+features: [ 1343,  ]: policy: 1 , count: 1345 , total: 0.462636 , time_avg: 0.000343967
+features: [ 1343,  ]: policy: 2 , count: 1345 , total: 0.130755 , time_avg: 9.72156e-05
+features: [ 1599,  ]: policy: 0 , count: 1601 , total: 0.0863896 , time_avg: 5.39598e-05
+features: [ 1599,  ]: policy: 1 , count: 1601 , total: 0.424949 , time_avg: 0.000265427
+features: [ 1599,  ]: policy: 2 , count: 1601 , total: 0.108193 , time_avg: 6.75785e-05
+.-
+Rank 0 Region smith-waterman Reduce 
+.-

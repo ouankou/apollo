@@ -1,0 +1,28 @@
+========Apollo::Region::serialize()2021-07-08-15:43:47-PDT================
+Rank 0 Region smith-waterman MEASURES 
+features: [ 6207,  ]: policy: 2 , count: 6208 , total: 0.23514 , time_avg: 3.78769e-05
+features: [ 6463,  ]: policy: 0 , count: 6465 , total: 0.301266 , time_avg: 4.65995e-05
+features: [ 6463,  ]: policy: 1 , count: 6465 , total: 1.22195 , time_avg: 0.00018901
+features: [ 6463,  ]: policy: 2 , count: 6465 , total: 0.288944 , time_avg: 4.46936e-05
+features: [ 6719,  ]: policy: 0 , count: 6721 , total: 0.276359 , time_avg: 4.11187e-05
+features: [ 6719,  ]: policy: 1 , count: 6721 , total: 1.04854 , time_avg: 0.00015601
+features: [ 6719,  ]: policy: 2 , count: 6721 , total: 0.241267 , time_avg: 3.58975e-05
+features: [ 6975,  ]: policy: 0 , count: 6977 , total: 0.2578 , time_avg: 3.695e-05
+features: [ 6975,  ]: policy: 1 , count: 6977 , total: 0.706739 , time_avg: 0.000101296
+features: [ 6975,  ]: policy: 2 , count: 6977 , total: 0.22815 , time_avg: 3.27003e-05
+features: [ 7231,  ]: policy: 0 , count: 7233 , total: 0.320897 , time_avg: 4.43657e-05
+features: [ 7231,  ]: policy: 1 , count: 7233 , total: 1.23858 , time_avg: 0.00017124
+features: [ 7231,  ]: policy: 2 , count: 7233 , total: 0.275759 , time_avg: 3.81251e-05
+features: [ 7487,  ]: policy: 0 , count: 7489 , total: 0.374774 , time_avg: 5.00433e-05
+features: [ 7487,  ]: policy: 1 , count: 7489 , total: 0.709434 , time_avg: 9.47301e-05
+features: [ 7487,  ]: policy: 2 , count: 7489 , total: 0.261585 , time_avg: 3.49292e-05
+features: [ 7743,  ]: policy: 0 , count: 7745 , total: 0.40546 , time_avg: 5.23512e-05
+features: [ 7743,  ]: policy: 1 , count: 7745 , total: 1.14441 , time_avg: 0.000147761
+features: [ 7743,  ]: policy: 2 , count: 7745 , total: 0.314581 , time_avg: 4.06173e-05
+features: [ 7999,  ]: policy: 0 , count: 8001 , total: 0.367385 , time_avg: 4.59174e-05
+features: [ 7999,  ]: policy: 1 , count: 8001 , total: 1.17857 , time_avg: 0.000147303
+features: [ 7999,  ]: policy: 2 , count: 8001 , total: 0.261993 , time_avg: 3.2745e-05
+features: [ 8255,  ]: policy: 0 , count: 8257 , total: 0.366801 , time_avg: 4.4423e-05
+.-
+Rank 0 Region smith-waterman Reduce 
+.-

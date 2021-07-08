@@ -1,0 +1,61 @@
+========Apollo::Region::serialize()2021-07-08-15:44:21-PDT================
+Rank 0 Region smith-waterman MEASURES 
+features: [ 6207,  ]: policy: 2 , count: 6208 , total: 0.23514 , time_avg: 3.78769e-05
+features: [ 6463,  ]: policy: 0 , count: 6465 , total: 0.301266 , time_avg: 4.65995e-05
+features: [ 6463,  ]: policy: 1 , count: 6465 , total: 1.22195 , time_avg: 0.00018901
+features: [ 6463,  ]: policy: 2 , count: 6465 , total: 0.288944 , time_avg: 4.46936e-05
+features: [ 6719,  ]: policy: 0 , count: 6721 , total: 0.276359 , time_avg: 4.11187e-05
+features: [ 6719,  ]: policy: 1 , count: 6721 , total: 1.04854 , time_avg: 0.00015601
+features: [ 6719,  ]: policy: 2 , count: 6721 , total: 0.241267 , time_avg: 3.58975e-05
+features: [ 6975,  ]: policy: 0 , count: 6977 , total: 0.2578 , time_avg: 3.695e-05
+features: [ 6975,  ]: policy: 1 , count: 6977 , total: 0.706739 , time_avg: 0.000101296
+features: [ 6975,  ]: policy: 2 , count: 6977 , total: 0.22815 , time_avg: 3.27003e-05
+features: [ 7231,  ]: policy: 0 , count: 7233 , total: 0.320897 , time_avg: 4.43657e-05
+features: [ 7231,  ]: policy: 1 , count: 7233 , total: 1.23858 , time_avg: 0.00017124
+features: [ 7231,  ]: policy: 2 , count: 7233 , total: 0.275759 , time_avg: 3.81251e-05
+features: [ 7487,  ]: policy: 0 , count: 7489 , total: 0.374774 , time_avg: 5.00433e-05
+features: [ 7487,  ]: policy: 1 , count: 7489 , total: 0.709434 , time_avg: 9.47301e-05
+features: [ 7487,  ]: policy: 2 , count: 7489 , total: 0.261585 , time_avg: 3.49292e-05
+features: [ 7743,  ]: policy: 0 , count: 7745 , total: 0.40546 , time_avg: 5.23512e-05
+features: [ 7743,  ]: policy: 1 , count: 7745 , total: 1.14441 , time_avg: 0.000147761
+features: [ 7743,  ]: policy: 2 , count: 7745 , total: 0.314581 , time_avg: 4.06173e-05
+features: [ 7999,  ]: policy: 0 , count: 8001 , total: 0.367385 , time_avg: 4.59174e-05
+features: [ 7999,  ]: policy: 1 , count: 8001 , total: 1.17857 , time_avg: 0.000147303
+features: [ 7999,  ]: policy: 2 , count: 8001 , total: 0.261993 , time_avg: 3.2745e-05
+features: [ 8255,  ]: policy: 0 , count: 8257 , total: 0.366801 , time_avg: 4.4423e-05
+features: [ 8255,  ]: policy: 1 , count: 8257 , total: 0.99552 , time_avg: 0.000120567
+features: [ 8255,  ]: policy: 2 , count: 8257 , total: 0.290666 , time_avg: 3.52024e-05
+features: [ 8511,  ]: policy: 0 , count: 8513 , total: 0.399019 , time_avg: 4.68717e-05
+features: [ 8511,  ]: policy: 1 , count: 8513 , total: 1.37136 , time_avg: 0.00016109
+features: [ 8511,  ]: policy: 2 , count: 8513 , total: 0.342084 , time_avg: 4.01837e-05
+features: [ 8767,  ]: policy: 0 , count: 8769 , total: 0.398454 , time_avg: 4.54389e-05
+features: [ 8767,  ]: policy: 1 , count: 8769 , total: 1.01359 , time_avg: 0.000115588
+features: [ 8767,  ]: policy: 2 , count: 8769 , total: 0.347965 , time_avg: 3.96813e-05
+features: [ 9023,  ]: policy: 0 , count: 9025 , total: 0.427569 , time_avg: 4.73761e-05
+features: [ 9023,  ]: policy: 1 , count: 9025 , total: 1.45326 , time_avg: 0.000161026
+features: [ 9023,  ]: policy: 2 , count: 9025 , total: 0.34657 , time_avg: 3.84011e-05
+features: [ 9279,  ]: policy: 0 , count: 9281 , total: 0.400485 , time_avg: 4.31511e-05
+features: [ 9279,  ]: policy: 1 , count: 9281 , total: 1.44398 , time_avg: 0.000155585
+features: [ 9279,  ]: policy: 2 , count: 9281 , total: 0.323216 , time_avg: 3.48256e-05
+features: [ 9535,  ]: policy: 0 , count: 9537 , total: 0.452445 , time_avg: 4.7441e-05
+features: [ 9535,  ]: policy: 1 , count: 9537 , total: 1.37372 , time_avg: 0.000144041
+features: [ 9535,  ]: policy: 2 , count: 9537 , total: 0.378193 , time_avg: 3.96553e-05
+features: [ 9791,  ]: policy: 0 , count: 9793 , total: 0.501658 , time_avg: 5.12262e-05
+features: [ 9791,  ]: policy: 1 , count: 9793 , total: 1.35996 , time_avg: 0.000138871
+features: [ 9791,  ]: policy: 2 , count: 9793 , total: 0.385861 , time_avg: 3.94017e-05
+features: [ 10047,  ]: policy: 0 , count: 10049 , total: 0.448578 , time_avg: 4.46391e-05
+features: [ 10047,  ]: policy: 1 , count: 10049 , total: 1.08505 , time_avg: 0.000107976
+features: [ 10047,  ]: policy: 2 , count: 10049 , total: 0.433141 , time_avg: 4.31029e-05
+features: [ 10303,  ]: policy: 0 , count: 10305 , total: 0.499232 , time_avg: 4.84456e-05
+features: [ 10303,  ]: policy: 1 , count: 10305 , total: 1.1365 , time_avg: 0.000110286
+features: [ 10303,  ]: policy: 2 , count: 10305 , total: 0.388772 , time_avg: 3.77265e-05
+features: [ 10559,  ]: policy: 0 , count: 10561 , total: 0.47911 , time_avg: 4.5366e-05
+features: [ 10559,  ]: policy: 1 , count: 10561 , total: 1.50704 , time_avg: 0.000142699
+features: [ 10559,  ]: policy: 2 , count: 10561 , total: 0.444271 , time_avg: 4.20671e-05
+features: [ 10815,  ]: policy: 0 , count: 10817 , total: 0.546082 , time_avg: 5.04837e-05
+features: [ 10815,  ]: policy: 1 , count: 10817 , total: 1.12163 , time_avg: 0.000103691
+features: [ 10815,  ]: policy: 2 , count: 10817 , total: 0.40531 , time_avg: 3.74697e-05
+features: [ 11071,  ]: policy: 0 , count: 11073 , total: 0.516216 , time_avg: 4.66194e-05
+.-
+Rank 0 Region smith-waterman Reduce 
+.-

@@ -12,7 +12,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <math.h>
+//#include <math.h>
 #include <omp.h>
 #include <time.h>
 #include <assert.h>
@@ -222,6 +222,7 @@ int main(int argc, char* argv[]) {
 
   end = omp_get_wtime();
   printf("\nElapsed time for scoring matrix computation: %f\n", end - start);
+  fprintf(stderr, "%lld, %g\n", m-1, end - start);
 
 #if !SKIP_BACKTRACK  
   int len = backtrack(P, maxPos);

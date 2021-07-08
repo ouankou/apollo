@@ -333,6 +333,7 @@ int main(int argc, char* argv[]) {
 
   double finalTime = omp_get_wtime();
   printf("\nElapsed time for scoring matrix computation: %f\n", finalTime - initialTime);
+  fprintf(stderr, "%lld, %g\n", m-1, finalTime - initialTime);
 #if !SKIP_BACKTRACK
   initialTime = omp_get_wtime();
   backtrack(P, maxPos);
