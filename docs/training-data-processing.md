@@ -121,6 +121,7 @@ Raw metrics of a run of a program can be saved into a csv log file, with the fol
 * f0,f1, ...: list of features in the feature vector. 
 * policy: the code variant ID or policy ID of this region being measured
 * xtime: execution time of this region with this policy ID, in seconds. 
+
 For example trace-RoundRobin-region-mm-rank-02021-04-27-10:47:50-PDT-0.csv has content of 
 ```
 rankid,training,region,idx,f0,policy,xtime
@@ -129,6 +130,7 @@ rankid,training,region,idx,f0,policy,xtime
 0,RoundRobin,mm,2,5376,0,49.565180368
 0,RoundRobin,mm,3,5376,1,48.260190565
 ```
+The file stores a list of execution time for MPI rank id 0, using Apollo's RoundRobin method to go through all variables/policies, for a region named mm (matrix multiplication kernel), feature vector has value of <5376>, policies 0 or 1. 
 
 
 The aggregated measures for each region can be saved into a log file. One example file is 
