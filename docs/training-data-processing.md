@@ -91,9 +91,10 @@ Apollo::Region::end(Apollo::RegionContext *context)
 A same code region+ same policy + same feature vector value  may repeat multiple times during an execution. 
 * the primary key for execution timing records = (feature-vector, policy)
 
-Example
-* Code region 1: choosing serial execution policy 1,  with a feature vector of size 1 (storing iteration size of the code region). 
-
+For example
+* Code region 1: choosing serial execution policy 1,  with a feature vector of size 1 (storing a loop iteration size of the code region, with value of 100). 
+* This region may be executed multiple times , with policy 1 and loop iteration size 100. 
+ 
 As a result, an aggregate result {execution_count, time_total} is used to store all appearance of the unique code region+policy+feature vector. 
 
 A measure= execution_count plus time_total // aggregate variable
@@ -112,8 +113,27 @@ map < pair <vector<float>, int> , unique_ptr<Apollo::Region::Measure> > measures
 
 TODO: std::map<> has O(logN) complexity for insertion operations.  We may need to use unordered_map<> with O(1) instead. 
 
+Raw metrics of a run of a program can be saved into a csv log file, with the following columns 
+* rankid: MPI rank id, always 0 if MPI is not enabled
+* training: the Apollo's method of going through different code variants, including Random, RoundRobin, or Static. 
+* region: the unique Apollo region id
+* idx: a serial number starting from 0 for all records. Each measure will generate one record
+* f0: a random values in a search space, mostly can be ignored
+* policy: the code variant ID or policy ID of this region being measured
+* xtime: execution time of this region with this policy ID, in seconds. 
+For example trace-RoundRobin-region-mm-rank-02021-04-27-10:47:50-PDT-0.csv has content of 
+```
+rankid,training,region,idx,f0,policy,xtime
+0,RoundRobin,mm,0,5376,0,47.322892876
+0,RoundRobin,mm,1,5376,1,48.207636252
+0,RoundRobin,mm,2,5376,0,49.565180368
+0,RoundRobin,mm,3,5376,1,48.260190565
+```
+
+
 The aggregated measures for each region can be saved into a log file. One example file is 
 Region-Data-rank-0-smith-waterman-measures2021-07-09-12:28:12-PDT.txt , with the following content (partial only).
+
 The file shows that the feature vector has only one element, there are three policies.  For each value of the vector, there are three entries (line 3-5 for feature vector <63>).  Each policy of this feature value runs multiple times (65 times in this example). The total field indicate the accumulated total time, time_avg is the average execution time. 
 
 ```
