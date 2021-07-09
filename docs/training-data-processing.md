@@ -118,7 +118,7 @@ Raw metrics of a run of a program can be saved into a csv log file, with the fol
 * training: the Apollo's method of going through different code variants, including Random, RoundRobin, or Static. 
 * region: the unique Apollo region id
 * idx: a serial number starting from 0 for all records. Each measure will generate one record
-* f0: a random values in a search space, mostly can be ignored
+* f0,f1, ...: list of features in the feature vector. 
 * policy: the code variant ID or policy ID of this region being measured
 * xtime: execution time of this region with this policy ID, in seconds. 
 For example trace-RoundRobin-region-mm-rank-02021-04-27-10:47:50-PDT-0.csv has content of 
