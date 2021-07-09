@@ -202,10 +202,19 @@ Apollo::Region* Apollo::getRegion (const std::string& region_name, int feature_c
 
 # Checking if Sufficient Data is collected
 
-This is done within 
-
+This is done within Region::end(), when cross execution training is enabled.
 
 ```
+
+void
+Apollo::Region::end(void)
+{
+   if (Config::APOLLO_CROSS_EXECUTION)
+     checkAndFlushMeasurements(idx);
+   end(current_context);
+}
+
+
 void Apollo::Region::checkAndFlushMeasurements(int step)
 {
   int rank = apollo->mpiRank; 
