@@ -112,6 +112,31 @@ map < pair <vector<float>, int> , unique_ptr<Apollo::Region::Measure> > measures
 
 TODO: std::map<> has O(logN) complexity for insertion operations.  We may need to use unordered_map<> with O(1) instead. 
 
+The aggregated measures for each region can be saved into a log file. One example file is 
+Region-Data-rank-0-smith-waterman-measures2021-07-09-12:28:12-PDT.txt , with the following content (partial only).
+The file shows that the feature vector has only one element, there are three policies.  For each value of the vector, there are three entries (line 3-5 for feature vector <63>).  Each policy of this feature value runs multiple times (65 times in this example). The total field indicate the accumulated total time, time_avg is the average execution time. 
+
+```
+  1 ========Apollo::Region::serialize()2021-07-09-12:28:12-PDT================
+  2 Rank 0 Region smith-waterman MEASURES
+  3 features: [ 63,  ]: policy: 0 , count: 65 , total: 0.00018966 , time_avg: 2.91785e-06
+  4 features: [ 63,  ]: policy: 1 , count: 65 , total: 0.0124016 , time_avg: 0.000190794
+  5 features: [ 63,  ]: policy: 2 , count: 65 , total: 0.00450337 , time_avg: 6.92826e-05
+  6 features: [ 1087,  ]: policy: 0 , count: 1089 , total: 0.0101418 , time_avg: 9.31295e-06
+  7 features: [ 1087,  ]: policy: 1 , count: 1089 , total: 0.257569 , time_avg: 0.000236519
+  8 features: [ 1087,  ]: policy: 2 , count: 1089 , total: 0.028062 , time_avg: 2.57686e-05
+  9 features: [ 2111,  ]: policy: 0 , count: 2113 , total: 0.0709318 , time_avg: 3.35692e-05
+ 10 features: [ 2111,  ]: policy: 1 , count: 2113 , total: 0.257291 , time_avg: 0.000121766
+ 11 features: [ 2111,  ]: policy: 2 , count: 2113 , total: 0.0548461 , time_avg: 2.59565e-05
+ 12 features: [ 3135,  ]: policy: 0 , count: 3137 , total: 0.0978315 , time_avg: 3.11863e-05
+ 13 features: [ 3135,  ]: policy: 1 , count: 3137 , total: 0.327007 , time_avg: 0.000104242
+ 14 features: [ 3135,  ]: policy: 2 , count: 3137 , total: 0.0896911 , time_avg: 2.85914e-05
+ 15 features: [ 4159,  ]: policy: 0 , count: 4161 , total: 0.118588 , time_avg: 2.84999e-05
+ 16 features: [ 4159,  ]: policy: 1 , count: 4161 , total: 0.393155 , time_avg: 9.44857e-05
+ 17 features: [ 4159,  ]: policy: 2 , count: 4161 , total: 0.173163 , time_avg: 4.16157e-05
+
+```
+
 
 ## Cross-Exection Data Collection and Merging
 
