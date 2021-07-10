@@ -396,3 +396,38 @@ void Apollo::Region::checkAndFlushMeasurements(int step)
 //...                    
 }
 ```
+
+Labelled data should look like the following (25 datapoints)
+```
+Rank 0 Region smith-waterman Reduce 
+features: [ 63, ]: P:0 T: 0.00018966
+features: [ 1087, ]: P:0 T: 0.0101418
+features: [ 2111, ]: P:2 T: 0.0548461
+features: [ 3135, ]: P:2 T: 0.0896911
+features: [ 4159, ]: P:0 T: 0.118588
+features: [ 5183, ]: P:0 T: 0.149249
+features: [ 6207, ]: P:2 T: 0.195303
+features: [ 7231, ]: P:0 T: 0.265776
+features: [ 8255, ]: P:2 T: 0.256549
+features: [ 9279, ]: P:2 T: 0.320784
+features: [ 10303, ]: P:2 T: 0.363976
+features: [ 11327, ]: P:2 T: 0.416085
+features: [ 12351, ]: P:2 T: 0.499051
+features: [ 13375, ]: P:2 T: 0.533525
+features: [ 14399, ]: P:2 T: 0.554516
+features: [ 15423, ]: P:2 T: 0.633606
+features: [ 16447, ]: P:2 T: 0.700744
+features: [ 17471, ]: P:2 T: 0.758021
+features: [ 18495, ]: P:2 T: 0.952859
+features: [ 19519, ]: P:1 T: 0.895845
+features: [ 20543, ]: P:2 T: 0.976633
+features: [ 21567, ]: P:1 T: 1.0648 
+features: [ 22591, ]: P:1 T: 1.09725
+features: [ 23615, ]: P:1 T: 1.0217 
+features: [ 24639, ]: P:1 T: 1.07543
+features: [ 24999, ]: P:0 T: 1.4e-05
+```
+It has 25 datapoints on a single element feature vector. For each datapoint, the best performing policy ID (variant ID) is marked.
+* features: [f0, f1,..], feature vector values
+* P: 0:  best performing policy ID
+* T: 0.32-784, best performing policy's execution time
