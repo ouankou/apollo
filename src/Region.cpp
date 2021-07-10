@@ -153,7 +153,7 @@ void Apollo::Region::checkAndFlushMeasurements(int step)
   if (!hasEnoughTrainingData()) return; 
 
   if (Config::APOLLO_TRACE_CROSS_EXECUTION)
-    cout<<"Apollo::Region::checkAndFlushMeasurements(): has enough training data, build the model and flush measures..."<<endl;
+    cout<<"Model Building: Apollo::Region::checkAndFlushMeasurements(): has enough training data, build the model and flush measures..."<<endl;
    // must save current measures into a file first. Or we will lose them
   reduceBestPolicies(step);
   measures.clear();
@@ -173,8 +173,11 @@ void Apollo::Region::checkAndFlushMeasurements(int step)
 
    if (model->training && best_policies.size()>0)
    {
+     if (Config::APOLLO_TRACE_CROSS_EXECUTION)
+       cout<<"Model Building: entering model->training && best_policies.size()>0.."<<endl;
      if( Config::APOLLO_REGION_MODEL ) {
-       //std::cout << "TRAIN MODEL PER REGION" << std::endl;
+       if (Config::APOLLO_TRACE_CROSS_EXECUTION)
+         std::cout << "Model Building: TRAIN MODEL PER REGION, update features using best policies" << std::endl;
        // Reset training vectors
        train_features.clear();
        train_responses.clear();
@@ -191,6 +194,11 @@ void Apollo::Region::checkAndFlushMeasurements(int step)
          train_time_features.push_back( feature_vector );
          train_time_responses.push_back( it2.second.second );
        }
+     }
+     else
+     {
+       if (Config::APOLLO_TRACE_CROSS_EXECUTION)
+         std::cout << "Model Building: False for TRAIN MODEL PER REGION" << std::endl;
      }
 
      if( Config::APOLLO_TRACE_BEST_POLICIES ) {
@@ -236,6 +244,11 @@ void Apollo::Region::checkAndFlushMeasurements(int step)
 
        time_model->store(getHistoryFilePath()+"/"+getTimingModelFileName());
      
+   }
+   else
+   {
+     if (Config::APOLLO_TRACE_CROSS_EXECUTION)
+       cout<<"Model Building: failed to entering if (model->training && best_policies.size()>0). No model is build.."<<endl;
    }
   // TODO: support retrain logic at region level
    best_policies.clear();
