@@ -94,13 +94,10 @@ Some of them are
 * static float APOLLO_RETRAIN_TIME_THRESHOLD;
 * static float APOLLO_RETRAIN_REGION_THRESHOLD;
 
+Cross execution tuning options
 * static int APOLLO_CROSS_EXECUTION;  // enable cross execution profiling/ modeling/adaptation       
-* static int APOLLO_CROSS_EXECUTION_MIN_DATAPOINT_COUNT;  // minimum number of data points for each feature needed to trigger model building
-
-// For some training data , we don't average the measures, but use total accumulated time for the current execution
-// This is used for some experiment when a single execution with a given input data will only explore one policy.
-// All executions of the same region should be added into a total execution time, instead of calculating their average values.
-*         static int APOLLO_USE_TOTAL_TIME; 
+* static int APOLLO_CROSS_EXECUTION_MIN_DATAPOINT_COUNT;  // minimum number of data points for each feature needed to trigger model building, default is 25
+* static int APOLLO_USE_TOTAL_TIME;  //For some training data , we don't average the measures, but use total accumulated time for the current execution. This is used for some experiment when a single execution with a given input data will only explore one policy. All executions of the same region should be added into a total execution time, instead of calculating their average values.
          
 Debugging and tracing configurations
 * static int APOLLO_STORE_MODELS;
