@@ -12,7 +12,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <math.h>
+// #include <math.h> // conflicting with Rocm clang on Corona
 #include <omp.h>
 #include <time.h>
 #include <assert.h>

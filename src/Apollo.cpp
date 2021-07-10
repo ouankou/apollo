@@ -459,6 +459,7 @@ Apollo::gatherReduceCollectiveTrainingData(int step)
     free( recvbuf );
 #endif //ENABLE_MPI
 }
+
 Apollo::Region* Apollo::getRegion (const std::string& region_name, int feature_count, int policy_count)
 {
   // For each run of a program, this function will be called many times
@@ -478,12 +479,17 @@ Apollo::Region* Apollo::getRegion (const std::string& region_name, int feature_c
     ifstream myfile(modelYamlFile);
     if (myfile.is_open())
     {
-        if (Config::APOLLO_TRACE_CROSS_EXECUTION)
-          cout<<"loading previous model file from:"<< modelYamlFile<<endl;
-        region->model = ModelFactory::loadDecisionTree(region->num_region_policies, modelYamlFile);
+      if (Config::APOLLO_TRACE_CROSS_EXECUTION)
+        cout<<"loading previous model file from:"<< modelYamlFile<<endl;
+      region->model = ModelFactory::loadDecisionTree(region->num_region_policies, modelYamlFile);
     }
     else
     {
+      if (Config::APOLLO_TRACE_CROSS_EXECUTION)
+      {
+        cout<<"failed to loading previous model file from:"<< modelYamlFile<<endl;
+        cout<<"loading previous measures instead"<<endl;
+      }
       region->loadPreviousMeasures();
     }
 

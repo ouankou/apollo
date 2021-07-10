@@ -71,6 +71,14 @@ Apollo::Region::getPolicyIndex(Apollo::RegionContext *context)
 {
     int choice = model->getIndex( context->features );
 
+    if (Config::APOLLO_TRACE_CROSS_EXECUTION)
+    {
+      if (model->training)
+        cout<<"Region::getPolicyIndex() uses a training model"<<endl;
+      else
+        cout<<"Region::getPolicyIndex() uses a production model"<<endl;
+    }
+
     if( Config::APOLLO_TRACE_POLICY ) {
         std::stringstream trace_out;
         int rank;
@@ -156,7 +164,10 @@ void Apollo::Region::checkAndFlushMeasurements(int step)
     cout<<"Model Building: Apollo::Region::checkAndFlushMeasurements(): has enough training data, build the model and flush measures..."<<endl;
    // must save current measures into a file first. Or we will lose them
   reduceBestPolicies(step);
-  measures.clear();
+
+  // In cross execution mode: we don't want to flush the data accumulated so far. just keep accumulating
+//  if (!Config::APOLLO_CROSS_EXECUTION)
+    measures.clear();
 
   //TODO: support MPI?
   /*
@@ -399,7 +410,9 @@ void Apollo::Region::setDataCollectionThreshold()
 bool Apollo::Region::hasEnoughTrainingData()
 {
   if (Config::APOLLO_TRACE_CROSS_EXECUTION)
-      cout<< "Collected "<< measures.size() << " out of " << min_record_count << "required measure count." <<endl;
+  {
+      cout<< "Collected "<< measures.size() << " out of " << min_record_count << " required measure count." <<endl;
+  }
   return measures.size()>=min_record_count;
 }
 
@@ -644,7 +657,10 @@ Apollo::Region::end(void)
 {
 //TODO: test this in synchronous processing first, move to asynchronous handling later.
    if (Config::APOLLO_CROSS_EXECUTION)
-     checkAndFlushMeasurements(idx);
+   {
+     if (model->training) // only do this during training session. Skip in production session
+       checkAndFlushMeasurements(idx);
+   }
    end(current_context);
 }
 

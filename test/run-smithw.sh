@@ -4,9 +4,22 @@
 
 EXE_FILE=omp_smithW-v8-apollo.out
 TIMESTAMP=$(date +%Y%m%d_%H%M%S)
+
+LOGFILE=$0-log-$TIMESTAMP.txt  
+exec 6>&1           # Link file descriptor #6 with stdout.
+exec 7>&2
+exec &> $LOGFILE     # stdout replaced with file "logfile.txt".
+
 #TIMESTAMP="debug"
 NODE_NAME=`uname -n`
 HARDWAREE_NAME=`uname -m`
+
+FOLDER_SUFFIX="-$NODE_NAME-$HARDWAREE_NAME-$EXE_FILE-$TIMESTAMP"
+# For Debug 
+# using a fixed folder, with previous built model or collected data, continue the execution
+# Be careful, no overlapping of input sizes, or the timing will be accumulated wrongfully. (No accumulation across execution in static model)
+#FOLDER_SUFFIX=-corona93-x86_64-omp_smithW-v8-apollo.out-20210709_122651
+
 make clean
 make ./$EXE_FILE
 
@@ -20,13 +33,19 @@ make ./$EXE_FILE
 # 40k to 1040k, step 40k
 
 #M_SIZE=2000
+#using the physical core count as default thread count, avoiding hyper threading
+PHYSICAL_CORE_COUNT=`lscpu -p | egrep -v '^#' | sort -u -t, -k 2,4 | wc -l`
+export OMP_NUM_THREADS=$PHYSICAL_CORE_COUNT
+echo "Set to physical core count: OMP_NUM_THREADS="$OMP_NUM_THREADS
 
 # need 75 points at least to trigger model building
 # 256 * 75= 19200
 # for each N size
 counter=""
 # sampling range and data points are essential to capture the trend 
-for n_size in {256..25000..256}; do
+#for n_size in {256..25000..256}; do
+# we have 117 x 3 = 351 records in datasets, more than enough to trigger model building
+for n_size in {32..15000..128}; do
  let "counter += 1"
  echo "running count=$counter, problem m_size=$M_SIZE n_size=$n_size"
 
@@ -48,7 +67,7 @@ for n_size in {256..25000..256}; do
 
 # another question: are all execution time added into one single value?  Or we should promote it to be outside of the inner loop?    
 # I think so: measures are added into the feature + policy    
-  APOLLO_TRACE_CSV_FOLDER_SUFFIX="-$NODE_NAME-$HARDWAREE_NAME-$EXE_FILE-$TIMESTAMP" \
+  APOLLO_TRACE_CSV_FOLDER_SUFFIX=$FOLDER_SUFFIX \
   APOLLO_CROSS_EXECUTION=1 APOLLO_USE_TOTAL_TIME=1 APOLLO_INIT_MODEL="Static,$policy" \
   APOLLO_TRACE_CROSS_EXECUTION=1 \
   ./$EXE_FILE $M_SIZE $n_size
@@ -56,3 +75,6 @@ for n_size in {256..25000..256}; do
   done 
 
 done
+
+exec 1>&6 6>&-      # Restore stdout and close file descriptor #6.
+exec 2>&7 7>&- # restore 2 and cancel 7
