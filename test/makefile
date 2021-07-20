@@ -9,8 +9,7 @@ ifeq ($(findstring corona,$(HOSTNAME)), corona)
 else ifeq ($(findstring tux385,$(HOSTNAME)), tux385) 
   CC=g++
   CXXFLAGS=-O3 -fopenmp
-else
-# on lassen, Nvidia GPU  
+else # on lassen, Nvidia GPU  
 #In the end, we use default clang++ + custom build of OpenMP runtime to make Smith Waterman code work!!
 
 # system default clang++'s runtime has problem with smith waterman code

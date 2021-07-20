@@ -12,7 +12,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-//#include <math.h>
+// #include <math.h> // conflicting with Rocm clang on Corona
 #include <omp.h>
 #include <time.h>
 #include <assert.h>
@@ -257,6 +257,7 @@ int main(int argc, char* argv[])
       /* NumPolicies */ 3);
 
   // dependent region  still need to feed the features used by the model
+  // Do we need to measure and accumulate time ?  Yes, model should consider all activated regions for a policy.
   region1->begin( /* feature vector */ {(float)nDiag} ); // using diagonal line count instead
 
   //  if (!(region1->model->training))// Static model's training flag is false!

@@ -91,9 +91,10 @@ Apollo::Region::end(Apollo::RegionContext *context)
 A same code region+ same policy + same feature vector value  may repeat multiple times during an execution. 
 * the primary key for execution timing records = (feature-vector, policy)
 
-Example
-* Code region 1: choosing serial execution policy 1,  with a feature vector of size 1 (storing iteration size of the code region). 
-
+For example
+* Code region 1: choosing serial execution policy 1,  with a feature vector of size 1 (storing a loop iteration size of the code region, with value of 100). 
+* This region may be executed multiple times , with policy 1 and loop iteration size 100. 
+ 
 As a result, an aggregate result {execution_count, time_total} is used to store all appearance of the unique code region+policy+feature vector. 
 
 A measure= execution_count plus time_total // aggregate variable
@@ -111,6 +112,52 @@ map < pair <vector<float>, int> , unique_ptr<Apollo::Region::Measure> > measures
 ```
 
 TODO: std::map<> has O(logN) complexity for insertion operations.  We may need to use unordered_map<> with O(1) instead. 
+
+Raw metrics of a run of a program can be saved into a csv log file, with the following columns 
+* rankid: MPI rank id, always 0 if MPI is not enabled
+* training: the Apollo's method of going through different code variants, including Random, RoundRobin, or Static. 
+* region: the unique Apollo region id
+* idx: a serial number starting from 0 for all records. Each measure will generate one record
+* f0,f1, ...: list of features in the feature vector. 
+* policy: the code variant ID or policy ID of this region being measured
+* xtime: execution time of this region with this policy ID, in seconds. 
+
+For example trace-RoundRobin-region-mm-rank-02021-04-27-10:47:50-PDT-0.csv has content of 
+```
+rankid,training,region,idx,f0,policy,xtime
+0,RoundRobin,mm,0,5376,0,47.322892876
+0,RoundRobin,mm,1,5376,1,48.207636252
+0,RoundRobin,mm,2,5376,0,49.565180368
+0,RoundRobin,mm,3,5376,1,48.260190565
+```
+The file stores a list of execution time for MPI rank id 0, using Apollo's RoundRobin method to go through all variables/policies, for a region named mm (matrix multiplication kernel), feature vector has value of <5376>, policies 0 or 1. 
+
+
+The aggregated measures for each region can be saved into a log file. One example file is 
+Region-Data-rank-0-smith-waterman-measures2021-07-09-12:28:12-PDT.txt , with the following content (partial only).
+
+The file shows that the feature vector has only one element, there are three policies.  For each value of the vector, there are three entries (line 3-5 for feature vector <63>).  Each policy of this feature value runs multiple times (65 times in this example). The total field indicate the accumulated total time, time_avg is the average execution time. 
+
+```
+  1 ========Apollo::Region::serialize()2021-07-09-12:28:12-PDT================
+  2 Rank 0 Region smith-waterman MEASURES
+  3 features: [ 63,  ]: policy: 0 , count: 65 , total: 0.00018966 , time_avg: 2.91785e-06
+  4 features: [ 63,  ]: policy: 1 , count: 65 , total: 0.0124016 , time_avg: 0.000190794
+  5 features: [ 63,  ]: policy: 2 , count: 65 , total: 0.00450337 , time_avg: 6.92826e-05
+  6 features: [ 1087,  ]: policy: 0 , count: 1089 , total: 0.0101418 , time_avg: 9.31295e-06
+  7 features: [ 1087,  ]: policy: 1 , count: 1089 , total: 0.257569 , time_avg: 0.000236519
+  8 features: [ 1087,  ]: policy: 2 , count: 1089 , total: 0.028062 , time_avg: 2.57686e-05
+  9 features: [ 2111,  ]: policy: 0 , count: 2113 , total: 0.0709318 , time_avg: 3.35692e-05
+ 10 features: [ 2111,  ]: policy: 1 , count: 2113 , total: 0.257291 , time_avg: 0.000121766
+ 11 features: [ 2111,  ]: policy: 2 , count: 2113 , total: 0.0548461 , time_avg: 2.59565e-05
+ 12 features: [ 3135,  ]: policy: 0 , count: 3137 , total: 0.0978315 , time_avg: 3.11863e-05
+ 13 features: [ 3135,  ]: policy: 1 , count: 3137 , total: 0.327007 , time_avg: 0.000104242
+ 14 features: [ 3135,  ]: policy: 2 , count: 3137 , total: 0.0896911 , time_avg: 2.85914e-05
+ 15 features: [ 4159,  ]: policy: 0 , count: 4161 , total: 0.118588 , time_avg: 2.84999e-05
+ 16 features: [ 4159,  ]: policy: 1 , count: 4161 , total: 0.393155 , time_avg: 9.44857e-05
+ 17 features: [ 4159,  ]: policy: 2 , count: 4161 , total: 0.173163 , time_avg: 4.16157e-05
+
+```
 
 
 ## Cross-Exection Data Collection and Merging
@@ -155,10 +202,19 @@ Apollo::Region* Apollo::getRegion (const std::string& region_name, int feature_c
 
 # Checking if Sufficient Data is collected
 
-This is done within 
-
+This is done within Region::end(), when cross execution training is enabled.
 
 ```
+
+void
+Apollo::Region::end(void)
+{
+   if (Config::APOLLO_CROSS_EXECUTION)
+     checkAndFlushMeasurements(idx);
+   end(current_context);
+}
+
+
 void Apollo::Region::checkAndFlushMeasurements(int step)
 {
   int rank = apollo->mpiRank; 
@@ -340,3 +396,38 @@ void Apollo::Region::checkAndFlushMeasurements(int step)
 //...                    
 }
 ```
+
+Labelled data should look like the following (25 datapoints)
+```
+Rank 0 Region smith-waterman Reduce 
+features: [ 63, ]: P:0 T: 0.00018966
+features: [ 1087, ]: P:0 T: 0.0101418
+features: [ 2111, ]: P:2 T: 0.0548461
+features: [ 3135, ]: P:2 T: 0.0896911
+features: [ 4159, ]: P:0 T: 0.118588
+features: [ 5183, ]: P:0 T: 0.149249
+features: [ 6207, ]: P:2 T: 0.195303
+features: [ 7231, ]: P:0 T: 0.265776
+features: [ 8255, ]: P:2 T: 0.256549
+features: [ 9279, ]: P:2 T: 0.320784
+features: [ 10303, ]: P:2 T: 0.363976
+features: [ 11327, ]: P:2 T: 0.416085
+features: [ 12351, ]: P:2 T: 0.499051
+features: [ 13375, ]: P:2 T: 0.533525
+features: [ 14399, ]: P:2 T: 0.554516
+features: [ 15423, ]: P:2 T: 0.633606
+features: [ 16447, ]: P:2 T: 0.700744
+features: [ 17471, ]: P:2 T: 0.758021
+features: [ 18495, ]: P:2 T: 0.952859
+features: [ 19519, ]: P:1 T: 0.895845
+features: [ 20543, ]: P:2 T: 0.976633
+features: [ 21567, ]: P:1 T: 1.0648 
+features: [ 22591, ]: P:1 T: 1.09725
+features: [ 23615, ]: P:1 T: 1.0217 
+features: [ 24639, ]: P:1 T: 1.07543
+features: [ 24999, ]: P:0 T: 1.4e-05
+```
+It has 25 datapoints on a single element feature vector. For each datapoint, the best performing policy ID (variant ID) is marked.
+* features: [f0, f1,..], feature vector values
+* P: 0:  best performing policy ID
+* T: 0.32-784, best performing policy's execution time
