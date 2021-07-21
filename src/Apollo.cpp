@@ -182,7 +182,7 @@ Apollo::Apollo()
     Config::APOLLO_TRACE_ALLGATHER     = std::stoi( apolloUtils::safeGetEnv( "APOLLO_TRACE_ALLGATHER", "0" ) );
     Config::APOLLO_TRACE_BEST_POLICIES = std::stoi( apolloUtils::safeGetEnv( "APOLLO_TRACE_BEST_POLICIES", "0" ) );
 
-    Config::APOLLO_TRACE_CROSS_EXECUTION = std::stoi( apolloUtils::safeGetEnv( "APOLLO_TRACE_CROSS_EXECUTION", "1" ) );
+    Config::APOLLO_TRACE_CROSS_EXECUTION = std::stoi( apolloUtils::safeGetEnv( "APOLLO_TRACE_CROSS_EXECUTION", "0" ) );
 
     Config::APOLLO_TRACE_CSV = std::stoi( apolloUtils::safeGetEnv( "APOLLO_TRACE_CSV", "1" ) );
     Config::APOLLO_TRACE_CSV_FOLDER_SUFFIX = apolloUtils::safeGetEnv( "APOLLO_TRACE_CSV_FOLDER_SUFFIX", "apollo_csv" );

@@ -735,7 +735,17 @@ Apollo::Region::reduceBestPolicies(int step)
         }
         trace_out << ".-" << std::endl;
         std::cout << trace_out.str();
-        std::ofstream fout("step-" + std::to_string(step) +
+        // store the file under the trace CSV folder
+        string folder_name = getHistoryFilePath(); // "./trace" + Config::APOLLO_TRACE_CSV_FOLDER_SUFFIX;
+        int ret;
+        ret = mkdir(folder_name.c_str(),  S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH);
+
+        if (ret != 0 && errno != EEXIST) {
+          perror("Apollo::Region::reduceBestPolicies()  mkdir");
+          abort();
+        }
+
+        std::ofstream fout(folder_name + '/' + "reduceBestPolicies-step-" + std::to_string(step) +
                 "-rank-" + std::to_string(rank) + "-" + name + "-measures.txt"); \
             fout << trace_out.str();
         fout.close();

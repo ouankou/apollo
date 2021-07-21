@@ -18,7 +18,7 @@ HARDWAREE_NAME=`uname -m`
 # For Debug 
 # using a fixed folder, with previous built model or collected data, continue the execution
 # Be careful, no overlapping of input sizes, or the timing will be accumulated wrongfully. (No accumulation across execution in static model)
-FOLDER_SUFFIX=-corona153-x86_64-omp_smithW-v8-apollo.out-20210721
+FOLDER_SUFFIX=-corona151-x86_64-omp_smithW-v8-apollo.out-20210721-debug
 
 make clean
 make ./$EXE_FILE
@@ -46,7 +46,7 @@ counter=""
 #for n_size in {256..25000..256}; do
 # we have 117 x 3 = 351 records in datasets, more than enough to trigger model building
 # we collect roughly 80 data points *3 = 240 records
-for n_size in {32..20000..256}; do
+for n_size in {32..21000..256}; do
  let "counter += 1"
  echo "running count=$counter, problem m_size=$M_SIZE n_size=$n_size"
 
@@ -68,9 +68,10 @@ for n_size in {32..20000..256}; do
 
 # another question: are all execution time added into one single value?  Or we should promote it to be outside of the inner loop?    
 # I think so: measures are added into the feature + policy    
+# APOLLO_TRACE_CROSS_EXECUTION=1     
   APOLLO_TRACE_CSV_FOLDER_SUFFIX=$FOLDER_SUFFIX \
   APOLLO_CROSS_EXECUTION=1 APOLLO_USE_TOTAL_TIME=1 APOLLO_INIT_MODEL="Static,$policy" \
-  APOLLO_CROSS_EXECUTION_MIN_DATAPOINT_COUNT=80 APOLLO_TRACE_CROSS_EXECUTION=1 \
+  APOLLO_CROSS_EXECUTION_MIN_DATAPOINT_COUNT=80 APOLLO_TRACE_CSV=0 APOLLO_TRACE_MEASURES=1 \
   ./$EXE_FILE $M_SIZE $n_size
 #    done
   done 
