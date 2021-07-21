@@ -1,7 +1,0 @@
-========Apollo::Region::serialize()2021-03-24-15:34:47-PDT================
-Rank 0 Region mm MEASURES 
-features: [ 256,  ]: policy: 0 , count: 2 , total: 0.00141695 , time_avg: 0.000708476
-features: [ 256,  ]: policy: 1 , count: 2 , total: 0.279804 , time_avg: 0.139902
-.-
-Rank 0 Region mm Reduce 
-.-
