@@ -101,14 +101,14 @@ Cross execution tuning options
          
 Debugging and tracing configurations
 * static int APOLLO_STORE_MODELS;
-* static int APOLLO_TRACE_MEASURES; // trace Apollo::Region::reduceBestPolicies(), generating a log file containing measures and labeled training data with best policies
+* static int APOLLO_TRACE_MEASURES; // default is 1, trace Apollo::Region::reduceBestPolicies(), generating a log file containing measures and labeled training data with best policies
 * static int APOLLO_TRACE_POLICY;
 * static int APOLLO_TRACE_RETRAIN;
 * static int APOLLO_TRACE_ALLGATHER;
 * static int APOLLO_TRACE_BEST_POLICIES;
 * static int APOLLO_TRACE_CROSS_EXECUTION;
 * static int APOLLO_FLUSH_PERIOD;
-* static int APOLLO_TRACE_CSV;        
+* static int APOLLO_TRACE_CSV;  // default is 1, generate CSV files for regions and policies        
 * static std::string APOLLO_INIT_MODEL; // initial policy selection modes: random, roundRobin, static,0 (always 1st one), etc
 * static std::string APOLLO_TRACE_CSV_FOLDER_SUFFIX;
 
