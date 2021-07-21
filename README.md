@@ -101,7 +101,7 @@ Cross execution tuning options
          
 Debugging and tracing configurations
 * static int APOLLO_STORE_MODELS;
-* static int APOLLO_TRACE_MEASURES;
+* static int APOLLO_TRACE_MEASURES; // trace Apollo::Region::reduceBestPolicies(), generating a log file containing measures and labeled training data with best policies
 * static int APOLLO_TRACE_POLICY;
 * static int APOLLO_TRACE_RETRAIN;
 * static int APOLLO_TRACE_ALLGATHER;
