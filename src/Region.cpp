@@ -351,14 +351,14 @@ void Apollo::Region::setPolicyModel (int numAvailablePolicies, const std::string
         // TODO: convert to filesystem C++17 API when Apollo moves to it
         int ret;
         ret = mkdir(
-            std::string("./trace" + Config::APOLLO_TRACE_CSV_FOLDER_SUFFIX)
+            std::string("./trace" + Config::APOLLO_TRACE_FOLDER_SUFFIX)
                 .c_str(),
             S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH);
         if (ret != 0 && errno != EEXIST) {
             perror("TRACE_CSV mkdir");
             abort();
         }
-        std::string fname("./trace" + Config::APOLLO_TRACE_CSV_FOLDER_SUFFIX +
+        std::string fname("./trace" + Config::APOLLO_TRACE_FOLDER_SUFFIX +
                           "/trace-" + Config::APOLLO_INIT_MODEL + "-region-" +
                           name + "-rank-" + std::to_string(apollo->mpiRank) + getTimeStamp() +"-"+ to_string(seq++)+
                           ".csv");
@@ -474,7 +474,7 @@ void Apollo::Region::serialize(int training_steps=0)
   //  std::cout << trace_out.str();
 
   // save to a file
-  string folder_name = getHistoryFilePath(); // "./trace" + Config::APOLLO_TRACE_CSV_FOLDER_SUFFIX;
+  string folder_name = getHistoryFilePath(); // "./trace" + Config::APOLLO_TRACE_FOLDER_SUFFIX;
 
   int ret;
   ret = mkdir(folder_name.c_str(),  S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH);
@@ -490,12 +490,14 @@ void Apollo::Region::serialize(int training_steps=0)
   fout.close();
 
   //In debugging mode: we also save into timestamped files as history
+#if 0  //
   if (Config::APOLLO_CROSS_EXECUTION) 
   {
     std::ofstream fout2( folder_name +'/'+getHistoryFileName(true)); 
     fout2 << trace_out.str();
     fout2.close();
   }
+#endif   
 }
 
 Apollo::Region::~Region()
@@ -509,13 +511,19 @@ Apollo::Region::~Region()
         delete callback_pool;
 
     if( Config::APOLLO_TRACE_CSV )
+    {
+//        cout<<"Region::~Region() Config::APOLLO_TRACE_CSV==1, closing trace file.."<<endl;
         trace_file.close();
-
+    }
+#if 0 // We move this to the destructor of Apollo, calling serialize() only once
     // Save region information into a file
-    // serialize could be done when we 
     if (Config::APOLLO_CROSS_EXECUTION)
-      serialize();
-
+    {
+//      if (Config::APOLLO_TRACE_MEASURES) // we must unconditionally serialize current region's aggregated measures into a file, at least when the execution finishes
+//      TODO: reduce overhead, only saving to file once per execution
+        serialize(); 
+    }
+#endif
     return;
 }
 
@@ -669,7 +677,7 @@ Apollo::Region::reduceBestPolicies(int step)
 {
     std::stringstream trace_out;
     int rank;
-    if( Config::APOLLO_TRACE_MEASURES ) {
+    if( Config::APOLLO_TRACE_MEASURES) {
 #ifdef ENABLE_MPI
         rank = apollo->mpiRank;
 #else
@@ -736,7 +744,7 @@ Apollo::Region::reduceBestPolicies(int step)
         trace_out << ".-" << std::endl;
         std::cout << trace_out.str();
         // store the file under the trace CSV folder
-        string folder_name = getHistoryFilePath(); // "./trace" + Config::APOLLO_TRACE_CSV_FOLDER_SUFFIX;
+        string folder_name = getHistoryFilePath(); // "./trace" + Config::APOLLO_TRACE_FOLDER_SUFFIX;
         int ret;
         ret = mkdir(folder_name.c_str(),  S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH);
 
@@ -745,9 +753,11 @@ Apollo::Region::reduceBestPolicies(int step)
           abort();
         }
 
-        std::ofstream fout(folder_name + '/' + "reduceBestPolicies-step-" + std::to_string(step) +
-                "-rank-" + std::to_string(rank) + "-" + name + "-measures.txt"); \
-            fout << trace_out.str();
+        string file_name_with_path = folder_name + '/' + "reduceBestPolicies-step-" + std::to_string(step) +
+                          "-rank-" + std::to_string(rank) + "-" + name + "-measures.txt";
+        cout<<"Apollo::Region::reduceBestPolicies() saving measures and labelled data into file:"<< file_name_with_path<<endl;
+        std::ofstream fout(file_name_with_path);
+        fout << trace_out.str();
         fout.close();
     }
 
@@ -785,9 +795,10 @@ static string extractOneCell(string& line, size_t& pos)
 std::string 
 Apollo::Region::getHistoryFilePath()
 {
-  return "./trace" + Config::APOLLO_TRACE_CSV_FOLDER_SUFFIX;
+  return "./trace" + Config::APOLLO_TRACE_FOLDER_SUFFIX;
 }
 
+// get previous exeuction's aggregated measures for a region specified by its name.
 std::string 
 Apollo::Region::getHistoryFileName(bool timestime)
 {

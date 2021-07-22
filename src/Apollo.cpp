@@ -185,7 +185,8 @@ Apollo::Apollo()
     Config::APOLLO_TRACE_CROSS_EXECUTION = std::stoi( apolloUtils::safeGetEnv( "APOLLO_TRACE_CROSS_EXECUTION", "0" ) );
 
     Config::APOLLO_TRACE_CSV = std::stoi( apolloUtils::safeGetEnv( "APOLLO_TRACE_CSV", "1" ) );
-    Config::APOLLO_TRACE_CSV_FOLDER_SUFFIX = apolloUtils::safeGetEnv( "APOLLO_TRACE_CSV_FOLDER_SUFFIX", "apollo_csv" );
+
+    Config::APOLLO_TRACE_FOLDER_SUFFIX = apolloUtils::safeGetEnv( "APOLLO_TRACE_FOLDER_SUFFIX", "apollo_csv" );
 
     //std::cout << "init model " << Config::APOLLO_INIT_MODEL << std::endl;
     //std::cout << "collective " << Config::APOLLO_COLLECTIVE_TRAINING << std::endl;
@@ -249,6 +250,9 @@ Apollo::~Apollo()
 {
     for(auto &it : regions) {
         Region *r = it.second;
+        // in the cross execution training mode, we save current aggregated measures into files for later use
+        if (Config::APOLLO_CROSS_EXECUTION)
+          r->serialize(0); 
         delete r;
     }
     std::cerr << "Apollo: total region executions: " << region_executions << std::endl;

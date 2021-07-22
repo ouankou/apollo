@@ -26,4 +26,4 @@ int Config::APOLLO_TRACE_CROSS_EXECUTION;
 int Config::APOLLO_USE_TOTAL_TIME;
 
 std::string Config::APOLLO_INIT_MODEL;
-std::string Config::APOLLO_TRACE_CSV_FOLDER_SUFFIX;
+std::string Config::APOLLO_TRACE_FOLDER_SUFFIX;
