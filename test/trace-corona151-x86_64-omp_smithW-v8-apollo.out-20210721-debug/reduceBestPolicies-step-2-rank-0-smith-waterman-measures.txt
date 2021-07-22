@@ -1,325 +1,325 @@
 =================================
 Rank 0 Region smith-waterman MEASURES 
-features: [ 63,  ]: policy: 0 , count: 65 , total: 3.4401e-05 , time_avg: 5.29246e-07
-features: [ 63,  ]: policy: 1 , count: 65 , total: 0.00645352 , time_avg: 9.92849e-05
-features: [ 63,  ]: policy: 2 , count: 65 , total: 0.00371142 , time_avg: 5.70988e-05
-features: [ 575,  ]: policy: 0 , count: 577 , total: 0.00224121 , time_avg: 3.88425e-06
-features: [ 575,  ]: policy: 1 , count: 577 , total: 0.062339 , time_avg: 0.00010804
-features: [ 575,  ]: policy: 2 , count: 577 , total: 0.0129185 , time_avg: 2.23891e-05
-features: [ 1087,  ]: policy: 0 , count: 1089 , total: 0.00713872 , time_avg: 6.5553e-06
-features: [ 1087,  ]: policy: 1 , count: 1089 , total: 0.0901257 , time_avg: 8.27601e-05
-features: [ 1087,  ]: policy: 2 , count: 1089 , total: 0.0236429 , time_avg: 2.17107e-05
-features: [ 1599,  ]: policy: 0 , count: 1601 , total: 0.0171064 , time_avg: 1.06848e-05
-features: [ 1599,  ]: policy: 1 , count: 1601 , total: 0.199351 , time_avg: 0.000124517
-features: [ 1599,  ]: policy: 2 , count: 1601 , total: 0.0779043 , time_avg: 4.86598e-05
-features: [ 2111,  ]: policy: 0 , count: 2113 , total: 0.0505564 , time_avg: 2.39264e-05
-features: [ 2111,  ]: policy: 1 , count: 2113 , total: 0.214294 , time_avg: 0.000101417
-features: [ 2111,  ]: policy: 2 , count: 2113 , total: 0.0768103 , time_avg: 3.63513e-05
-features: [ 2623,  ]: policy: 0 , count: 2625 , total: 0.0355871 , time_avg: 1.3557e-05
-features: [ 2623,  ]: policy: 1 , count: 2625 , total: 0.347679 , time_avg: 0.000132449
-features: [ 2623,  ]: policy: 2 , count: 2625 , total: 0.0633293 , time_avg: 2.41254e-05
-features: [ 3135,  ]: policy: 0 , count: 3137 , total: 0.0605077 , time_avg: 1.92884e-05
-features: [ 3135,  ]: policy: 1 , count: 3137 , total: 0.30451 , time_avg: 9.70704e-05
-features: [ 3135,  ]: policy: 2 , count: 3137 , total: 0.170841 , time_avg: 5.446e-05
-features: [ 3647,  ]: policy: 0 , count: 3649 , total: 0.0707167 , time_avg: 1.93797e-05
-features: [ 3647,  ]: policy: 1 , count: 3649 , total: 0.320061 , time_avg: 8.7712e-05
-features: [ 3647,  ]: policy: 2 , count: 3649 , total: 0.127669 , time_avg: 3.49874e-05
-features: [ 4159,  ]: policy: 0 , count: 4161 , total: 0.0970178 , time_avg: 2.3316e-05
-features: [ 4159,  ]: policy: 1 , count: 4161 , total: 0.394137 , time_avg: 9.47217e-05
-features: [ 4159,  ]: policy: 2 , count: 4161 , total: 0.137424 , time_avg: 3.30267e-05
-features: [ 4671,  ]: policy: 0 , count: 4673 , total: 0.102292 , time_avg: 2.189e-05
-features: [ 4671,  ]: policy: 1 , count: 4673 , total: 0.258327 , time_avg: 5.52808e-05
-features: [ 4671,  ]: policy: 2 , count: 4673 , total: 0.171043 , time_avg: 3.66024e-05
-features: [ 5183,  ]: policy: 0 , count: 5185 , total: 0.139297 , time_avg: 2.68654e-05
-features: [ 5183,  ]: policy: 1 , count: 5185 , total: 0.393859 , time_avg: 7.59612e-05
-features: [ 5183,  ]: policy: 2 , count: 5185 , total: 0.172731 , time_avg: 3.33136e-05
-features: [ 5695,  ]: policy: 0 , count: 5697 , total: 0.19469 , time_avg: 3.41741e-05
-features: [ 5695,  ]: policy: 1 , count: 5697 , total: 0.433066 , time_avg: 7.60165e-05
-features: [ 5695,  ]: policy: 2 , count: 5697 , total: 0.189572 , time_avg: 3.32758e-05
-features: [ 6207,  ]: policy: 0 , count: 6209 , total: 0.217474 , time_avg: 3.50256e-05
-features: [ 6207,  ]: policy: 1 , count: 6209 , total: 0.527443 , time_avg: 8.49481e-05
-features: [ 6207,  ]: policy: 2 , count: 6209 , total: 0.25293 , time_avg: 4.0736e-05
-features: [ 6719,  ]: policy: 0 , count: 6721 , total: 0.215004 , time_avg: 3.19899e-05
-features: [ 6719,  ]: policy: 1 , count: 6721 , total: 0.403247 , time_avg: 5.99981e-05
-features: [ 6719,  ]: policy: 2 , count: 6721 , total: 0.175522 , time_avg: 2.61155e-05
-features: [ 7231,  ]: policy: 0 , count: 7233 , total: 0.229902 , time_avg: 3.17852e-05
-features: [ 7231,  ]: policy: 1 , count: 7233 , total: 0.50766 , time_avg: 7.01866e-05
-features: [ 7231,  ]: policy: 2 , count: 7233 , total: 0.254022 , time_avg: 3.51199e-05
-features: [ 7743,  ]: policy: 0 , count: 7745 , total: 0.293335 , time_avg: 3.78741e-05
-features: [ 7743,  ]: policy: 1 , count: 7745 , total: 0.592048 , time_avg: 7.64426e-05
-features: [ 7743,  ]: policy: 2 , count: 7745 , total: 0.265239 , time_avg: 3.42465e-05
-features: [ 8255,  ]: policy: 0 , count: 8257 , total: 0.318011 , time_avg: 3.85141e-05
-features: [ 8255,  ]: policy: 1 , count: 8257 , total: 0.510216 , time_avg: 6.17919e-05
-features: [ 8255,  ]: policy: 2 , count: 8257 , total: 0.333261 , time_avg: 4.0361e-05
-features: [ 8767,  ]: policy: 0 , count: 8769 , total: 0.321219 , time_avg: 3.66312e-05
-features: [ 8767,  ]: policy: 1 , count: 8769 , total: 0.563626 , time_avg: 6.42748e-05
-features: [ 8767,  ]: policy: 2 , count: 8769 , total: 0.285237 , time_avg: 3.25279e-05
-features: [ 9279,  ]: policy: 0 , count: 9281 , total: 0.396536 , time_avg: 4.27256e-05
-features: [ 9279,  ]: policy: 1 , count: 9281 , total: 0.602915 , time_avg: 6.49623e-05
-features: [ 9279,  ]: policy: 2 , count: 9281 , total: 0.305391 , time_avg: 3.2905e-05
-features: [ 9791,  ]: policy: 0 , count: 9793 , total: 0.40383 , time_avg: 4.12366e-05
-features: [ 9791,  ]: policy: 1 , count: 9793 , total: 0.612915 , time_avg: 6.2587e-05
-features: [ 9791,  ]: policy: 2 , count: 9793 , total: 0.315026 , time_avg: 3.21685e-05
-features: [ 10303,  ]: policy: 0 , count: 10305 , total: 0.423487 , time_avg: 4.10953e-05
-features: [ 10303,  ]: policy: 1 , count: 10305 , total: 0.664058 , time_avg: 6.44404e-05
-features: [ 10303,  ]: policy: 2 , count: 10305 , total: 0.400994 , time_avg: 3.89126e-05
-features: [ 10815,  ]: policy: 0 , count: 10817 , total: 0.457348 , time_avg: 4.22805e-05
-features: [ 10815,  ]: policy: 1 , count: 10817 , total: 0.573629 , time_avg: 5.30303e-05
-features: [ 10815,  ]: policy: 2 , count: 10817 , total: 0.358678 , time_avg: 3.31587e-05
-features: [ 11327,  ]: policy: 0 , count: 11329 , total: 0.516288 , time_avg: 4.55722e-05
-features: [ 11327,  ]: policy: 1 , count: 11329 , total: 0.571463 , time_avg: 5.04425e-05
-features: [ 11327,  ]: policy: 2 , count: 11329 , total: 0.425103 , time_avg: 3.75234e-05
-features: [ 11839,  ]: policy: 0 , count: 11841 , total: 0.544468 , time_avg: 4.59816e-05
-features: [ 11839,  ]: policy: 1 , count: 11841 , total: 0.437837 , time_avg: 3.69764e-05
-features: [ 11839,  ]: policy: 2 , count: 11841 , total: 0.40929 , time_avg: 3.45655e-05
-features: [ 12351,  ]: policy: 0 , count: 12353 , total: 0.598624 , time_avg: 4.84598e-05
-features: [ 12351,  ]: policy: 1 , count: 12353 , total: 0.617799 , time_avg: 5.00121e-05
-features: [ 12351,  ]: policy: 2 , count: 12353 , total: 0.422633 , time_avg: 3.4213e-05
-features: [ 12863,  ]: policy: 0 , count: 12865 , total: 0.681159 , time_avg: 5.29467e-05
-features: [ 12863,  ]: policy: 1 , count: 12865 , total: 0.755177 , time_avg: 5.87001e-05
-features: [ 12863,  ]: policy: 2 , count: 12865 , total: 0.46718 , time_avg: 3.6314e-05
-features: [ 13375,  ]: policy: 0 , count: 13377 , total: 0.669207 , time_avg: 5.00267e-05
-features: [ 13375,  ]: policy: 1 , count: 13377 , total: 0.650305 , time_avg: 4.86137e-05
-features: [ 13375,  ]: policy: 2 , count: 13377 , total: 0.49255 , time_avg: 3.68207e-05
-features: [ 13887,  ]: policy: 0 , count: 13889 , total: 0.732411 , time_avg: 5.27332e-05
-features: [ 13887,  ]: policy: 1 , count: 13889 , total: 0.881495 , time_avg: 6.34671e-05
-features: [ 13887,  ]: policy: 2 , count: 13889 , total: 0.516922 , time_avg: 3.72181e-05
-features: [ 14399,  ]: policy: 0 , count: 14401 , total: 0.775154 , time_avg: 5.38264e-05
-features: [ 14399,  ]: policy: 1 , count: 14401 , total: 0.827968 , time_avg: 5.74938e-05
-features: [ 14399,  ]: policy: 2 , count: 14401 , total: 0.54232 , time_avg: 3.76585e-05
-features: [ 14911,  ]: policy: 0 , count: 14913 , total: 0.839131 , time_avg: 5.62684e-05
-features: [ 14911,  ]: policy: 1 , count: 14913 , total: 0.674678 , time_avg: 4.52409e-05
-features: [ 14911,  ]: policy: 2 , count: 14913 , total: 0.564914 , time_avg: 3.78806e-05
-features: [ 15423,  ]: policy: 0 , count: 15425 , total: 0.889017 , time_avg: 5.76348e-05
-features: [ 15423,  ]: policy: 1 , count: 15425 , total: 0.594994 , time_avg: 3.85734e-05
-features: [ 15423,  ]: policy: 2 , count: 15425 , total: 0.587713 , time_avg: 3.81013e-05
-features: [ 15935,  ]: policy: 0 , count: 15937 , total: 0.942554 , time_avg: 5.91425e-05
-features: [ 15935,  ]: policy: 1 , count: 15937 , total: 0.795772 , time_avg: 4.99324e-05
-features: [ 15935,  ]: policy: 2 , count: 15937 , total: 0.656825 , time_avg: 4.12138e-05
-features: [ 16447,  ]: policy: 0 , count: 16449 , total: 1.09717 , time_avg: 6.67013e-05
-features: [ 16447,  ]: policy: 1 , count: 16449 , total: 0.827828 , time_avg: 5.03269e-05
-features: [ 16447,  ]: policy: 2 , count: 16449 , total: 0.734039 , time_avg: 4.46251e-05
-features: [ 16959,  ]: policy: 0 , count: 16961 , total: 1.07448 , time_avg: 6.335e-05
-features: [ 16959,  ]: policy: 1 , count: 16961 , total: 0.741783 , time_avg: 4.37346e-05
-features: [ 16959,  ]: policy: 2 , count: 16961 , total: 0.684016 , time_avg: 4.03288e-05
-features: [ 17471,  ]: policy: 0 , count: 17473 , total: 1.14778 , time_avg: 6.56888e-05
-features: [ 17471,  ]: policy: 1 , count: 17473 , total: 0.707984 , time_avg: 4.05187e-05
-features: [ 17471,  ]: policy: 2 , count: 17473 , total: 0.732862 , time_avg: 4.19425e-05
-features: [ 17983,  ]: policy: 0 , count: 17985 , total: 1.2196 , time_avg: 6.78121e-05
-features: [ 17983,  ]: policy: 1 , count: 17985 , total: 0.675804 , time_avg: 3.7576e-05
-features: [ 17983,  ]: policy: 2 , count: 17985 , total: 0.770479 , time_avg: 4.28401e-05
-features: [ 18495,  ]: policy: 0 , count: 18497 , total: 1.27779 , time_avg: 6.90809e-05
-features: [ 18495,  ]: policy: 1 , count: 18497 , total: 0.866477 , time_avg: 4.68442e-05
-features: [ 18495,  ]: policy: 2 , count: 18497 , total: 0.80931 , time_avg: 4.37536e-05
-features: [ 19007,  ]: policy: 0 , count: 19009 , total: 1.36257 , time_avg: 7.16803e-05
-features: [ 19007,  ]: policy: 1 , count: 19009 , total: 0.815573 , time_avg: 4.29046e-05
-features: [ 19007,  ]: policy: 2 , count: 19009 , total: 0.795066 , time_avg: 4.18258e-05
-features: [ 19519,  ]: policy: 0 , count: 19521 , total: 1.43803 , time_avg: 7.36658e-05
-features: [ 19519,  ]: policy: 1 , count: 19521 , total: 0.970037 , time_avg: 4.9692e-05
-features: [ 19519,  ]: policy: 2 , count: 19521 , total: 0.67589 , time_avg: 3.46237e-05
-features: [ 20031,  ]: policy: 0 , count: 20033 , total: 1.51987 , time_avg: 7.58683e-05
-features: [ 20031,  ]: policy: 1 , count: 20033 , total: 0.934715 , time_avg: 4.66588e-05
-features: [ 20031,  ]: policy: 2 , count: 20033 , total: 0.905131 , time_avg: 4.5182e-05
-features: [ 20543,  ]: policy: 0 , count: 20545 , total: 1.61409 , time_avg: 7.85636e-05
-features: [ 20543,  ]: policy: 1 , count: 20545 , total: 0.783047 , time_avg: 3.81138e-05
-features: [ 20543,  ]: policy: 2 , count: 20545 , total: 0.912327 , time_avg: 4.44063e-05
-features: [ 21055,  ]: policy: 0 , count: 21057 , total: 1.67996 , time_avg: 7.97815e-05
-features: [ 21055,  ]: policy: 1 , count: 21057 , total: 0.895334 , time_avg: 4.25195e-05
-features: [ 21055,  ]: policy: 2 , count: 21057 , total: 0.998698 , time_avg: 4.74283e-05
-features: [ 21567,  ]: policy: 0 , count: 21569 , total: 1.81316 , time_avg: 8.40632e-05
-features: [ 21567,  ]: policy: 1 , count: 21569 , total: 0.961927 , time_avg: 4.45977e-05
-features: [ 21567,  ]: policy: 2 , count: 21569 , total: 0.981579 , time_avg: 4.55088e-05
-features: [ 22079,  ]: policy: 0 , count: 22081 , total: 1.92256 , time_avg: 8.70685e-05
-features: [ 22079,  ]: policy: 1 , count: 22081 , total: 0.961307 , time_avg: 4.35355e-05
-features: [ 22079,  ]: policy: 2 , count: 22081 , total: 1.02415 , time_avg: 4.63815e-05
-features: [ 22591,  ]: policy: 0 , count: 22593 , total: 1.98656 , time_avg: 8.79281e-05
-features: [ 22591,  ]: policy: 1 , count: 22593 , total: 0.900152 , time_avg: 3.98421e-05
-features: [ 22591,  ]: policy: 2 , count: 22593 , total: 1.12156 , time_avg: 4.96419e-05
-features: [ 23103,  ]: policy: 0 , count: 23105 , total: 2.08429 , time_avg: 9.02095e-05
-features: [ 23103,  ]: policy: 1 , count: 23105 , total: 0.849106 , time_avg: 3.67499e-05
-features: [ 23103,  ]: policy: 2 , count: 23105 , total: 1.16976 , time_avg: 5.0628e-05
-features: [ 23615,  ]: policy: 0 , count: 23617 , total: 2.17529 , time_avg: 9.2107e-05
-features: [ 23615,  ]: policy: 1 , count: 23617 , total: 0.952025 , time_avg: 4.0311e-05
-features: [ 23615,  ]: policy: 2 , count: 23617 , total: 1.14689 , time_avg: 4.85621e-05
-features: [ 24127,  ]: policy: 0 , count: 24129 , total: 2.30306 , time_avg: 9.54478e-05
-features: [ 24127,  ]: policy: 1 , count: 24129 , total: 1.01382 , time_avg: 4.20167e-05
-features: [ 24127,  ]: policy: 2 , count: 24129 , total: 0.946749 , time_avg: 3.9237e-05
-features: [ 24639,  ]: policy: 0 , count: 24641 , total: 2.62858 , time_avg: 0.000106675
-features: [ 24639,  ]: policy: 1 , count: 24641 , total: 0.847748 , time_avg: 3.4404e-05
-features: [ 24639,  ]: policy: 2 , count: 24641 , total: 1.27144 , time_avg: 5.15986e-05
-features: [ 25151,  ]: policy: 0 , count: 25153 , total: 2.55943 , time_avg: 0.000101754
-features: [ 25151,  ]: policy: 1 , count: 25153 , total: 0.951101 , time_avg: 3.78126e-05
-features: [ 25151,  ]: policy: 2 , count: 25153 , total: 1.31643 , time_avg: 5.23369e-05
-features: [ 25663,  ]: policy: 0 , count: 25665 , total: 2.68025 , time_avg: 0.000104432
-features: [ 25663,  ]: policy: 1 , count: 25665 , total: 1.01592 , time_avg: 3.95839e-05
-features: [ 25663,  ]: policy: 2 , count: 25665 , total: 1.42449 , time_avg: 5.55032e-05
-features: [ 26175,  ]: policy: 0 , count: 26177 , total: 2.8977 , time_avg: 0.000110696
-features: [ 26175,  ]: policy: 1 , count: 26177 , total: 1.0436 , time_avg: 3.98671e-05
-features: [ 26175,  ]: policy: 2 , count: 26177 , total: 1.50188 , time_avg: 5.7374e-05
-features: [ 26687,  ]: policy: 0 , count: 26689 , total: 3.37346 , time_avg: 0.000126399
-features: [ 26687,  ]: policy: 1 , count: 26689 , total: 1.1002 , time_avg: 4.1223e-05
-features: [ 26687,  ]: policy: 2 , count: 26689 , total: 1.11594 , time_avg: 4.18127e-05
-features: [ 27199,  ]: policy: 0 , count: 27201 , total: 3.15541 , time_avg: 0.000116003
-features: [ 27199,  ]: policy: 1 , count: 27201 , total: 1.18213 , time_avg: 4.34591e-05
-features: [ 27199,  ]: policy: 2 , count: 27201 , total: 1.51698 , time_avg: 5.57693e-05
-features: [ 27711,  ]: policy: 0 , count: 27713 , total: 3.36995 , time_avg: 0.000121602
-features: [ 27711,  ]: policy: 1 , count: 27713 , total: 1.0225 , time_avg: 3.6896e-05
-features: [ 27711,  ]: policy: 2 , count: 27713 , total: 1.66707 , time_avg: 6.01548e-05
-features: [ 28223,  ]: policy: 0 , count: 28225 , total: 3.60487 , time_avg: 0.000127719
-features: [ 28223,  ]: policy: 1 , count: 28225 , total: 1.09037 , time_avg: 3.86314e-05
-features: [ 28223,  ]: policy: 2 , count: 28225 , total: 1.65508 , time_avg: 5.86388e-05
-features: [ 28735,  ]: policy: 0 , count: 28737 , total: 3.837 , time_avg: 0.000133521
-features: [ 28735,  ]: policy: 1 , count: 28737 , total: 1.14067 , time_avg: 3.96934e-05
-features: [ 28735,  ]: policy: 2 , count: 28737 , total: 1.23719 , time_avg: 4.30522e-05
-features: [ 29247,  ]: policy: 0 , count: 29249 , total: 3.998 , time_avg: 0.000136688
-features: [ 29247,  ]: policy: 1 , count: 29249 , total: 1.17313 , time_avg: 4.01084e-05
-features: [ 29247,  ]: policy: 2 , count: 29249 , total: 1.78268 , time_avg: 6.09484e-05
-features: [ 29759,  ]: policy: 0 , count: 29761 , total: 4.33099 , time_avg: 0.000145526
-features: [ 29759,  ]: policy: 1 , count: 29761 , total: 1.27762 , time_avg: 4.29293e-05
-features: [ 29759,  ]: policy: 2 , count: 29761 , total: 1.3493 , time_avg: 4.53379e-05
-features: [ 30271,  ]: policy: 0 , count: 30273 , total: 4.66664 , time_avg: 0.000154152
-features: [ 30271,  ]: policy: 1 , count: 30273 , total: 1.28907 , time_avg: 4.25815e-05
-features: [ 30271,  ]: policy: 2 , count: 30273 , total: 1.38412 , time_avg: 4.57213e-05
-features: [ 30783,  ]: policy: 0 , count: 30785 , total: 4.87212 , time_avg: 0.000158263
-features: [ 30783,  ]: policy: 1 , count: 30785 , total: 1.28373 , time_avg: 4.16999e-05
-features: [ 30783,  ]: policy: 2 , count: 30785 , total: 1.80783 , time_avg: 5.87244e-05
-features: [ 31295,  ]: policy: 0 , count: 31297 , total: 5.46045 , time_avg: 0.000174472
-features: [ 31295,  ]: policy: 1 , count: 31297 , total: 1.27615 , time_avg: 4.07755e-05
-features: [ 31295,  ]: policy: 2 , count: 31297 , total: 2.07659 , time_avg: 6.63511e-05
-features: [ 31807,  ]: policy: 0 , count: 31809 , total: 5.89283 , time_avg: 0.000185257
-features: [ 31807,  ]: policy: 1 , count: 31809 , total: 1.43548 , time_avg: 4.51281e-05
-features: [ 31807,  ]: policy: 2 , count: 31809 , total: 3.07458 , time_avg: 9.66575e-05
-features: [ 32319,  ]: policy: 0 , count: 32321 , total: 6.35953 , time_avg: 0.000196762
-features: [ 32319,  ]: policy: 1 , count: 32321 , total: 1.39638 , time_avg: 4.32035e-05
-features: [ 32319,  ]: policy: 2 , count: 32321 , total: 18.9058 , time_avg: 0.000584939
-features: [ 32831,  ]: policy: 0 , count: 32833 , total: 6.71745 , time_avg: 0.000204594
-features: [ 32831,  ]: policy: 1 , count: 32833 , total: 1.48979 , time_avg: 4.53748e-05
-features: [ 32831,  ]: policy: 2 , count: 32833 , total: 26.192 , time_avg: 0.000797734
-features: [ 33343,  ]: policy: 0 , count: 33345 , total: 7.14971 , time_avg: 0.000214416
-features: [ 33343,  ]: policy: 1 , count: 33345 , total: 1.44944 , time_avg: 4.3468e-05
-features: [ 33343,  ]: policy: 2 , count: 33345 , total: 2.80378 , time_avg: 8.4084e-05
-features: [ 33855,  ]: policy: 0 , count: 33857 , total: 7.57724 , time_avg: 0.000223801
-features: [ 33855,  ]: policy: 1 , count: 33857 , total: 1.47301 , time_avg: 4.35068e-05
-features: [ 33855,  ]: policy: 2 , count: 33857 , total: 3.30201 , time_avg: 9.75281e-05
-features: [ 34367,  ]: policy: 0 , count: 34369 , total: 8.08619 , time_avg: 0.000235276
-features: [ 34367,  ]: policy: 1 , count: 34369 , total: 1.58315 , time_avg: 4.60633e-05
-features: [ 34367,  ]: policy: 2 , count: 34369 , total: 1.87179 , time_avg: 5.44616e-05
-features: [ 34879,  ]: policy: 0 , count: 34881 , total: 8.43615 , time_avg: 0.000241855
-features: [ 34879,  ]: policy: 1 , count: 34881 , total: 1.63144 , time_avg: 4.67716e-05
-features: [ 34879,  ]: policy: 2 , count: 34881 , total: 2.7162 , time_avg: 7.78705e-05
-features: [ 35391,  ]: policy: 0 , count: 35393 , total: 9.02252 , time_avg: 0.000254924
-features: [ 35391,  ]: policy: 1 , count: 35393 , total: 1.52677 , time_avg: 4.31376e-05
-features: [ 35391,  ]: policy: 2 , count: 35393 , total: 2.59699 , time_avg: 7.33758e-05
-features: [ 35903,  ]: policy: 0 , count: 35905 , total: 9.51026 , time_avg: 0.000264873
-features: [ 35903,  ]: policy: 1 , count: 35905 , total: 1.66773 , time_avg: 4.64484e-05
-features: [ 35903,  ]: policy: 2 , count: 35905 , total: 2.53176 , time_avg: 7.05127e-05
-features: [ 36415,  ]: policy: 0 , count: 36417 , total: 10.0225 , time_avg: 0.000275215
-features: [ 36415,  ]: policy: 1 , count: 36417 , total: 1.55662 , time_avg: 4.27443e-05
-features: [ 36415,  ]: policy: 2 , count: 36417 , total: 2.64622 , time_avg: 7.26644e-05
-features: [ 36927,  ]: policy: 0 , count: 36929 , total: 10.8559 , time_avg: 0.000293967
-features: [ 36927,  ]: policy: 1 , count: 36929 , total: 1.6721 , time_avg: 4.52788e-05
-features: [ 36927,  ]: policy: 2 , count: 36929 , total: 3.08917 , time_avg: 8.36516e-05
-features: [ 37439,  ]: policy: 0 , count: 37441 , total: 11.4378 , time_avg: 0.000305489
-features: [ 37439,  ]: policy: 1 , count: 37441 , total: 1.81528 , time_avg: 4.84837e-05
-features: [ 37439,  ]: policy: 2 , count: 37441 , total: 2.81361 , time_avg: 7.51478e-05
-features: [ 37951,  ]: policy: 0 , count: 37953 , total: 12.3196 , time_avg: 0.000324601
-features: [ 37951,  ]: policy: 1 , count: 37953 , total: 1.72492 , time_avg: 4.54488e-05
-features: [ 37951,  ]: policy: 2 , count: 37953 , total: 2.89477 , time_avg: 7.62725e-05
-features: [ 38463,  ]: policy: 0 , count: 38465 , total: 12.9127 , time_avg: 0.0003357
-features: [ 38463,  ]: policy: 1 , count: 38465 , total: 1.67381 , time_avg: 4.35151e-05
-features: [ 38463,  ]: policy: 2 , count: 38465 , total: 2.97679 , time_avg: 7.73896e-05
-features: [ 38975,  ]: policy: 0 , count: 38977 , total: 13.6081 , time_avg: 0.000349132
-features: [ 38975,  ]: policy: 1 , count: 38977 , total: 1.83353 , time_avg: 4.70413e-05
-features: [ 38975,  ]: policy: 2 , count: 38977 , total: 2.19257 , time_avg: 5.62529e-05
-features: [ 39487,  ]: policy: 0 , count: 39489 , total: 14.2995 , time_avg: 0.000362114
-features: [ 39487,  ]: policy: 1 , count: 39489 , total: 1.78427 , time_avg: 4.5184e-05
-features: [ 39487,  ]: policy: 2 , count: 39489 , total: 2.83468 , time_avg: 7.1784e-05
-features: [ 39999,  ]: policy: 0 , count: 40001 , total: 15.1364 , time_avg: 0.000378401
-features: [ 39999,  ]: policy: 1 , count: 40001 , total: 1.87095 , time_avg: 4.67726e-05
-features: [ 39999,  ]: policy: 2 , count: 40001 , total: 3.08623 , time_avg: 7.71538e-05
-features: [ 40511,  ]: policy: 0 , count: 40513 , total: 15.5377 , time_avg: 0.000383524
-features: [ 40511,  ]: policy: 1 , count: 40513 , total: 1.8798 , time_avg: 4.63999e-05
-features: [ 40511,  ]: policy: 2 , count: 1 , total: 0.973894 , time_avg: 0.973894
+features: [ 63,  ]: policy: 0 , count: 65 , total: 3.13099e-05 , time_avg: 4.81691e-07
+features: [ 63,  ]: policy: 1 , count: 65 , total: 0.0217971 , time_avg: 0.00033534
+features: [ 63,  ]: policy: 2 , count: 65 , total: 0.00377229 , time_avg: 5.80352e-05
+features: [ 575,  ]: policy: 0 , count: 577 , total: 0.00187395 , time_avg: 3.24775e-06
+features: [ 575,  ]: policy: 1 , count: 577 , total: 0.0546654 , time_avg: 9.47407e-05
+features: [ 575,  ]: policy: 2 , count: 577 , total: 0.0140182 , time_avg: 2.4295e-05
+features: [ 1087,  ]: policy: 0 , count: 1089 , total: 0.0284991 , time_avg: 2.617e-05
+features: [ 1087,  ]: policy: 1 , count: 1089 , total: 0.213956 , time_avg: 0.00019647
+features: [ 1087,  ]: policy: 2 , count: 1089 , total: 0.0319549 , time_avg: 2.93433e-05
+features: [ 1599,  ]: policy: 0 , count: 1601 , total: 0.0246227 , time_avg: 1.53796e-05
+features: [ 1599,  ]: policy: 1 , count: 1601 , total: 0.235035 , time_avg: 0.000146805
+features: [ 1599,  ]: policy: 2 , count: 1601 , total: 0.0736507 , time_avg: 4.60029e-05
+features: [ 2111,  ]: policy: 0 , count: 2113 , total: 0.035462 , time_avg: 1.67828e-05
+features: [ 2111,  ]: policy: 1 , count: 2113 , total: 0.17779 , time_avg: 8.4141e-05
+features: [ 2111,  ]: policy: 2 , count: 2113 , total: 0.083799 , time_avg: 3.96588e-05
+features: [ 2623,  ]: policy: 0 , count: 2625 , total: 0.0439159 , time_avg: 1.67299e-05
+features: [ 2623,  ]: policy: 1 , count: 2625 , total: 0.301151 , time_avg: 0.000114724
+features: [ 2623,  ]: policy: 2 , count: 2625 , total: 0.0690786 , time_avg: 2.63157e-05
+features: [ 3135,  ]: policy: 0 , count: 3137 , total: 0.053707 , time_avg: 1.71205e-05
+features: [ 3135,  ]: policy: 1 , count: 3137 , total: 0.309653 , time_avg: 9.87099e-05
+features: [ 3135,  ]: policy: 2 , count: 3137 , total: 0.117831 , time_avg: 3.75617e-05
+features: [ 3647,  ]: policy: 0 , count: 3649 , total: 0.068484 , time_avg: 1.87679e-05
+features: [ 3647,  ]: policy: 1 , count: 3649 , total: 0.318179 , time_avg: 8.71962e-05
+features: [ 3647,  ]: policy: 2 , count: 3649 , total: 0.0932863 , time_avg: 2.55649e-05
+features: [ 4159,  ]: policy: 0 , count: 4161 , total: 0.177862 , time_avg: 4.2745e-05
+features: [ 4159,  ]: policy: 1 , count: 4161 , total: 0.366018 , time_avg: 8.7964e-05
+features: [ 4159,  ]: policy: 2 , count: 4161 , total: 0.192743 , time_avg: 4.63213e-05
+features: [ 4671,  ]: policy: 0 , count: 4673 , total: 0.183102 , time_avg: 3.9183e-05
+features: [ 4671,  ]: policy: 1 , count: 4673 , total: 0.41908 , time_avg: 8.96811e-05
+features: [ 4671,  ]: policy: 2 , count: 4673 , total: 0.133846 , time_avg: 2.86424e-05
+features: [ 5183,  ]: policy: 0 , count: 5185 , total: 0.195111 , time_avg: 3.76299e-05
+features: [ 5183,  ]: policy: 1 , count: 5185 , total: 0.418986 , time_avg: 8.08073e-05
+features: [ 5183,  ]: policy: 2 , count: 5185 , total: 0.151058 , time_avg: 2.91337e-05
+features: [ 5695,  ]: policy: 0 , count: 5697 , total: 0.145359 , time_avg: 2.5515e-05
+features: [ 5695,  ]: policy: 1 , count: 5697 , total: 0.376072 , time_avg: 6.60123e-05
+features: [ 5695,  ]: policy: 2 , count: 5697 , total: 0.14372 , time_avg: 2.52273e-05
+features: [ 6207,  ]: policy: 0 , count: 6209 , total: 0.224116 , time_avg: 3.60953e-05
+features: [ 6207,  ]: policy: 1 , count: 6209 , total: 0.540854 , time_avg: 8.71081e-05
+features: [ 6207,  ]: policy: 2 , count: 6209 , total: 0.182376 , time_avg: 2.93728e-05
+features: [ 6719,  ]: policy: 0 , count: 6721 , total: 0.211814 , time_avg: 3.15153e-05
+features: [ 6719,  ]: policy: 1 , count: 6721 , total: 0.567342 , time_avg: 8.44133e-05
+features: [ 6719,  ]: policy: 2 , count: 6721 , total: 0.20022 , time_avg: 2.97902e-05
+features: [ 7231,  ]: policy: 0 , count: 7233 , total: 0.279616 , time_avg: 3.86584e-05
+features: [ 7231,  ]: policy: 1 , count: 7233 , total: 0.504892 , time_avg: 6.9804e-05
+features: [ 7231,  ]: policy: 2 , count: 7233 , total: 0.222092 , time_avg: 3.07054e-05
+features: [ 7743,  ]: policy: 0 , count: 7745 , total: 0.310653 , time_avg: 4.01101e-05
+features: [ 7743,  ]: policy: 1 , count: 7745 , total: 0.406519 , time_avg: 5.24879e-05
+features: [ 7743,  ]: policy: 2 , count: 7745 , total: 0.23173 , time_avg: 2.99199e-05
+features: [ 8255,  ]: policy: 0 , count: 8257 , total: 0.306766 , time_avg: 3.71522e-05
+features: [ 8255,  ]: policy: 1 , count: 8257 , total: 0.523739 , time_avg: 6.34297e-05
+features: [ 8255,  ]: policy: 2 , count: 8257 , total: 0.283013 , time_avg: 3.42755e-05
+features: [ 8767,  ]: policy: 0 , count: 8769 , total: 0.329696 , time_avg: 3.75979e-05
+features: [ 8767,  ]: policy: 1 , count: 8769 , total: 0.489851 , time_avg: 5.58617e-05
+features: [ 8767,  ]: policy: 2 , count: 8769 , total: 0.279681 , time_avg: 3.18943e-05
+features: [ 9279,  ]: policy: 0 , count: 9281 , total: 0.348382 , time_avg: 3.75371e-05
+features: [ 9279,  ]: policy: 1 , count: 9281 , total: 0.592785 , time_avg: 6.38708e-05
+features: [ 9279,  ]: policy: 2 , count: 9281 , total: 0.338406 , time_avg: 3.64622e-05
+features: [ 9791,  ]: policy: 0 , count: 9793 , total: 0.385484 , time_avg: 3.93632e-05
+features: [ 9791,  ]: policy: 1 , count: 9793 , total: 0.652668 , time_avg: 6.66464e-05
+features: [ 9791,  ]: policy: 2 , count: 9793 , total: 0.363323 , time_avg: 3.71003e-05
+features: [ 10303,  ]: policy: 0 , count: 10305 , total: 0.40985 , time_avg: 3.9772e-05
+features: [ 10303,  ]: policy: 1 , count: 10305 , total: 0.754983 , time_avg: 7.32638e-05
+features: [ 10303,  ]: policy: 2 , count: 10305 , total: 0.335292 , time_avg: 3.25368e-05
+features: [ 10815,  ]: policy: 0 , count: 10817 , total: 0.450488 , time_avg: 4.16463e-05
+features: [ 10815,  ]: policy: 1 , count: 10817 , total: 0.530523 , time_avg: 4.90453e-05
+features: [ 10815,  ]: policy: 2 , count: 10817 , total: 0.337694 , time_avg: 3.12188e-05
+features: [ 11327,  ]: policy: 0 , count: 11329 , total: 0.511765 , time_avg: 4.5173e-05
+features: [ 11327,  ]: policy: 1 , count: 11329 , total: 0.758635 , time_avg: 6.6964e-05
+features: [ 11327,  ]: policy: 2 , count: 11329 , total: 0.440497 , time_avg: 3.88823e-05
+features: [ 11839,  ]: policy: 0 , count: 11841 , total: 0.542168 , time_avg: 4.57874e-05
+features: [ 11839,  ]: policy: 1 , count: 11841 , total: 0.615309 , time_avg: 5.19643e-05
+features: [ 11839,  ]: policy: 2 , count: 11841 , total: 0.484163 , time_avg: 4.08887e-05
+features: [ 12351,  ]: policy: 0 , count: 12353 , total: 0.584944 , time_avg: 4.73524e-05
+features: [ 12351,  ]: policy: 1 , count: 12353 , total: 0.583069 , time_avg: 4.72006e-05
+features: [ 12351,  ]: policy: 2 , count: 12353 , total: 0.455022 , time_avg: 3.68349e-05
+features: [ 12863,  ]: policy: 0 , count: 12865 , total: 0.637631 , time_avg: 4.95632e-05
+features: [ 12863,  ]: policy: 1 , count: 12865 , total: 0.762714 , time_avg: 5.9286e-05
+features: [ 12863,  ]: policy: 2 , count: 12865 , total: 0.446691 , time_avg: 3.47214e-05
+features: [ 13375,  ]: policy: 0 , count: 13377 , total: 0.717301 , time_avg: 5.3622e-05
+features: [ 13375,  ]: policy: 1 , count: 13377 , total: 0.570001 , time_avg: 4.26105e-05
+features: [ 13375,  ]: policy: 2 , count: 13377 , total: 0.471349 , time_avg: 3.52358e-05
+features: [ 13887,  ]: policy: 0 , count: 13889 , total: 0.750078 , time_avg: 5.40052e-05
+features: [ 13887,  ]: policy: 1 , count: 13889 , total: 0.761831 , time_avg: 5.48514e-05
+features: [ 13887,  ]: policy: 2 , count: 13889 , total: 0.516037 , time_avg: 3.71544e-05
+features: [ 14399,  ]: policy: 0 , count: 14401 , total: 0.78101 , time_avg: 5.4233e-05
+features: [ 14399,  ]: policy: 1 , count: 14401 , total: 0.674446 , time_avg: 4.68333e-05
+features: [ 14399,  ]: policy: 2 , count: 14401 , total: 0.598283 , time_avg: 4.15445e-05
+features: [ 14911,  ]: policy: 0 , count: 14913 , total: 0.830837 , time_avg: 5.57123e-05
+features: [ 14911,  ]: policy: 1 , count: 14913 , total: 0.810283 , time_avg: 5.4334e-05
+features: [ 14911,  ]: policy: 2 , count: 14913 , total: 0.552113 , time_avg: 3.70223e-05
+features: [ 15423,  ]: policy: 0 , count: 15425 , total: 0.887182 , time_avg: 5.75159e-05
+features: [ 15423,  ]: policy: 1 , count: 15425 , total: 0.725736 , time_avg: 4.70493e-05
+features: [ 15423,  ]: policy: 2 , count: 15425 , total: 0.68879 , time_avg: 4.46541e-05
+features: [ 15935,  ]: policy: 0 , count: 15937 , total: 0.961093 , time_avg: 6.03058e-05
+features: [ 15935,  ]: policy: 1 , count: 15937 , total: 0.779315 , time_avg: 4.88997e-05
+features: [ 15935,  ]: policy: 2 , count: 15937 , total: 0.688127 , time_avg: 4.31779e-05
+features: [ 16447,  ]: policy: 0 , count: 16449 , total: 1.03998 , time_avg: 6.32245e-05
+features: [ 16447,  ]: policy: 1 , count: 16449 , total: 0.594738 , time_avg: 3.61565e-05
+features: [ 16447,  ]: policy: 2 , count: 16449 , total: 0.741522 , time_avg: 4.50801e-05
+features: [ 16959,  ]: policy: 0 , count: 16961 , total: 1.04964 , time_avg: 6.18855e-05
+features: [ 16959,  ]: policy: 1 , count: 16961 , total: 0.813874 , time_avg: 4.7985e-05
+features: [ 16959,  ]: policy: 2 , count: 16961 , total: 0.677835 , time_avg: 3.99643e-05
+features: [ 17471,  ]: policy: 0 , count: 17473 , total: 1.19102 , time_avg: 6.81635e-05
+features: [ 17471,  ]: policy: 1 , count: 17473 , total: 1.03174 , time_avg: 5.90477e-05
+features: [ 17471,  ]: policy: 2 , count: 17473 , total: 0.710437 , time_avg: 4.06591e-05
+features: [ 17983,  ]: policy: 0 , count: 17985 , total: 1.22393 , time_avg: 6.80528e-05
+features: [ 17983,  ]: policy: 1 , count: 17985 , total: 0.707134 , time_avg: 3.9318e-05
+features: [ 17983,  ]: policy: 2 , count: 17985 , total: 0.756695 , time_avg: 4.20737e-05
+features: [ 18495,  ]: policy: 0 , count: 18497 , total: 1.29776 , time_avg: 7.01606e-05
+features: [ 18495,  ]: policy: 1 , count: 18497 , total: 0.83074 , time_avg: 4.49121e-05
+features: [ 18495,  ]: policy: 2 , count: 18497 , total: 0.762262 , time_avg: 4.121e-05
+features: [ 19007,  ]: policy: 0 , count: 19009 , total: 1.3867 , time_avg: 7.29497e-05
+features: [ 19007,  ]: policy: 1 , count: 19009 , total: 0.75407 , time_avg: 3.96691e-05
+features: [ 19007,  ]: policy: 2 , count: 19009 , total: 0.88521 , time_avg: 4.65679e-05
+features: [ 19519,  ]: policy: 0 , count: 19521 , total: 1.41832 , time_avg: 7.26561e-05
+features: [ 19519,  ]: policy: 1 , count: 19521 , total: 0.971756 , time_avg: 4.978e-05
+features: [ 19519,  ]: policy: 2 , count: 19521 , total: 0.851645 , time_avg: 4.36271e-05
+features: [ 20031,  ]: policy: 0 , count: 20033 , total: 1.51366 , time_avg: 7.55583e-05
+features: [ 20031,  ]: policy: 1 , count: 20033 , total: 0.900341 , time_avg: 4.49429e-05
+features: [ 20031,  ]: policy: 2 , count: 20033 , total: 0.860687 , time_avg: 4.29635e-05
+features: [ 20543,  ]: policy: 0 , count: 20545 , total: 1.59586 , time_avg: 7.76763e-05
+features: [ 20543,  ]: policy: 1 , count: 20545 , total: 0.89106 , time_avg: 4.33711e-05
+features: [ 20543,  ]: policy: 2 , count: 20545 , total: 0.944819 , time_avg: 4.59878e-05
+features: [ 21055,  ]: policy: 0 , count: 21057 , total: 1.67866 , time_avg: 7.97198e-05
+features: [ 21055,  ]: policy: 1 , count: 21057 , total: 0.854006 , time_avg: 4.05569e-05
+features: [ 21055,  ]: policy: 2 , count: 21057 , total: 0.940361 , time_avg: 4.46579e-05
+features: [ 21567,  ]: policy: 0 , count: 21569 , total: 1.77622 , time_avg: 8.23506e-05
+features: [ 21567,  ]: policy: 1 , count: 21569 , total: 0.870003 , time_avg: 4.03358e-05
+features: [ 21567,  ]: policy: 2 , count: 21569 , total: 0.994495 , time_avg: 4.61076e-05
+features: [ 22079,  ]: policy: 0 , count: 22081 , total: 1.90971 , time_avg: 8.64866e-05
+features: [ 22079,  ]: policy: 1 , count: 22081 , total: 0.928799 , time_avg: 4.20633e-05
+features: [ 22079,  ]: policy: 2 , count: 22081 , total: 1.05091 , time_avg: 4.75934e-05
+features: [ 22591,  ]: policy: 0 , count: 22593 , total: 1.95956 , time_avg: 8.67331e-05
+features: [ 22591,  ]: policy: 1 , count: 22593 , total: 1.0332 , time_avg: 4.5731e-05
+features: [ 22591,  ]: policy: 2 , count: 22593 , total: 1.08357 , time_avg: 4.79604e-05
+features: [ 23103,  ]: policy: 0 , count: 23105 , total: 2.09319 , time_avg: 9.05947e-05
+features: [ 23103,  ]: policy: 1 , count: 23105 , total: 0.913975 , time_avg: 3.95575e-05
+features: [ 23103,  ]: policy: 2 , count: 23105 , total: 2.96842 , time_avg: 0.000128475
+features: [ 23615,  ]: policy: 0 , count: 23617 , total: 2.18099 , time_avg: 9.23483e-05
+features: [ 23615,  ]: policy: 1 , count: 23617 , total: 1.18823 , time_avg: 5.03125e-05
+features: [ 23615,  ]: policy: 2 , count: 23617 , total: 1.15716 , time_avg: 4.89969e-05
+features: [ 24127,  ]: policy: 0 , count: 24129 , total: 2.31889 , time_avg: 9.61039e-05
+features: [ 24127,  ]: policy: 1 , count: 24129 , total: 0.95491 , time_avg: 3.95752e-05
+features: [ 24127,  ]: policy: 2 , count: 24129 , total: 1.25961 , time_avg: 5.22032e-05
+features: [ 24639,  ]: policy: 0 , count: 24641 , total: 2.4468 , time_avg: 9.92979e-05
+features: [ 24639,  ]: policy: 1 , count: 24641 , total: 1.06555 , time_avg: 4.3243e-05
+features: [ 24639,  ]: policy: 2 , count: 24641 , total: 1.26779 , time_avg: 5.14504e-05
+features: [ 25151,  ]: policy: 0 , count: 25153 , total: 2.50108 , time_avg: 9.94347e-05
+features: [ 25151,  ]: policy: 1 , count: 25153 , total: 1.10806 , time_avg: 4.40528e-05
+features: [ 25151,  ]: policy: 2 , count: 25153 , total: 1.34314 , time_avg: 5.33988e-05
+features: [ 25663,  ]: policy: 0 , count: 25665 , total: 2.66717 , time_avg: 0.000103922
+features: [ 25663,  ]: policy: 1 , count: 25665 , total: 1.0312 , time_avg: 4.01792e-05
+features: [ 25663,  ]: policy: 2 , count: 25665 , total: 1.32406 , time_avg: 5.15901e-05
+features: [ 26175,  ]: policy: 0 , count: 26177 , total: 2.82063 , time_avg: 0.000107752
+features: [ 26175,  ]: policy: 1 , count: 26177 , total: 1.30254 , time_avg: 4.97589e-05
+features: [ 26175,  ]: policy: 2 , count: 26177 , total: 1.07753 , time_avg: 4.11632e-05
+features: [ 26687,  ]: policy: 0 , count: 26689 , total: 3.03423 , time_avg: 0.000113688
+features: [ 26687,  ]: policy: 1 , count: 26689 , total: 1.11175 , time_avg: 4.16557e-05
+features: [ 26687,  ]: policy: 2 , count: 26689 , total: 1.44271 , time_avg: 5.40564e-05
+features: [ 27199,  ]: policy: 0 , count: 27201 , total: 3.19765 , time_avg: 0.000117556
+features: [ 27199,  ]: policy: 1 , count: 27201 , total: 0.997312 , time_avg: 3.66645e-05
+features: [ 27199,  ]: policy: 2 , count: 27201 , total: 1.59753 , time_avg: 5.87306e-05
+features: [ 27711,  ]: policy: 0 , count: 27713 , total: 3.32702 , time_avg: 0.000120053
+features: [ 27711,  ]: policy: 1 , count: 27713 , total: 1.12476 , time_avg: 4.0586e-05
+features: [ 27711,  ]: policy: 2 , count: 27713 , total: 1.54017 , time_avg: 5.55757e-05
+features: [ 28223,  ]: policy: 0 , count: 28225 , total: 3.45335 , time_avg: 0.000122351
+features: [ 28223,  ]: policy: 1 , count: 28225 , total: 1.0663 , time_avg: 3.77786e-05
+features: [ 28223,  ]: policy: 2 , count: 28225 , total: 1.61498 , time_avg: 5.72181e-05
+features: [ 28735,  ]: policy: 0 , count: 28737 , total: 3.76546 , time_avg: 0.000131032
+features: [ 28735,  ]: policy: 1 , count: 28737 , total: 1.19239 , time_avg: 4.14932e-05
+features: [ 28735,  ]: policy: 2 , count: 28737 , total: 1.72485 , time_avg: 6.00219e-05
+features: [ 29247,  ]: policy: 0 , count: 29249 , total: 3.91702 , time_avg: 0.00013392
+features: [ 29247,  ]: policy: 1 , count: 29249 , total: 1.23722 , time_avg: 4.22996e-05
+features: [ 29247,  ]: policy: 2 , count: 29249 , total: 1.75912 , time_avg: 6.01429e-05
+features: [ 29759,  ]: policy: 0 , count: 29761 , total: 4.31657 , time_avg: 0.000145041
+features: [ 29759,  ]: policy: 1 , count: 29761 , total: 1.04221 , time_avg: 3.50193e-05
+features: [ 29759,  ]: policy: 2 , count: 29761 , total: 1.91596 , time_avg: 6.43782e-05
+features: [ 30271,  ]: policy: 0 , count: 30273 , total: 4.654 , time_avg: 0.000153734
+features: [ 30271,  ]: policy: 1 , count: 30273 , total: 1.37335 , time_avg: 4.53655e-05
+features: [ 30271,  ]: policy: 2 , count: 30273 , total: 24.2247 , time_avg: 0.000800208
+features: [ 30783,  ]: policy: 0 , count: 30785 , total: 4.90187 , time_avg: 0.000159229
+features: [ 30783,  ]: policy: 1 , count: 30785 , total: 1.23755 , time_avg: 4.01998e-05
+features: [ 30783,  ]: policy: 2 , count: 30785 , total: 2.15935 , time_avg: 7.01429e-05
+features: [ 31295,  ]: policy: 0 , count: 31297 , total: 5.78726 , time_avg: 0.000184914
+features: [ 31295,  ]: policy: 1 , count: 31297 , total: 1.3567 , time_avg: 4.33492e-05
+features: [ 31295,  ]: policy: 2 , count: 31297 , total: 2.03055 , time_avg: 6.488e-05
+features: [ 31807,  ]: policy: 0 , count: 31809 , total: 5.91058 , time_avg: 0.000185815
+features: [ 31807,  ]: policy: 1 , count: 31809 , total: 1.39561 , time_avg: 4.38747e-05
+features: [ 31807,  ]: policy: 2 , count: 31809 , total: 1.68539 , time_avg: 5.29847e-05
+features: [ 32319,  ]: policy: 0 , count: 32321 , total: 6.46598 , time_avg: 0.000200055
+features: [ 32319,  ]: policy: 1 , count: 32321 , total: 1.43197 , time_avg: 4.43046e-05
+features: [ 32319,  ]: policy: 2 , count: 32321 , total: 2.23348 , time_avg: 6.91031e-05
+features: [ 32831,  ]: policy: 0 , count: 32833 , total: 6.86952 , time_avg: 0.000209226
+features: [ 32831,  ]: policy: 1 , count: 32833 , total: 1.40215 , time_avg: 4.27055e-05
+features: [ 32831,  ]: policy: 2 , count: 32833 , total: 2.18074 , time_avg: 6.64192e-05
+features: [ 33343,  ]: policy: 0 , count: 33345 , total: 7.30056 , time_avg: 0.00021894
+features: [ 33343,  ]: policy: 1 , count: 33345 , total: 1.48975 , time_avg: 4.46769e-05
+features: [ 33343,  ]: policy: 2 , count: 33345 , total: 2.80452 , time_avg: 8.41062e-05
+features: [ 33855,  ]: policy: 0 , count: 33857 , total: 7.50474 , time_avg: 0.00022166
+features: [ 33855,  ]: policy: 1 , count: 33857 , total: 1.51547 , time_avg: 4.47609e-05
+features: [ 33855,  ]: policy: 2 , count: 33857 , total: 2.4062 , time_avg: 7.10695e-05
+features: [ 34367,  ]: policy: 0 , count: 34369 , total: 7.8952 , time_avg: 0.000229719
+features: [ 34367,  ]: policy: 1 , count: 34369 , total: 1.41929 , time_avg: 4.12956e-05
+features: [ 34367,  ]: policy: 2 , count: 34369 , total: 2.57603 , time_avg: 7.49521e-05
+features: [ 34879,  ]: policy: 0 , count: 34881 , total: 8.4276 , time_avg: 0.00024161
+features: [ 34879,  ]: policy: 1 , count: 34881 , total: 1.5986 , time_avg: 4.58301e-05
+features: [ 34879,  ]: policy: 2 , count: 34881 , total: 2.69488 , time_avg: 7.72593e-05
+features: [ 35391,  ]: policy: 0 , count: 35393 , total: 8.91291 , time_avg: 0.000251827
+features: [ 35391,  ]: policy: 1 , count: 35393 , total: 1.53642 , time_avg: 4.34103e-05
+features: [ 35391,  ]: policy: 2 , count: 35393 , total: 27.164 , time_avg: 0.000767496
+features: [ 35903,  ]: policy: 0 , count: 35905 , total: 9.54535 , time_avg: 0.00026585
+features: [ 35903,  ]: policy: 1 , count: 35905 , total: 1.47943 , time_avg: 4.1204e-05
+features: [ 35903,  ]: policy: 2 , count: 35905 , total: 3.74071 , time_avg: 0.000104184
+features: [ 36415,  ]: policy: 0 , count: 36417 , total: 10.1234 , time_avg: 0.000277986
+features: [ 36415,  ]: policy: 1 , count: 36417 , total: 1.7347 , time_avg: 4.76343e-05
+features: [ 36415,  ]: policy: 2 , count: 36417 , total: 2.55366 , time_avg: 7.01227e-05
+features: [ 36927,  ]: policy: 0 , count: 36929 , total: 10.5738 , time_avg: 0.000286328
+features: [ 36927,  ]: policy: 1 , count: 36929 , total: 1.67032 , time_avg: 4.52306e-05
+features: [ 36927,  ]: policy: 2 , count: 36929 , total: 29.6628 , time_avg: 0.000803239
+features: [ 37439,  ]: policy: 0 , count: 37441 , total: 11.3485 , time_avg: 0.000303104
+features: [ 37439,  ]: policy: 1 , count: 37441 , total: 1.70623 , time_avg: 4.55712e-05
+features: [ 37439,  ]: policy: 2 , count: 37441 , total: 2.83928 , time_avg: 7.58334e-05
+features: [ 37951,  ]: policy: 0 , count: 37953 , total: 13.4316 , time_avg: 0.000353901
+features: [ 37951,  ]: policy: 1 , count: 37953 , total: 1.77654 , time_avg: 4.68089e-05
+features: [ 37951,  ]: policy: 2 , count: 37953 , total: 2.79554 , time_avg: 7.36579e-05
+features: [ 38463,  ]: policy: 0 , count: 38465 , total: 13.179 , time_avg: 0.000342623
+features: [ 38463,  ]: policy: 1 , count: 38465 , total: 1.60512 , time_avg: 4.17294e-05
+features: [ 38463,  ]: policy: 2 , count: 38465 , total: 2.94288 , time_avg: 7.6508e-05
+features: [ 38975,  ]: policy: 0 , count: 38977 , total: 13.7179 , time_avg: 0.000351949
+features: [ 38975,  ]: policy: 1 , count: 38977 , total: 1.72247 , time_avg: 4.4192e-05
+features: [ 38975,  ]: policy: 2 , count: 38977 , total: 2.75654 , time_avg: 7.07222e-05
+features: [ 39487,  ]: policy: 0 , count: 39489 , total: 15.8432 , time_avg: 0.000401205
+features: [ 39487,  ]: policy: 1 , count: 39489 , total: 1.8297 , time_avg: 4.63344e-05
+features: [ 39487,  ]: policy: 2 , count: 39489 , total: 3.04603 , time_avg: 7.71362e-05
+features: [ 39999,  ]: policy: 0 , count: 40001 , total: 15.1661 , time_avg: 0.000379143
+features: [ 39999,  ]: policy: 1 , count: 40001 , total: 1.9377 , time_avg: 4.84413e-05
+features: [ 39999,  ]: policy: 2 , count: 40001 , total: 3.22774 , time_avg: 8.06915e-05
+features: [ 40511,  ]: policy: 0 , count: 40513 , total: 15.5376 , time_avg: 0.000383521
+features: [ 40511,  ]: policy: 1 , count: 40513 , total: 1.56495 , time_avg: 3.86283e-05
+features: [ 40511,  ]: policy: 2 , count: 1 , total: 1.3913 , time_avg: 1.3913
 .-
 Rank 0 Region smith-waterman Reduce 
-features: [ 63, ]: P:0 T: 3.4401e-05
-features: [ 575, ]: P:0 T: 0.00224121
-features: [ 1087, ]: P:0 T: 0.00713872
-features: [ 1599, ]: P:0 T: 0.0171064
-features: [ 2111, ]: P:0 T: 0.0505564
-features: [ 2623, ]: P:0 T: 0.0355871
-features: [ 3135, ]: P:0 T: 0.0605077
-features: [ 3647, ]: P:0 T: 0.0707167
-features: [ 4159, ]: P:0 T: 0.0970178
-features: [ 4671, ]: P:0 T: 0.102292
-features: [ 5183, ]: P:0 T: 0.139297
-features: [ 5695, ]: P:2 T: 0.189572
-features: [ 6207, ]: P:0 T: 0.217474
-features: [ 6719, ]: P:2 T: 0.175522
-features: [ 7231, ]: P:0 T: 0.229902
-features: [ 7743, ]: P:2 T: 0.265239
-features: [ 8255, ]: P:0 T: 0.318011
-features: [ 8767, ]: P:2 T: 0.285237
-features: [ 9279, ]: P:2 T: 0.305391
-features: [ 9791, ]: P:2 T: 0.315026
-features: [ 10303, ]: P:2 T: 0.400994
-features: [ 10815, ]: P:2 T: 0.358678
-features: [ 11327, ]: P:2 T: 0.425103
-features: [ 11839, ]: P:2 T: 0.40929
-features: [ 12351, ]: P:2 T: 0.422633
-features: [ 12863, ]: P:2 T: 0.46718
-features: [ 13375, ]: P:2 T: 0.49255
-features: [ 13887, ]: P:2 T: 0.516922
-features: [ 14399, ]: P:2 T: 0.54232
-features: [ 14911, ]: P:2 T: 0.564914
-features: [ 15423, ]: P:2 T: 0.587713
-features: [ 15935, ]: P:2 T: 0.656825
-features: [ 16447, ]: P:2 T: 0.734039
-features: [ 16959, ]: P:2 T: 0.684016
-features: [ 17471, ]: P:1 T: 0.707984
-features: [ 17983, ]: P:1 T: 0.675804
-features: [ 18495, ]: P:2 T: 0.80931
-features: [ 19007, ]: P:2 T: 0.795066
-features: [ 19519, ]: P:2 T: 0.67589
-features: [ 20031, ]: P:2 T: 0.905131
-features: [ 20543, ]: P:1 T: 0.783047
-features: [ 21055, ]: P:1 T: 0.895334
-features: [ 21567, ]: P:1 T: 0.961927
-features: [ 22079, ]: P:1 T: 0.961307
-features: [ 22591, ]: P:1 T: 0.900152
-features: [ 23103, ]: P:1 T: 0.849106
-features: [ 23615, ]: P:1 T: 0.952025
-features: [ 24127, ]: P:2 T: 0.946749
-features: [ 24639, ]: P:1 T: 0.847748
-features: [ 25151, ]: P:1 T: 0.951101
-features: [ 25663, ]: P:1 T: 1.01592
-features: [ 26175, ]: P:1 T: 1.0436
-features: [ 26687, ]: P:1 T: 1.1002
-features: [ 27199, ]: P:1 T: 1.18213
-features: [ 27711, ]: P:1 T: 1.0225
-features: [ 28223, ]: P:1 T: 1.09037
-features: [ 28735, ]: P:1 T: 1.14067
-features: [ 29247, ]: P:1 T: 1.17313
-features: [ 29759, ]: P:1 T: 1.27762
-features: [ 30271, ]: P:1 T: 1.28907
-features: [ 30783, ]: P:1 T: 1.28373
-features: [ 31295, ]: P:1 T: 1.27615
-features: [ 31807, ]: P:1 T: 1.43548
-features: [ 32319, ]: P:1 T: 1.39638
-features: [ 32831, ]: P:1 T: 1.48979
-features: [ 33343, ]: P:1 T: 1.44944
-features: [ 33855, ]: P:1 T: 1.47301
-features: [ 34367, ]: P:1 T: 1.58315
-features: [ 34879, ]: P:1 T: 1.63144
-features: [ 35391, ]: P:1 T: 1.52677
-features: [ 35903, ]: P:1 T: 1.66773
-features: [ 36415, ]: P:1 T: 1.55662
-features: [ 36927, ]: P:1 T: 1.6721
-features: [ 37439, ]: P:1 T: 1.81528
-features: [ 37951, ]: P:1 T: 1.72492
-features: [ 38463, ]: P:1 T: 1.67381
-features: [ 38975, ]: P:1 T: 1.83353
-features: [ 39487, ]: P:1 T: 1.78427
-features: [ 39999, ]: P:1 T: 1.87095
-features: [ 40511, ]: P:2 T: 0.973894
+features: [ 63, ]: P:0 T: 3.13099e-05
+features: [ 575, ]: P:0 T: 0.00187395
+features: [ 1087, ]: P:0 T: 0.0284991
+features: [ 1599, ]: P:0 T: 0.0246227
+features: [ 2111, ]: P:0 T: 0.035462
+features: [ 2623, ]: P:0 T: 0.0439159
+features: [ 3135, ]: P:0 T: 0.053707
+features: [ 3647, ]: P:0 T: 0.068484
+features: [ 4159, ]: P:0 T: 0.177862
+features: [ 4671, ]: P:2 T: 0.133846
+features: [ 5183, ]: P:2 T: 0.151058
+features: [ 5695, ]: P:2 T: 0.14372
+features: [ 6207, ]: P:2 T: 0.182376
+features: [ 6719, ]: P:2 T: 0.20022
+features: [ 7231, ]: P:2 T: 0.222092
+features: [ 7743, ]: P:2 T: 0.23173
+features: [ 8255, ]: P:2 T: 0.283013
+features: [ 8767, ]: P:2 T: 0.279681
+features: [ 9279, ]: P:2 T: 0.338406
+features: [ 9791, ]: P:2 T: 0.363323
+features: [ 10303, ]: P:2 T: 0.335292
+features: [ 10815, ]: P:2 T: 0.337694
+features: [ 11327, ]: P:2 T: 0.440497
+features: [ 11839, ]: P:2 T: 0.484163
+features: [ 12351, ]: P:2 T: 0.455022
+features: [ 12863, ]: P:2 T: 0.446691
+features: [ 13375, ]: P:2 T: 0.471349
+features: [ 13887, ]: P:2 T: 0.516037
+features: [ 14399, ]: P:2 T: 0.598283
+features: [ 14911, ]: P:2 T: 0.552113
+features: [ 15423, ]: P:2 T: 0.68879
+features: [ 15935, ]: P:2 T: 0.688127
+features: [ 16447, ]: P:1 T: 0.594738
+features: [ 16959, ]: P:2 T: 0.677835
+features: [ 17471, ]: P:2 T: 0.710437
+features: [ 17983, ]: P:1 T: 0.707134
+features: [ 18495, ]: P:2 T: 0.762262
+features: [ 19007, ]: P:1 T: 0.75407
+features: [ 19519, ]: P:2 T: 0.851645
+features: [ 20031, ]: P:2 T: 0.860687
+features: [ 20543, ]: P:1 T: 0.89106
+features: [ 21055, ]: P:1 T: 0.854006
+features: [ 21567, ]: P:1 T: 0.870003
+features: [ 22079, ]: P:1 T: 0.928799
+features: [ 22591, ]: P:1 T: 1.0332
+features: [ 23103, ]: P:1 T: 0.913975
+features: [ 23615, ]: P:2 T: 1.15716
+features: [ 24127, ]: P:1 T: 0.95491
+features: [ 24639, ]: P:1 T: 1.06555
+features: [ 25151, ]: P:1 T: 1.10806
+features: [ 25663, ]: P:1 T: 1.0312
+features: [ 26175, ]: P:2 T: 1.07753
+features: [ 26687, ]: P:1 T: 1.11175
+features: [ 27199, ]: P:1 T: 0.997312
+features: [ 27711, ]: P:1 T: 1.12476
+features: [ 28223, ]: P:1 T: 1.0663
+features: [ 28735, ]: P:1 T: 1.19239
+features: [ 29247, ]: P:1 T: 1.23722
+features: [ 29759, ]: P:1 T: 1.04221
+features: [ 30271, ]: P:1 T: 1.37335
+features: [ 30783, ]: P:1 T: 1.23755
+features: [ 31295, ]: P:1 T: 1.3567
+features: [ 31807, ]: P:1 T: 1.39561
+features: [ 32319, ]: P:1 T: 1.43197
+features: [ 32831, ]: P:1 T: 1.40215
+features: [ 33343, ]: P:1 T: 1.48975
+features: [ 33855, ]: P:1 T: 1.51547
+features: [ 34367, ]: P:1 T: 1.41929
+features: [ 34879, ]: P:1 T: 1.5986
+features: [ 35391, ]: P:1 T: 1.53642
+features: [ 35903, ]: P:1 T: 1.47943
+features: [ 36415, ]: P:1 T: 1.7347
+features: [ 36927, ]: P:1 T: 1.67032
+features: [ 37439, ]: P:1 T: 1.70623
+features: [ 37951, ]: P:1 T: 1.77654
+features: [ 38463, ]: P:1 T: 1.60512
+features: [ 38975, ]: P:1 T: 1.72247
+features: [ 39487, ]: P:1 T: 1.8297
+features: [ 39999, ]: P:1 T: 1.9377
+features: [ 40511, ]: P:2 T: 1.3913
 .-
