@@ -18,7 +18,7 @@ HARDWAREE_NAME=`uname -m`
 # For Debug 
 # using a fixed folder, with previous built model or collected data, continue the execution
 # Be careful, no overlapping of input sizes, or the timing will be accumulated wrongfully. (No accumulation across execution in static model)
-FOLDER_SUFFIX=-corona151-x86_64-omp_smithW-v8-apollo.out-20210721-debug
+FOLDER_SUFFIX=-corona151-x86_64-omp_smithW-v8-apollo.out-20210721-160704
 
 make clean
 make ./$EXE_FILE
@@ -69,9 +69,7 @@ for n_size in {32..21000..256}; do
 # another question: are all execution time added into one single value?  Or we should promote it to be outside of the inner loop?    
 # I think so: measures are added into the feature + policy    
 # APOLLO_TRACE_CROSS_EXECUTION=1     
-# APOLLO_TRACE_CSV saves raw timing, feature information for each call of each region, too much overhead    
-# APOLLO_TRACE_MEASURES must be turned on in cross execution mode: aggregated measures should be saved after each run of a program    
-  APOLLO_TRACE_FOLDER_SUFFIX=$FOLDER_SUFFIX \
+  APOLLO_TRACE_CSV_FOLDER_SUFFIX=$FOLDER_SUFFIX \
   APOLLO_CROSS_EXECUTION=1 APOLLO_USE_TOTAL_TIME=1 APOLLO_INIT_MODEL="Static,$policy" \
   APOLLO_CROSS_EXECUTION_MIN_DATAPOINT_COUNT=80 APOLLO_TRACE_CSV=0 APOLLO_TRACE_MEASURES=1 \
   ./$EXE_FILE $M_SIZE $n_size

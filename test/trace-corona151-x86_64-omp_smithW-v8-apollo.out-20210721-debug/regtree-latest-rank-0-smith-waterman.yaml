@@ -1,0 +1,4170 @@
+%YAML:1.0
+---
+opencv_ml_rtrees:
+   format: 3
+   is_classifier: 0
+   var_all: 3
+   var_count: 2
+   ord_var_count: 3
+   cat_var_count: 0
+   training_params:
+      use_surrogates: 0
+      max_categories: 10
+      regression_accuracy: 9.9999999747524271e-07
+      max_depth: 5
+      min_sample_count: 1
+      cross_validation_folds: 0
+      nactive_vars: 0
+   global_var_idx: 1
+   var_idx: [ 0, 1 ]
+   var_type: [ 0, 0, 0 ]
+   cat_ofs: [ 0, 0, 0, 0 ]
+   missing_subst: [ 0., 0., 0. ]
+   oob_error: 1.6697630467102900e-02
+   ntrees: 50
+   trees:
+      -
+         nodes:
+            -
+               depth: 0
+               value: 7.1768234471965120e-01
+               splits:
+                  - { var:1, quality:4.7156200408935547e+01,
+                      le:5.0000000000000000e-01 }
+            -
+               depth: 1
+               value: 3.4605537435378537e-02
+               splits:
+                  - { var:0, quality:1.8117623403668404e-02, le:1855. }
+            -
+               depth: 2
+               value: 1.1380201904103160e-02
+               splits:
+                  - { var:0, quality:1.4157235855236650e-03, le:831. }
+            -
+               depth: 3
+               value: 1.2597366391370695e-03
+               splits:
+                  - { var:0, quality:7.0243577283690684e-06, le:319. }
+            -
+               depth: 4
+               value: 3.1309900805354118e-05
+            -
+               depth: 4
+               value: 1.8739500083029270e-03
+            -
+               depth: 3
+               value: 2.6560899801552296e-02
+               splits:
+                  - { var:0, quality:1.4184759929776192e-03, le:1343. }
+            -
+               depth: 4
+               value: 2.8499100357294083e-02
+            -
+               depth: 4
+               value: 2.4622699245810509e-02
+            -
+               depth: 2
+               value: 5.3959983711441360e-02
+               splits:
+                  - { var:0, quality:1.8102919682860374e-02, le:3391. }
+            -
+               depth: 3
+               value: 4.6697975136339664e-02
+            -
+               depth: 3
+               value: 6.8484000861644745e-02
+            -
+               depth: 1
+               value: 8.2657864733018738e-01
+               splits:
+                  - { var:1, quality:5.5994636535644531e+01,
+                      le:1.5000000000000000e+00 }
+            -
+               depth: 2
+               value: 1.1407126142428472e+00
+               splits:
+                  - { var:0, quality:5.3820476531982422e+01, le:30271. }
+            -
+               depth: 3
+               value: 9.1880758355061209e-01
+            -
+               depth: 3
+               value: 1.4957606633504232e+00
+            -
+               depth: 2
+               value: 4.1820449034372964e-01
+               splits:
+                  - { var:0, quality:7.0181484222412109e+00, le:15167. }
+            -
+               depth: 3
+               value: 3.0953683853149416e-01
+               splits:
+                  - { var:0, quality:2.8055310249328613e+00, le:10815. }
+            -
+               depth: 4
+               value: 2.2166476354879491e-01
+            -
+               depth: 4
+               value: 4.9626499786973000e-01
+               splits:
+                  - { var:0, quality:1.9979853630065918e+00, le:13887. }
+            -
+               depth: 5
+               value: 4.6225899954636890e-01
+            -
+               depth: 5
+               value: 5.9828299283981323e-01
+            -
+               depth: 3
+               value: 9.6154274940490725e-01
+               splits:
+                  - { var:0, quality:4.9487361907958984e+00, le:21823. }
+            -
+               depth: 4
+               value: 7.5308366616566980e-01
+            -
+               depth: 4
+               value: 1.2742313742637634e+00
+               splits:
+                  - { var:0, quality:3.2747426033020020e+00, le:32063. }
+            -
+               depth: 5
+               value: 1.1571600437164307e+00
+            -
+               depth: 5
+               value: 1.3913027048110962e+00
+      -
+         nodes:
+            -
+               depth: 0
+               value: 6.8435772525845096e-01
+               splits:
+                  - { var:0, quality:5.7848850250244141e+01, le:20031. }
+            -
+               depth: 1
+               value: 2.8288801742375508e-01
+               splits:
+                  - { var:1, quality:5.2243108749389648e+00,
+                      le:5.0000000000000000e-01 }
+            -
+               depth: 2
+               value: 2.5046212266066244e-02
+               splits:
+                  - { var:0, quality:1.3228587806224823e-02, le:831. }
+            -
+               depth: 3
+               value: 1.1368939653038979e-03
+               splits:
+                  - { var:0, quality:1.0537026355450507e-05, le:319. }
+            -
+               depth: 4
+               value: 3.1309900805354118e-05
+            -
+               depth: 4
+               value: 1.8739500083029270e-03
+            -
+               depth: 3
+               value: 3.8329166877600879e-02
+            -
+               depth: 2
+               value: 3.8602473948683058e-01
+               splits:
+                  - { var:0, quality:6.2033047676086426e+00, le:11071. }
+            -
+               depth: 3
+               value: 2.4053714796900749e-01
+            -
+               depth: 3
+               value: 5.8000819484392807e-01
+               splits:
+                  - { var:0, quality:5.2521538734436035e+00, le:14655. }
+            -
+               depth: 4
+               value: 4.7038462385535240e-01
+            -
+               depth: 4
+               value: 7.0529227597372868e-01
+               splits:
+                  - { var:0, quality:3.4898881912231445e+00, le:17727. }
+            -
+               depth: 5
+               value: 6.8414279222488406e-01
+            -
+               depth: 5
+               value: 7.5816598534584045e-01
+            -
+               depth: 1
+               value: 1.3189388763520025e+00
+               splits:
+                  - { var:1, quality:5.3967983245849609e+01,
+                      le:1.5000000000000000e+00 }
+            -
+               depth: 2
+               value: 1.3307540139981680e+00
+            -
+               depth: 2
+               value: 1.2086642583211262e+00
+               splits:
+                  - { var:0, quality:4.4326429367065430e+00, le:33343. }
+            -
+               depth: 3
+               value: 1.1173450350761414e+00
+            -
+               depth: 3
+               value: 1.3913027048110962e+00
+      -
+         nodes:
+            -
+               depth: 0
+               value: 8.3622335220570676e-01
+               splits:
+                  - { var:0, quality:7.7327110290527344e+01, le:19519. }
+            -
+               depth: 1
+               value: 2.7884694585274605e-01
+               splits:
+                  - { var:1, quality:3.9214954376220703e+00,
+                      le:5.0000000000000000e-01 }
+            -
+               depth: 2
+               value: 6.3488930829667625e-02
+            -
+               depth: 2
+               value: 4.0993443325809809e-01
+               splits:
+                  - { var:0, quality:4.9460725784301758e+00, le:13631. }
+            -
+               depth: 3
+               value: 2.5160919924577080e-01
+            -
+               depth: 3
+               value: 7.0679424703121185e-01
+               splits:
+                  - { var:0, quality:4.0238089561462402e+00, le:16191. }
+            -
+               depth: 4
+               value: 5.5211299657821655e-01
+            -
+               depth: 4
+               value: 7.2889156852449688e-01
+               splits:
+                  - { var:1, quality:3.7191362380981445e+00,
+                      le:1.5000000000000000e+00 }
+            -
+               depth: 5
+               value: 7.2590839862823486e-01
+            -
+               depth: 5
+               value: 7.3634949326515198e-01
+            -
+               depth: 1
+               value: 1.3158263065094171e+00
+               splits:
+                  - { var:1, quality:7.4777877807617188e+01,
+                      le:1.5000000000000000e+00 }
+            -
+               depth: 2
+               value: 1.3437852324583592e+00
+            -
+               depth: 2
+               value: 1.0432267785072327e+00
+      -
+         nodes:
+            -
+               depth: 0
+               value: 7.7057200425770134e-01
+               splits:
+                  - { var:0, quality:6.2031391143798828e+01, le:19263. }
+            -
+               depth: 1
+               value: 3.9473541143039864e-01
+               splits:
+                  - { var:0, quality:8.7994461059570312e+00, le:11071. }
+            -
+               depth: 2
+               value: 2.0829156840530536e-01
+               splits:
+                  - { var:1, quality:1.2197072505950928e+00, le:1. }
+            -
+               depth: 3
+               value: 4.0196740254759791e-02
+            -
+               depth: 3
+               value: 2.5252704949755417e-01
+            -
+               depth: 2
+               value: 6.0781408917336233e-01
+               splits:
+                  - { var:1, quality:7.8024997711181641e+00,
+                      le:1.5000000000000000e+00 }
+            -
+               depth: 3
+               value: 7.0250299572944641e-01
+            -
+               depth: 3
+               value: 5.8553434645428382e-01
+               splits:
+                  - { var:0, quality:5.9925379753112793e+00, le:14143. }
+            -
+               depth: 4
+               value: 4.6811099989073618e-01
+            -
+               depth: 4
+               value: 6.6773068904876709e-01
+            -
+               depth: 1
+               value: 1.2537904807499476e+00
+               splits:
+                  - { var:0, quality:5.7467838287353516e+01, le:30015. }
+            -
+               depth: 2
+               value: 1.0378465198335194e+00
+               splits:
+                  - { var:1, quality:2.2622106552124023e+01,
+                      le:1.5000000000000000e+00 }
+            -
+               depth: 3
+               value: 1.0413669410504793e+00
+               splits:
+                  - { var:0, quality:2.0699014663696289e+01, le:23871. }
+            -
+               depth: 4
+               value: 9.4900114195687435e-01
+               splits:
+                  - { var:0, quality:6.3098640441894531e+00, le:22335. }
+            -
+               depth: 5
+               value: 9.1621931393941247e-01
+            -
+               depth: 5
+               value: 9.7358751296997070e-01
+            -
+               depth: 4
+               value: 1.0952469905217488e+00
+               splits:
+                  - { var:0, quality:1.4416103363037109e+01, le:28479. }
+            -
+               depth: 5
+               value: 1.0654480010271072e+00
+            -
+               depth: 5
+               value: 1.1548449695110321e+00
+            -
+               depth: 3
+               value: 1.0044025182723999e+00
+               splits:
+                  - { var:0, quality:2.0643186569213867e+00, le:21567. }
+            -
+               depth: 4
+               value: 8.5164499282836914e-01
+            -
+               depth: 4
+               value: 1.1571600437164307e+00
+            -
+               depth: 2
+               value: 1.5777064221245902e+00
+               splits:
+                  - { var:0, quality:3.5312965393066406e+01, le:35391. }
+            -
+               depth: 3
+               value: 1.3955057007925851e+00
+               splits:
+                  - { var:0, quality:1.3634654998779297e+01, le:31551. }
+            -
+               depth: 4
+               value: 1.3650249838829041e+00
+               splits:
+                  - { var:0, quality:3.7267251014709473e+00, le:30783. }
+            -
+               depth: 5
+               value: 1.3733500242233276e+00
+            -
+               depth: 5
+               value: 1.3566999435424805e+00
+            -
+               depth: 4
+               value: 1.4076979875564575e+00
+               splits:
+                  - { var:0, quality:9.9085159301757812e+00, le:33599. }
+            -
+               depth: 5
+               value: 1.3999700148900349e+00
+            -
+               depth: 5
+               value: 1.4192899465560913e+00
+            -
+               depth: 3
+               value: 1.7599071434565954e+00
+      -
+         nodes:
+            -
+               depth: 0
+               value: 7.4705775040201838e-01
+               splits:
+                  - { var:0, quality:6.2051387786865234e+01, le:19775. }
+            -
+               depth: 1
+               value: 3.4606441652969172e-01
+               splits:
+                  - { var:1, quality:6.7144885063171387e+00,
+                      le:5.0000000000000000e-01 }
+            -
+               depth: 2
+               value: 5.7300662113861603e-02
+            -
+               depth: 2
+               value: 4.3681873934609550e-01
+               splits:
+                  - { var:1, quality:6.8809881210327148e+00,
+                      le:1.5000000000000000e+00 }
+            -
+               depth: 3
+               value: 6.8531399965286255e-01
+            -
+               depth: 3
+               value: 4.1352230869233608e-01
+               splits:
+                  - { var:0, quality:6.1044096946716309e+00, le:11071. }
+            -
+               depth: 4
+               value: 2.7294455841183662e-01
+            -
+               depth: 4
+               value: 5.5410005897283554e-01
+            -
+               depth: 1
+               value: 1.2895781432881075e+00
+               splits:
+                  - { var:0, quality:5.9235054016113281e+01, le:31039. }
+            -
+               depth: 2
+               value: 1.0395323289068121e+00
+               splits:
+                  - { var:1, quality:2.0565029144287109e+01,
+                      le:1.5000000000000000e+00 }
+            -
+               depth: 3
+               value: 1.0145860058920724e+00
+            -
+               depth: 3
+               value: 1.1093820333480835e+00
+               splits:
+                  - { var:0, quality:6.1612515449523926e+00, le:24895. }
+            -
+               depth: 4
+               value: 1.1571600437164307e+00
+            -
+               depth: 4
+               value: 1.0775300264358521e+00
+            -
+               depth: 2
+               value: 1.6063028415044149e+00
+               splits:
+                  - { var:0, quality:3.8912887573242188e+01, le:36671. }
+            -
+               depth: 3
+               value: 1.4798856973648071e+00
+               splits:
+                  - { var:0, quality:1.5348135948181152e+01, le:32575. }
+            -
+               depth: 4
+               value: 1.3566999435424805e+00
+            -
+               depth: 4
+               value: 1.5004166563351948e+00
+            -
+               depth: 3
+               value: 1.7169178426265717e+00
+               splits:
+                  - { var:1, quality:2.3703626632690430e+01,
+                      le:1.5000000000000000e+00 }
+            -
+               depth: 4
+               value: 1.7634342908859253e+00
+               splits:
+                  - { var:0, quality:2.1868268966674805e+01, le:39231. }
+            -
+               depth: 5
+               value: 1.6597349941730499e+00
+            -
+               depth: 5
+               value: 1.9017000198364258e+00
+            -
+               depth: 4
+               value: 1.3913027048110962e+00
+      -
+         nodes:
+            -
+               depth: 0
+               value: 7.8031111720483748e-01
+               splits:
+                  - { var:1, quality:5.5887710571289062e+01,
+                      le:5.0000000000000000e-01 }
+            -
+               depth: 1
+               value: 3.0156245793808590e-02
+            -
+               depth: 1
+               value: 8.9990102424137830e-01
+               splits:
+                  - { var:0, quality:6.6550865173339844e+01, le:24383. }
+            -
+               depth: 2
+               value: 5.9407506501951879e-01
+               splits:
+                  - { var:1, quality:1.6376325607299805e+01,
+                      le:1.5000000000000000e+00 }
+            -
+               depth: 3
+               value: 8.2236572504043581e-01
+               splits:
+                  - { var:0, quality:1.0314842224121094e+01, le:19775. }
+            -
+               depth: 4
+               value: 6.7156280279159541e-01
+               splits:
+                  - { var:0, quality:2.2746565341949463e+00, le:17215. }
+            -
+               depth: 5
+               value: 5.9473800659179688e-01
+            -
+               depth: 5
+               value: 7.2277933359146118e-01
+            -
+               depth: 4
+               value: 8.9776718616485596e-01
+               splits:
+                  - { var:0, quality:8.0707302093505859e+00, le:21823. }
+            -
+               depth: 5
+               value: 8.7084632118542993e-01
+            -
+               depth: 5
+               value: 9.3814848363399506e-01
+            -
+               depth: 3
+               value: 4.7177649715117048e-01
+               splits:
+                  - { var:0, quality:7.4251475334167480e+00, le:11327. }
+            -
+               depth: 4
+               value: 2.1515808864073319e-01
+            -
+               depth: 4
+               value: 6.3782370265792399e-01
+            -
+               depth: 2
+               value: 1.4056901106467614e+00
+               splits:
+                  - { var:1, quality:5.1375297546386719e+01,
+                      le:1.5000000000000000e+00 }
+            -
+               depth: 3
+               value: 1.4062656068801880e+00
+               splits:
+                  - { var:0, quality:5.0630073547363281e+01, le:30271. }
+            -
+               depth: 4
+               value: 1.1153055429458618e+00
+               splits:
+                  - { var:0, quality:1.1210437774658203e+01, le:28223. }
+            -
+               depth: 5
+               value: 1.0932814223425729e+00
+            -
+               depth: 5
+               value: 1.1923899650573730e+00
+            -
+               depth: 4
+               value: 1.5699306428432465e+00
+            -
+               depth: 3
+               value: 1.3913027048110962e+00
+      -
+         nodes:
+            -
+               depth: 0
+               value: 9.0072707186918710e-01
+               splits:
+                  - { var:1, quality:6.9655578613281250e+01,
+                      le:5.0000000000000000e-01 }
+            -
+               depth: 1
+               value: 4.4911283689240612e-02
+            -
+               depth: 1
+               value: 9.7011754118107463e-01
+               splits:
+                  - { var:1, quality:7.6700286865234375e+01,
+                      le:1.5000000000000000e+00 }
+            -
+               depth: 2
+               value: 1.2251072986559435e+00
+            -
+               depth: 2
+               value: 5.9613256355126698e-01
+               splits:
+                  - { var:0, quality:1.3536871910095215e+01, le:18751. }
+            -
+               depth: 3
+               value: 4.0943395414135675e-01
+               splits:
+                  - { var:0, quality:4.0836215019226074e+00, le:10815. }
+            -
+               depth: 4
+               value: 2.7533327449451794e-01
+               splits:
+                  - { var:0, quality:8.9728230237960815e-01, le:7999. }
+            -
+               depth: 5
+               value: 1.7491050064563751e-01
+            -
+               depth: 5
+               value: 3.3271771669387817e-01
+            -
+               depth: 4
+               value: 5.4353463378819555e-01
+               splits:
+                  - { var:0, quality:3.3141865730285645e+00, le:14143. }
+            -
+               depth: 5
+               value: 4.7365500032901764e-01
+            -
+               depth: 5
+               value: 6.2739019393920903e-01
+            -
+               depth: 3
+               value: 1.1095537394285202e+00
+      -
+         nodes:
+            -
+               depth: 0
+               value: 8.3163487311103379e-01
+               splits:
+                  - { var:0, quality:7.1834060668945312e+01, le:18751. }
+            -
+               depth: 1
+               value: 3.0331276084625108e-01
+               splits:
+                  - { var:0, quality:4.2200670242309570e+00, le:11071. }
+            -
+               depth: 2
+               value: 1.9577879415825009e-01
+               splits:
+                  - { var:0, quality:1.2346501350402832e+00, le:6463. }
+            -
+               depth: 3
+               value: 8.6334487772546709e-02
+               splits:
+                  - { var:0, quality:1.3381029665470123e-01, le:3647. }
+            -
+               depth: 4
+               value: 3.4945121367595026e-02
+               splits:
+                  - { var:0, quality:1.0396173223853111e-02, le:2367. }
+            -
+               depth: 5
+               value: 2.0873712492175400e-02
+            -
+               depth: 5
+               value: 5.3706999868154526e-02
+            -
+               depth: 4
+               value: 1.5827960073947905e-01
+               splits:
+                  - { var:0, quality:1.2598796188831329e-01, le:5951. }
+            -
+               depth: 5
+               value: 1.5225550159811974e-01
+            -
+               depth: 5
+               value: 1.8237599730491638e-01
+            -
+               depth: 3
+               value: 2.9680430774505323e-01
+               splits:
+                  - { var:0, quality:1.1852388381958008e+00, le:8255. }
+            -
+               depth: 4
+               value: 2.1356550231575966e-01
+               splits:
+                  - { var:0, quality:1.8315330147743225e-01, le:6975. }
+            -
+               depth: 5
+               value: 2.0022000372409821e-01
+            -
+               depth: 5
+               value: 2.2691100090742111e-01
+            -
+               depth: 4
+               value: 3.3379933238029480e-01
+               splits:
+                  - { var:0, quality:1.0060927867889404e+00, le:9023. }
+            -
+               depth: 5
+               value: 2.7968099713325500e-01
+            -
+               depth: 5
+               value: 3.4056412428617477e-01
+            -
+               depth: 2
+               value: 6.0201822386847603e-01
+               splits:
+                  - { var:1, quality:3.2902460098266602e+00,
+                      le:1.5000000000000000e+00 }
+            -
+               depth: 3
+               value: 7.0713400840759277e-01
+            -
+               depth: 3
+               value: 5.7198514257158550e-01
+            -
+               depth: 1
+               value: 1.2221338256545689e+00
+               splits:
+                  - { var:0, quality:7.1788688659667969e+01, le:30015. }
+            -
+               depth: 2
+               value: 1.0239339039243500e+00
+               splits:
+                  - { var:0, quality:3.0625934600830078e+01, le:23359. }
+            -
+               depth: 3
+               value: 9.1222444989464502e-01
+               splits:
+                  - { var:0, quality:9.1638870239257812e+00, le:21567. }
+            -
+               depth: 4
+               value: 8.7194274365901947e-01
+               splits:
+                  - { var:0, quality:3.0416858196258545e+00, le:20031. }
+            -
+               depth: 5
+               value: 8.5164499282836914e-01
+            -
+               depth: 5
+               value: 8.7870866060256958e-01
+            -
+               depth: 4
+               value: 9.3524256774357384e-01
+               splits:
+                  - { var:0, quality:6.1269721984863281e+00, le:22847. }
+            -
+               depth: 5
+               value: 9.6359932422637939e-01
+            -
+               depth: 5
+               value: 9.1397500038146973e-01
+            -
+               depth: 3
+               value: 1.0922007924980588e+00
+               splits:
+                  - { var:0, quality:2.1493947982788086e+01, le:23871. }
+            -
+               depth: 4
+               value: 1.1571600437164307e+00
+            -
+               depth: 4
+               value: 1.0736410064356667e+00
+               splits:
+                  - { var:0, quality:1.6153051376342773e+01, le:24383. }
+            -
+               depth: 5
+               value: 9.5490998029708862e-01
+            -
+               depth: 5
+               value: 1.0827741622924805e+00
+            -
+               depth: 2
+               value: 1.5602395744884716e+00
+               splits:
+                  - { var:0, quality:4.1658649444580078e+01, le:36159. }
+            -
+               depth: 3
+               value: 1.4403833283318415e+00
+            -
+               depth: 3
+               value: 1.6950778514146805e+00
+               splits:
+                  - { var:0, quality:2.3091773986816406e+01, le:40255. }
+            -
+               depth: 4
+               value: 1.7384743009294783e+00
+            -
+               depth: 4
+               value: 1.3913027048110962e+00
+      -
+         nodes:
+            -
+               depth: 0
+               value: 7.5858072156261191e-01
+               splits:
+                  - { var:1, quality:5.1190170288085938e+01,
+                      le:5.0000000000000000e-01 }
+            -
+               depth: 1
+               value: 4.5629001507121653e-02
+            -
+               depth: 1
+               value: 8.4895488325978674e-01
+               splits:
+                  - { var:0, quality:6.2545925140380859e+01, le:23359. }
+            -
+               depth: 2
+               value: 5.4471420182122121e-01
+               splits:
+                  - { var:1, quality:1.3890209197998047e+01,
+                      le:1.5000000000000000e+00 }
+            -
+               depth: 3
+               value: 7.7988362312316895e-01
+            -
+               depth: 3
+               value: 4.9386675937755686e-01
+               splits:
+                  - { var:0, quality:1.0752282142639160e+01, le:13887. }
+            -
+               depth: 4
+               value: 3.0524195375896634e-01
+               splits:
+                  - { var:0, quality:2.2872569561004639e+00, le:9535. }
+            -
+               depth: 5
+               value: 1.8560481884262778e-01
+            -
+               depth: 5
+               value: 4.3684280216693877e-01
+            -
+               depth: 4
+               value: 7.4143681675195694e-01
+               splits:
+                  - { var:0, quality:8.9011793136596680e+00, le:17215. }
+            -
+               depth: 5
+               value: 6.6022625565528870e-01
+            -
+               depth: 5
+               value: 8.2264737784862518e-01
+            -
+               depth: 2
+               value: 1.3755252934419191e+00
+               splits:
+                  - { var:1, quality:4.9263259887695312e+01,
+                      le:1.5000000000000000e+00 }
+            -
+               depth: 3
+               value: 1.3975619158961556e+00
+               splits:
+                  - { var:0, quality:4.3553436279296875e+01, le:31551. }
+            -
+               depth: 4
+               value: 1.2018324600325689e+00
+            -
+               depth: 4
+               value: 1.5330669238017156e+00
+            -
+               depth: 3
+               value: 1.2543238699436188e+00
+      -
+         nodes:
+            -
+               depth: 0
+               value: 8.3171214793983383e-01
+               splits:
+                  - { var:1, quality:6.0342010498046875e+01,
+                      le:5.0000000000000000e-01 }
+            -
+               depth: 1
+               value: 2.4185844530750598e-02
+               splits:
+                  - { var:0, quality:6.9644139148294926e-03, le:2111. }
+            -
+               depth: 2
+               value: 1.1380201904103160e-02
+               splits:
+                  - { var:0, quality:1.4157235855236650e-03, le:831. }
+            -
+               depth: 3
+               value: 1.2597366391370695e-03
+            -
+               depth: 3
+               value: 2.6560899801552296e-02
+               splits:
+                  - { var:0, quality:1.4184759929776192e-03, le:1343. }
+            -
+               depth: 4
+               value: 2.8499100357294083e-02
+            -
+               depth: 4
+               value: 2.4622699245810509e-02
+            -
+               depth: 2
+               value: 5.6199951097369194e-02
+               splits:
+                  - { var:0, quality:6.6186645999550819e-03, le:3135. }
+            -
+               depth: 3
+               value: 4.3915901333093643e-02
+            -
+               depth: 3
+               value: 6.8484000861644745e-02
+            -
+               depth: 1
+               value: 9.0914617703385547e-01
+               splits:
+                  - { var:0, quality:7.0295440673828125e+01, le:22591. }
+            -
+               depth: 2
+               value: 5.6430317576114952e-01
+               splits:
+                  - { var:1, quality:1.3087285041809082e+01,
+                      le:1.5000000000000000e+00 }
+            -
+               depth: 3
+               value: 8.0328254567252266e-01
+               splits:
+                  - { var:0, quality:5.8459973335266113e+00, le:19775. }
+            -
+               depth: 4
+               value: 7.4468278884887695e-01
+            -
+               depth: 4
+               value: 8.7653224170207977e-01
+               splits:
+                  - { var:0, quality:3.0740792751312256e+00, le:20799. }
+            -
+               depth: 5
+               value: 8.9105999469757080e-01
+            -
+               depth: 5
+               value: 8.6200448870658875e-01
+            -
+               depth: 3
+               value: 4.9260936478773754e-01
+            -
+               depth: 2
+               value: 1.3047013843760771e+00
+               splits:
+                  - { var:1, quality:5.7912265777587891e+01,
+                      le:1.5000000000000000e+00 }
+            -
+               depth: 3
+               value: 1.3165688077608744e+00
+               splits:
+                  - { var:0, quality:5.3820007324218750e+01, le:31295. }
+            -
+               depth: 4
+               value: 1.0862083956599236e+00
+               splits:
+                  - { var:0, quality:1.8936874389648438e+01, le:28479. }
+            -
+               depth: 5
+               value: 1.0390534281730652e+00
+            -
+               depth: 5
+               value: 1.1648000081380208e+00
+            -
+               depth: 4
+               value: 1.5798378501619612e+00
+               splits:
+                  - { var:0, quality:3.5056018829345703e+01, le:34623. }
+            -
+               depth: 5
+               value: 1.4374149739742279e+00
+            -
+               depth: 5
+               value: 1.6368070006370545e+00
+            -
+               depth: 3
+               value: 1.2156957089900970e+00
+      -
+         nodes:
+            -
+               depth: 0
+               value: 7.6563102081418033e-01
+               splits:
+                  - { var:1, quality:5.4012752532958984e+01,
+                      le:5.0000000000000000e-01 }
+            -
+               depth: 1
+               value: 5.5592206617196403e-02
+               splits:
+                  - { var:0, quality:7.2965689003467560e-02, le:3903. }
+            -
+               depth: 2
+               value: 3.1138247251510619e-02
+            -
+               depth: 2
+               value: 1.7786200344562531e-01
+            -
+               depth: 1
+               value: 8.9093198802541285e-01
+               splits:
+                  - { var:0, quality:6.4068443298339844e+01, le:21823. }
+            -
+               depth: 2
+               value: 5.4862184195142039e-01
+               splits:
+                  - { var:1, quality:1.2164719581604004e+01,
+                      le:1.5000000000000000e+00 }
+            -
+               depth: 3
+               value: 7.6536072384227405e-01
+            -
+               depth: 3
+               value: 4.6032081599588748e-01
+            -
+               depth: 2
+               value: 1.3245248397191365e+00
+               splits:
+                  - { var:1, quality:5.2756317138671875e+01,
+                      le:1.5000000000000000e+00 }
+            -
+               depth: 3
+               value: 1.3460701880631623e+00
+               splits:
+                  - { var:0, quality:5.0613964080810547e+01, le:29247. }
+            -
+               depth: 4
+               value: 1.0661454300085704e+00
+               splits:
+                  - { var:0, quality:1.3661531448364258e+01, le:26175. }
+            -
+               depth: 5
+               value: 1.0237791736920674e+00
+            -
+               depth: 5
+               value: 1.1085116863250732e+00
+            -
+               depth: 4
+               value: 1.5700099945068360e+00
+               splits:
+                  - { var:0, quality:3.7313480377197266e+01, le:36415. }
+            -
+               depth: 5
+               value: 1.4471710920333862e+00
+            -
+               depth: 5
+               value: 1.7542683482170105e+00
+            -
+               depth: 3
+               value: 1.1306167046229045e+00
+      -
+         nodes:
+            -
+               depth: 0
+               value: 9.3682888101902795e-01
+               splits:
+                  - { var:0, quality:8.6365470886230469e+01, le:19263. }
+            -
+               depth: 1
+               value: 3.7188289310002037e-01
+               splits:
+                  - { var:0, quality:5.5329761505126953e+00, le:11071. }
+            -
+               depth: 2
+               value: 1.8996386440909085e-01
+               splits:
+                  - { var:0, quality:8.0895841121673584e-01, le:6975. }
+            -
+               depth: 3
+               value: 8.8860972732719451e-02
+               splits:
+                  - { var:0, quality:1.0277036577463150e-01, le:4159. }
+            -
+               depth: 4
+               value: 3.5774950403720140e-02
+            -
+               depth: 4
+               value: 1.5521850064396858e-01
+               splits:
+                  - { var:0, quality:9.7354501485824585e-02, le:5951. }
+            -
+               depth: 5
+               value: 1.4616600175698599e-01
+            -
+               depth: 5
+               value: 1.8237599730491638e-01
+            -
+               depth: 3
+               value: 3.0370461754500866e-01
+            -
+               depth: 2
+               value: 5.9278457079614910e-01
+               splits:
+                  - { var:0, quality:5.0904474258422852e+00, le:15167. }
+            -
+               depth: 3
+               value: 4.8228642770222258e-01
+            -
+               depth: 3
+               value: 7.0328271389007568e-01
+               splits:
+                  - { var:0, quality:3.4728426933288574e+00, le:16959. }
+            -
+               depth: 4
+               value: 6.4176401495933533e-01
+               splits:
+                  - { var:0, quality:8.2814496755599976e-01, le:15935. }
+            -
+               depth: 5
+               value: 6.8879002332687378e-01
+            -
+               depth: 5
+               value: 5.9473800659179688e-01
+            -
+               depth: 4
+               value: 7.2789019346237183e-01
+               splits:
+                  - { var:1, quality:2.6514053344726562e+00,
+                      le:1.5000000000000000e+00 }
+            -
+               depth: 5
+               value: 7.5406998395919800e-01
+            -
+               depth: 5
+               value: 7.1043699979782104e-01
+            -
+               depth: 1
+               value: 1.2942436897024816e+00
+               splits:
+                  - { var:0, quality:8.6278129577636719e+01, le:31039. }
+            -
+               depth: 2
+               value: 1.0299731559223599e+00
+               splits:
+                  - { var:0, quality:2.8850269317626953e+01, le:24127. }
+            -
+               depth: 3
+               value: 9.1568229198455808e-01
+               splits:
+                  - { var:0, quality:8.3965396881103516e+00, le:21311. }
+            -
+               depth: 4
+               value: 8.7361299991607666e-01
+               splits:
+                  - { var:0, quality:3.0540163516998291e+00, le:20287. }
+            -
+               depth: 5
+               value: 8.5616600513458252e-01
+            -
+               depth: 5
+               value: 8.9105999469757080e-01
+            -
+               depth: 4
+               value: 9.4372848669687903e-01
+               splits:
+                  - { var:0, quality:5.3464155197143555e+00, le:22335. }
+            -
+               depth: 5
+               value: 9.2879897356033325e-01
+            -
+               depth: 5
+               value: 9.7358751296997070e-01
+            -
+               depth: 3
+               value: 1.0972030758857727e+00
+               splits:
+                  - { var:0, quality:2.0486455917358398e+01, le:30271. }
+            -
+               depth: 4
+               value: 1.0884313918650150e+00
+               splits:
+                  - { var:1, quality:1.8955053329467773e+01,
+                      le:1.5000000000000000e+00 }
+            -
+               depth: 5
+               value: 1.0891581495602927e+00
+            -
+               depth: 5
+               value: 1.0775300264358521e+00
+            -
+               depth: 4
+               value: 1.2375500202178955e+00
+            -
+               depth: 2
+               value: 1.6185757084326311e+00
+               splits:
+                  - { var:0, quality:5.8062034606933594e+01, le:35391. }
+            -
+               depth: 3
+               value: 1.4511944452921550e+00
+            -
+               depth: 3
+               value: 1.7344550444529607e+00
+               splits:
+                  - { var:1, quality:3.9386672973632812e+01,
+                      le:1.5000000000000000e+00 }
+            -
+               depth: 4
+               value: 1.7968463789332996e+00
+               splits:
+                  - { var:0, quality:3.5602642059326172e+01, le:38719. }
+            -
+               depth: 5
+               value: 1.7154683470726013e+00
+            -
+               depth: 5
+               value: 1.8945000171661377e+00
+            -
+               depth: 4
+               value: 1.3913027048110962e+00
+      -
+         nodes:
+            -
+               depth: 0
+               value: 6.7479542528744785e-01
+               splits:
+                  - { var:0, quality:5.5628437042236328e+01, le:19263. }
+            -
+               depth: 1
+               value: 2.7478992003792274e-01
+               splits:
+                  - { var:0, quality:5.6946530342102051e+00, le:8767. }
+            -
+               depth: 2
+               value: 1.0669172728626893e-01
+               splits:
+                  - { var:1, quality:4.4119274616241455e-01, le:1. }
+            -
+               depth: 3
+               value: 5.4693416527965492e-02
+            -
+               depth: 3
+               value: 1.8035600086053213e-01
+               splits:
+                  - { var:0, quality:4.0248990058898926e-01, le:5951. }
+            -
+               depth: 4
+               value: 1.4270560145378114e-01
+            -
+               depth: 4
+               value: 2.0724914329392569e-01
+               splits:
+                  - { var:0, quality:3.0304020643234253e-01, le:6975. }
+            -
+               depth: 5
+               value: 1.9129800051450729e-01
+            -
+               depth: 5
+               value: 2.2851733366648355e-01
+            -
+               depth: 2
+               value: 5.3136084581676279e-01
+               splits:
+                  - { var:1, quality:5.4168972969055176e+00,
+                      le:1.5000000000000000e+00 }
+            -
+               depth: 3
+               value: 7.5406998395919800e-01
+            -
+               depth: 3
+               value: 5.1898811591996086e-01
+               splits:
+                  - { var:0, quality:5.0835909843444824e+00, le:15167. }
+            -
+               depth: 4
+               value: 4.4807900373752302e-01
+            -
+               depth: 4
+               value: 7.0335180759429927e-01
+            -
+               depth: 1
+               value: 1.2748036831617355e+00
+               splits:
+                  - { var:0, quality:5.4707878112792969e+01, le:31807. }
+            -
+               depth: 2
+               value: 1.0343592104158903e+00
+               splits:
+                  - { var:0, quality:2.0587671279907227e+01, le:24383. }
+            -
+               depth: 3
+               value: 8.9729661494493484e-01
+               splits:
+                  - { var:1, quality:6.4435114860534668e+00,
+                      le:1.5000000000000000e+00 }
+            -
+               depth: 4
+               value: 9.0381827524730141e-01
+            -
+               depth: 4
+               value: 8.5164499282836914e-01
+            -
+               depth: 3
+               value: 1.1340410980311306e+00
+               splits:
+                  - { var:1, quality:1.4150053977966309e+01,
+                      le:1.5000000000000000e+00 }
+            -
+               depth: 4
+               value: 1.1396922051906586e+00
+               splits:
+                  - { var:0, quality:1.3076774597167969e+01, le:30015. }
+            -
+               depth: 5
+               value: 1.0783531410353524e+00
+            -
+               depth: 5
+               value: 1.2828166882197063e+00
+            -
+               depth: 4
+               value: 1.0775300264358521e+00
+            -
+               depth: 2
+               value: 1.6262225279441247e+00
+               splits:
+                  - { var:0, quality:3.4530853271484375e+01, le:36671. }
+            -
+               depth: 3
+               value: 1.4898720026016234e+00
+            -
+               depth: 3
+               value: 1.7114416062831879e+00
+               splits:
+                  - { var:1, quality:2.3549388885498047e+01,
+                      le:1.5000000000000000e+00 }
+            -
+               depth: 4
+               value: 1.7571757350649153e+00
+            -
+               depth: 4
+               value: 1.3913027048110962e+00
+      -
+         nodes:
+            -
+               depth: 0
+               value: 8.3270373819977972e-01
+               splits:
+                  - { var:0, quality:7.1034683227539062e+01, le:24127. }
+            -
+               depth: 1
+               value: 4.9105653212405742e-01
+               splits:
+                  - { var:1, quality:1.3595428466796875e+01,
+                      le:5.0000000000000000e-01 }
+            -
+               depth: 2
+               value: 5.6282678951642344e-02
+            -
+               depth: 2
+               value: 5.6183367101259007e-01
+               splits:
+                  - { var:1, quality:1.4727721214294434e+01,
+                      le:1.5000000000000000e+00 }
+            -
+               depth: 3
+               value: 8.2519182562828064e-01
+            -
+               depth: 3
+               value: 4.5988857890329055e-01
+            -
+               depth: 1
+               value: 1.4021157483259836e+00
+               splits:
+                  - { var:1, quality:5.9329044342041016e+01,
+                      le:1.5000000000000000e+00 }
+            -
+               depth: 2
+               value: 1.4381808285359983e+00
+               splits:
+                  - { var:0, quality:5.7597549438476562e+01, le:30527. }
+            -
+               depth: 3
+               value: 1.1060762107372284e+00
+            -
+               depth: 3
+               value: 1.6335364860646866e+00
+            -
+               depth: 2
+               value: 1.0775300264358521e+00
+      -
+         nodes:
+            -
+               depth: 0
+               value: 8.8489794407505540e-01
+               splits:
+                  - { var:0, quality:8.0061630249023438e+01, le:19007. }
+            -
+               depth: 1
+               value: 3.6903982138675118e-01
+               splits:
+                  - { var:0, quality:6.5350642204284668e+00, le:11071. }
+            -
+               depth: 2
+               value: 1.6762824170291424e-01
+               splits:
+                  - { var:0, quality:7.3488777875900269e-01, le:6975. }
+            -
+               depth: 3
+               value: 9.7752277237864643e-02
+               splits:
+                  - { var:1, quality:1.5961340069770813e-01, le:1. }
+            -
+               depth: 4
+               value: 4.1394600334266819e-02
+               splits:
+                  - { var:0, quality:1.0941193439066410e-02, le:2111. }
+            -
+               depth: 5
+               value: 2.6560899801552296e-02
+            -
+               depth: 5
+               value: 4.8811450600624084e-02
+            -
+               depth: 4
+               value: 1.4605885744094849e-01
+            -
+               depth: 3
+               value: 3.1902616471052170e-01
+            -
+               depth: 2
+               value: 5.9414688103339253e-01
+               splits:
+                  - { var:1, quality:6.0011796951293945e+00,
+                      le:1.5000000000000000e+00 }
+            -
+               depth: 3
+               value: 5.9473800659179688e-01
+            -
+               depth: 3
+               value: 5.9406806429227188e-01
+               splits:
+                  - { var:0, quality:5.4475250244140625e+00, le:14143. }
+            -
+               depth: 4
+               value: 4.7006316483020782e-01
+            -
+               depth: 4
+               value: 6.7673799726698136e-01
+               splits:
+                  - { var:0, quality:4.1375966072082520e+00, le:14911. }
+            -
+               depth: 5
+               value: 5.9828299283981323e-01
+            -
+               depth: 5
+               value: 6.9915371281760075e-01
+            -
+               depth: 1
+               value: 1.3069636808200316e+00
+               splits:
+                  - { var:1, quality:7.5287734985351562e+01,
+                      le:1.5000000000000000e+00 }
+            -
+               depth: 2
+               value: 1.3216079080977090e+00
+            -
+               depth: 2
+               value: 1.1068259080251057e+00
+               splits:
+                  - { var:0, quality:3.7965812683105469e+00, le:33343. }
+            -
+               depth: 3
+               value: 9.6458750963211060e-01
+            -
+               depth: 3
+               value: 1.3913027048110962e+00
+      -
+         nodes:
+            -
+               depth: 0
+               value: 8.2250692015804816e-01
+               splits:
+                  - { var:0, quality:7.0970626831054688e+01, le:18751. }
+            -
+               depth: 1
+               value: 3.1514252371077117e-01
+               splits:
+                  - { var:0, quality:4.9527754783630371e+00, le:9023. }
+            -
+               depth: 2
+               value: 1.0834857954314965e-01
+               splits:
+                  - { var:1, quality:3.2492381334304810e-01, le:1. }
+            -
+               depth: 3
+               value: 1.7269107542233542e-02
+            -
+               depth: 3
+               value: 1.8930811021063063e-01
+               splits:
+                  - { var:0, quality:3.4084436297416687e-01, le:6719. }
+            -
+               depth: 4
+               value: 1.4896920025348664e-01
+            -
+               depth: 4
+               value: 2.3973174765706062e-01
+               splits:
+                  - { var:0, quality:2.3238293826580048e-01, le:7999. }
+            -
+               depth: 5
+               value: 2.2530466814835867e-01
+            -
+               depth: 5
+               value: 2.8301298618316650e-01
+            -
+               depth: 2
+               value: 5.0016868428180095e-01
+               splits:
+                  - { var:0, quality:4.9757099151611328e+00, le:13887. }
+            -
+               depth: 3
+               value: 4.0788154710422864e-01
+               splits:
+                  - { var:0, quality:1.8699982166290283e+00, le:11071. }
+            -
+               depth: 4
+               value: 3.4185900092124938e-01
+               splits:
+                  - { var:0, quality:5.8491379022598267e-01, le:10047. }
+            -
+               depth: 5
+               value: 3.6332300305366516e-01
+            -
+               depth: 5
+               value: 3.3649300038814545e-01
+            -
+               depth: 4
+               value: 4.6290033559004468e-01
+               splits:
+                  - { var:0, quality:1.2862626314163208e+00, le:11583. }
+            -
+               depth: 5
+               value: 4.4049701094627380e-01
+            -
+               depth: 5
+               value: 4.6738100051879883e-01
+            -
+               depth: 3
+               value: 6.2706349790096283e-01
+               splits:
+                  - { var:1, quality:3.1529963016510010e+00,
+                      le:1.5000000000000000e+00 }
+            -
+               depth: 4
+               value: 7.0713400840759277e-01
+            -
+               depth: 4
+               value: 6.1562485354287289e-01
+               splits:
+                  - { var:0, quality:2.6781654357910156e+00, le:15167. }
+            -
+               depth: 5
+               value: 5.6365549564361572e-01
+            -
+               depth: 5
+               value: 6.8491733074188232e-01
+            -
+               depth: 1
+               value: 1.2376232445240021e+00
+               splits:
+                  - { var:1, quality:6.7631034851074219e+01,
+                      le:1.5000000000000000e+00 }
+            -
+               depth: 2
+               value: 1.2721283402707841e+00
+               splits:
+                  - { var:0, quality:6.0587966918945312e+01, le:30015. }
+            -
+               depth: 3
+               value: 1.0177888936466641e+00
+            -
+               depth: 3
+               value: 1.5264677868949041e+00
+               splits:
+                  - { var:0, quality:4.2241806030273438e+01, le:36415. }
+            -
+               depth: 4
+               value: 1.4574685777936662e+00
+            -
+               depth: 4
+               value: 1.7679650187492371e+00
+            -
+               depth: 2
+               value: 1.0823503136634827e+00
+      -
+         nodes:
+            -
+               depth: 0
+               value: 8.4500013659999240e-01
+               splits:
+                  - { var:0, quality:7.8178321838378906e+01, le:19007. }
+            -
+               depth: 1
+               value: 3.1897599107394808e-01
+               splits:
+                  - { var:0, quality:5.4710798263549805e+00, le:9023. }
+            -
+               depth: 2
+               value: 1.0693475915791674e-01
+               splits:
+                  - { var:0, quality:3.5956928133964539e-01, le:3903. }
+            -
+               depth: 3
+               value: 2.4273866065777840e-02
+               splits:
+                  - { var:0, quality:9.3762455508112907e-03, le:1087. }
+            -
+               depth: 4
+               value: 1.4132899814285338e-03
+               splits:
+                  - { var:0, quality:1.0536045920161996e-05, le:319. }
+            -
+               depth: 5
+               value: 3.1309900805354118e-05
+            -
+               depth: 5
+               value: 1.8739500083029270e-03
+            -
+               depth: 4
+               value: 3.9514250122010708e-02
+            -
+               depth: 3
+               value: 2.1026087552309036e-01
+            -
+               depth: 2
+               value: 5.0072561843054630e-01
+               splits:
+                  - { var:0, quality:5.5102305412292480e+00, le:15167. }
+            -
+               depth: 3
+               value: 4.4034718349575996e-01
+               splits:
+                  - { var:0, quality:3.1967010498046875e+00, le:11327. }
+            -
+               depth: 4
+               value: 3.4128350019454956e-01
+            -
+               depth: 4
+               value: 4.9978539347648621e-01
+            -
+               depth: 3
+               value: 6.9393661022186282e-01
+               splits:
+                  - { var:0, quality:2.4083206653594971e+00, le:17471. }
+            -
+               depth: 4
+               value: 6.8513834476470947e-01
+               splits:
+                  - { var:0, quality:1.4083236455917358e+00, le:16191. }
+            -
+               depth: 5
+               value: 6.8879002332687378e-01
+            -
+               depth: 5
+               value: 6.7783498764038086e-01
+            -
+               depth: 4
+               value: 7.0713400840759277e-01
+            -
+               depth: 1
+               value: 1.3453645677101322e+00
+               splits:
+                  - { var:0, quality:7.7523239135742188e+01, le:31039. }
+            -
+               depth: 2
+               value: 1.0394830076318038e+00
+               splits:
+                  - { var:1, quality:2.0534149169921875e+01,
+                      le:1.5000000000000000e+00 }
+            -
+               depth: 3
+               value: 1.0459018796682358e+00
+               splits:
+                  - { var:0, quality:1.7656549453735352e+01, le:30015. }
+            -
+               depth: 4
+               value: 1.0088235735893250e+00
+               splits:
+                  - { var:0, quality:1.4320697784423828e+01, le:24383. }
+            -
+               depth: 5
+               value: 9.2570133010546363e-01
+            -
+               depth: 5
+               value: 1.0711652562022209e+00
+            -
+               depth: 4
+               value: 1.3054500222206116e+00
+            -
+               depth: 3
+               value: 1.0052490234375000e+00
+               splits:
+                  - { var:0, quality:3.0629241466522217e+00, le:23103. }
+            -
+               depth: 4
+               value: 8.6068701744079590e-01
+            -
+               depth: 4
+               value: 1.0775300264358521e+00
+            -
+               depth: 2
+               value: 1.6095350059595974e+00
+      -
+         nodes:
+            -
+               depth: 0
+               value: 7.9974410006834662e-01
+               splits:
+                  - { var:1, quality:5.8643054962158203e+01,
+                      le:1.5000000000000000e+00 }
+            -
+               depth: 1
+               value: 1.0693390507509726e+00
+               splits:
+                  - { var:0, quality:6.3158458709716797e+01, le:18751. }
+            -
+               depth: 2
+               value: 1.1533509746659547e-01
+               splits:
+                  - { var:1, quality:3.8838535547256470e-01,
+                      le:5.0000000000000000e-01 }
+            -
+               depth: 3
+               value: 6.2068107563795313e-02
+               splits:
+                  - { var:0, quality:6.9150343537330627e-02, le:3903. }
+            -
+               depth: 4
+               value: 2.8984137311843888e-02
+               splits:
+                  - { var:0, quality:8.0807050690054893e-03, le:831. }
+            -
+               depth: 5
+               value: 9.5262995455414057e-04
+            -
+               depth: 5
+               value: 4.0196740254759791e-02
+            -
+               depth: 4
+               value: 1.7786200344562531e-01
+            -
+               depth: 3
+               value: 5.9473800659179688e-01
+            -
+               depth: 2
+               value: 1.3419116088322232e+00
+            -
+               depth: 1
+               value: 4.5312202061925616e-01
+               splits:
+                  - { var:0, quality:8.6544389724731445e+00, le:13887. }
+            -
+               depth: 2
+               value: 3.2358420014381406e-01
+            -
+               depth: 2
+               value: 7.7696657180786133e-01
+               splits:
+                  - { var:0, quality:6.4561138153076172e+00, le:30271. }
+            -
+               depth: 3
+               value: 7.0870700147416854e-01
+               splits:
+                  - { var:0, quality:4.6162495613098145e+00, le:17727. }
+            -
+               depth: 4
+               value: 6.3573100169499719e-01
+            -
+               depth: 4
+               value: 8.5465900103251136e-01
+               splits:
+                  - { var:0, quality:2.1913805007934570e+00, le:19775. }
+            -
+               depth: 5
+               value: 8.5164499282836914e-01
+            -
+               depth: 5
+               value: 8.6068701744079590e-01
+            -
+               depth: 3
+               value: 1.3913027048110962e+00
+      -
+         nodes:
+            -
+               depth: 0
+               value: 8.3770474053744692e-01
+               splits:
+                  - { var:0, quality:7.3699630737304688e+01, le:19519. }
+            -
+               depth: 1
+               value: 3.3264022275830646e-01
+               splits:
+                  - { var:1, quality:5.0116467475891113e+00,
+                      le:5.0000000000000000e-01 }
+            -
+               depth: 2
+               value: 5.4869140834651060e-02
+            -
+               depth: 2
+               value: 4.2192378480519566e-01
+               splits:
+                  - { var:1, quality:5.2176489830017090e+00,
+                      le:1.5000000000000000e+00 }
+            -
+               depth: 3
+               value: 6.8531399965286255e-01
+               splits:
+                  - { var:0, quality:1.4212718009948730e+00, le:17215. }
+            -
+               depth: 4
+               value: 5.9473800659179688e-01
+            -
+               depth: 4
+               value: 7.3060199618339539e-01
+               splits:
+                  - { var:0, quality:1.0686600208282471e+00, le:18495. }
+            -
+               depth: 5
+               value: 7.0713400840759277e-01
+            -
+               depth: 5
+               value: 7.5406998395919800e-01
+            -
+               depth: 3
+               value: 3.9031695902347563e-01
+               splits:
+                  - { var:0, quality:4.3007736206054688e+00, le:11071. }
+            -
+               depth: 4
+               value: 2.4428983156879744e-01
+            -
+               depth: 4
+               value: 5.2511123052010167e-01
+            -
+               depth: 1
+               value: 1.2722951395567073e+00
+               splits:
+                  - { var:0, quality:7.2145027160644531e+01, le:30015. }
+            -
+               depth: 2
+               value: 1.0235610065006076e+00
+               splits:
+                  - { var:1, quality:2.2001457214355469e+01,
+                      le:1.5000000000000000e+00 }
+            -
+               depth: 3
+               value: 1.0221891138288710e+00
+            -
+               depth: 3
+               value: 1.0317923625310261e+00
+               splits:
+                  - { var:0, quality:3.2377018928527832e+00, le:21823. }
+            -
+               depth: 4
+               value: 8.6068701744079590e-01
+            -
+               depth: 4
+               value: 1.1173450350761414e+00
+            -
+               depth: 2
+               value: 1.5097231756557117e+00
+      -
+         nodes:
+            -
+               depth: 0
+               value: 7.4590804023901003e-01
+               splits:
+                  - { var:0, quality:5.9467315673828125e+01, le:19263. }
+            -
+               depth: 1
+               value: 3.7416919492913975e-01
+               splits:
+                  - { var:0, quality:8.1717624664306641e+00, le:11071. }
+            -
+               depth: 2
+               value: 1.8840754299890250e-01
+               splits:
+                  - { var:0, quality:1.1089391708374023e+00, le:5951. }
+            -
+               depth: 3
+               value: 8.4926167270168662e-02
+               splits:
+                  - { var:1, quality:9.6122048795223236e-02, le:1. }
+            -
+               depth: 4
+               value: 6.8619556414584323e-02
+               splits:
+                  - { var:0, quality:7.3064997792243958e-02, le:3903. }
+            -
+               depth: 5
+               value: 3.7407428691429753e-02
+            -
+               depth: 5
+               value: 1.7786200344562531e-01
+            -
+               depth: 4
+               value: 1.3384599983692169e-01
+            -
+               depth: 3
+               value: 2.9188891872763634e-01
+            -
+               depth: 2
+               value: 5.7681826976212591e-01
+               splits:
+                  - { var:0, quality:7.6476378440856934e+00, le:14143. }
+            -
+               depth: 3
+               value: 4.6538600077231723e-01
+               splits:
+                  - { var:0, quality:2.6018083095550537e+00, le:13631. }
+            -
+               depth: 4
+               value: 4.6078136563301086e-01
+            -
+               depth: 4
+               value: 5.1603698730468750e-01
+            -
+               depth: 3
+               value: 7.1053699254989622e-01
+               splits:
+                  - { var:1, quality:5.0553693771362305e+00,
+                      le:1.5000000000000000e+00 }
+            -
+               depth: 4
+               value: 7.4233599007129669e-01
+            -
+               depth: 4
+               value: 6.8933766086896264e-01
+               splits:
+                  - { var:0, quality:2.8610675334930420e+00, le:14911. }
+            -
+               depth: 5
+               value: 5.9828299283981323e-01
+            -
+               depth: 5
+               value: 7.0754859447479246e-01
+            -
+               depth: 1
+               value: 1.2488488309523638e+00
+               splits:
+                  - { var:1, quality:5.3186550140380859e+01,
+                      le:1.5000000000000000e+00 }
+            -
+               depth: 2
+               value: 1.2701459738516039e+00
+            -
+               depth: 2
+               value: 1.0287783543268840e+00
+      -
+         nodes:
+            -
+               depth: 0
+               value: 8.3109984644688661e-01
+               splits:
+                  - { var:0, quality:7.5326431274414062e+01, le:19263. }
+            -
+               depth: 1
+               value: 3.1756531628660667e-01
+               splits:
+                  - { var:1, quality:4.9391541481018066e+00,
+                      le:5.0000000000000000e-01 }
+            -
+               depth: 2
+               value: 2.4323377758264542e-02
+               splits:
+                  - { var:0, quality:8.9532732963562012e-03, le:1087. }
+            -
+               depth: 3
+               value: 1.8739500083029270e-03
+            -
+               depth: 3
+               value: 4.2282919958233835e-02
+            -
+               depth: 2
+               value: 4.0553789784510930e-01
+               splits:
+                  - { var:0, quality:5.9990372657775879e+00, le:11071. }
+            -
+               depth: 3
+               value: 2.4075817798866944e-01
+            -
+               depth: 3
+               value: 6.2101906996506906e-01
+               splits:
+                  - { var:1, quality:5.0830230712890625e+00,
+                      le:1.5000000000000000e+00 }
+            -
+               depth: 4
+               value: 7.3060199618339539e-01
+            -
+               depth: 4
+               value: 5.7231554720136857e-01
+            -
+               depth: 1
+               value: 1.3195839117212993e+00
+               splits:
+                  - { var:0, quality:7.4929389953613281e+01, le:31295. }
+            -
+               depth: 2
+               value: 1.0724204257130623e+00
+               splits:
+                  - { var:0, quality:2.7895521163940430e+01, le:23359. }
+            -
+               depth: 3
+               value: 8.8089133302370703e-01
+               splits:
+                  - { var:1, quality:4.6576514244079590e+00,
+                      le:1.5000000000000000e+00 }
+            -
+               depth: 4
+               value: 8.9325399696826935e-01
+            -
+               depth: 4
+               value: 8.5616600513458252e-01
+               splits:
+                  - { var:0, quality:1.4660813808441162e+00, le:19775. }
+            -
+               depth: 5
+               value: 8.5164499282836914e-01
+            -
+               depth: 5
+               value: 8.6068701744079590e-01
+            -
+               depth: 3
+               value: 1.1362634566095140e+00
+               splits:
+                  - { var:1, quality:2.3240165710449219e+01,
+                      le:1.5000000000000000e+00 }
+            -
+               depth: 4
+               value: 1.1350342456032247e+00
+            -
+               depth: 4
+               value: 1.1571600437164307e+00
+            -
+               depth: 2
+               value: 1.6685205978505753e+00
+      -
+         nodes:
+            -
+               depth: 0
+               value: 8.0981556012993683e-01
+               splits:
+                  - { var:1, quality:6.1612384796142578e+01,
+                      le:5.0000000000000000e-01 }
+            -
+               depth: 1
+               value: 4.2117272646954425e-02
+            -
+               depth: 1
+               value: 9.5877194426842594e-01
+               splits:
+                  - { var:1, quality:7.2567131042480469e+01,
+                      le:1.5000000000000000e+00 }
+            -
+               depth: 2
+               value: 1.3017506202061970e+00
+            -
+               depth: 2
+               value: 4.8105164564081598e-01
+               splits:
+                  - { var:0, quality:8.5402069091796875e+00, le:16703. }
+            -
+               depth: 3
+               value: 3.2442394963332583e-01
+            -
+               depth: 3
+               value: 9.5093473366328651e-01
+               splits:
+                  - { var:0, quality:6.4530582427978516e+00, le:21823. }
+            -
+               depth: 4
+               value: 8.3608075976371765e-01
+               splits:
+                  - { var:0, quality:2.8033897876739502e+00, le:19263. }
+            -
+               depth: 5
+               value: 7.6226198673248291e-01
+            -
+               depth: 5
+               value: 8.6068701744079590e-01
+            -
+               depth: 4
+               value: 1.1040733655293782e+00
+      -
+         nodes:
+            -
+               depth: 0
+               value: 7.6896424241713246e-01
+               splits:
+                  - { var:0, quality:6.6170166015625000e+01, le:19263. }
+            -
+               depth: 1
+               value: 3.0705308389761266e-01
+               splits:
+                  - { var:0, quality:5.4577612876892090e+00, le:11583. }
+            -
+               depth: 2
+               value: 1.7351452113195723e-01
+               splits:
+                  - { var:0, quality:1.1973313093185425e+00, le:6207. }
+            -
+               depth: 3
+               value: 6.8789775390177971e-02
+               splits:
+                  - { var:1, quality:1.0312317311763763e-01, le:1. }
+            -
+               depth: 4
+               value: 4.0875329509038820e-02
+               splits:
+                  - { var:0, quality:3.9020601660013199e-02, le:3647. }
+            -
+               depth: 5
+               value: 2.7176662115380168e-02
+            -
+               depth: 5
+               value: 1.7786200344562531e-01
+            -
+               depth: 4
+               value: 1.4555450156331062e-01
+            -
+               depth: 3
+               value: 2.9435076621862560e-01
+               splits:
+                  - { var:0, quality:1.1493957042694092e+00, le:9023. }
+            -
+               depth: 4
+               value: 2.6106524467468262e-01
+            -
+               depth: 4
+               value: 3.4760760068893432e-01
+            -
+               depth: 2
+               value: 5.7413020942892345e-01
+               splits:
+                  - { var:1, quality:4.6338076591491699e+00,
+                      le:1.5000000000000000e+00 }
+            -
+               depth: 3
+               value: 7.0713400840759277e-01
+            -
+               depth: 3
+               value: 5.6389914796902585e-01
+            -
+               depth: 1
+               value: 1.2794976281492334e+00
+               splits:
+                  - { var:1, quality:6.2260082244873047e+01,
+                      le:1.5000000000000000e+00 }
+            -
+               depth: 2
+               value: 1.2880255596505270e+00
+               splits:
+                  - { var:0, quality:6.2001239776611328e+01, le:30015. }
+            -
+               depth: 3
+               value: 1.0221541243440964e+00
+            -
+               depth: 3
+               value: 1.5259105280825966e+00
+            -
+               depth: 2
+               value: 1.1259948611259460e+00
+               splits:
+                  - { var:0, quality:2.6765053272247314e+00, le:30271. }
+            -
+               depth: 3
+               value: 8.6068701744079590e-01
+            -
+               depth: 3
+               value: 1.3913027048110962e+00
+      -
+         nodes:
+            -
+               depth: 0
+               value: 8.4922061221732292e-01
+               splits:
+                  - { var:0, quality:6.9790618896484375e+01, le:19263. }
+            -
+               depth: 1
+               value: 3.7297424380813027e-01
+               splits:
+                  - { var:0, quality:6.1148934364318848e+00, le:11071. }
+            -
+               depth: 2
+               value: 1.7190365799857923e-01
+               splits:
+                  - { var:0, quality:7.6885294914245605e-01, le:4671. }
+            -
+               depth: 3
+               value: 2.8080837435222099e-02
+            -
+               depth: 3
+               value: 2.6342727108435199e-01
+            -
+               depth: 2
+               value: 6.3149356842041016e-01
+               splits:
+                  - { var:0, quality:5.7087106704711914e+00, le:15423. }
+            -
+               depth: 3
+               value: 5.0434939861297612e-01
+            -
+               depth: 3
+               value: 7.0212921831342912e-01
+               splits:
+                  - { var:1, quality:4.4376049041748047e+00,
+                      le:1.5000000000000000e+00 }
+            -
+               depth: 4
+               value: 6.9404200315475462e-01
+               splits:
+                  - { var:0, quality:2.4207980632781982e+00, le:17215. }
+            -
+               depth: 5
+               value: 5.9473800659179688e-01
+            -
+               depth: 5
+               value: 7.1886800229549408e-01
+            -
+               depth: 4
+               value: 7.1223823726177216e-01
+            -
+               depth: 1
+               value: 1.1667181911567848e+00
+               splits:
+                  - { var:1, quality:6.5640075683593750e+01,
+                      le:1.5000000000000000e+00 }
+            -
+               depth: 2
+               value: 1.1994370004025900e+00
+            -
+               depth: 2
+               value: 9.7507945128849571e-01
+      -
+         nodes:
+            -
+               depth: 0
+               value: 8.4859780332772061e-01
+               splits:
+                  - { var:1, quality:6.5328964233398438e+01,
+                      le:5.0000000000000000e-01 }
+            -
+               depth: 1
+               value: 7.0600710047239612e-02
+            -
+               depth: 1
+               value: 9.7262632544489880e-01
+               splits:
+                  - { var:0, quality:7.9706123352050781e+01, le:21823. }
+            -
+               depth: 2
+               value: 4.8085362371057272e-01
+               splits:
+                  - { var:0, quality:8.4888114929199219e+00, le:14143. }
+            -
+               depth: 3
+               value: 3.3790924996137617e-01
+               splits:
+                  - { var:0, quality:2.4962158203125000e+00, le:8511. }
+            -
+               depth: 4
+               value: 1.5934720039367675e-01
+            -
+               depth: 4
+               value: 3.9742993315060932e-01
+               splits:
+                  - { var:0, quality:2.4219110012054443e+00, le:11327. }
+            -
+               depth: 5
+               value: 3.4905511140823364e-01
+            -
+               depth: 5
+               value: 4.6999216576417285e-01
+            -
+               depth: 3
+               value: 7.1909424662590027e-01
+               splits:
+                  - { var:0, quality:6.2980885505676270e+00, le:18239. }
+            -
+               depth: 4
+               value: 6.3109333316485083e-01
+               splits:
+                  - { var:1, quality:2.3966114521026611e+00,
+                      le:1.5000000000000000e+00 }
+            -
+               depth: 5
+               value: 7.0713400840759277e-01
+            -
+               depth: 5
+               value: 6.1588519811630249e-01
+            -
+               depth: 4
+               value: 8.0709516008694970e-01
+               splits:
+                  - { var:0, quality:3.9219894409179688e+00, le:19263. }
+            -
+               depth: 5
+               value: 7.5953131914138794e-01
+            -
+               depth: 5
+               value: 8.5465900103251136e-01
+            -
+               depth: 2
+               value: 1.3979432566745862e+00
+               splits:
+                  - { var:1, quality:7.2468757629394531e+01,
+                      le:1.5000000000000000e+00 }
+            -
+               depth: 3
+               value: 1.4270249124496215e+00
+            -
+               depth: 3
+               value: 1.2476880351702373e+00
+      -
+         nodes:
+            -
+               depth: 0
+               value: 8.0124425411631817e-01
+               splits:
+                  - { var:0, quality:7.2852294921875000e+01, le:18239. }
+            -
+               depth: 1
+               value: 2.5632085706916097e-01
+               splits:
+                  - { var:0, quality:3.9663546085357666e+00, le:11327. }
+            -
+               depth: 2
+               value: 1.3879066408844665e-01
+               splits:
+                  - { var:1, quality:6.8410623073577881e-01, le:1. }
+            -
+               depth: 3
+               value: 4.2327561113052067e-02
+               splits:
+                  - { var:0, quality:2.1279890090227127e-02, le:2879. }
+            -
+               depth: 4
+               value: 2.7352768112905324e-02
+               splits:
+                  - { var:0, quality:5.3847981616854668e-03, le:831. }
+            -
+               depth: 5
+               value: 3.1309900805354118e-05
+            -
+               depth: 5
+               value: 3.2817059755325319e-02
+            -
+               depth: 4
+               value: 6.4789750613272190e-02
+            -
+               depth: 3
+               value: 1.9238127685255474e-01
+            -
+               depth: 2
+               value: 5.8540539741516118e-01
+               splits:
+                  - { var:1, quality:3.4270915985107422e+00,
+                      le:1.5000000000000000e+00 }
+            -
+               depth: 3
+               value: 5.9473800659179688e-01
+            -
+               depth: 3
+               value: 5.8436844083997941e-01
+            -
+               depth: 1
+               value: 1.2942701847780318e+00
+               splits:
+                  - { var:0, quality:7.3256942749023438e+01, le:31295. }
+            -
+               depth: 2
+               value: 1.0553893550582554e+00
+               splits:
+                  - { var:1, quality:2.5618570327758789e+01,
+                      le:1.5000000000000000e+00 }
+            -
+               depth: 3
+               value: 1.0540309362113476e+00
+            -
+               depth: 3
+               value: 1.0584943124226160e+00
+            -
+               depth: 2
+               value: 1.5834417154914455e+00
+               splits:
+                  - { var:1, quality:4.7677433013916016e+01,
+                      le:1.5000000000000000e+00 }
+            -
+               depth: 3
+               value: 1.5941161049736872e+00
+            -
+               depth: 3
+               value: 1.3913027048110962e+00
+      -
+         nodes:
+            -
+               depth: 0
+               value: 8.5893524890416306e-01
+               splits:
+                  - { var:0, quality:7.9254272460937500e+01, le:19007. }
+            -
+               depth: 1
+               value: 2.8870001191805517e-01
+               splits:
+                  - { var:1, quality:3.7422578334808350e+00,
+                      le:5.0000000000000000e-01 }
+            -
+               depth: 2
+               value: 2.7735382784157991e-02
+               splits:
+                  - { var:0, quality:7.7812722884118557e-03, le:1855. }
+            -
+               depth: 3
+               value: 2.0831241039559245e-02
+               splits:
+                  - { var:0, quality:3.0348983127623796e-03, le:1087. }
+            -
+               depth: 4
+               value: 1.8739500083029270e-03
+            -
+               depth: 4
+               value: 2.4622699245810509e-02
+            -
+               depth: 3
+               value: 4.1543666273355484e-02
+               splits:
+                  - { var:0, quality:5.3995484486222267e-03, le:2623. }
+            -
+               depth: 4
+               value: 3.5461999475955963e-02
+            -
+               depth: 4
+               value: 5.3706999868154526e-02
+            -
+               depth: 2
+               value: 3.7903392200286573e-01
+               splits:
+                  - { var:1, quality:3.8472902774810791e+00,
+                      le:1.5000000000000000e+00 }
+            -
+               depth: 3
+               value: 7.0713400840759277e-01
+            -
+               depth: 3
+               value: 3.6590991854667665e-01
+            -
+               depth: 1
+               value: 1.3024515443378024e+00
+               splits:
+                  - { var:0, quality:7.9795310974121094e+01, le:29759. }
+            -
+               depth: 2
+               value: 9.9251396059989927e-01
+               splits:
+                  - { var:0, quality:1.9870290756225586e+01, le:24383. }
+            -
+               depth: 3
+               value: 9.0069569945335393e-01
+               splits:
+                  - { var:0, quality:8.1342067718505859e+00, le:21823. }
+            -
+               depth: 4
+               value: 8.6267883578936255e-01
+               splits:
+                  - { var:0, quality:4.4654498100280762e+00, le:21311. }
+            -
+               depth: 5
+               value: 8.5901676118373871e-01
+            -
+               depth: 5
+               value: 8.7000298500061035e-01
+            -
+               depth: 4
+               value: 9.5772099494934082e-01
+            -
+               depth: 3
+               value: 1.0843322217464446e+00
+               splits:
+                  - { var:0, quality:1.1783735275268555e+01, le:28735. }
+            -
+               depth: 4
+               value: 1.0673446853955586e+00
+               splits:
+                  - { var:0, quality:1.0255431175231934e+01, le:26943. }
+            -
+               depth: 5
+               value: 1.0819780111312867e+00
+            -
+               depth: 5
+               value: 1.0490530282258987e+00
+            -
+               depth: 4
+               value: 1.2372200489044189e+00
+            -
+               depth: 2
+               value: 1.5504016113281249e+00
+               splits:
+                  - { var:0, quality:6.0390510559082031e+01, le:34623. }
+            -
+               depth: 3
+               value: 1.4169370055198669e+00
+               splits:
+                  - { var:0, quality:2.0117891311645508e+01, le:33087. }
+            -
+               depth: 4
+               value: 1.3530719995498657e+00
+               splits:
+                  - { var:0, quality:9.1615791320800781e+00, le:31039. }
+            -
+               depth: 5
+               value: 1.3054500222206116e+00
+            -
+               depth: 5
+               value: 1.3848199844360352e+00
+            -
+               depth: 4
+               value: 1.4808020114898681e+00
+            -
+               depth: 3
+               value: 1.6393780152002970e+00
+      -
+         nodes:
+            -
+               depth: 0
+               value: 7.8865997799730392e-01
+               splits:
+                  - { var:1, quality:5.6277328491210938e+01,
+                      le:1.5000000000000000e+00 }
+            -
+               depth: 1
+               value: 1.0278477708244340e+00
+               splits:
+                  - { var:1, quality:5.8723587036132812e+01,
+                      le:5.0000000000000000e-01 }
+            -
+               depth: 2
+               value: 5.7943620631704107e-02
+               splits:
+                  - { var:0, quality:4.3294470757246017e-02, le:3903. }
+            -
+               depth: 3
+               value: 4.0812423086858222e-02
+               splits:
+                  - { var:0, quality:1.7025424167513847e-02, le:2367. }
+            -
+               depth: 4
+               value: 8.8426530516395960e-03
+            -
+               depth: 4
+               value: 6.4789750613272190e-02
+               splits:
+                  - { var:0, quality:1.6954617574810982e-02, le:3391. }
+            -
+               depth: 5
+               value: 5.3706999868154526e-02
+            -
+               depth: 5
+               value: 6.8484000861644745e-02
+            -
+               depth: 3
+               value: 1.7786200344562531e-01
+            -
+               depth: 2
+               value: 1.2268024682998657e+00
+            -
+               depth: 1
+               value: 4.4799857609199756e-01
+               splits:
+                  - { var:0, quality:7.9710078239440918e+00, le:13375. }
+            -
+               depth: 2
+               value: 2.9522804703031269e-01
+               splits:
+                  - { var:0, quality:2.0359933376312256e+00, le:7999. }
+            -
+               depth: 3
+               value: 1.6908225044608116e-01
+            -
+               depth: 3
+               value: 3.7285622954368591e-01
+            -
+               depth: 2
+               value: 7.1534700194994605e-01
+      -
+         nodes:
+            -
+               depth: 0
+               value: 9.3725927672057874e-01
+               splits:
+                  - { var:0, quality:8.9616744995117188e+01, le:22335. }
+            -
+               depth: 1
+               value: 4.5771631770540122e-01
+               splits:
+                  - { var:1, quality:1.0443037033081055e+01,
+                      le:5.0000000000000000e-01 }
+            -
+               depth: 2
+               value: 5.6810679923122130e-02
+               splits:
+                  - { var:0, quality:6.6727310419082642e-02, le:3391. }
+            -
+               depth: 3
+               value: 2.2224587488121221e-02
+               splits:
+                  - { var:0, quality:5.7650320231914520e-03, le:831. }
+            -
+               depth: 4
+               value: 1.2597366391370695e-03
+            -
+               depth: 4
+               value: 3.7948225624859333e-02
+            -
+               depth: 3
+               value: 1.7786200344562531e-01
+            -
+               depth: 2
+               value: 5.7047102833166718e-01
+               splits:
+                  - { var:1, quality:1.0819099426269531e+01,
+                      le:1.5000000000000000e+00 }
+            -
+               depth: 3
+               value: 8.3193259239196782e-01
+            -
+               depth: 3
+               value: 5.2205222017235231e-01
+            -
+               depth: 1
+               value: 1.4413941823519194e+00
+               splits:
+                  - { var:0, quality:8.2843109130859375e+01, le:33087. }
+            -
+               depth: 2
+               value: 1.2199989494524504e+00
+               splits:
+                  - { var:0, quality:2.8772256851196289e+01, le:30015. }
+            -
+               depth: 3
+               value: 1.0502544509039984e+00
+               splits:
+                  - { var:1, quality:9.9401674270629883e+00,
+                      le:1.5000000000000000e+00 }
+            -
+               depth: 4
+               value: 1.0368912518024445e+00
+               splits:
+                  - { var:0, quality:8.6161384582519531e+00, le:24383. }
+            -
+               depth: 5
+               value: 9.8100666205088294e-01
+            -
+               depth: 5
+               value: 1.0704220056533813e+00
+            -
+               depth: 4
+               value: 1.1571600437164307e+00
+            -
+               depth: 3
+               value: 1.3727689981460571e+00
+            -
+               depth: 2
+               value: 1.6517196536064147e+00
+               splits:
+                  - { var:0, quality:5.4828296661376953e+01, le:35903. }
+            -
+               depth: 3
+               value: 1.5245244503021240e+00
+            -
+               depth: 3
+               value: 1.7557884563099255e+00
+               splits:
+                  - { var:0, quality:3.4056858062744141e+01, le:40255. }
+            -
+               depth: 4
+               value: 1.7922370314598084e+00
+            -
+               depth: 4
+               value: 1.3913027048110962e+00
+      -
+         nodes:
+            -
+               depth: 0
+               value: 7.3451524428091941e-01
+               splits:
+                  - { var:0, quality:5.8771354675292969e+01, le:18239. }
+            -
+               depth: 1
+               value: 2.9278084440156815e-01
+               splits:
+                  - { var:0, quality:4.7203683853149414e+00, le:7487. }
+            -
+               depth: 2
+               value: 7.2706111473962665e-02
+               splits:
+                  - { var:0, quality:1.3501237332820892e-01, le:4159. }
+            -
+               depth: 3
+               value: 3.4854161129756409e-02
+               splits:
+                  - { var:0, quality:1.8918253481388092e-02, le:2111. }
+            -
+               depth: 4
+               value: 1.0236393660306931e-02
+               splits:
+                  - { var:0, quality:1.2138047022745013e-03, le:1087. }
+            -
+               depth: 5
+               value: 6.4552326997121179e-04
+            -
+               depth: 5
+               value: 2.4622699245810509e-02
+            -
+               depth: 4
+               value: 5.5368967354297638e-02
+               splits:
+                  - { var:0, quality:1.8910348415374756e-02, le:3391. }
+            -
+               depth: 5
+               value: 4.8811450600624084e-02
+            -
+               depth: 5
+               value: 6.8484000861644745e-02
+            -
+               depth: 3
+               value: 1.5598040223121643e-01
+               splits:
+                  - { var:0, quality:1.2409585714340210e-01, le:6207. }
+            -
+               depth: 4
+               value: 1.4492050185799599e-01
+               splits:
+                  - { var:0, quality:8.4171332418918610e-02, le:4927. }
+            -
+               depth: 5
+               value: 1.3384599983692169e-01
+            -
+               depth: 5
+               value: 1.4861200253168741e-01
+            -
+               depth: 4
+               value: 2.0022000372409821e-01
+            -
+               depth: 2
+               value: 4.3949733301997185e-01
+               splits:
+                  - { var:1, quality:4.7105336189270020e+00,
+                      le:1.5000000000000000e+00 }
+            -
+               depth: 3
+               value: 7.0713400840759277e-01
+            -
+               depth: 3
+               value: 4.2786095582920575e-01
+            -
+               depth: 1
+               value: 1.1762496441602708e+00
+               splits:
+                  - { var:1, quality:5.5510871887207031e+01,
+                      le:1.5000000000000000e+00 }
+            -
+               depth: 2
+               value: 1.2007694005966187e+00
+            -
+               depth: 2
+               value: 1.0046113491058350e+00
+      -
+         nodes:
+            -
+               depth: 0
+               value: 7.9852079642587337e-01
+               splits:
+                  - { var:1, quality:5.7038425445556641e+01,
+                      le:1.5000000000000000e+00 }
+            -
+               depth: 1
+               value: 1.0345074298852326e+00
+               splits:
+                  - { var:1, quality:5.7176944732666016e+01,
+                      le:5.0000000000000000e-01 }
+            -
+               depth: 2
+               value: 5.3393822229866474e-02
+            -
+               depth: 2
+               value: 1.2106047440797856e+00
+            -
+               depth: 1
+               value: 4.7924476292203455e-01
+      -
+         nodes:
+            -
+               depth: 0
+               value: 8.9438198165444194e-01
+               splits:
+                  - { var:1, quality:7.0483589172363281e+01,
+                      le:5.0000000000000000e-01 }
+            -
+               depth: 1
+               value: 3.9904735371237621e-02
+            -
+               depth: 1
+               value: 9.8932389790813124e-01
+               splits:
+                  - { var:1, quality:7.8117980957031250e+01,
+                      le:1.5000000000000000e+00 }
+            -
+               depth: 2
+               value: 1.2197692965467770e+00
+               splits:
+                  - { var:0, quality:7.6337425231933594e+01, le:30015. }
+            -
+               depth: 3
+               value: 9.3738244197986742e-01
+               splits:
+                  - { var:0, quality:2.4178321838378906e+01, le:21823. }
+            -
+               depth: 4
+               value: 7.6834729909896848e-01
+            -
+               depth: 4
+               value: 1.0368148789686316e+00
+            -
+               depth: 3
+               value: 1.5828381095613753e+00
+               splits:
+                  - { var:0, quality:5.3183921813964844e+01, le:36159. }
+            -
+               depth: 4
+               value: 1.4400325119495392e+00
+            -
+               depth: 4
+               value: 1.7732455730438232e+00
+               splits:
+                  - { var:0, quality:2.8330970764160156e+01, le:39231. }
+            -
+               depth: 5
+               value: 1.7416871615818568e+00
+            -
+               depth: 5
+               value: 1.8837000131607056e+00
+            -
+               depth: 2
+               value: 5.2843310063083970e-01
+               splits:
+                  - { var:0, quality:8.4633893966674805e+00, le:14911. }
+            -
+               depth: 3
+               value: 3.3686106465756893e-01
+            -
+               depth: 3
+               value: 9.1157717257738113e-01
+      -
+         nodes:
+            -
+               depth: 0
+               value: 7.4700980053457899e-01
+               splits:
+                  - { var:0, quality:6.1849014282226562e+01, le:17983. }
+            -
+               depth: 1
+               value: 2.8323290082043967e-01
+               splits:
+                  - { var:0, quality:4.3567047119140625e+00, le:9023. }
+            -
+               depth: 2
+               value: 1.3759417693211656e-01
+               splits:
+                  - { var:0, quality:6.2295573949813843e-01, le:4159. }
+            -
+               depth: 3
+               value: 2.4978678854596283e-02
+               splits:
+                  - { var:0, quality:8.1470562145113945e-03, le:831. }
+            -
+               depth: 4
+               value: 1.2597366391370695e-03
+               splits:
+                  - { var:0, quality:7.0243577283690684e-06, le:319. }
+            -
+               depth: 5
+               value: 3.1309900805354118e-05
+            -
+               depth: 5
+               value: 1.8739500083029270e-03
+            -
+               depth: 4
+               value: 3.6838149962325893e-02
+            -
+               depth: 3
+               value: 2.0998985426766531e-01
+            -
+               depth: 2
+               value: 4.8027352725758271e-01
+               splits:
+                  - { var:1, quality:3.9351861476898193e+00,
+                      le:1.5000000000000000e+00 }
+            -
+               depth: 3
+               value: 5.9473800659179688e-01
+            -
+               depth: 3
+               value: 4.7311949729919434e-01
+               splits:
+                  - { var:0, quality:3.6329736709594727e+00, le:10815. }
+            -
+               depth: 4
+               value: 3.5501733422279358e-01
+            -
+               depth: 4
+               value: 5.0037384262451756e-01
+               splits:
+                  - { var:0, quality:3.2933208942413330e+00, le:14655. }
+            -
+               depth: 5
+               value: 4.8467249423265457e-01
+            -
+               depth: 5
+               value: 6.8879002332687378e-01
+            -
+               depth: 1
+               value: 1.2107867002487183e+00
+               splits:
+                  - { var:1, quality:5.8895961761474609e+01,
+                      le:1.5000000000000000e+00 }
+            -
+               depth: 2
+               value: 1.2335569181957760e+00
+               splits:
+                  - { var:0, quality:5.8532867431640625e+01, le:30015. }
+            -
+               depth: 3
+               value: 1.0419624370077383e+00
+            -
+               depth: 3
+               value: 1.5483192801475525e+00
+            -
+               depth: 2
+               value: 9.2995401223500573e-01
+               splits:
+                  - { var:0, quality:2.6271114349365234e+00, le:23103. }
+            -
+               depth: 3
+               value: 8.5616600513458252e-01
+            -
+               depth: 3
+               value: 1.0775300264358521e+00
+      -
+         nodes:
+            -
+               depth: 0
+               value: 8.2153176537249240e-01
+               splits:
+                  - { var:0, quality:7.4442283630371094e+01, le:21823. }
+            -
+               depth: 1
+               value: 3.8686850444292242e-01
+               splits:
+                  - { var:1, quality:8.6161193847656250e+00,
+                      le:5.0000000000000000e-01 }
+            -
+               depth: 2
+               value: 6.0301767196506262e-02
+               splits:
+                  - { var:0, quality:7.6804623007774353e-02, le:3903. }
+            -
+               depth: 3
+               value: 3.6789719946682453e-02
+            -
+               depth: 3
+               value: 1.7786200344562531e-01
+            -
+               depth: 2
+               value: 5.0212735288283405e-01
+               splits:
+                  - { var:0, quality:9.8371982574462891e+00, le:14143. }
+            -
+               depth: 3
+               value: 3.2029105557335746e-01
+            -
+               depth: 3
+               value: 7.0669318735599518e-01
+               splits:
+                  - { var:1, quality:8.0121631622314453e+00,
+                      le:1.5000000000000000e+00 }
+            -
+               depth: 4
+               value: 6.5934816996256507e-01
+               splits:
+                  - { var:0, quality:2.6616907119750977e+00, le:19775. }
+            -
+               depth: 5
+               value: 6.1721720695495608e-01
+            -
+               depth: 5
+               value: 8.7000298500061035e-01
+            -
+               depth: 4
+               value: 7.3510019779205327e-01
+               splits:
+                  - { var:0, quality:5.4686942100524902e+00, le:17983. }
+            -
+               depth: 5
+               value: 6.6928682724634803e-01
+            -
+               depth: 5
+               value: 8.3382025361061096e-01
+            -
+               depth: 1
+               value: 1.4096055889830870e+00
+               splits:
+                  - { var:1, quality:6.7982963562011719e+01,
+                      le:1.5000000000000000e+00 }
+            -
+               depth: 2
+               value: 1.4665583129282351e+00
+               splits:
+                  - { var:0, quality:5.9506690979003906e+01, le:29503. }
+            -
+               depth: 3
+               value: 1.0352190037568409e+00
+               splits:
+                  - { var:0, quality:6.4710326194763184e+00, le:26175. }
+            -
+               depth: 4
+               value: 9.7679351270198822e-01
+            -
+               depth: 4
+               value: 1.1520699858665466e+00
+               splits:
+                  - { var:0, quality:2.6577818393707275e+00, le:27711. }
+            -
+               depth: 5
+               value: 1.1117500066757202e+00
+            -
+               depth: 5
+               value: 1.1923899650573730e+00
+            -
+               depth: 3
+               value: 1.5897981155486334e+00
+            -
+               depth: 2
+               value: 1.1899307966232300e+00
+      -
+         nodes:
+            -
+               depth: 0
+               value: 8.4593273073260211e-01
+               splits:
+                  - { var:0, quality:7.4705001831054688e+01, le:19263. }
+            -
+               depth: 1
+               value: 3.2950116792926565e-01
+               splits:
+                  - { var:0, quality:5.4134602546691895e+00, le:11327. }
+            -
+               depth: 2
+               value: 1.6640050193845210e-01
+               splits:
+                  - { var:0, quality:8.2344168424606323e-01, le:3903. }
+            -
+               depth: 3
+               value: 2.1930723085201213e-02
+            -
+               depth: 3
+               value: 2.3381973206996917e-01
+               splits:
+                  - { var:0, quality:8.8383460044860840e-01, le:7999. }
+            -
+               depth: 4
+               value: 1.8058666752444374e-01
+               splits:
+                  - { var:1, quality:2.9351225495338440e-01, le:1. }
+            -
+               depth: 5
+               value: 1.7786200344562531e-01
+            -
+               depth: 5
+               value: 1.8092725053429604e-01
+            -
+               depth: 4
+               value: 3.1366932888825733e-01
+            -
+               depth: 2
+               value: 5.8580221448625835e-01
+               splits:
+                  - { var:0, quality:4.9623365402221680e+00, le:15167. }
+            -
+               depth: 3
+               value: 4.9378987401723862e-01
+            -
+               depth: 3
+               value: 7.0848533511161804e-01
+               splits:
+                  - { var:0, quality:3.0273430347442627e+00, le:17471. }
+            -
+               depth: 4
+               value: 6.5743935108184814e-01
+               splits:
+                  - { var:0, quality:1.3025766611099243e+00, le:15935. }
+            -
+               depth: 5
+               value: 6.8879002332687378e-01
+            -
+               depth: 5
+               value: 5.9473800659179688e-01
+            -
+               depth: 4
+               value: 7.5953131914138794e-01
+               splits:
+                  - { var:0, quality:1.7307082414627075e+00, le:18751. }
+            -
+               depth: 5
+               value: 7.6226198673248291e-01
+            -
+               depth: 5
+               value: 7.5406998395919800e-01
+            -
+               depth: 1
+               value: 1.2684676457535138e+00
+               splits:
+                  - { var:1, quality:7.1319259643554688e+01,
+                      le:1.5000000000000000e+00 }
+            -
+               depth: 2
+               value: 1.3117817703046297e+00
+               splits:
+                  - { var:0, quality:6.8073455810546875e+01, le:31807. }
+            -
+               depth: 3
+               value: 1.0851298679005017e+00
+            -
+               depth: 3
+               value: 1.6234281361103058e+00
+            -
+               depth: 2
+               value: 9.9414485692977905e-01
+      -
+         nodes:
+            -
+               depth: 0
+               value: 8.1540634395205414e-01
+               splits:
+                  - { var:0, quality:7.1829063415527344e+01, le:19263. }
+            -
+               depth: 1
+               value: 3.2050911863692677e-01
+               splits:
+                  - { var:0, quality:6.0546569824218750e+00, le:11071. }
+            -
+               depth: 2
+               value: 1.4900970654562115e-01
+               splits:
+                  - { var:1, quality:7.7683967351913452e-01, le:1. }
+            -
+               depth: 3
+               value: 2.3437627953373723e-02
+            -
+               depth: 3
+               value: 2.1964400075376034e-01
+               splits:
+                  - { var:0, quality:8.3664810657501221e-01, le:7999. }
+            -
+               depth: 4
+               value: 1.8291516850392023e-01
+            -
+               depth: 4
+               value: 3.2983049750328064e-01
+            -
+               depth: 2
+               value: 6.2675806879997253e-01
+               splits:
+                  - { var:1, quality:5.5760211944580078e+00,
+                      le:1.5000000000000000e+00 }
+            -
+               depth: 3
+               value: 7.2590839862823486e-01
+               splits:
+                  - { var:0, quality:2.6373586654663086e+00, le:18495. }
+            -
+               depth: 4
+               value: 7.0713400840759277e-01
+            -
+               depth: 4
+               value: 7.5406998395919800e-01
+            -
+               depth: 3
+               value: 5.7167455222871566e-01
+               splits:
+                  - { var:0, quality:3.0443351268768311e+00, le:14655. }
+            -
+               depth: 4
+               value: 4.7597639560699462e-01
+            -
+               depth: 4
+               value: 6.9129724800586700e-01
+               splits:
+                  - { var:0, quality:1.9120559692382812e+00, le:17215. }
+            -
+               depth: 5
+               value: 6.8491733074188232e-01
+            -
+               depth: 5
+               value: 7.1043699979782104e-01
+            -
+               depth: 1
+               value: 1.2861622412030289e+00
+               splits:
+                  - { var:1, quality:6.8084762573242188e+01,
+                      le:1.5000000000000000e+00 }
+            -
+               depth: 2
+               value: 1.3124467343897432e+00
+            -
+               depth: 2
+               value: 1.0430306792259216e+00
+               splits:
+                  - { var:0, quality:4.5133767127990723e+00, le:33343. }
+            -
+               depth: 3
+               value: 9.2694000403086341e-01
+               splits:
+                  - { var:0, quality:2.6116693019866943e+00, le:22847. }
+            -
+               depth: 4
+               value: 8.5164499282836914e-01
+            -
+               depth: 4
+               value: 1.0775300264358521e+00
+            -
+               depth: 3
+               value: 1.3913027048110962e+00
+      -
+         nodes:
+            -
+               depth: 0
+               value: 8.4858636374701746e-01
+               splits:
+                  - { var:1, quality:6.3037277221679688e+01,
+                      le:1.5000000000000000e+00 }
+            -
+               depth: 1
+               value: 1.0397508090379863e+00
+               splits:
+                  - { var:1, quality:6.2440700531005859e+01,
+                      le:5.0000000000000000e-01 }
+            -
+               depth: 2
+               value: 8.1780476262792945e-02
+            -
+               depth: 2
+               value: 1.1647034611390985e+00
+               splits:
+                  - { var:0, quality:6.6353340148925781e+01, le:31039. }
+            -
+               depth: 3
+               value: 9.5062596996625259e-01
+            -
+               depth: 3
+               value: 1.5660987570881844e+00
+               splits:
+                  - { var:0, quality:3.9535713195800781e+01, le:36159. }
+            -
+               depth: 4
+               value: 1.4612650036811830e+00
+            -
+               depth: 4
+               value: 1.7408216794331868e+00
+            -
+               depth: 1
+               value: 4.9356667963521822e-01
+      -
+         nodes:
+            -
+               depth: 0
+               value: 8.7070937521057201e-01
+               splits:
+                  - { var:1, quality:6.8707557678222656e+01,
+                      le:5.0000000000000000e-01 }
+            -
+               depth: 1
+               value: 3.1085930112749339e-02
+            -
+               depth: 1
+               value: 9.9065558165311818e-01
+               splits:
+                  - { var:0, quality:7.8138259887695312e+01, le:21823. }
+            -
+               depth: 2
+               value: 5.2721110814147520e-01
+               splits:
+                  - { var:1, quality:8.1117067337036133e+00,
+                      le:1.5000000000000000e+00 }
+            -
+               depth: 3
+               value: 8.0772332350413001e-01
+               splits:
+                  - { var:0, quality:3.9433157444000244e+00, le:19775. }
+            -
+               depth: 4
+               value: 7.3842465877532959e-01
+               splits:
+                  - { var:0, quality:1.6372815370559692e+00, le:18495. }
+            -
+               depth: 5
+               value: 7.0713400840759277e-01
+            -
+               depth: 5
+               value: 7.5406998395919800e-01
+            -
+               depth: 4
+               value: 8.7702198823293054e-01
+            -
+               depth: 3
+               value: 4.4706476089500247e-01
+               splits:
+                  - { var:0, quality:4.7560005187988281e+00, le:13375. }
+            -
+               depth: 4
+               value: 3.1910007848189426e-01
+               splits:
+                  - { var:0, quality:1.3991409540176392e+00, le:9279. }
+            -
+               depth: 5
+               value: 2.3683066417773566e-01
+            -
+               depth: 5
+               value: 3.8961671931403025e-01
+            -
+               depth: 4
+               value: 6.5500736981630325e-01
+               splits:
+                  - { var:0, quality:3.5128717422485352e+00, le:15423. }
+            -
+               depth: 5
+               value: 5.5463649332523346e-01
+            -
+               depth: 5
+               value: 7.5537824630737305e-01
+            -
+               depth: 2
+               value: 1.2816555999046149e+00
+               splits:
+                  - { var:0, quality:7.3376594543457031e+01, le:31039. }
+            -
+               depth: 3
+               value: 1.0673431301116942e+00
+               splits:
+                  - { var:0, quality:2.8580640792846680e+01, le:23359. }
+            -
+               depth: 4
+               value: 9.4078480005264287e-01
+            -
+               depth: 4
+               value: 1.0989827126264573e+00
+               splits:
+                  - { var:1, quality:2.4156009674072266e+01,
+                      le:1.5000000000000000e+00 }
+            -
+               depth: 5
+               value: 1.0969424545764923e+00
+            -
+               depth: 5
+               value: 1.1173450350761414e+00
+            -
+               depth: 3
+               value: 1.5793118079503377e+00
+               splits:
+                  - { var:1, quality:4.4933490753173828e+01,
+                      le:1.5000000000000000e+00 }
+            -
+               depth: 4
+               value: 1.5903711669585283e+00
+               splits:
+                  - { var:0, quality:4.3302040100097656e+01, le:36159. }
+            -
+               depth: 5
+               value: 1.4642377694447835e+00
+            -
+               depth: 5
+               value: 1.7322712391614914e+00
+            -
+               depth: 4
+               value: 1.3913027048110962e+00
+      -
+         nodes:
+            -
+               depth: 0
+               value: 9.7494961773045363e-01
+               splits:
+                  - { var:1, quality:8.6144561767578125e+01,
+                      le:1.5000000000000000e+00 }
+            -
+               depth: 1
+               value: 1.2357121102082043e+00
+               splits:
+                  - { var:1, quality:8.8690704345703125e+01,
+                      le:5.0000000000000000e-01 }
+            -
+               depth: 2
+               value: 6.5535717333356544e-02
+            -
+               depth: 2
+               value: 1.3883438136266626e+00
+            -
+               depth: 1
+               value: 4.9067641741463114e-01
+      -
+         nodes:
+            -
+               depth: 0
+               value: 8.5553674183320250e-01
+               splits:
+                  - { var:1, quality:6.3740211486816406e+01,
+                      le:5.0000000000000000e-01 }
+            -
+               depth: 1
+               value: 3.3423013719064851e-02
+               splits:
+                  - { var:0, quality:8.2996981218457222e-03, le:2623. }
+            -
+               depth: 2
+               value: 3.0042349360883236e-02
+            -
+               depth: 2
+               value: 5.3706999868154526e-02
+            -
+               depth: 1
+               value: 9.3436956507702396e-01
+               splits:
+                  - { var:1, quality:7.1908546447753906e+01,
+                      le:1.5000000000000000e+00 }
+            -
+               depth: 2
+               value: 1.2139066942902499e+00
+            -
+               depth: 2
+               value: 5.3369967987140021e-01
+      -
+         nodes:
+            -
+               depth: 0
+               value: 7.7439658195944505e-01
+               splits:
+                  - { var:1, quality:5.8142959594726562e+01,
+                      le:5.0000000000000000e-01 }
+            -
+               depth: 1
+               value: 3.2269003055989745e-02
+            -
+               depth: 1
+               value: 9.4565679247562706e-01
+               splits:
+                  - { var:1, quality:6.7085479736328125e+01,
+                      le:1.5000000000000000e+00 }
+            -
+               depth: 2
+               value: 1.3344429673687104e+00
+            -
+               depth: 2
+               value: 5.9117528007310982e-01
+      -
+         nodes:
+            -
+               depth: 0
+               value: 8.8899788690905557e-01
+               splits:
+                  - { var:1, quality:6.8664985656738281e+01,
+                      le:5.0000000000000000e-01 }
+            -
+               depth: 1
+               value: 4.6922130476949472e-02
+            -
+               depth: 1
+               value: 9.6974487725186020e-01
+               splits:
+                  - { var:1, quality:7.3466156005859375e+01,
+                      le:1.5000000000000000e+00 }
+            -
+               depth: 2
+               value: 1.2030556768178939e+00
+               splits:
+                  - { var:0, quality:6.1724193572998047e+01, le:28735. }
+            -
+               depth: 3
+               value: 9.0870605196271625e-01
+               splits:
+                  - { var:0, quality:1.7862932205200195e+01, le:19775. }
+            -
+               depth: 4
+               value: 6.2660440206527712e-01
+            -
+               depth: 4
+               value: 9.9686281755566597e-01
+               splits:
+                  - { var:0, quality:1.6041736602783203e+01, le:22335. }
+            -
+               depth: 5
+               value: 9.0266560763120651e-01
+            -
+               depth: 5
+               value: 1.0910600274801254e+00
+            -
+               depth: 3
+               value: 1.5283894727104588e+00
+               splits:
+                  - { var:0, quality:4.4881477355957031e+01, le:34623. }
+            -
+               depth: 4
+               value: 1.4047433336575825e+00
+            -
+               depth: 4
+               value: 1.7403542825153895e+00
+               splits:
+                  - { var:0, quality:2.1284317016601562e+01, le:38975. }
+            -
+               depth: 5
+               value: 1.6463449895381927e+00
+            -
+               depth: 5
+               value: 1.8657000064849854e+00
+            -
+               depth: 2
+               value: 6.8694390808091021e-01
+      -
+         nodes:
+            -
+               depth: 0
+               value: 8.3651885876024612e-01
+               splits:
+                  - { var:1, quality:6.2320537567138672e+01,
+                      le:1.5000000000000000e+00 }
+            -
+               depth: 1
+               value: 1.0847795966857423e+00
+               splits:
+                  - { var:0, quality:5.9705150604248047e+01, le:17727. }
+            -
+               depth: 2
+               value: 1.8229838158003986e-01
+               splits:
+                  - { var:0, quality:7.0892691612243652e-01, le:9279. }
+            -
+               depth: 3
+               value: 1.7322531575337051e-02
+            -
+               depth: 3
+               value: 5.9473800659179688e-01
+            -
+               depth: 2
+               value: 1.2510261363104771e+00
+               splits:
+                  - { var:0, quality:6.2361606597900391e+01, le:30527. }
+            -
+               depth: 3
+               value: 1.0029396698588418e+00
+               splits:
+                  - { var:0, quality:2.1363250732421875e+01, le:22079. }
+            -
+               depth: 4
+               value: 8.5187870264053345e-01
+               splits:
+                  - { var:0, quality:5.0910420417785645e+00, le:19775. }
+            -
+               depth: 5
+               value: 7.5406998395919800e-01
+            -
+               depth: 5
+               value: 8.6818015575408936e-01
+            -
+               depth: 4
+               value: 1.0784701534679957e+00
+            -
+               depth: 3
+               value: 1.5574858889860266e+00
+            -
+               depth: 1
+               value: 5.1732648142746518e-01
+      -
+         nodes:
+            -
+               depth: 0
+               value: 8.3876691576151641e-01
+               splits:
+                  - { var:0, quality:7.1596954345703125e+01, le:19263. }
+            -
+               depth: 1
+               value: 3.7878573340927496e-01
+               splits:
+                  - { var:1, quality:6.5153746604919434e+00,
+                      le:5.0000000000000000e-01 }
+            -
+               depth: 2
+               value: 5.4872608190635219e-02
+            -
+               depth: 2
+               value: 4.6516256680091222e-01
+               splits:
+                  - { var:1, quality:6.7695112228393555e+00,
+                      le:1.5000000000000000e+00 }
+            -
+               depth: 3
+               value: 7.5406998395919800e-01
+            -
+               depth: 3
+               value: 4.3306174267221381e-01
+               splits:
+                  - { var:0, quality:5.7050595283508301e+00, le:10815. }
+            -
+               depth: 4
+               value: 2.4717409366911108e-01
+            -
+               depth: 4
+               value: 5.6085950136184692e-01
+            -
+               depth: 1
+               value: 1.2549403664611636e+00
+               splits:
+                  - { var:1, quality:6.6478706359863281e+01,
+                      le:1.5000000000000000e+00 }
+            -
+               depth: 2
+               value: 1.2748790845274924e+00
+            -
+               depth: 2
+               value: 8.5616600513458252e-01
+      -
+         nodes:
+            -
+               depth: 0
+               value: 7.7088038898946254e-01
+               splits:
+                  - { var:0, quality:6.4625007629394531e+01, le:19775. }
+            -
+               depth: 1
+               value: 3.4221092864416192e-01
+               splits:
+                  - { var:1, quality:7.2273492813110352e+00,
+                      le:5.0000000000000000e-01 }
+            -
+               depth: 2
+               value: 3.3758005298053222e-02
+               splits:
+                  - { var:0, quality:2.4567430838942528e-02, le:2623. }
+            -
+               depth: 3
+               value: 1.5533008586822284e-02
+            -
+               depth: 3
+               value: 6.1095500364899635e-02
+            -
+               depth: 2
+               value: 5.0745356615100590e-01
+               splits:
+                  - { var:1, quality:7.3165469169616699e+00,
+                      le:1.5000000000000000e+00 }
+            -
+               depth: 3
+               value: 6.8531399965286255e-01
+               splits:
+                  - { var:0, quality:1.4212718009948730e+00, le:17215. }
+            -
+               depth: 4
+               value: 5.9473800659179688e-01
+            -
+               depth: 4
+               value: 7.3060199618339539e-01
+               splits:
+                  - { var:0, quality:1.0686600208282471e+00, le:18495. }
+            -
+               depth: 5
+               value: 7.0713400840759277e-01
+            -
+               depth: 5
+               value: 7.5406998395919800e-01
+            -
+               depth: 3
+               value: 4.8611031413078309e-01
+               splits:
+                  - { var:0, quality:6.5474710464477539e+00, le:14143. }
+            -
+               depth: 4
+               value: 3.6612062342464924e-01
+            -
+               depth: 4
+               value: 6.9942531983057654e-01
+            -
+               depth: 1
+               value: 1.2690638158772443e+00
+               splits:
+                  - { var:0, quality:6.2253730773925781e+01, le:31039. }
+            -
+               depth: 2
+               value: 1.0474832301790065e+00
+               splits:
+                  - { var:1, quality:2.4149602890014648e+01,
+                      le:1.5000000000000000e+00 }
+            -
+               depth: 3
+               value: 1.0404970496892929e+00
+            -
+               depth: 3
+               value: 1.1173450350761414e+00
+               splits:
+                  - { var:0, quality:2.5000903606414795e+00, le:24895. }
+            -
+               depth: 4
+               value: 1.1571600437164307e+00
+            -
+               depth: 4
+               value: 1.0775300264358521e+00
+            -
+               depth: 2
+               value: 1.5940486749013265e+00
+      -
+         nodes:
+            -
+               depth: 0
+               value: 7.9209510385117032e-01
+               splits:
+                  - { var:0, quality:6.6963867187500000e+01, le:19263. }
+            -
+               depth: 1
+               value: 3.8830256857909262e-01
+               splits:
+                  - { var:0, quality:9.3052082061767578e+00, le:10047. }
+            -
+               depth: 2
+               value: 1.2371912744129077e-01
+               splits:
+                  - { var:0, quality:4.7279161214828491e-01, le:3903. }
+            -
+               depth: 3
+               value: 2.2798506672390632e-02
+            -
+               depth: 3
+               value: 2.0629054443402725e-01
+            -
+               depth: 2
+               value: 5.9996932148933413e-01
+               splits:
+                  - { var:0, quality:9.1768493652343750e+00, le:13887. }
+            -
+               depth: 3
+               value: 4.6474771414484295e-01
+            -
+               depth: 3
+               value: 6.5255550212330293e-01
+               splits:
+                  - { var:1, quality:7.6735615730285645e+00,
+                      le:1.5000000000000000e+00 }
+            -
+               depth: 4
+               value: 6.1721720695495608e-01
+            -
+               depth: 4
+               value: 6.6614715411112857e-01
+            -
+               depth: 1
+               value: 1.3112569349152701e+00
+               splits:
+                  - { var:0, quality:6.2324447631835938e+01, le:30015. }
+            -
+               depth: 2
+               value: 1.0253578146298727e+00
+               splits:
+                  - { var:0, quality:1.5870366096496582e+01, le:22335. }
+            -
+               depth: 3
+               value: 8.8996623456478119e-01
+            -
+               depth: 3
+               value: 1.0745911164717241e+00
+               splits:
+                  - { var:1, quality:1.2715154647827148e+01,
+                      le:1.5000000000000000e+00 }
+            -
+               depth: 4
+               value: 1.0535815209150314e+00
+               splits:
+                  - { var:0, quality:8.9000558853149414e+00, le:28735. }
+            -
+               depth: 5
+               value: 1.0248703559239705e+00
+            -
+               depth: 5
+               value: 1.1397150158882141e+00
+            -
+               depth: 4
+               value: 1.1306167046229045e+00
+            -
+               depth: 2
+               value: 1.5256812751293183e+00
+               splits:
+                  - { var:1, quality:4.6594196319580078e+01,
+                      le:1.5000000000000000e+00 }
+            -
+               depth: 3
+               value: 1.5406122273868985e+00
+            -
+               depth: 3
+               value: 1.3913027048110962e+00
+      -
+         nodes:
+            -
+               depth: 0
+               value: 7.8421657896251418e-01
+               splits:
+                  - { var:0, quality:6.2811996459960938e+01, le:18495. }
+            -
+               depth: 1
+               value: 3.2818328818151105e-01
+               splits:
+                  - { var:1, quality:5.1700439453125000e+00,
+                      le:5.0000000000000000e-01 }
+            -
+               depth: 2
+               value: 2.2633042233064771e-02
+            -
+               depth: 2
+               value: 4.4570261354629809e-01
+               splits:
+                  - { var:0, quality:5.8266620635986328e+00, le:11327. }
+            -
+               depth: 3
+               value: 2.4390439689159393e-01
+            -
+               depth: 3
+               value: 5.7182649895548820e-01
+               splits:
+                  - { var:0, quality:5.3544969558715820e+00, le:14143. }
+            -
+               depth: 4
+               value: 4.7251842703138081e-01
+            -
+               depth: 4
+               value: 6.4906611045201623e-01
+               splits:
+                  - { var:1, quality:3.7953746318817139e+00,
+                      le:1.5000000000000000e+00 }
+            -
+               depth: 5
+               value: 7.0713400840759277e-01
+            -
+               depth: 5
+               value: 6.4180762320756912e-01
+            -
+               depth: 1
+               value: 1.1573347259651532e+00
+               splits:
+                  - { var:1, quality:5.9339744567871094e+01,
+                      le:1.5000000000000000e+00 }
+            -
+               depth: 2
+               value: 1.1876776486635208e+00
+            -
+               depth: 2
+               value: 8.5390549898147583e-01
+               splits:
+                  - { var:0, quality:2.9166796207427979e+00, le:19775. }
+            -
+               depth: 3
+               value: 8.5164499282836914e-01
+            -
+               depth: 3
+               value: 8.6068701744079590e-01
+      -
+         nodes:
+            -
+               depth: 0
+               value: 8.6442692138662092e-01
+               splits:
+                  - { var:0, quality:7.6832412719726562e+01, le:19775. }
+            -
+               depth: 1
+               value: 4.0272214130382056e-01
+               splits:
+                  - { var:0, quality:8.4389944076538086e+00, le:11071. }
+            -
+               depth: 2
+               value: 1.8183814020594583e-01
+               splits:
+                  - { var:1, quality:9.8811548948287964e-01, le:1. }
+            -
+               depth: 3
+               value: 4.0516087449052267e-02
+            -
+               depth: 3
+               value: 2.9746527427976782e-01
+            -
+               depth: 2
+               value: 6.2360614240169521e-01
+               splits:
+                  - { var:1, quality:7.7988104820251465e+00,
+                      le:1.5000000000000000e+00 }
+            -
+               depth: 3
+               value: 7.0095932483673096e-01
+            -
+               depth: 3
+               value: 6.0995558079551249e-01
+               splits:
+                  - { var:0, quality:6.4916052818298340e+00, le:15423. }
+            -
+               depth: 4
+               value: 5.1655877298778963e-01
+               splits:
+                  - { var:0, quality:2.4174671173095703e+00, le:14143. }
+            -
+               depth: 5
+               value: 4.7888139486312864e-01
+            -
+               depth: 5
+               value: 5.6365549564361572e-01
+            -
+               depth: 4
+               value: 7.1502698957920074e-01
+            -
+               depth: 1
+               value: 1.3261317014694214e+00
+               splits:
+                  - { var:1, quality:7.0365814208984375e+01,
+                      le:1.5000000000000000e+00 }
+            -
+               depth: 2
+               value: 1.3347514254706248e+00
+               splits:
+                  - { var:0, quality:6.5471519470214844e+01, le:30271. }
+            -
+               depth: 3
+               value: 1.0095574930310249e+00
+               splits:
+                  - { var:0, quality:1.6466211318969727e+01, le:24383. }
+            -
+               depth: 4
+               value: 9.2166664865281844e-01
+            -
+               depth: 4
+               value: 1.1225600072315760e+00
+            -
+               depth: 3
+               value: 1.6085989475250244e+00
+               splits:
+                  - { var:0, quality:4.9479778289794922e+01, le:36159. }
+            -
+               depth: 4
+               value: 1.4727544387181599e+00
+               splits:
+                  - { var:0, quality:1.9558286666870117e+01, le:32831. }
+            -
+               depth: 5
+               value: 1.3817899624506633e+00
+            -
+               depth: 5
+               value: 1.5182366768519084e+00
+            -
+               depth: 4
+               value: 1.7308590054512023e+00
+            -
+               depth: 2
+               value: 1.2657936334609985e+00
+               splits:
+                  - { var:0, quality:8.1293115615844727e+00, le:33343. }
+            -
+               depth: 3
+               value: 1.0775300264358521e+00
+            -
+               depth: 3
+               value: 1.3913027048110962e+00
+      -
+         nodes:
+            -
+               depth: 0
+               value: 9.0105500471254341e-01
+               splits:
+                  - { var:1, quality:7.3089012145996094e+01,
+                      le:1.5000000000000000e+00 }
+            -
+               depth: 1
+               value: 1.1547255359200419e+00
+               splits:
+                  - { var:0, quality:7.4324035644531250e+01, le:19775. }
+            -
+               depth: 2
+               value: 3.0893527928274123e-01
+               splits:
+                  - { var:1, quality:2.1397621631622314e+00,
+                      le:5.0000000000000000e-01 }
+            -
+               depth: 3
+               value: 2.7824134682305157e-02
+            -
+               depth: 3
+               value: 7.3060199618339539e-01
+               splits:
+                  - { var:0, quality:2.1373200416564941e+00, le:18495. }
+            -
+               depth: 4
+               value: 7.0713400840759277e-01
+            -
+               depth: 4
+               value: 7.5406998395919800e-01
+            -
+               depth: 2
+               value: 1.3715948324937086e+00
+               splits:
+                  - { var:0, quality:7.5764869689941406e+01, le:30015. }
+            -
+               depth: 3
+               value: 1.0744648799300194e+00
+               splits:
+                  - { var:0, quality:1.8594959259033203e+01, le:23871. }
+            -
+               depth: 4
+               value: 8.9167932669321692e-01
+            -
+               depth: 4
+               value: 1.1166461614462047e+00
+            -
+               depth: 3
+               value: 1.5782939299293186e+00
+            -
+               depth: 1
+               value: 5.0009190699746531e-01
+               splits:
+                  - { var:0, quality:9.6665706634521484e+00, le:15679. }
+            -
+               depth: 2
+               value: 3.4117563542994583e-01
+               splits:
+                  - { var:0, quality:2.8591046333312988e+00, le:11071. }
+            -
+               depth: 3
+               value: 2.4429092155053064e-01
+               splits:
+                  - { var:0, quality:8.1601518392562866e-01, le:8255. }
+            -
+               depth: 4
+               value: 2.0032825134694576e-01
+            -
+               depth: 4
+               value: 3.1463119387626648e-01
+               splits:
+                  - { var:0, quality:4.9903565645217896e-01, le:9023. }
+            -
+               depth: 5
+               value: 2.7968099713325500e-01
+            -
+               depth: 5
+               value: 3.3793132503827411e-01
+            -
+               depth: 3
+               value: 4.8112022214465672e-01
+               splits:
+                  - { var:0, quality:2.0987329483032227e+00, le:14143. }
+            -
+               depth: 4
+               value: 4.6647487580776215e-01
+            -
+               depth: 4
+               value: 5.9828299283981323e-01
+            -
+               depth: 2
+               value: 8.8855390416251290e-01
+               splits:
+                  - { var:0, quality:7.2912788391113281e+00, le:21823. }
+            -
+               depth: 3
+               value: 8.1180929286139347e-01
+            -
+               depth: 3
+               value: 1.1571600437164307e+00
+      -
+         nodes:
+            -
+               depth: 0
+               value: 7.5648216675035651e-01
+               splits:
+                  - { var:0, quality:6.2357372283935547e+01, le:19519. }
+            -
+               depth: 1
+               value: 3.4474341562864458e-01
+               splits:
+                  - { var:0, quality:6.9891138076782227e+00, le:11071. }
+            -
+               depth: 2
+               value: 2.0091256486444636e-01
+               splits:
+                  - { var:0, quality:1.3975220918655396e+00, le:6975. }
+            -
+               depth: 3
+               value: 1.1545542751749356e-01
+               splits:
+                  - { var:0, quality:2.6094990968704224e-01, le:3903. }
+            -
+               depth: 4
+               value: 3.7352566296855606e-02
+            -
+               depth: 4
+               value: 1.6752400166458553e-01
+               splits:
+                  - { var:0, quality:2.5452551245689392e-01, le:5695. }
+            -
+               depth: 5
+               value: 1.5712400277455649e-01
+            -
+               depth: 5
+               value: 1.8832399944464365e-01
+            -
+               depth: 3
+               value: 2.9247378345046726e-01
+               splits:
+                  - { var:0, quality:1.2221791744232178e+00, le:8767. }
+            -
+               depth: 4
+               value: 2.5616674311459064e-01
+            -
+               depth: 4
+               value: 3.4088317056496936e-01
+               splits:
+                  - { var:0, quality:6.9750690460205078e-01, le:10047. }
+            -
+               depth: 5
+               value: 3.5086449980735779e-01
+            -
+               depth: 5
+               value: 3.3589250594377518e-01
+            -
+               depth: 2
+               value: 6.2281639377276099e-01
+               splits:
+                  - { var:0, quality:5.9971470832824707e+00, le:14143. }
+            -
+               depth: 3
+               value: 4.6848199963569642e-01
+            -
+               depth: 3
+               value: 6.9998359084129336e-01
+               splits:
+                  - { var:0, quality:4.9136052131652832e+00, le:17983. }
+            -
+               depth: 4
+               value: 6.7563342196600773e-01
+            -
+               depth: 4
+               value: 7.5680065155029297e-01
+               splits:
+                  - { var:0, quality:1.7182863950729370e+00, le:18751. }
+            -
+               depth: 5
+               value: 7.6226198673248291e-01
+            -
+               depth: 5
+               value: 7.5406998395919800e-01
+            -
+               depth: 1
+               value: 1.2597184181213379e+00
+               splits:
+                  - { var:1, quality:5.7253318786621094e+01,
+                      le:1.5000000000000000e+00 }
+            -
+               depth: 2
+               value: 1.2834081688234884e+00
+            -
+               depth: 2
+               value: 1.1128419637680054e+00

@@ -20,5 +20,5 @@ do
  echo "running count=$counter, problem size=$size"
 
 # make the trace folder name more descriptive:  machine, compiler, thread count, program, timestamp 
-  APOLLO_TRACE_CSV_FOLDER_SUFFIX="-$NODE_NAME-$HARDWAREE_NAME-clang-12.0.0-$OMP_NUM_THREADS-threads-$EXE_FILE-$TIMESTAMP" APOLLO_CROSS_EXECUTION=1 ./$EXE_FILE $size
+  APOLLO_TRACE_FOLDER_SUFFIX="-$NODE_NAME-$HARDWAREE_NAME-clang-12.0.0-$OMP_NUM_THREADS-threads-$EXE_FILE-$TIMESTAMP" APOLLO_CROSS_EXECUTION=1 ./$EXE_FILE $size
 done

@@ -35,7 +35,7 @@ class Config {
         static int APOLLO_FLUSH_PERIOD;
         static int APOLLO_TRACE_CSV;
         static std::string APOLLO_INIT_MODEL; // initial policy selection modes: random, roundRobin, static,0 (always 1st one), etc
-        static std::string APOLLO_TRACE_CSV_FOLDER_SUFFIX;
+        static std::string APOLLO_TRACE_FOLDER_SUFFIX;  // more general trace folder, storing not just csv file
 
     private:
         Config();

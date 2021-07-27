@@ -13,5 +13,5 @@ for size in {40000..1040000..40000};
 do
  let "counter += 1"
  echo "running count=$counter, problem size=$size"
-  APOLLO_TRACE_CSV_FOLDER_SUFFIX="-daxpy-v3" APOLLO_CROSS_EXECUTION=1 ./daxpy-v3 $size
+  APOLLO_TRACE_FOLDER_SUFFIX="-daxpy-v3" APOLLO_CROSS_EXECUTION=1 ./daxpy-v3 $size
 done
