@@ -326,7 +326,8 @@ void Apollo::Region::setPolicyModel (int numAvailablePolicies, const std::string
                 model_file = Config::APOLLO_INIT_MODEL.substr(pos + 1);
             }
 
-            if (fileExists(model_file))
+            //if (fileExists(model_file))
+            if (1)
                 //std::cout << "Model Load " << model_file << std::endl;
                 model = ModelFactory::loadDecisionTree(apollo->num_policies, model_file);
             else {
