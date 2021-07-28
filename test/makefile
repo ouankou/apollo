@@ -49,9 +49,12 @@ daxpy-v3.cpp \
 matrixMultiplication.cpp \
 hasGPU.cpp \
 omp_smithW-v8-apollo.cpp \
+omp_smithW-v9-apollo-nEle.cpp \
 smithw-serial.cpp \
 smithw-omp-cpu.cpp \
-smithw-omp-offload.cpp
+smithw-omp-offload.cpp \
+smithw-omp-offload-v2.cpp \
+smithw-omp-offload-v3.cpp
 
 OBJ_FILES = $(addsuffix .out, $(basename $(CPP_SRC_FILES)))
 
@@ -66,6 +69,7 @@ test: hasGPU.out
 # TEST cross execution: save region information from current execution
 run2: daxpy-v2
 	APOLLO_CROSS_EXECUTION=1 ./$^ 10000000
+# Test training within a single execution of a program
 run: daxpy 
 	./daxpy
 # We have proper flags set by default now
