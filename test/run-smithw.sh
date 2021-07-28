@@ -18,7 +18,7 @@ HARDWAREE_NAME=`uname -m`
 # For Debug 
 # using a fixed folder, with previous built model or collected data, continue the execution
 # Be careful, no overlapping of input sizes, or the timing will be accumulated wrongfully. (No accumulation across execution in static model)
-FOLDER_SUFFIX=-corona151-x86_64-omp_smithW-v8-apollo.out-20210721-debug
+FOLDER_SUFFIX=-corona151-smithW-20210723-debug
 
 make clean
 make ./$EXE_FILE

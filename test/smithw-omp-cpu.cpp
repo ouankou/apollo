@@ -12,7 +12,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <math.h>
+//#include <math.h>
 #include <omp.h>
 #include <time.h>
 #include <assert.h>
@@ -203,14 +203,15 @@ int main(int argc, char* argv[]) {
   //Gets Initial time
   // double initialTime = omp_get_wtime();
   start = omp_get_wtime();
-#pragma omp parallel default(none) shared(H, P, maxPos, nDiag, j) private(i)
+//#pragma omp parallel default(none) shared(H, P, maxPos, nDiag, j) private(i)
+// To match the metadirective version, we have to use combined parallel for
   {
     for (i = 1; i <= nDiag; ++i) // start from 1 since 0 is the boundary padding
     {
       long long int nEle, si, sj;
       nEle = nElement(i);
       calcFirstDiagElement(i, &si, &sj);
-#pragma omp for private(j) 
+#pragma omp parallel for private(j) shared (nEle, si, sj, H, P, maxPos)  
       for (j = 0; j < nEle; ++j) 
       {  // going upwards : anti-diagnol direction
         long long int ai = si - j ; // going up vertically
