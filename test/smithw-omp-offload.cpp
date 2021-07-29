@@ -123,7 +123,7 @@ int main(int argc, char* argv[]) {
   //#ifdef DEBUG
   if (useBuiltInData)
     printf ("Using built-in data for testing ..\n");
-  printf("Problem size: Matrix[%lld][%lld], FACTOR=%d CUTOFF=%d\n", n, m, FACTOR, CUTOFF);
+  printf("Problem size: Matrix[%lld][%lld]\n", n, m);
   //#endif
 
   //Allocates a and b

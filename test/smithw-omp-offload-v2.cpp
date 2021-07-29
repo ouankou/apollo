@@ -266,9 +266,10 @@ int main(int argc, char* argv[]) {
       }
 
       //--------------------------------------
-//#pragma omp target map(to:a[0:m-1], b[0:n-1], nEle, m, n, gapScore, matchScore, missmatchScore) map(tofrom: H[0:asz], P[0:asz], maxPos)
-#pragma omp target teams map(to:a[0:m-1], b[0:n-1], nEle, m, n, gapScore, matchScore, missmatchScore) map(tofrom: H[0:asz], P[0:asz], maxPos)
-#pragma omp distribute parallel for default(none) shared (a,b, nEle, m, n, gapScore, matchScore, missmatchScore, si, sj, H, P, maxPos)
+      // using teams + distribute parallel for triggers a compiler bug on Corona, 
+//#pragma omp target teams map(to:a[0:m-1], b[0:n-1], nEle, m, n, gapScore, matchScore, missmatchScore) map(tofrom: H[0:asz], P[0:asz], maxPos)
+//#pragma omp distribute parallel for default(none) shared (a,b, nEle, m, n, gapScore, matchScore, missmatchScore, si, sj, H, P, maxPos)
+#pragma omp target parallel for map(to:a[0:m-1], b[0:n-1], nEle, m, n, gapScore, matchScore, missmatchScore) map(tofrom: H[0:asz], P[0:asz], maxPos)
       for (int j = 0; j < nEle; ++j) 
       {  // going upwards : anti-diagnol direction
         long long int ai = si - j ; // going up vertically
