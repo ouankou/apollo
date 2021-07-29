@@ -248,14 +248,22 @@ Apollo::Apollo()
 
 Apollo::~Apollo()
 {
-    for(auto &it : regions) {
-        Region *r = it.second;
-        // in the cross execution training mode, we save current aggregated measures into files for later use
-        if (Config::APOLLO_CROSS_EXECUTION)
-          r->serialize(0); 
-        delete r;
+  for(auto &it : regions) {
+    Region *r = it.second;
+    // in the cross execution training mode, 
+    if (Config::APOLLO_CROSS_EXECUTION)
+    {
+      // Also trigger model building since enough data is collected, using total time    
+      if (r->model->training) // only do this during training session. Skip in production session
+        if (Config::APOLLO_USE_TOTAL_TIME) // only if not using total execution time
+          r->checkAndFlushMeasurements(0);
+
+      //we save current aggregated measures into files for later use, if any
+      r->serialize(0); 
     }
-    std::cerr << "Apollo: total region executions: " << region_executions << std::endl;
+    delete r;
+  }
+  std::cerr << "Apollo: total region executions: " << region_executions << std::endl;
 }
 
 #ifdef ENABLE_MPI
