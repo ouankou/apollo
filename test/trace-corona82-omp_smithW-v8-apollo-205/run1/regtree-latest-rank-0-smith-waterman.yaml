@@ -1,0 +1,260 @@
+%YAML:1.0
+---
+opencv_ml_rtrees:
+   format: 3
+   is_classifier: 0
+   var_all: 3
+   var_count: 2
+   ord_var_count: 3
+   cat_var_count: 0
+   training_params:
+      use_surrogates: 0
+      max_categories: 10
+      regression_accuracy: 9.9999999747524271e-07
+      max_depth: 5
+      min_sample_count: 1
+      cross_validation_folds: 0
+      nactive_vars: 0
+   global_var_idx: 1
+   var_idx: [ 0, 1 ]
+   var_type: [ 0, 0, 0 ]
+   cat_ofs: [ 0, 0, 0, 0 ]
+   missing_subst: [ 0., 0., 0. ]
+   oob_error: 8.4584225803000510e-04
+   ntrees: 7
+   trees:
+      -
+         nodes:
+            -
+               depth: 0
+               value: 1.4149683503183041e-01
+               splits:
+                  - { var:1, quality:4.4437286257743835e-01, le:1. }
+            -
+               depth: 1
+               value: 8.4086608461348078e-02
+            -
+               depth: 1
+               value: 1.7977031941215196e-01
+      -
+         nodes:
+            -
+               depth: 0
+               value: 1.4255262488732115e-01
+               splits:
+                  - { var:0, quality:5.2896767854690552e-01, le:3903. }
+            -
+               depth: 1
+               value: 2.2984049787434440e-02
+               splits:
+                  - { var:1, quality:9.2767970636487007e-03, le:1. }
+            -
+               depth: 2
+               value: 8.7161401752382517e-03
+               splits:
+                  - { var:0, quality:9.0935628395527601e-04, le:1599. }
+            -
+               depth: 3
+               value: 3.5707501810975373e-03
+            -
+               depth: 3
+               value: 2.9297700151801109e-02
+            -
+               depth: 2
+               value: 9.4323597848415375e-02
+            -
+               depth: 1
+               value: 1.9379629993012973e-01
+               splits:
+                  - { var:1, quality:5.3136605024337769e-01, le:1. }
+            -
+               depth: 2
+               value: 1.2189199775457382e-01
+            -
+               depth: 2
+               value: 1.9932740009748018e-01
+               splits:
+                  - { var:0, quality:5.4625892639160156e-01, le:9535. }
+            -
+               depth: 3
+               value: 2.1972572532567111e-01
+            -
+               depth: 3
+               value: 8.7136611342430115e-02
+      -
+         nodes:
+            -
+               depth: 0
+               value: 1.2070517068477785e-01
+               splits:
+                  - { var:0, quality:3.8612219691276550e-01, le:3647. }
+            -
+               depth: 1
+               value: 2.6917540966678644e-02
+            -
+               depth: 1
+               value: 1.7120620207144663e-01
+               splits:
+                  - { var:0, quality:3.9053469896316528e-01, le:4415. }
+            -
+               depth: 2
+               value: 1.2189199775457382e-01
+            -
+               depth: 2
+               value: 1.8600046336650849e-01
+               splits:
+                  - { var:0, quality:3.5682180523872375e-01, le:9023. }
+            -
+               depth: 3
+               value: 1.9698533581362832e-01
+               splits:
+                  - { var:0, quality:3.5603064298629761e-01, le:7231. }
+            -
+               depth: 4
+               value: 1.7754650364319483e-01
+               splits:
+                  - { var:1, quality:1.8913656473159790e-01, le:1. }
+            -
+               depth: 5
+               value: 1.7759299278259277e-01
+            -
+               depth: 5
+               value: 1.7753720581531524e-01
+            -
+               depth: 4
+               value: 2.3586300015449524e-01
+               splits:
+                  - { var:0, quality:1.6722244024276733e-01, le:7999. }
+            -
+               depth: 5
+               value: 2.2846500575542450e-01
+            -
+               depth: 5
+               value: 2.5065898895263672e-01
+            -
+               depth: 3
+               value: 8.7136611342430115e-02
+      -
+         nodes:
+            -
+               depth: 0
+               value: 1.2326480996543979e-01
+               splits:
+                  - { var:1, quality:3.6660552024841309e-01, le:1. }
+            -
+               depth: 1
+               value: 7.2610399748968615e-02
+            -
+               depth: 1
+               value: 1.8517575578557122e-01
+               splits:
+                  - { var:0, quality:3.6546835303306580e-01, le:5183. }
+            -
+               depth: 2
+               value: 7.2769932448863983e-02
+               splits:
+                  - { var:0, quality:1.6583230346441269e-02, le:3135. }
+            -
+               depth: 3
+               value: 6.1993099749088287e-02
+            -
+               depth: 3
+               value: 9.4323597848415375e-02
+            -
+               depth: 2
+               value: 2.4137866745392481e-01
+               splits:
+                  - { var:0, quality:3.5490810871124268e-01, le:8511. }
+            -
+               depth: 3
+               value: 2.2031100466847420e-01
+            -
+               depth: 3
+               value: 2.8351399302482605e-01
+      -
+         nodes:
+            -
+               depth: 0
+               value: 1.1691806715643907e-01
+               splits:
+                  - { var:1, quality:3.2954475283622742e-01, le:1. }
+            -
+               depth: 1
+               value: 4.4711766198036330e-02
+               splits:
+                  - { var:0, quality:3.6426324397325516e-02, le:3647. }
+            -
+               depth: 2
+               value: 8.9088703956804235e-03
+               splits:
+                  - { var:0, quality:9.1647030785679817e-04, le:1855. }
+            -
+               depth: 3
+               value: 3.8116629566502525e-03
+            -
+               depth: 3
+               value: 2.9297700151801109e-02
+            -
+               depth: 2
+               value: 1.3421900570392609e-01
+            -
+               depth: 1
+               value: 1.5579838305711746e-01
+      -
+         nodes:
+            -
+               depth: 0
+               value: 9.4645179726649070e-02
+               splits:
+                  - { var:1, quality:2.2073672711849213e-01, le:1. }
+            -
+               depth: 1
+               value: 5.3400743943215770e-02
+            -
+               depth: 1
+               value: 1.4505504568417868e-01
+               splits:
+                  - { var:0, quality:2.2158990800380707e-01, le:4159. }
+            -
+               depth: 2
+               value: 7.8158348798751831e-02
+            -
+               depth: 2
+               value: 1.9857240319252015e-01
+      -
+         nodes:
+            -
+               depth: 0
+               value: 1.2687164182989363e-01
+               splits:
+                  - { var:0, quality:4.6588721871376038e-01, le:4159. }
+            -
+               depth: 1
+               value: 2.2963404916936270e-02
+               splits:
+                  - { var:1, quality:1.2342494912445545e-02, le:1. }
+            -
+               depth: 2
+               value: 4.5650902896644157e-03
+            -
+               depth: 2
+               value: 7.8158348798751831e-02
+            -
+               depth: 1
+               value: 1.9614379977186522e-01
+               splits:
+                  - { var:0, quality:4.7898828983306885e-01, le:6719. }
+            -
+               depth: 2
+               value: 1.5815299997727075e-01
+               splits:
+                  - { var:1, quality:1.5013481676578522e-01, le:1. }
+            -
+               depth: 3
+               value: 1.5590599924325943e-01
+            -
+               depth: 3
+               value: 1.6264700144529343e-01
+            -
+               depth: 2
+               value: 2.3413459956645966e-01

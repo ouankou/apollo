@@ -1,0 +1,8 @@
+regression tests for issue 205
+
+triggering model building in the end of execution when
+Config::APOLLO_USE_TOTAL_TIME is set to be 1. 
+
+run1 contains output with the symptom before the fix: partial execution time for the last record.
+
+run-ref contains correct output. 
