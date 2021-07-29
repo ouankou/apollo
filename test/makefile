@@ -61,11 +61,17 @@ OBJ_FILES = $(addsuffix .out, $(basename $(CPP_SRC_FILES)))
 %.out:%.cpp
 	$(CC) $(CXXFLAGS) -I$(INC_DIR) $(LINK_FALGS) $^ -o $@ $(LIBS)
 
-all: $(OBJ_FILES)
+all: $(OBJ_FILES) processingMeasures.out
 test: hasGPU.out
 	./$<
+# a small program to process data in measures.txt files	
+processingMeasures.out: processingMeasures.cpp
+	g++ -std=c++14 $^ -o $@
+.PHONY: clean run check
 
-.PHONY: clean run
+# test the small program
+check: processingMeasures.out
+	./processingMeasures.out trace-corona125-omp_smithW-v8-apollo.out-210-serial-version-spikes/reduceBestPolicies-step-0-rank-0-smith-waterman-measures.txt 
 # TEST cross execution: save region information from current execution
 run2: daxpy-v2
 	APOLLO_CROSS_EXECUTION=1 ./$^ 10000000
