@@ -1,5 +1,7 @@
 #include <iostream>
 #include <fstream>
+#include <sstream>
+
 #include <vector>
 #include <string>
 #include <map>
@@ -50,7 +52,10 @@ nDiag   p0              p1              p2
 class Region
 {
   public:
-    Region (){};
+    Region (){
+      max_policy_id=0;
+      max_feature_count =0;
+    };
     ~Region(){};
 
     typedef struct Measure {
@@ -60,11 +65,19 @@ class Region
     } Measure;
 
     char     name[64];
-
+    //  policy id starting from 0, 1, 2
+    //  store the max id values found in the measures.txt file
+    size_t max_policy_id;
+    size_t max_feature_count;
+/*
+ *  feature_vector + policy_id --> measure of a pair <exec_count, time_total>
+ * */    
     std::map<std::pair< std::vector<float>, int >,
               std::unique_ptr<Region::Measure> >  measures;
 
    bool loadPreviousMeasures(const string & filename ); 
+
+   void generatePlotDataFile(const string& outputfile);
 };
 
 // A helper function to extract numbers from a line
@@ -82,6 +95,24 @@ static string extractOneCell(string& line, size_t& pos)
   return res; 
 }
 
+/*
+ * Iterate the measures map
+ *
+ *  Need to know total policy count
+ * */
+void 
+Region::generatePlotDataFile(const string & outputfile)
+{
+  stringstream trace_out; 
+  // TODO: multiple features, how to output them?
+  //  trace_out << 
+#if 0  //  
+  for (auto &e: measures)
+  {
+  }
+#endif
+
+}
 /*
 
 Current data dump of measures has the following content
@@ -147,6 +178,9 @@ Region::loadPreviousMeasures(const string & filename)
         return false; 
       }
 
+      // extract policy
+      int cur_policy;
+
       // extract one or more features, separated by ',' between pos and end_bracket_pos
       size_t end=pos;
       vector<float> cur_features; 
@@ -163,16 +197,17 @@ Region::loadPreviousMeasures(const string & filename)
         else
           break; 
       }
+     max_feature_count = max ( max_feature_count, cur_features.size());
 
-      // extract policy
-      int cur_policy;
-      pos = line.find("policy:", end_bracket_pos);
+     pos = line.find("policy:", end_bracket_pos);
       if (pos==string::npos)
         return false;
       pos+=7;
       string policy_id=extractOneCell(line, pos);
       //cout<<"policy:"<<stoi(policy_id) <<" "; // convert to integer, they are mostly sizes of things right now
       cur_policy = stoi(policy_id);
+
+      max_policy_id = max (max_policy_id, (size_t)cur_policy);
 
       // extract count
       int cur_count; 
@@ -212,7 +247,9 @@ Region::loadPreviousMeasures(const string & filename)
     } // hande a line 
   } // end while
 
-  cout<<"After insertion: measures.size():"<<measures.size() <<endl;
+  cout<<"After insertion: measures.size():"<<measures.size() 
+    <<" max_feature_count="<< max_feature_count
+    <<" max_policy_id="<< max_policy_id <<endl;
 
   datafile.close();
 
