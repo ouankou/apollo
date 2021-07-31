@@ -34,19 +34,16 @@ features: [ 2111,  ]: policy: 2 , count: 2113 , total: 0.0514953 , time_avg: 2.4
 
 Output data conforming to gnuplot format:
 
-
-nDiag   p0              p1              p2
-32      0.000279132     0.0122014       0.0041564
-288     0.00414445      0.060533        0.0485231
-544     0.0116026       0.127367        0.0463004
-800     0.0401769       0.280718        0.087325
-1056    0.0606596       0.292991        0.130455
-1312    0.0566188       0.300644        0.0775205
-1568    0.0667464       0.333183        0.0906015
-1824    0.0913814       0.287058        0.139254
-2080    0.137255        0.350719        0.132058
-2336    0.160883        0.50631         0.218054
-
+feature0        policy#0        policy#1        policy#2
+63      2.88899e-05     0.0157941       0.00745746      
+575     0.00198866      0.128456        0.0191061       
+1087    0.00738975      0.132126        0.0259082
+1599    0.0164235       0.276638        0.056285
+2111    0.0324354       0.288673        0.0514953
+2623    0.037869        0.33254 0.0683535
+3135    0.0591725       0.365161        0.10904
+3647    0.0879109       0.337172        0.187581
+4159    0.102714        0.361674        0.150854
 */
 
 class Region
@@ -97,7 +94,15 @@ static string extractOneCell(string& line, size_t& pos)
 
 /*
  * Iterate the measures map
- *
+ * how are the data stored right now?
+
+ *  for each entry
+        grab feature-vector and policy
+
+  Convert to a data structure matching the output data
+     feaure 1, feature 2, policy0, policy 1, policy 2, exec_count, time_total, time_average
+
+
  *  Need to know total policy count
  * */
 void 
@@ -105,13 +110,39 @@ Region::generatePlotDataFile(const string & outputfile)
 {
   stringstream trace_out; 
   // TODO: multiple features, how to output them?
-  //  trace_out << 
-#if 0  //  
-  for (auto &e: measures)
-  {
-  }
-#endif
+  trace_out <<"feature0";
+  for (size_t i =0;i< max_policy_id+1; i++)
+    trace_out<<"\tpolicy#"<<i;
+  trace_out <<endl;
+  
+  // we only need total value in this case
+  // for (auto &e: measures)
+  std::map<std::pair< std::vector<float>, int >,
+              std::unique_ptr<Region::Measure> >::iterator iter;
+  //for (iter=measures.begin(); iter!=measures.end(); iter++)
+  iter= measures.begin();
 
+  while (iter!=measures.end())
+  {
+   cout<<"inside while ..."<<endl; 
+    // we grab max_policy_count of records each time
+    vector<float> features = iter->first.first;
+    float feature1_val = features[0];
+    trace_out<< features[0]<<"\t";
+    // go through policy count of record to grab the total execution time
+    int count= max_policy_id +1 ;
+    while (count-- && iter!=measures.end())
+    {
+      assert (feature1_val== iter->first.first[0]);// the batch should have the same feature value
+      trace_out<<iter->second->time_total<<"\t";
+      iter++;
+    }
+    trace_out<<endl;
+  }
+  
+  ofstream fout (outputfile);
+  fout<< trace_out.str();
+  fout.close();
 }
 /*
 
@@ -267,6 +298,8 @@ int main (int argc, char* argv[])
   string filename(argv[1]); 
   Region r; 
   r.loadPreviousMeasures (filename);
+
+  r.generatePlotDataFile(filename+".trans.txt");
 
   return 0; 
 }

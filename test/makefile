@@ -66,7 +66,7 @@ test: hasGPU.out
 	./$<
 # a small program to process data in measures.txt files	
 processingMeasures.out: processingMeasures.cpp
-	g++ -std=c++14 $^ -o $@
+	g++ -g -std=c++14 $^ -o $@
 .PHONY: clean run check
 
 # test the small program
