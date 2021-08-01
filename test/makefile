@@ -75,7 +75,8 @@ input.data.eps: input.data
 	gnuplot -c gnuplot1.baseline.txt
 # test the small program
 #MEASURES_FILE=trace-corona125-omp_smithW-v8-apollo.out-210-serial-version-spikes/reduceBestPolicies-step-0-rank-0-smith-waterman-measures.txt	
-MEASURES_FILE=trace-corona125-omp_smithW-v8-apollo.out-210-serial-version-spikes/anjia-0727/reduceBestPolicies-step-2-rank-0-smith-waterman-measures.txt
+#MEASURES_FILE=trace-corona125-omp_smithW-v8-apollo.out-210-serial-version-spikes/anjia-0727/reduceBestPolicies-step-2-rank-0-smith-waterman-measures.txt
+MEASURES_FILE=trace-corona125-omp_smithW-v8-apollo.out-210-serial-version-spikes/384-stride-measures.txt
 input.data: processingMeasures.out
 	./processingMeasures.out $(MEASURES_FILE) $@
 # TEST cross execution: save region information from current execution
