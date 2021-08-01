@@ -1,6 +1,7 @@
 set output "input.data.eps"
 set terminal postscript eps
-set logscale y
+# logscale or not for Y 
+#set logscale y
 set xlabel "nDiag (=M+N-1)"
 plot \
  "input.data" using 1:2 title 'Serial' with linespoints, \
