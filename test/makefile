@@ -68,10 +68,14 @@ test: hasGPU.out
 processingMeasures.out: processingMeasures.cpp
 	g++ -g -std=c++14 $^ -o $@
 .PHONY: clean run check
-
+check: input.data.pdf
+input.data.pdf: input.data.eps
+	epstopdf $<
+input.data.eps: input.data
+	gnuplot -c gnuplot1.baseline.txt
 # test the small program
-check: processingMeasures.out
-	./processingMeasures.out trace-corona125-omp_smithW-v8-apollo.out-210-serial-version-spikes/reduceBestPolicies-step-0-rank-0-smith-waterman-measures.txt 
+input.data: processingMeasures.out
+	./processingMeasures.out trace-corona125-omp_smithW-v8-apollo.out-210-serial-version-spikes/reduceBestPolicies-step-0-rank-0-smith-waterman-measures.txt $@
 # TEST cross execution: save region information from current execution
 run2: daxpy-v2
 	APOLLO_CROSS_EXECUTION=1 ./$^ 10000000
@@ -82,5 +86,5 @@ run: daxpy
 #APOLLO_RETRAIN_ENABLE=0 APOLLO_COLLECTIVE_TRAINING=0 APOLLO_LOCAL_TRAINING=1 APOLLO_STORE_MODELS=1 APOLLO_INIT_MODEL="RoundRobin" ./daxpy
 
 clean:
-	rm -rf daxpy daxpy-v2 *.out
+	rm -rf daxpy daxpy-v2 *.out input.data.pdf input.data.eps input.data
 

@@ -127,7 +127,7 @@ Region::generatePlotDataFile(const string & outputfile)
 
   while (iter!=measures.end())
   {
-   cout<<"inside while ..."<<endl; 
+  // cout<<"inside while ..."<<endl; 
     // we grab max_policy_count of records each time
     vector<float> features = iter->first.first;
     float feature1_val = features[0];
@@ -294,9 +294,9 @@ Region::loadPreviousMeasures(const string & filename)
 
 int main (int argc, char* argv[])
 {
-  if (argc != 2)
+  if (argc != 3)
   {
-    printf("Usage: %s your-measures.txt\n", argv[0]);
+    printf("Usage: %s your-measures.txt output.data\n", argv[0]);
     return 0;
   }
 
@@ -304,7 +304,8 @@ int main (int argc, char* argv[])
   Region r; 
   r.loadPreviousMeasures (filename);
 
-  r.generatePlotDataFile(filename+".trans.txt");
+  string output_filename(argv[2]); 
+  r.generatePlotDataFile(output_filename);
 
   return 0; 
 }
