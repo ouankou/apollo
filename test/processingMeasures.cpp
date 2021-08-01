@@ -33,6 +33,9 @@ features: [ 2111,  ]: policy: 2 , count: 2113 , total: 0.0514953 , time_avg: 2.4
 
 
 Output data conforming to gnuplot format:
+=================================
+Currently the total time is picked. 
+TODO: an option to grab time_avg instead.
 
 feature0        policy#0        policy#1        policy#2
 63      2.88899e-05     0.0157941       0.00745746      
@@ -134,6 +137,8 @@ Region::generatePlotDataFile(const string & outputfile)
     while (count-- && iter!=measures.end())
     {
       assert (feature1_val== iter->first.first[0]);// the batch should have the same feature value
+// Currently the total time is picked. 
+// TODO: an option to grab time_avg instead.
       trace_out<<iter->second->time_total<<"\t";
       iter++;
     }
