@@ -50,28 +50,45 @@ matrixMultiplication.cpp \
 hasGPU.cpp \
 amr_stencil.cpp \
 omp_smithW-v8-apollo.cpp \
+omp_smithW-v9-apollo-nEle.cpp \
 smithw-serial.cpp \
 smithw-omp-cpu.cpp \
-smithw-omp-offload.cpp
+smithw-omp-offload.cpp \
+smithw-omp-offload-v2.cpp \
+smithw-omp-offload-v3.cpp
 
 OBJ_FILES = $(addsuffix .out, $(basename $(CPP_SRC_FILES)))
 
 %.out:%.cpp
 	$(CC) $(CXXFLAGS) -I$(INC_DIR) $(LINK_FALGS) $^ -o $@ $(LIBS)
 
-all: $(OBJ_FILES)
+all: $(OBJ_FILES) processingMeasures.out
 test: hasGPU.out
 	./$<
-
-.PHONY: clean run
+# a small program to process data in measures.txt files	
+processingMeasures.out: processingMeasures.cpp
+	g++ -g -std=c++14 $^ -o $@
+.PHONY: clean run check
+check: input.data.pdf
+input.data.pdf: input.data.eps
+	epstopdf $<
+input.data.eps: input.data
+	gnuplot -c gnuplot1.baseline.txt
+# test the small program
+#MEASURES_FILE=trace-corona125-omp_smithW-v8-apollo.out-210-serial-version-spikes/reduceBestPolicies-step-0-rank-0-smith-waterman-measures.txt	
+#MEASURES_FILE=trace-corona125-omp_smithW-v8-apollo.out-210-serial-version-spikes/anjia-0727/reduceBestPolicies-step-2-rank-0-smith-waterman-measures.txt
+MEASURES_FILE=trace-corona125-omp_smithW-v8-apollo.out-210-serial-version-spikes/384-stride-measures.txt
+input.data: processingMeasures.out
+	./processingMeasures.out $(MEASURES_FILE) $@
 # TEST cross execution: save region information from current execution
 run2: daxpy-v2
 	APOLLO_CROSS_EXECUTION=1 ./$^ 10000000
+# Test training within a single execution of a program
 run: daxpy 
 	./daxpy
 # We have proper flags set by default now
 #APOLLO_RETRAIN_ENABLE=0 APOLLO_COLLECTIVE_TRAINING=0 APOLLO_LOCAL_TRAINING=1 APOLLO_STORE_MODELS=1 APOLLO_INIT_MODEL="RoundRobin" ./daxpy
 
 clean:
-	rm -rf daxpy daxpy-v2 *.out
+	rm -rf daxpy daxpy-v2 *.out input.data.pdf input.data.eps input.data
 

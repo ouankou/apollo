@@ -1,6 +1,7 @@
 #!/bin/bash -xe
 # -x will show the expanded commands
 # -e abor on any error
+# using small scale experiment to quickly check things
 
 EXE_FILE=omp_smithW-v8-apollo.out
 TIMESTAMP=$(date +%Y%m%d_%H%M%S)
@@ -18,7 +19,7 @@ HARDWAREE_NAME=`uname -m`
 # For Debug 
 # using a fixed folder, with previous built model or collected data, continue the execution
 # Be careful, no overlapping of input sizes, or the timing will be accumulated wrongfully. (No accumulation across execution in static model)
-FOLDER_SUFFIX=-$NODE_NAME-$EXE_FILE-210-serial-version-spikes
+FOLDER_SUFFIX=-corona82-omp_smithW-v8-apollo-205
 
 make clean
 make ./$EXE_FILE
@@ -46,30 +47,34 @@ counter=""
 #for N_SIZE in {256..25000..256}; do
 # we have 117 x 3 = 351 records in datasets, more than enough to trigger model building
 # we collect roughly 80 data points *3 = 240 records
-for N_SIZE in {32..21000..256}; do
+for N_SIZE in {32..5500..256}; do
  let "counter += 1"
-  M_SIZE=$N_SIZE
-
  echo "running count=$counter, problem m_size=$M_SIZE N_SIZE=$N_SIZE"
 
+  M_SIZE=$N_SIZE
 
 # SW has 3 variants: one input size, one policy only each time
+# on tux385, we only run 2 variants.
+#  for policy in 0 1;   do
   for policy in 0 1 2;   do
 # run 3 times each so we can get average: no need to repeat. kernel will be called many times already within outer loop.
 #    for repeat in 1 2 3;   do
+#    for repeat in 1;   do
     echo "Policy=$policy, Repeat=$repeat"
+# ./$EXE_FILE
 #. why do we use static model here??  Why not Round-Robin?
-# each execution will have only 1 data point for nDiag!
+# well, each execution will have only 1 data point for nDiag!
 # Round-Robin will try different policies for the same nDiag value, which is not desired. 
 # we want the entire execution to try only one policy!!
 
+# another question: are all execution time added into one single value?  Or we should promote it to be outside of the inner loop?    
 # I think so: measures are added into the feature + policy    
 # APOLLO_TRACE_CROSS_EXECUTION=1     
 # APOLLO_TRACE_CSV saves raw timing, feature information for each call of each region, too much overhead    
 # APOLLO_TRACE_MEASURES must be turned on in cross execution mode: aggregated measures should be saved after each run of a program    
   APOLLO_TRACE_FOLDER_SUFFIX=$FOLDER_SUFFIX \
   APOLLO_CROSS_EXECUTION=1 APOLLO_USE_TOTAL_TIME=1 APOLLO_INIT_MODEL="Static,$policy" \
-  APOLLO_CROSS_EXECUTION_MIN_DATAPOINT_COUNT=80 APOLLO_TRACE_CSV=0 APOLLO_TRACE_MEASURES=1 \
+  APOLLO_CROSS_EXECUTION_MIN_DATAPOINT_COUNT=20 APOLLO_TRACE_CSV=0 APOLLO_TRACE_MEASURES=1 \
   ./$EXE_FILE $M_SIZE $N_SIZE
 #    done
   done 

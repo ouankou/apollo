@@ -1,0 +1,10 @@
+set output "input.data.eps"
+set terminal postscript eps
+# logscale or not for Y 
+#set logscale y
+set xlabel "nDiag (=M+N-1)"
+plot \
+ "input.data" using 1:2 title 'Serial' with linespoints, \
+ "input.data" using 1:3 title 'OMP-CPU' with linespoints, \
+ "input.data" using 1:4 title 'OMP-Offloading' with linespoints
+

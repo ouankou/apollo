@@ -1,0 +1,85 @@
+=================================
+Rank 0 Region smith-waterman MEASURES 
+features: [ 63,  ]: policy: 0 , count: 65 , total: 3.26703e-05 , time_avg: 5.0262e-07
+features: [ 63,  ]: policy: 1 , count: 65 , total: 0.00637759 , time_avg: 9.81168e-05
+features: [ 63,  ]: policy: 2 , count: 65 , total: 0.00942559 , time_avg: 0.000145009
+features: [ 575,  ]: policy: 0 , count: 577 , total: 0.00200552 , time_avg: 3.47577e-06
+features: [ 575,  ]: policy: 1 , count: 577 , total: 0.114797 , time_avg: 0.000198955
+features: [ 575,  ]: policy: 2 , count: 577 , total: 0.0131405 , time_avg: 2.27738e-05
+features: [ 1087,  ]: policy: 0 , count: 1089 , total: 0.00766348 , time_avg: 7.03717e-06
+features: [ 1087,  ]: policy: 1 , count: 1089 , total: 0.221529 , time_avg: 0.000203424
+features: [ 1087,  ]: policy: 2 , count: 1089 , total: 0.0783041 , time_avg: 7.19046e-05
+features: [ 1599,  ]: policy: 0 , count: 1601 , total: 0.017031 , time_avg: 1.06377e-05
+features: [ 1599,  ]: policy: 1 , count: 1601 , total: 0.21845 , time_avg: 0.000136446
+features: [ 1599,  ]: policy: 2 , count: 1601 , total: 0.058665 , time_avg: 3.66427e-05
+features: [ 2111,  ]: policy: 0 , count: 2113 , total: 0.0303873 , time_avg: 1.43811e-05
+features: [ 2111,  ]: policy: 1 , count: 2113 , total: 0.215433 , time_avg: 0.000101956
+features: [ 2111,  ]: policy: 2 , count: 2113 , total: 0.0464537 , time_avg: 2.19847e-05
+features: [ 2623,  ]: policy: 0 , count: 2625 , total: 0.0357796 , time_avg: 1.36303e-05
+features: [ 2623,  ]: policy: 1 , count: 2625 , total: 0.265063 , time_avg: 0.000100976
+features: [ 2623,  ]: policy: 2 , count: 2625 , total: 0.0664934 , time_avg: 2.53308e-05
+features: [ 3135,  ]: policy: 0 , count: 3137 , total: 0.109777 , time_avg: 3.49943e-05
+features: [ 3135,  ]: policy: 1 , count: 3137 , total: 0.342677 , time_avg: 0.000109237
+features: [ 3135,  ]: policy: 2 , count: 3137 , total: 0.0811335 , time_avg: 2.58634e-05
+features: [ 3647,  ]: policy: 0 , count: 3649 , total: 0.0868958 , time_avg: 2.38136e-05
+features: [ 3647,  ]: policy: 1 , count: 3649 , total: 0.337211 , time_avg: 9.24119e-05
+features: [ 3647,  ]: policy: 2 , count: 3649 , total: 0.167346 , time_avg: 4.58608e-05
+features: [ 4159,  ]: policy: 0 , count: 4161 , total: 0.101593 , time_avg: 2.44155e-05
+features: [ 4159,  ]: policy: 1 , count: 4161 , total: 0.40315 , time_avg: 9.68878e-05
+features: [ 4159,  ]: policy: 2 , count: 4161 , total: 0.108021 , time_avg: 2.59603e-05
+features: [ 4671,  ]: policy: 0 , count: 4673 , total: 0.118204 , time_avg: 2.52951e-05
+features: [ 4671,  ]: policy: 1 , count: 4673 , total: 0.336423 , time_avg: 7.19929e-05
+features: [ 4671,  ]: policy: 2 , count: 4673 , total: 0.205435 , time_avg: 4.39621e-05
+features: [ 5183,  ]: policy: 0 , count: 5185 , total: 0.181225 , time_avg: 3.49518e-05
+features: [ 5183,  ]: policy: 1 , count: 5185 , total: 0.391116 , time_avg: 7.54322e-05
+features: [ 5183,  ]: policy: 2 , count: 5185 , total: 0.144024 , time_avg: 2.7777e-05
+features: [ 5695,  ]: policy: 0 , count: 5697 , total: 0.14875 , time_avg: 2.61102e-05
+features: [ 5695,  ]: policy: 1 , count: 5697 , total: 0.40884 , time_avg: 7.17641e-05
+features: [ 5695,  ]: policy: 2 , count: 5697 , total: 0.247803 , time_avg: 4.34971e-05
+features: [ 6207,  ]: policy: 0 , count: 6209 , total: 0.19312 , time_avg: 3.11032e-05
+features: [ 6207,  ]: policy: 1 , count: 6209 , total: 0.488583 , time_avg: 7.86895e-05
+features: [ 6207,  ]: policy: 2 , count: 6209 , total: 0.176161 , time_avg: 2.83719e-05
+features: [ 6719,  ]: policy: 0 , count: 6721 , total: 0.246957 , time_avg: 3.67441e-05
+features: [ 6719,  ]: policy: 1 , count: 6721 , total: 0.428957 , time_avg: 6.38234e-05
+features: [ 6719,  ]: policy: 2 , count: 6721 , total: 0.194175 , time_avg: 2.88908e-05
+features: [ 7231,  ]: policy: 0 , count: 7233 , total: 0.280377 , time_avg: 3.87636e-05
+features: [ 7231,  ]: policy: 1 , count: 7233 , total: 0.555942 , time_avg: 7.68619e-05
+features: [ 7231,  ]: policy: 2 , count: 7233 , total: 0.295502 , time_avg: 4.08547e-05
+features: [ 7743,  ]: policy: 0 , count: 7745 , total: 0.26747 , time_avg: 3.45345e-05
+features: [ 7743,  ]: policy: 1 , count: 7745 , total: 0.545358 , time_avg: 7.04142e-05
+features: [ 7743,  ]: policy: 2 , count: 7745 , total: 0.259487 , time_avg: 3.35038e-05
+features: [ 8255,  ]: policy: 0 , count: 8257 , total: 0.268656 , time_avg: 3.25368e-05
+features: [ 8255,  ]: policy: 1 , count: 8257 , total: 0.618818 , time_avg: 7.49447e-05
+features: [ 8255,  ]: policy: 2 , count: 8257 , total: 0.276348 , time_avg: 3.34683e-05
+features: [ 8767,  ]: policy: 0 , count: 8769 , total: 0.340033 , time_avg: 3.87767e-05
+features: [ 8767,  ]: policy: 1 , count: 8769 , total: 0.589463 , time_avg: 6.72212e-05
+features: [ 8767,  ]: policy: 2 , count: 8769 , total: 0.295557 , time_avg: 3.37048e-05
+features: [ 9279,  ]: policy: 0 , count: 9281 , total: 0.372128 , time_avg: 4.00957e-05
+features: [ 9279,  ]: policy: 1 , count: 9281 , total: 0.578165 , time_avg: 6.22955e-05
+features: [ 9279,  ]: policy: 2 , count: 9281 , total: 0.292287 , time_avg: 3.1493e-05
+features: [ 9791,  ]: policy: 0 , count: 9793 , total: 0.38409 , time_avg: 3.92209e-05
+features: [ 9791,  ]: policy: 1 , count: 9793 , total: 0.598164 , time_avg: 6.10808e-05
+features: [ 9791,  ]: policy: 2 , count: 9793 , total: 0.318825 , time_avg: 3.25564e-05
+.-
+Rank 0 Region smith-waterman Reduce 
+features: [ 63, ]: P:0 T: 3.26703e-05
+features: [ 575, ]: P:0 T: 0.00200552
+features: [ 1087, ]: P:0 T: 0.00766348
+features: [ 1599, ]: P:0 T: 0.017031
+features: [ 2111, ]: P:0 T: 0.0303873
+features: [ 2623, ]: P:0 T: 0.0357796
+features: [ 3135, ]: P:2 T: 0.0811335
+features: [ 3647, ]: P:0 T: 0.0868958
+features: [ 4159, ]: P:0 T: 0.101593
+features: [ 4671, ]: P:0 T: 0.118204
+features: [ 5183, ]: P:2 T: 0.144024
+features: [ 5695, ]: P:0 T: 0.14875
+features: [ 6207, ]: P:2 T: 0.176161
+features: [ 6719, ]: P:2 T: 0.194175
+features: [ 7231, ]: P:0 T: 0.280377
+features: [ 7743, ]: P:2 T: 0.259487
+features: [ 8255, ]: P:0 T: 0.268656
+features: [ 8767, ]: P:2 T: 0.295557
+features: [ 9279, ]: P:2 T: 0.292287
+features: [ 9791, ]: P:2 T: 0.318825
+.-

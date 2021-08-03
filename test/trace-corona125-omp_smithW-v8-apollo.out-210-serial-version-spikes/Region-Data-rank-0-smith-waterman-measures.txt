@@ -1,0 +1,6 @@
+========Apollo::Region::serialize()2021-07-28-21:22:00-PDT================
+Rank 0 Region smith-waterman MEASURES 
+features: [ 41535,  ]: policy: 1 , count: 41537 , total: 1.85803 , time_avg: 4.4732e-05
+.-
+Rank 0 Region smith-waterman Reduce 
+.-

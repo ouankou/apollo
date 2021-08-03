@@ -1,0 +1,296 @@
+%YAML:1.0
+---
+opencv_ml_rtrees:
+   format: 3
+   is_classifier: 1
+   var_all: 2
+   var_count: 1
+   ord_var_count: 1
+   cat_var_count: 1
+   training_params:
+      use_surrogates: 0
+      max_categories: 3
+      regression_accuracy: 0.
+      max_depth: 2
+      min_sample_count: 1
+      cross_validation_folds: 0
+      nactive_vars: 0
+   global_var_idx: 1
+   var_idx: [ 0 ]
+   var_type: [ 0, 1 ]
+   cat_ofs: [ 0, 0 ]
+   class_labels: [ 0, 2 ]
+   missing_subst: [ 0., 0. ]
+   oob_error: 2.5000000000000000e-01
+   ntrees: 10
+   trees:
+      -
+         nodes:
+            -
+               depth: 0
+               value: 2.
+               norm_class_idx: 1
+               splits:
+                  - { var:0, quality:14., le:6207. }
+            -
+               depth: 1
+               value: 0.
+               norm_class_idx: 0
+               splits:
+                  - { var:0, quality:6.5714287757873535e+00, le:2367. }
+            -
+               depth: 2
+               value: 0.
+               norm_class_idx: 0
+            -
+               depth: 2
+               value: 0.
+               norm_class_idx: 0
+            -
+               depth: 1
+               value: 2.
+               norm_class_idx: 1
+               splits:
+                  - { var:0, quality:8.6666669845581055e+00, le:8511. }
+            -
+               depth: 2
+               value: 2.
+               norm_class_idx: 1
+            -
+               depth: 2
+               value: 2.
+               norm_class_idx: 1
+      -
+         nodes:
+            -
+               depth: 0
+               value: 2.
+               norm_class_idx: 1
+               splits:
+                  - { var:0, quality:1.3125000000000000e+01, le:2879. }
+            -
+               depth: 1
+               value: 0.
+               norm_class_idx: 0
+            -
+               depth: 1
+               value: 2.
+               norm_class_idx: 1
+               splits:
+                  - { var:0, quality:1.0051281929016113e+01, le:7999. }
+            -
+               depth: 2
+               value: 2.
+               norm_class_idx: 1
+            -
+               depth: 2
+               value: 0.
+               norm_class_idx: 0
+      -
+         nodes:
+            -
+               depth: 0
+               value: 2.
+               norm_class_idx: 1
+               splits:
+                  - { var:0, quality:1.8222221374511719e+01, le:6207. }
+            -
+               depth: 1
+               value: 0.
+               norm_class_idx: 0
+               splits:
+                  - { var:0, quality:7.6666665077209473e+00, le:4671. }
+            -
+               depth: 2
+               value: 0.
+               norm_class_idx: 0
+            -
+               depth: 2
+               value: 0.
+               norm_class_idx: 0
+            -
+               depth: 1
+               value: 2.
+               norm_class_idx: 1
+      -
+         nodes:
+            -
+               depth: 0
+               value: 0.
+               norm_class_idx: 0
+               splits:
+                  - { var:0, quality:1.5199999809265137e+01, le:5951. }
+            -
+               depth: 1
+               value: 0.
+               norm_class_idx: 0
+            -
+               depth: 1
+               value: 2.
+               norm_class_idx: 1
+               splits:
+                  - { var:0, quality:6.5714287757873535e+00, le:6975. }
+            -
+               depth: 2
+               value: 2.
+               norm_class_idx: 1
+            -
+               depth: 2
+               value: 0.
+               norm_class_idx: 0
+      -
+         nodes:
+            -
+               depth: 0
+               value: 0.
+               norm_class_idx: 0
+               splits:
+                  - { var:0, quality:1.6533332824707031e+01, le:8767. }
+            -
+               depth: 1
+               value: 0.
+               norm_class_idx: 0
+               splits:
+                  - { var:0, quality:1.2333333015441895e+01, le:4927. }
+            -
+               depth: 2
+               value: 0.
+               norm_class_idx: 0
+            -
+               depth: 2
+               value: 0.
+               norm_class_idx: 0
+            -
+               depth: 1
+               value: 2.
+               norm_class_idx: 1
+      -
+         nodes:
+            -
+               depth: 0
+               value: 0.
+               norm_class_idx: 0
+               splits:
+                  - { var:0, quality:1.6444444656372070e+01, le:8511. }
+            -
+               depth: 1
+               value: 0.
+               norm_class_idx: 0
+               splits:
+                  - { var:0, quality:1.4666666984558105e+01, le:2879. }
+            -
+               depth: 2
+               value: 0.
+               norm_class_idx: 0
+            -
+               depth: 2
+               value: 0.
+               norm_class_idx: 0
+            -
+               depth: 1
+               value: 2.
+               norm_class_idx: 1
+      -
+         nodes:
+            -
+               depth: 0
+               value: 0.
+               norm_class_idx: 0
+               splits:
+                  - { var:0, quality:1.5199999809265137e+01, le:2623. }
+            -
+               depth: 1
+               value: 0.
+               norm_class_idx: 0
+            -
+               depth: 1
+               value: 2.
+               norm_class_idx: 1
+               splits:
+                  - { var:0, quality:6., le:3391. }
+            -
+               depth: 2
+               value: 2.
+               norm_class_idx: 1
+            -
+               depth: 2
+               value: 0.
+               norm_class_idx: 0
+      -
+         nodes:
+            -
+               depth: 0
+               value: 0.
+               norm_class_idx: 0
+               splits:
+                  - { var:0, quality:1.3684210777282715e+01, le:8511. }
+            -
+               depth: 1
+               value: 0.
+               norm_class_idx: 0
+               splits:
+                  - { var:0, quality:1.3461538314819336e+01, le:2879. }
+            -
+               depth: 2
+               value: 0.
+               norm_class_idx: 0
+            -
+               depth: 2
+               value: 0.
+               norm_class_idx: 0
+            -
+               depth: 1
+               value: 2.
+               norm_class_idx: 1
+      -
+         nodes:
+            -
+               depth: 0
+               value: 2.
+               norm_class_idx: 1
+               splits:
+                  - { var:0, quality:1.5636363983154297e+01, le:4671. }
+            -
+               depth: 1
+               value: 0.
+               norm_class_idx: 0
+               splits:
+                  - { var:0, quality:8., le:2367. }
+            -
+               depth: 2
+               value: 0.
+               norm_class_idx: 0
+            -
+               depth: 2
+               value: 0.
+               norm_class_idx: 0
+            -
+               depth: 1
+               value: 2.
+               norm_class_idx: 1
+      -
+         nodes:
+            -
+               depth: 0
+               value: 0.
+               norm_class_idx: 0
+               splits:
+                  - { var:0, quality:1.3142857551574707e+01, le:2879. }
+            -
+               depth: 1
+               value: 0.
+               norm_class_idx: 0
+            -
+               depth: 1
+               value: 2.
+               norm_class_idx: 1
+               splits:
+                  - { var:0, quality:8.5454549789428711e+00, le:8511. }
+            -
+               depth: 2
+               value: 0.
+               norm_class_idx: 0
+            -
+               depth: 2
+               value: 2.
+               norm_class_idx: 1

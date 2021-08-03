@@ -679,7 +679,8 @@ Apollo::Region::end(void)
    if (Config::APOLLO_CROSS_EXECUTION)
    {
      if (model->training) // only do this during training session. Skip in production session
-       checkAndFlushMeasurements(idx);
+       if (!Config::APOLLO_USE_TOTAL_TIME) // only if not using total execution time, we can trigger model building in the middle of execution
+         checkAndFlushMeasurements(idx);
    }
    end(current_context);
 }
