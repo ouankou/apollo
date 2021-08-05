@@ -547,7 +547,7 @@ Apollo::Region::begin()
 // It also tries to load models, if they are available
 // No: model is set to region in memory, if it is built during this current run (by some previous iteration's region->end())
 Apollo::RegionContext *
-Apollo::Region::begin(std::vector<float> features)
+Apollo::Region::begin(const std::vector<float>& features)
 {
     Apollo::RegionContext *context = begin();
     context->features = features;

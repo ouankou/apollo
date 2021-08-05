@@ -48,6 +48,7 @@ daxpy-v2.cpp \
 daxpy-v3.cpp \
 matrixMultiplication.cpp \
 hasGPU.cpp \
+pi-reduction.cpp \
 omp_smithW-v8-apollo.cpp \
 omp_smithW-v9-apollo-nEle.cpp \
 smithw-serial.cpp \
