@@ -43,7 +43,7 @@ class Apollo::Region {
         // END of DEPRECATED
 
         Apollo::RegionContext *begin();
-        Apollo::RegionContext *begin(std::vector<float>);
+        Apollo::RegionContext *begin(const std::vector<float>&);
         void end(Apollo::RegionContext *);
         void end(Apollo::RegionContext *, double);
         int  getPolicyIndex(Apollo::RegionContext *);
