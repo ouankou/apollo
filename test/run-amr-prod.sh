@@ -2,7 +2,7 @@
 # -x will show the expanded commands
 # -e abor on any error
 
-EXE_FILE=amr_stencil_train.out
+EXE_FILE=amr_stencil.out
 TIMESTAMP=$(date +%Y%m%d_%H%M%S)
 
 LOGFILE=$0-log-$TIMESTAMP.txt  
@@ -49,6 +49,7 @@ counter=""
 # we collect roughly 80 data points *3 = 240 records
 #for N_SIZE in {32..15000..512}; do
 #for N_SIZE in {32..15000..128}; do
+for N_SIZE in {32..2000..128}; do
 #for N_SIZE in 4128 8480 12576; do
  let "counter += 1"
   M_SIZE=$N_SIZE
@@ -57,7 +58,7 @@ counter=""
 
 
 # SW has 3 variants: one input size, one policy only each time
-  for policy in 0 1;   do
+  #for policy in 0 1;   do
   #for policy in 0;   do
 # run 3 times each so we can get average: no need to repeat. kernel will be called many times already within outer loop.
 #    for repeat in 1 2 3;   do
@@ -72,11 +73,12 @@ counter=""
 # APOLLO_TRACE_CSV saves raw timing, feature information for each call of each region, too much overhead    
 # APOLLO_TRACE_MEASURES must be turned on in cross execution mode: aggregated measures should be saved after each run of a program    
   APOLLO_TRACE_FOLDER_SUFFIX=$FOLDER_SUFFIX \
-  APOLLO_CROSS_EXECUTION=1 APOLLO_USE_TOTAL_TIME=1 APOLLO_INIT_MODEL="Static,$policy" \
+  APOLLO_CROSS_EXECUTION=1 APOLLO_USE_TOTAL_TIME=1 \
   APOLLO_CROSS_EXECUTION_MIN_DATAPOINT_COUNT=25 APOLLO_TRACE_CSV=0 APOLLO_TRACE_MEASURES=1 \
   ./$EXE_FILE $M_SIZE $N_SIZE
 #    done
-  done 
+  #done 
+done
 
 exec 1>&6 6>&-      # Restore stdout and close file descriptor #6.
 exec 2>&7 7>&- # restore 2 and cancel 7

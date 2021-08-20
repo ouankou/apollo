@@ -14,7 +14,7 @@
 #define FILTER_WIDTH 5
 #define PROBLEM_SIZE 256
 #define TEAM_SIZE 128
-#define PROFILE_NUM 20
+#define PROFILE_NUM 25
 #define MAX_ITER 1000
 
 // clang -fopenmp -fopenmp-targets=nvptx64 -lm stencil_rtune.c -o stencil.out
@@ -145,35 +145,21 @@ mode = 2;
     // Otherwise, the model may not be accurate enough.
     int profiling_size[PROFILE_NUM] = {
         20, 40, 60, 80, 100, 120, 140, 160, 180, 200,
-        300, 400, 500, 600, 700, 800, 900, 1000, 1500, 2000,
+        220, 240, 260, 280, 300,
+        320, 400, 500, 600, 700, 800, 900, 1000, 1500, 2000,
         };
 
     // initialize the testing problem sizes
-    int* problem_size = (int*) malloc(sizeof(int) * iteration_number);
-    initialize_problem_size(iteration_number, width, problem_size);
+    int* problem_size = (int*) malloc(sizeof(int) * 2 * PROFILE_NUM);
+    memcpy(problem_size, profiling_size, sizeof(int)*PROFILE_NUM);
 
-/*
-    // fill the first 40 iters with profiling problem sizes.
-    if (iteration_number > PROFILE_NUM * 2) {
-        memcpy(problem_size, profiling_size, sizeof(int)*20);
-        memcpy(problem_size+20, profiling_size, sizeof(int)*20);
-    };
-*/
     // warm up the computing functions
     for (i = 0; i < 8; i++) {
         stencil_omp_cpu(u, result_cpu, width, height, filter[0], FILTER_WIDTH, FILTER_HEIGHT);
         stencil_omp_gpu(u, result_gpu, width, height, filter[0], FILTER_WIDTH, FILTER_HEIGHT);
     };
 
-/*
-    if (mode == 0) {
-        amr_stencil_rtune_lowLevelAPI(u, result_linear_regression, problem_size, problem_size, filter[0], FILTER_WIDTH, FILTER_HEIGHT);
-    } else if (mode == 1) {
-        amr_stencil_rtune_overhead(u, result_linear_regression, problem_size, problem_size, filter[0], FILTER_WIDTH, FILTER_HEIGHT);
-    } else {
-*/
-        amr_stencil_rtune_with_tests(u, result_linear_regression, problem_size, problem_size, filter[0], FILTER_WIDTH, FILTER_HEIGHT);
-    //}
+    amr_stencil_rtune_with_tests(u, result_linear_regression, problem_size, problem_size, filter[0], FILTER_WIDTH, FILTER_HEIGHT);
 
     free(u);
     free(result_cpu);
@@ -405,8 +391,10 @@ void amr_stencil_rtune_with_tests(const REAL* src, REAL* dst, int* width, int* h
     double dif = 0.0;
     bool b_cpu=false, b_gpu=false;
 
-    while (iter_count < MAX_ITER) {
+    //while (iter_count < MAX_ITER) {
+    while (iter_count < PROFILE_NUM) {
         // compute only on GPU
+        /*
         elapsed = read_timer_ms();
         stencil_omp_gpu(src, result_gpu, width[iter_count], height[iter_count], filter, FILTER_WIDTH, FILTER_HEIGHT);
         gpu_time += read_timer_ms() - elapsed;
@@ -417,6 +405,7 @@ double gt = read_timer_ms() - elapsed;
         stencil_omp_cpu(src, result_cpu, width[iter_count], height[iter_count], filter, FILTER_WIDTH, FILTER_HEIGHT);
         cpu_time += read_timer_ms() - elapsed;
 double ct = read_timer_ms() - elapsed;
+	*/
 
         // compute on CPU or GPU guided by RTune
         elapsed = read_timer_ms();
@@ -440,7 +429,7 @@ double ct = read_timer_ms() - elapsed;
 	}
         region->end();
         linear_regression_time += read_timer_ms() - elapsed;
-double at = read_timer_ms() - elapsed;
+        double at = read_timer_ms() - elapsed;
 
         //fprintf(stderr, "................%d, %lg, %lg, %lg\n", max_problem_size, ct, gt, at);
         iter_count++;
@@ -449,5 +438,5 @@ double at = read_timer_ms() - elapsed;
     //fprintf(stderr, "CPU total time (ms): %g\n", cpu_time);
     //fprintf(stderr, "GPU total time (ms): %g\n", gpu_time);
     //fprintf(stderr, "Linear Regression total time (ms): %g\n", linear_regression_time);
-    fprintf(stderr, "%d, %lg, %lg, %lg\n", max_problem_size, cpu_time, gpu_time, linear_regression_time);
+    //fprintf(stderr, "%d, %lg, %lg, %lg\n", max_problem_size, cpu_time, gpu_time, linear_regression_time);
 }
